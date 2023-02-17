@@ -1,5 +1,6 @@
-import React from 'react';
-import { css, cx } from '@emotion/react';
+import React, { useContext } from 'react';
+import { css } from '@emotion/react';
+import { LayoutContext } from './Layout';
 
 const containerClass = css`
   display: flex;
@@ -11,6 +12,7 @@ const containerClass = css`
 const resultsContainerClass = css`
   width: 49%;
   border: 1px solid black;
+  height: 70vh;
 `;
 
 const imgClass = css`
@@ -19,16 +21,15 @@ const imgClass = css`
 `;
 
 const Translation = () => {
-  const googleResults = ['https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kellyskennels.co.uk%2Fwp-content%2Fuploads%2F2016%2F07%2FYorkiePoo-pups.jpg&f=1&nofb=1&ipt=dbcb2cd5543cce99cdc7abaed7824c34e43384fbbec4f4ead3bfe7dbe6e71c0d&ipo=images']
-  const baiduResults = ['https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kellyskennels.co.uk%2Fwp-content%2Fuploads%2F2016%2F07%2FYorkiePoo-pups.jpg&f=1&nofb=1&ipt=dbcb2cd5543cce99cdc7abaed7824c34e43384fbbec4f4ead3bfe7dbe6e71c0d&ipo=images']
+  const { imageResults: { googleResults, baiduResults } } = useContext(LayoutContext);
 
   return (
     <div css={containerClass}>
       <div css={resultsContainerClass}>
-        {googleResults.map(src => <img src={src} css={imgClass} />)}
+        {googleResults?.map(src => <img src={src} css={imgClass} key={src} />)}
       </div>
       <div css={resultsContainerClass}>
-        {baiduResults.map(src => <img src={src} css={imgClass} />)}
+        {baiduResults?.map(src => <img src={src} css={imgClass} key={src} />)}
       </div>
     </div>
   );
