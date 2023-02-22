@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages } = require('./server/fetchImages');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getTranslation } = require('./server/fetch');
+var spreadsheetServiceKey = require('./service-key.json');
 
 const app = express();
 
@@ -25,9 +26,17 @@ app.get("*", (req, res) => {
 
 app.post('/results', async (req, res) => {
   let params = {};
-  const { EN: enQuery, CN: cnQuery } = req.body;
+  let langTo;
+  const { query } = req.body;
+  console.log('query', query)
 
   try {
+    const { language: langFrom } = await getDetectedLanguage(query);
+    langTo = langFrom === 'en' ? 'zh-CN' : 'en';
+    const translatedQuery = await getTranslation(query, langFrom, langTo);
+    const enQuery = langFrom === 'en' ? query : translatedQuery;
+    const cnQuery = langFrom !== 'en' ? translatedQuery : query;
+
     const results = await Promise.all([
       getGoogleImages(enQuery),
       getBaiduImages(cnQuery),
@@ -35,8 +44,9 @@ app.post('/results', async (req, res) => {
 
     params.googleResults = results[0];
     params.baiduResults = results[1];
+    params.translation = translatedQuery;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
   res.json(params);
