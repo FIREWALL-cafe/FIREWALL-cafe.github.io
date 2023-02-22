@@ -3,19 +3,19 @@ import { css } from '@emotion/react';
 import { LayoutContext } from './Layout';
 
 const SearchBar = () => {
-  const { setResults } = useContext(LayoutContext);
+  const { setResults, setTranslation } = useContext(LayoutContext);
   const ref = useRef();
 
   const handleClick = async () => {
-    // TODO: detect language and translate query
     const query = ref.current.value;
     const response = await fetch(`/results`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ EN: query, CN: query }),
+      body: JSON.stringify({ query }),
     });
-    const results = await response.json();
-    setResults(results);
+    const { googleResults, baiduResults, translation } = await response.json();
+    setResults({ googleResults, baiduResults });
+    setTranslation(translation);
   }
 
   return (
