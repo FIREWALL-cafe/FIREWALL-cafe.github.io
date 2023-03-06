@@ -2,8 +2,11 @@
   "name": "firewall-web-app",
   "version": "0.1.0",
   "description": "The Firewall Pop-Up client on the web.",
+  "homepage": "https://firewall-cafe.github.io/firewall-web-app",
   "main": "server.js",
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-app-rewired build",
     "start:server": "nodemon index.js --watch index.js server/*",
     "start:client": "BROWSER=none react-app-rewired start",
@@ -30,7 +33,8 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.5",
-    "@emotion/babel-preset-css-prop": "^11.10.0"
+    "@emotion/babel-preset-css-prop": "^11.10.0",
+    "gh-pages": "^5.0.0"
   },
   "proxy": "http://localhost:4000",
   "engines": {
