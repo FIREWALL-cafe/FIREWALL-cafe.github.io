@@ -6,7 +6,7 @@ const SearchBar = () => {
   const { setResults, setTranslation } = useContext(LayoutContext);
   const ref = useRef();
 
-  const handleClick = async () => {
+  const handleSubmit = async () => {
     const query = ref.current.value;
     const response = await fetch(`/results`, {
       method: 'post',
@@ -18,10 +18,14 @@ const SearchBar = () => {
     setTranslation(translation);
   }
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) handleSubmit();
+  }
+
   return (
     <div>
-      <input placeholder="search" name="query" type="text" ref={ref} />
-      <button onClick={handleClick}>
+      <input placeholder="search" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} />
+      <button onClick={handleSubmit}>
         Submit
       </button>
     </div>
