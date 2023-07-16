@@ -93,18 +93,6 @@ const getTranslation = async (query, langFrom, langTo) => {
 }
 
 const postVote = async({ meta_key, post_id, }) => {
-  // data: `action=fwc_post_vote&meta_key=${meta_key}&post_id=${post_id}&security=83376c1e81`,
-  // data: {
-  //   action: 'fwc_post_vote',
-  //   meta_key,
-  //   post_id: `${post_id}`,
-  //   security: '83376c1e81'
-  // },
-  const form = new FormData();
-  form.append('action', 'fwc_post_vote');
-  form.append('meta_key', meta_key);
-  form.append('post_id', post_id);
-  form.append('security', '83376c1e81');
   let response;
 
   try {
@@ -115,20 +103,8 @@ const postVote = async({ meta_key, post_id, }) => {
         meta_key,
         post_id: `${post_id}`,
         security: '83376c1e81'
-      }),
-      {
-        headers: {
-          'X-Content-Type-Options': 'nosniff',
-          'X-Frame-Options': 'SAMEORIGIN',
-          'x-test': 1,
-          'Access-Control-Allow-Origin': '*',
-          'Connection': 'Upgrade, Keep-Alive',
-          'Keep-Alive': 'timeout=5, max=100',
-          // 'Content-Type': 'text/html; charset=UTF-8',
-          // 'Content-Type': 'multipart/form-data',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      });
+      })
+    );
     response = data;
   } catch (e) {
     console.error(e);
