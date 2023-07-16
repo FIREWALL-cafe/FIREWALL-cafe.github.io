@@ -1,4 +1,5 @@
 const axios = require('axios');
+const querystring = require('querystring');
 const cheerio = require('cheerio');
 const serverConfig = require('./config');
 
@@ -74,8 +75,7 @@ const getBaiduImages = async (query) => {
 };
 
 const getDetectedLanguage = async (query) => {
-  const body = await fetchResponseJson(getTranslationUrl(`detect-language?query=${query}`));
-  return body;
+  return await fetchResponseJson(getTranslationUrl(`detect-language?query=${query}`));
 }
 
 const getTranslation = async (query, langFrom, langTo) => {
@@ -92,9 +92,55 @@ const getTranslation = async (query, langFrom, langTo) => {
   return translated;
 }
 
+const postVote = async({ meta_key, post_id, }) => {
+  // data: `action=fwc_post_vote&meta_key=${meta_key}&post_id=${post_id}&security=83376c1e81`,
+  // data: {
+  //   action: 'fwc_post_vote',
+  //   meta_key,
+  //   post_id: `${post_id}`,
+  //   security: '83376c1e81'
+  // },
+  const form = new FormData();
+  form.append('action', 'fwc_post_vote');
+  form.append('meta_key', meta_key);
+  form.append('post_id', post_id);
+  form.append('security', '83376c1e81');
+  let response;
+
+  try {
+    const { data } = await axios.post(
+      'https://firewallcafe.com/wp-admin/admin-ajax.php',
+      querystring.stringify({
+        action: 'fwc_post_vote',
+        meta_key,
+        post_id: `${post_id}`,
+        security: '83376c1e81'
+      }),
+      {
+        headers: {
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'SAMEORIGIN',
+          'x-test': 1,
+          'Access-Control-Allow-Origin': '*',
+          'Connection': 'Upgrade, Keep-Alive',
+          'Keep-Alive': 'timeout=5, max=100',
+          // 'Content-Type': 'text/html; charset=UTF-8',
+          // 'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      });
+    response = data;
+  } catch (e) {
+    console.error(e);
+  }
+
+  return response;
+}
+
 module.exports = {
   getGoogleImages,
   getBaiduImages,
   getDetectedLanguage,
-  getTranslation
+  getTranslation,
+  postVote,
 };
