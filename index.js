@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getTranslation } = require('./server/fetch');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getTranslation, postVote } = require('./server/fetch');
 var spreadsheetServiceKey = require('./service-key.json');
 
 const app = express();
@@ -50,6 +50,18 @@ app.post('/results', async (req, res) => {
   }
 
   res.json(params);
+});
+
+app.post('/vote', async (req, res) => {
+  let totalVotes = 0;
+
+  try {
+    totalVotes = await postVote({...req.body});
+  } catch (e) {
+    console.error(e);
+  }
+
+  res.json({ meta_key: req.body.meta_key, totalVotes });
 });
 
 const PORT = process.env.PORT || 4000;

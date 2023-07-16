@@ -8,14 +8,20 @@ const SearchBar = () => {
 
   const handleSubmit = async () => {
     const query = ref.current.value;
-    const response = await fetch(`/results`, {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query }),
-    });
-    const { googleResults, baiduResults, translation } = await response.json();
-    setResults({ googleResults, baiduResults });
-    setTranslation(translation);
+    try {
+      const response = await fetch(`/results`, {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
+      });
+      const { googleResults, baiduResults, translation } = await response.json();
+      setResults({ googleResults, baiduResults });
+      setTranslation(translation);
+    } catch (e) {
+      setResults({ googleResults: [], baiduResults: [] });
+      setTranslation(e);
+      ref.current.value = ''; // Reset search bar text
+    }
   }
 
   const handleKeyDown = (e) => {

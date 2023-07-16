@@ -3,6 +3,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  /* TODO: add Souce Sans Pro to fonts library https: //firewallcafe.com/wp-content/themes/fwc/fonts/source-sans-pro.css */
+  /* font: 16px/24px 'Source Sans Pro', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
