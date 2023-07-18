@@ -38,7 +38,7 @@
   },
   "proxy": "http://localhost:4000",
   "engines": {
-    "node": "18.x"
+    "node": "16.20.1"
   },
   "repository": {
     "url": "https://github.com/FIREWALL-cafe/firewall-web-app"
