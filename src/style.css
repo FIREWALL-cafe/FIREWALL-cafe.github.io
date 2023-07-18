@@ -32,9 +32,13 @@
   cursor: pointer;
 }
 
-.vote__button:hover {
+.vote__button:hover:not(:disabled) {
   border: 3px solid #e60011;
 }
+
+.vote__button:disabled {
+  filter: grayscale(1);
+  cursor: not-allowed;}
 
 .vote__button:not(:last-child) {
   margin-right: 10px;

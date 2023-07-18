@@ -2,14 +2,15 @@ import React, { useRef, useContext } from 'react';
 import { LayoutContext } from './Layout';
 
 const SearchBar = () => {
-  const { isLoading, setResults, setTranslation, setSearchId, setLoading } = useContext(LayoutContext);
+  const { isLoading, setResults, setTranslation, setSearchQuery, setSearchId, setLoading } = useContext(LayoutContext);
   const ref = useRef();
 
   const handleSubmit = async () => {
     setLoading(true);
     const query = ref.current.value;
+    setSearchQuery(query);
     try {
-      const response = await fetch(`https://fwc-2023.ue.r.appspot.com/images`, {
+      const response = await fetch(`/images`, {
         method: 'post',
         headers: { 
           'Accept': 'application/json' ,
@@ -36,7 +37,7 @@ const SearchBar = () => {
 
   return (
     <div>
-      <p><strong>Type a search query into the search bar in English or in simplified Chinese. Your query will automatically translate into the other language. English queries will be queried in Google. Chinese queries will be queried in Baidu.</strong></p>
+      <p style={{ padding: '0 20% 0 20%' }}><strong>Type a search query into the search bar in English or in simplified Chinese. Your query will automatically translate into the other language. English queries will be queried in Google. Chinese queries will be queried in Baidu.</strong></p>
       <input placeholder="search" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} disabled={!!isLoading} />
       <button onClick={handleSubmit} disabled={!!isLoading}>
         Submit. {isLoading}

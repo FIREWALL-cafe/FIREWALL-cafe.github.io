@@ -5,6 +5,7 @@ export const LayoutContext = createContext({})
 
 const Layout = () => {
   const [imageResults, setImageResults] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
   const [translation, setTranslation] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [currentSearchId, setSearchId] = useState(null);
@@ -14,6 +15,8 @@ const Layout = () => {
     setLoading,
     imageResults,
     setResults,
+    searchQuery,
+    setSearchQuery,
     translation,
     setTranslation,
     currentSearchId,
