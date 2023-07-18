@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/firewall-web-app/static/css/main.e6c13ad2.css",
+    "main.js": "/firewall-web-app/static/js/main.c03d6f25.js",
+    "index.html": "/firewall-web-app/index.html",
+    "main.e6c13ad2.css.map": "/firewall-web-app/static/css/main.e6c13ad2.css.map",
+    "main.c03d6f25.js.map": "/firewall-web-app/static/js/main.c03d6f25.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.c03d6f25.js"
+  ]
+}
