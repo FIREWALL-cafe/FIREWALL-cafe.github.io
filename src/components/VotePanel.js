@@ -1,24 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { isDisabled } from '@testing-library/user-event/dist/utils';
+import { LayoutContext } from './Layout';
 import '../style.css';
 
-const VoteButton = ({ imgSrc, voteId }) => {
+// A map of vote names for the backend and their related data
+const voteMeta = {
+  votes_censored: {
+    name: 'Censored',
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-censored.svg'
+  },
+  votes_uncensored: {
+    name: 'Uncensored', 
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-uncensored.svg'
+  },
+  votes_bad_translation: {
+    name: 'Bad Translation', 
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-translation.svg'
+  },
+  votes_good_translation: {
+    name: 'Good Translation', 
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-good-translation.svg'
+  },
+  votes_lost_in_translation: {
+    name: 'Lost in Translation', 
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-lost-in-translation.svg'
+  },
+  votes_nsfw: {
+    name: 'NSFW', 
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg'
+  },
+  votes_bad_result: {
+    name: 'WTF', 
+    img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg'
+  },
+}
+
+const getVoteName = (voteMetaName) => voteMeta[voteMetaName] && voteMeta[voteMetaName].name;
+
+const VoteButton = ({ imgSrc, voteId, setVote, isDisabled, setDisabled }) => {
+  const { currentSearchId } = useContext(LayoutContext);
+
+  useEffect(() => setDisabled(false), [currentSearchId])
+
   const handleVote = async voteId => {
-  /**
-     * endpoint: https://firewallcafe.com/wp-admin/admin-ajax.php
+    // Disable vote buttons until another search has completed
+    setDisabled(true);
+    setVote(voteId);
+
+    /**
+    * endpoint: https://firewallcafe.com/wp-admin/admin-ajax.php
     action: fwc_post_vote
     meta_key: votes_uncensored
     post_id: 310504
     security: 83376c1e81
     */
     try {
-      const { data } = await fetch('https://fwc-2023.ue.r.appspot.com/vote', {
+      const { data } = await fetch('/vote', {
         method: 'POST',
         headers: { 
           'Accept': 'application/json',
           'Content-Type': 'application/json' 
         },
         // body: JSON.stringify({ meta_key: voteId, post_id: 310504 }),
-        body: JSON.stringify({ meta_key: voteId, search_id: currentSeachId }),
+        body: JSON.stringify({ meta_key: voteId, search_id: currentSearchId }),
       });
 
       console.log(data);
@@ -29,29 +73,33 @@ const VoteButton = ({ imgSrc, voteId }) => {
   }
 
   return (
-    <button className="vote__button" onClick={() => handleVote(voteId)}>
+    <button className="vote__button" disabled={isDisabled} onClick={() => handleVote(voteId)}>
       <img src={imgSrc}></img>
     </button>
   );
 }
 
 // TODO: disable panel until search returns
-const VotePanel = () => (
-  <div className="vote__container">
-    <h2>
-      <span style={{ color: '#e60011' }}>VOTE</span> by clicking buttons below that match what you think about this search result.
-    </h2>
-    <div className="vote__container vote__button_container">
-      {/* TODO: download svg files and package them in this repo */}
-      <VoteButton voteId="votes_censored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-censored.svg" />
-      <VoteButton voteId="votes_uncensored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-uncensored.svg" />
-      <VoteButton voteId="votes_bad_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-translation.svg" />
-      <VoteButton voteId="votes_good_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-good-translation.svg" />
-      <VoteButton voteId="votes_lost_in_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-lost-in-translation.svg" />
-      <VoteButton voteId="votes_nsfw" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg" />
-      <VoteButton voteId="votes_bad_result" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg"/>
+const VotePanel = () => {
+  const { searchQuery, translation, currentSearchId } = useContext(LayoutContext);
+  const [currentVote, setVote] = useState(null);
+  const [isDisabled, setDisabled] = useState(null);
+  useEffect(() => console.log('isDisabled', isDisabled), [isDisabled])
+
+  return (
+    <div className="vote__container">
+      <h2>
+        <span style={{ color: '#e60011' }}>VOTE</span> by clicking buttons below that match what you think about this search result.
+      </h2>
+      <div className="vote__container vote__button_container">
+        {/* TODO: download svg files and package them in this repo */}
+        {Object.keys(voteMeta).map(v => (
+          <VoteButton voteId={v} imgSrc={voteMeta[v].img} setVote={setVote} isDisabled={isDisabled} setDisabled={setDisabled} />
+        ))}
+      </div>
+      {currentVote && <p>You voted <span style={{ color: '#e60011' }}>{getVoteName(currentVote)}</span> for "{searchQuery}"/"{translation}"</p>}
     </div>
-  </div>
-);
+  );
+};
 
 export default VotePanel;
