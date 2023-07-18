@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 import { SearchBar, Translation, VotePanel, Results } from './';
 
 export const LayoutContext = createContext({})
@@ -19,7 +19,6 @@ const Layout = () => {
     currentSearchId,
     setSearchId,
   }
-  // }), [imageResults, setResults]);
 
   return (
     <LayoutContext.Provider value={contextValue}>

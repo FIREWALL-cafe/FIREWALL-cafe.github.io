@@ -1,40 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { LayoutContext } from './Layout';
-
-const containerClass = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-`;
-
-const buttonContainerClass = css`
-  ${containerClass};
-  flex-direction: row;
-  width: 75%;
-  flex-wrap: wrap;
-`;
-
-const StyledVoteButton = styled.button`
-  flex-grow: 0;
-  flex-shrink: 0;
-  border-radius: 100%;
-  width: 100px;
-  height: 100px;
-  border: 3px solid transparent;
-  cursor: pointer;
-
-  &:hover {
-    border: 3px solid #e60011;
-  }
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`;
+import React from 'react';
+import '../style.css';
 
 const VoteButton = ({ imgSrc, voteId }) => {
   const handleVote = async voteId => {
@@ -46,9 +11,12 @@ const VoteButton = ({ imgSrc, voteId }) => {
     security: 83376c1e81
     */
     try {
-      const { data } = await fetch('/vote', {
+      const { data } = await fetch('https://fwc-2023.ue.r.appspot.com/vote', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type': 'application/json' 
+        },
         // body: JSON.stringify({ meta_key: voteId, post_id: 310504 }),
         body: JSON.stringify({ meta_key: voteId, search_id: currentSeachId }),
       });
@@ -61,19 +29,19 @@ const VoteButton = ({ imgSrc, voteId }) => {
   }
 
   return (
-    <StyledVoteButton onClick={() => handleVote(voteId)}>
+    <button className="vote__button" onClick={() => handleVote(voteId)}>
       <img src={imgSrc}></img>
-    </StyledVoteButton>
+    </button>
   );
 }
 
 // TODO: disable panel until search returns
 const VotePanel = () => (
-  <div css={containerClass}>
+  <div className="vote__container">
     <h2>
-      <span css={css`color: #e60011;`}>VOTE</span> by clicking buttons below that match what you think about this search result.
+      <span style={{ color: '#e60011' }}>VOTE</span> by clicking buttons below that match what you think about this search result.
     </h2>
-    <div css={buttonContainerClass}>
+    <div className="vote__container vote__button_container">
       {/* TODO: download svg files and package them in this repo */}
       <VoteButton voteId="votes_censored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-censored.svg" />
       <VoteButton voteId="votes_uncensored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-uncensored.svg" />

@@ -6,7 +6,14 @@ var spreadsheetServiceKey = require('./service-key.json');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, '../build')));
+
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://fwc-2023.ue.r.appspot.com');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+})
 
 app.use((err, req, res, next) => {
   console.error(err.stack)
@@ -67,7 +74,7 @@ app.post('/vote', async (req, res) => {
   res.json({ meta_key: req.body.meta_key, totalVotes });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`)
 })
