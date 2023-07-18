@@ -1,11 +1,6 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import { Layout } from './components';
-
-const containerClass = css`
-  text-align: center;
-  overflow-x: hidden;
-`;
+import './style.css';
 
 const App = () => (
   <>
@@ -17,7 +12,7 @@ const App = () => (
     <meta property="og:description" content="FIREWALL juxtaposes Google and Baidu image searches and allows users to vote if images are censored" />
     <meta property="og:image" content="%PUBLIC_URL%/favicon.ico" />
     <meta name="twitter:card" content="FIREWALL juxtaposes Google and Baidu image searches and allows users to vote if images are censored" />
-    <div css={containerClass}>
+    <div className="app__container">
       <h1>Firewall 2.0</h1>
       <Layout />
     </div>

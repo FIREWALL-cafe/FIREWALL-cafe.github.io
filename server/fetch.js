@@ -1,7 +1,14 @@
 const axios = require('axios');
+const fetch = require('node-fetch')
 const querystring = require('querystring');
 const cheerio = require('cheerio');
 const serverConfig = require('./config');
+
+// import axios from 'axios';
+// import fetch from 'node-fetch';
+// import querystring from 'querystring';
+// import cheerio from 'cheerio';
+// import serverConfig from './config';
 
 const getTranslationUrl = endpoint => `https://babelfish.firewallcafe.com/${endpoint}`;
 

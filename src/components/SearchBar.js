@@ -9,9 +9,12 @@ const SearchBar = () => {
     setLoading(true);
     const query = ref.current.value;
     try {
-      const response = await fetch(`/images`, {
+      const response = await fetch(`https://fwc-2023.ue.r.appspot.com/images`, {
         method: 'post',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Accept': 'application/json' ,
+          'Content-Type': 'application/json' 
+        },
         body: JSON.stringify({ query }),
       });
       const { googleResults, baiduResults, translation, searchId } = await response.json();
