@@ -2,8 +2,11 @@
   "name": "firewall-web-app",
   "version": "0.1.0",
   "description": "The Firewall Pop-Up client on the web.",
-  "homepage": "https://firewall-cafe.github.io/firewall-web-app",
+  "homepage": "https://fwc-2023.ue.r.appspot.com/",
   "main": "index.js",
+  "engines": {
+    "node": "16.x.x"
+  },
   "scripts": {
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
