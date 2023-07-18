@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { LayoutContext } from './Layout';
 
 const containerClass = css`
   display: flex;
@@ -13,11 +14,11 @@ const containerClass = css`
 const buttonContainerClass = css`
   ${containerClass};
   flex-direction: row;
-  justify-content: space-around;
-  width: 50%;
+  width: 75%;
+  flex-wrap: wrap;
 `;
 
-const VoteButtonContainer = styled.button`
+const StyledVoteButton = styled.button`
   flex-grow: 0;
   flex-shrink: 0;
   border-radius: 100%;
@@ -28,6 +29,10 @@ const VoteButtonContainer = styled.button`
 
   &:hover {
     border: 3px solid #e60011;
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
   }
 `;
 
@@ -41,43 +46,44 @@ const VoteButton = ({ imgSrc, voteId }) => {
     security: 83376c1e81
     */
     try {
-      const response = await fetch('/vote', {
+      const { data } = await fetch('/vote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ meta_key: voteId, post_id: 310504 }),
+        // body: JSON.stringify({ meta_key: voteId, post_id: 310504 }),
+        body: JSON.stringify({ meta_key: voteId, search_id: currentSeachId }),
       });
-      const totalVotes = await response.json();
+
+      console.log(data);
+      // await fetch(`/searches/votes/search_id/`)
     } catch (e) {
       console.log(e)
     }
   }
 
   return (
-    <VoteButtonContainer onClick={() => handleVote(voteId)}>
+    <StyledVoteButton onClick={() => handleVote(voteId)}>
       <img src={imgSrc}></img>
-    </VoteButtonContainer>
+    </StyledVoteButton>
   );
 }
 
-const VotePanel = () => {
-
-  return (
-    <div css={containerClass}>
-      <h2>
-        <span css={css`color: #e60011;`}>VOTE</span> by clicking buttons below that match what you think about this search result.
-      </h2>
-      <div css={buttonContainerClass}>
-        {/* TODO: download svg files and package them in this repo */}
-        <VoteButton voteId="votes_censored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-censored.svg" />
-        <VoteButton voteId="votes_uncensored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-uncensored.svg" />
-        <VoteButton voteId="votes_bad_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-translation.svg" />
-        <VoteButton voteId="votes_good_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-good-translation.svg" />
-        <VoteButton voteId="votes_lost_in_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-lost-in-translation.svg" />
-        <VoteButton voteId="votes_nsfw" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg" />
-        <VoteButton voteId="votes_bad_result" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg"/>
-      </div>
+// TODO: disable panel until search returns
+const VotePanel = () => (
+  <div css={containerClass}>
+    <h2>
+      <span css={css`color: #e60011;`}>VOTE</span> by clicking buttons below that match what you think about this search result.
+    </h2>
+    <div css={buttonContainerClass}>
+      {/* TODO: download svg files and package them in this repo */}
+      <VoteButton voteId="votes_censored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-censored.svg" />
+      <VoteButton voteId="votes_uncensored" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-uncensored.svg" />
+      <VoteButton voteId="votes_bad_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-translation.svg" />
+      <VoteButton voteId="votes_good_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-good-translation.svg" />
+      <VoteButton voteId="votes_lost_in_translation" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-lost-in-translation.svg" />
+      <VoteButton voteId="votes_nsfw" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg" />
+      <VoteButton voteId="votes_bad_result" imgSrc="https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg"/>
     </div>
-  );
-};
+  </div>
+);
 
 export default VotePanel;

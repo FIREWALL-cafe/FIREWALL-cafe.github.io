@@ -1,26 +1,29 @@
 import React, { useRef, useContext } from 'react';
-import { css } from '@emotion/react';
 import { LayoutContext } from './Layout';
 
 const SearchBar = () => {
-  const { setResults, setTranslation } = useContext(LayoutContext);
+  const { isLoading, setResults, setTranslation, setSearchId, setLoading } = useContext(LayoutContext);
   const ref = useRef();
 
   const handleSubmit = async () => {
+    setLoading(true);
     const query = ref.current.value;
     try {
-      const response = await fetch(`/results`, {
+      const response = await fetch(`/images`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
       });
-      const { googleResults, baiduResults, translation } = await response.json();
+      const { googleResults, baiduResults, translation, searchId } = await response.json();
+      setSearchId(searchId);
       setResults({ googleResults, baiduResults });
       setTranslation(translation);
     } catch (e) {
       setResults({ googleResults: [], baiduResults: [] });
       setTranslation(e);
       ref.current.value = ''; // Reset search bar text
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -30,9 +33,10 @@ const SearchBar = () => {
 
   return (
     <div>
-      <input placeholder="search" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} />
-      <button onClick={handleSubmit}>
-        Submit
+      <p><strong>Type a search query into the search bar in English or in simplified Chinese. Your query will automatically translate into the other language. English queries will be queried in Google. Chinese queries will be queried in Baidu.</strong></p>
+      <input placeholder="search" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} disabled={!!isLoading} />
+      <button onClick={handleSubmit} disabled={!!isLoading}>
+        Submit. {isLoading}
       </button>
     </div>
   );
