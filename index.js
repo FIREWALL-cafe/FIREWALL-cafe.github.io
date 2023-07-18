@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getTranslation, postVote } = require('./server/fetch');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getTranslation, postVote, saveImages } = require('./server/fetch');
 var spreadsheetServiceKey = require('./service-key.json');
 
 const app = express();
@@ -24,8 +24,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.post('/results', async (req, res) => {
-  let params = {};
+app.post('/images', async (req, res) => {
+  const data = {};
   let langTo;
   const { query } = req.body;
   console.log('query', query)
@@ -42,21 +42,24 @@ app.post('/results', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    params.googleResults = results[0];
-    params.baiduResults = results[1];
-    params.translation = translatedQuery;
+    const { searchId } = await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, translation: translatedQuery })
+
+    data.searchId = searchId;
+    data.googleResults = results[0];
+    data.baiduResults = results[1];
+    data.translation = translatedQuery
   } catch (error) {
     console.error(error);
   }
 
-  res.json(params);
+  res.json(data);
 });
 
 app.post('/vote', async (req, res) => {
   let totalVotes = 0;
 
   try {
-    totalVotes = await postVote({...req.body});
+    totalVotes = await postVote({ ...req.body });
   } catch (e) {
     console.error(e);
   }

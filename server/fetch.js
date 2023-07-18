@@ -55,7 +55,7 @@ const getGoogleImages = async (query) => {
  * @returns array of image urls from Baidu 
  */
 const getBaiduImages = async (query) => {
-  const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`
+  const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`;
 
   const config = {
     cache: 'no-cache',
@@ -92,25 +92,97 @@ const getTranslation = async (query, langFrom, langTo) => {
   return translated;
 }
 
-const postVote = async({ meta_key, post_id, }) => {
-  let response;
-
-  try {
-    const { data } = await axios.post(
-      'https://firewallcafe.com/wp-admin/admin-ajax.php',
-      querystring.stringify({
-        action: 'fwc_post_vote',
-        meta_key,
-        post_id: `${post_id}`,
-        security: '83376c1e81'
-      })
-    );
-    response = data;
-  } catch (e) {
-    console.error(e);
+const postVote = async ({ meta_key, post_id, search_id }) => {
+  const url = `${serverConfig.apiUrl}vote`;
+  const metaKeyToId = {
+    votes_censored: 1,
+    votes_uncensored: 2,
+    votes_bad_translation: 3,
+    votes_good_translation: 4,
+    votes_lost_in_translation: 5,
+    votes_bad_result: 6,
+    votes_nsfw: 7,
   }
 
-  return response;
+  const { data: apiData } = await axios.post(
+    url,
+    {
+      vote_id: metaKeyToId[meta_key],
+      search_id,
+      vote_timestamp: Date.now(),
+      vote_client_name: serverConfig.clientName,
+    }
+  );
+
+  // const { data: wpData } = await axios.post(
+  //   'https://firewallcafe.com/wp-admin/admin-ajax.php',
+  //   querystring.stringify({
+  //     action: 'fwc_post_vote',
+  //     meta_key,
+  //     post_id: `${post_id}`,
+  //     security: '83376c1e81'
+  //   })
+  // );
+
+  console.log('wp data', wpData);
+
+  return apiData;
+}
+
+const transformImgData = imgArray => JSON.stringify(imgArray.map(img => ({ href: img, src: img })));
+
+const submitImagesToWordpress = async (data) => {
+  const { data: responseData, response } = await axios.post(
+    serverConfig.wordpressURL,
+    { ...data, secret: serverConfig.wordpressSecret }
+  );
+
+  console.log('responseData', responseData, 'response', response);
+
+  return { data: responseData, response };
+}
+
+const saveImages = async ({ query, google, baidu, langTo, langFrom, translation }) => {
+  const url = `${serverConfig.apiUrl}saveSearchAndImages`;
+  const imageData = {
+    timestamp: Date.now(),
+    location: serverConfig.location,
+    client: serverConfig.clientName,
+    secret: serverConfig.apiSecret,
+    search_engine: 'google',
+    search: query,
+    translation,
+    lang_from: langFrom,
+    lang_to: langTo,
+    lang_confidence: '1.0',
+    lang_alternate: null,
+    lang_name: langFrom === 'en' ? 'English' : langFrom,
+    banned: baidu.length === 0, // TODO: find a better way to identify banned terms
+    sensitive: false,
+    google_images: transformImgData(google), // transform array of url strings to objects
+    baidu_images: transformImgData(baidu),
+  };
+
+  submitImagesToWordpress(imageData);
+
+  const { data } = await axios.post(
+    url,
+    imageData,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+  });
+
+  console.log('archive action complete:', data);
+
+  /**
+   * TODO:
+   * - save vote to postgres
+   * - update saveSearchAndImage to return searchId
+   */
+  
+  return data;
 }
 
 module.exports = {
@@ -119,4 +191,5 @@ module.exports = {
   getDetectedLanguage,
   getTranslation,
   postVote,
+  saveImages,
 };

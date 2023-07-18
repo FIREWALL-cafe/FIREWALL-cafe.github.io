@@ -6,21 +6,27 @@ export const LayoutContext = createContext({})
 const Layout = () => {
   const [imageResults, setImageResults] = useState({});
   const [translation, setTranslation] = useState('');
-  const [loading, isLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [currentSearchId, setSearchId] = useState(null);
   const setResults = useCallback((results) => setImageResults(results), []);
-  const contextValue = useMemo(() => ({
+  const contextValue = {
+    isLoading,
+    setLoading,
     imageResults,
     setResults,
     translation,
     setTranslation,
-  }), [imageResults, setResults]);
+    currentSearchId,
+    setSearchId,
+  }
+  // }), [imageResults, setResults]);
 
   return (
     <LayoutContext.Provider value={contextValue}>
-      <SearchBar />
-      <Translation />
-      <VotePanel />
-      <Results />
+        <SearchBar />
+        <Translation />
+        {currentSearchId && <VotePanel />}
+        <Results />
     </LayoutContext.Provider>
   );
 };

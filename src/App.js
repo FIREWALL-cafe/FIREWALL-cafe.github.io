@@ -4,6 +4,7 @@ import { Layout } from './components';
 
 const containerClass = css`
   text-align: center;
+  overflow-x: hidden;
 `;
 
 const App = () => (
