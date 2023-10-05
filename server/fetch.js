@@ -26,7 +26,7 @@ const fetchResponseText = async (url, config = {}) => {
 
 const getGoogleImageSrcs = (results) => {
   const html = cheerio.load(results);
-  const imgs = html('.yWs4tf').toArray().slice(0, 10);
+  const imgs = html('.DS1iW').toArray().slice(0, 10);
   return imgs.map((img) => img.attribs.src)
 };
 
