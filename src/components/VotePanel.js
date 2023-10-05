@@ -84,7 +84,6 @@ const VotePanel = () => {
   const { searchQuery, translation, currentSearchId } = useContext(LayoutContext);
   const [currentVote, setVote] = useState(null);
   const [isDisabled, setDisabled] = useState(null);
-  useEffect(() => console.log('isDisabled', isDisabled), [isDisabled])
 
   return (
     <div className="vote__container">
