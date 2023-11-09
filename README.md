@@ -11,5 +11,11 @@ Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable). Na
 
 Visit http://localhost:3000/
 
-# Production
+# Deployment
 https://fwc-2023.ue.r.appspot.com/
+
+Please let the codeowner know which emails need permission to access GAE, the service where the app is hosted.
+
+Install the [Cloud SDK](https://cloud.google.com/sdk?hl=en) and set the project to the current Firewall GCP project name.
+
+Navigate to the root of the project and run `gcloud app deploy`.
