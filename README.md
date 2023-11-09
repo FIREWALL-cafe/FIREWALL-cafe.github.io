@@ -10,3 +10,6 @@ When you have install nvm, navigate to the root of this project and run `nvm use
 Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable). Navigate to the root of this project and run `yarn dev`.
 
 Visit http://localhost:3000/
+
+# Production
+https://fwc-2023.ue.r.appspot.com/
