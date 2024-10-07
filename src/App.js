@@ -1,6 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import { Layout } from './components';
 // import './style.css';
+
+function timeInShanghai() {
+  return new Date().toLocaleTimeString('en-us', {
+    timeStyle: 'short',
+    timeZone: 'Asia/Shanghai',
+  })
+}
+
+const currentTime = new Date().toLocaleTimeString('en-us', { timeStyle: 'short'});
 
 function App() {
   return (
@@ -13,9 +23,9 @@ function App() {
                 <div className="flex gap-5 items-center pr-8 h-full text-lg font-medium text-center min-w-[240px] text-slate-100">
                   <div className="flex gap-6 items-center self-stretch my-auto min-w-[240px]">
                     <div className="self-stretch my-auto">
-                      Your time: 11:00AM
+                      Your time: {currentTime}
                     </div>
-                    <div className="self-stretch my-auto">Beijing: 10:00PM</div>
+                    <div className="self-stretch my-auto">Beijing: {timeInShanghai()}</div>
                   </div>
                 </div>
                 <div className="flex gap-6 items-center my-auto min-w-[240px]">
@@ -50,7 +60,7 @@ function App() {
                     className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
                   />
                 </div>
-                <div className="gap-4 self-stretch my-auto text-4xl font-medium leading-none text-black bg-white border-black min-w-[240px]">
+                <div className="wenquanyi gap-4 self-stretch my-auto text-4xl font-medium leading-none text-black bg-white border-black min-w-[240px]">
                   FIREWALL CAFE
                 </div>
                 <div className="flex gap-4 items-center self-stretch my-auto w-56">
@@ -72,8 +82,8 @@ function App() {
           </div>
           <div className="flex flex-col w-full max-md:max-w-full">
             <div className="flex overflow-hidden flex-col justify-center items-center px-24 py-40 w-full bg-white min-h-[641px] max-md:px-5 max-md:py-24 max-md:max-w-full">
-              <div id="page_title" className="text-7xl font-medium leading-tight text-center text-black border-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
-                WHAT’S BEHIND THE WALL?_
+              <div id="page_title" className="wenquanyi text-7xl font-medium leading-tight text-center text-black border-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+                WHAT IS BEHIND THE WALL?_
               </div>
               <div className="flex overflow-hidden flex-col mt-20 max-w-full w-[720px] max-md:mt-10">
                 <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
@@ -134,7 +144,7 @@ function App() {
                     <div className="text-black border-black max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
                       Would you know censorship if you saw it?{" "}
                     </div>
-                    <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+                    <div className="wenquanyi text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
                       你知道什么时候会看到审查制度吗?{" "}
                     </div>
                   </div>
@@ -184,7 +194,7 @@ function App() {
                 <div className="text-black border-black max-md:max-w-full max-md:text-4xl">
                   Peer over the wall. Decide for yourself.
                 </div>
-                <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">
+                <div className="wenquanyi text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">
                   越过墙往外看。自己决定。
                 </div>
               </div>
@@ -222,7 +232,7 @@ function App() {
                   <div className="text-black border-black leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
                     What are others seeking over the wall?{" "}
                   </div>
-                  <div className="leading-tight text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">
+                  <div className="wenquanyi leading-tight text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">
                     人们翻墙时在寻找什么?{" "}
                   </div>
                 </div>
@@ -277,7 +287,7 @@ function App() {
                     <div className="text-white max-md:text-4xl">
                       Stay connected
                     </div>
-                    <div className="text-red-600 max-md:text-4xl">保持联系</div>
+                    <div className="wenquanyi text-red-600 max-md:text-4xl">保持联系</div>
                   </div>
                   <div className="flex flex-col mt-10 w-full text-xl">
                     <div className="leading-8 text-white">
@@ -286,9 +296,9 @@ function App() {
                     </div>
                     <div className="flex mt-5 w-full bg-gray-50 rounded border border-solid border-neutral-300 min-h-[56px]">
                       <div className="overflow-hidden flex-1 shrink px-4 py-3.5 text-rose-500 min-w-[240px] max-md:pr-5">
-                        Email <span className="text-rose-500">电子邮件 </span>
+                        Email <span className="wenquanyi text-rose-500">电子邮件 </span>
                       </div>
-                      <div className="gap-1 self-start px-4 text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[56px]">
+                      <div className="gap-1 self-start px-4 py-3.5 text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid">
                         Submit
                       </div>
                     </div>
@@ -311,7 +321,7 @@ function App() {
                     <br />
                     Cafe{" "}
                   </div>
-                  <div className="z-10 self-end mt-0 text-2xl leading-none text-red-600 border-red-600">
+                  <div className="wenquanyi z-10 self-end mt-0 text-2xl leading-none text-red-600 border-red-600">
                     防火墙
                   </div>
                 </div>

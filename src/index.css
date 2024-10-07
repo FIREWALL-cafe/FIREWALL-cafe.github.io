@@ -24,6 +24,10 @@ code {
   font-family: WenQuanYi;
 }
 
+.wenquanyi {
+  font-family: WenQuanYi;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
