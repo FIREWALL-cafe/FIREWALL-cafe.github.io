@@ -121,7 +121,7 @@ function App() {
                     <div className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] text-zinc-400 max-md:max-w-full">
                       Search Google + Baidu
                     </div>
-                    <div className="flex overflow-hidden gap-1 justify-center items-center pr-4 h-full">
+                    <div className="my-auto flex overflow-hidden gap-1 justify-center items-center pr-4 h-full">
                       <img
                         loading="lazy"
                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/1ef66cc2edc9a68306f187f679b1c0c81b6ac30ef7e5593073bf3d53270a8511?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
