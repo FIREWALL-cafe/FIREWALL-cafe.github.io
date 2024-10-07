@@ -5,7 +5,7 @@
   "homepage": "https://fwc-2023.ue.r.appspot.com/",
   "main": "index.js",
   "engines": {
-    "node": "16.x.x"
+    "node": "20.x.x"
   },
   "scripts": {
     "predeploy": "yarn run build",
