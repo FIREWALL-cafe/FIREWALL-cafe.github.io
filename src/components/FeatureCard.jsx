@@ -6,11 +6,11 @@ function FeatureCard({ title, chineseTitle, description, iconSrc, bgColor, textC
       <div className="flex flex-col flex-1 justify-between w-full">
         <div className="flex flex-col w-full">
           <div className="flex gap-2 items-center w-full">
-            <div className={`flex-1 shrink gap-2.5 self-stretch my-auto text-4xl font-medium leading-none ${textColor} whitespace-nowrap border-${textColor} min-w-[240px]`}>
+            <div className={`chinese flex-1 shrink gap-2.5 self-stretch my-auto text-4xl font-medium leading-none ${textColor} whitespace-nowrap border-${textColor} min-w-[240px]`}>
               {title}
             </div>
             <div className="flex flex-col items-center self-stretch my-auto min-h-[52px] w-[52px]">
-              <img loading="lazy" src={iconSrc} className="object-contain aspect-square w-[52px]" alt={`${title} icon`} />
+              <img src={iconSrc} className="object-contain aspect-square w-[52px]" alt={`${title} icon`} />
             </div>
           </div>
           <div className={`chinese text-4xl font-medium leading-none ${chineseTitle.color} border-${chineseTitle.color}`}>
