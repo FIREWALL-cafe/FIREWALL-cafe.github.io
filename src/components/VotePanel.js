@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { isDisabled } from '@testing-library/user-event/dist/utils';
-import { LayoutContext } from './Layout';
+import { LayoutContext } from './SearchLayout';
 import '../style.css';
 
 // A map of vote names for the backend and their related data
