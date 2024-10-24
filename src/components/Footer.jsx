@@ -3,24 +3,17 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/icons/logo.svg";
+import Facebook from "../assets/icons/Facebook_Logo.png";
+import Twitter from "../assets/icons/x-logo-black.png";
+import Instagram from "../assets/icons/Instagram_Logo.png";
 
 function Footer() {
   return (
     <footer className="flex overflow-hidden justify-between items-start px-6 pt-20 pb-44 w-full bg-white max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-start w-full max-w-screen-xl basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex gap-3 items-center">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/997c5b9009b30d4bb4e311ea54ea301c7312c7d3f344b4c7c1180c5bd05daef6?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
-            alt="Logo"
-            className="object-contain shrink-0 self-stretch my-auto w-11 aspect-square"
-          />
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba6af707790b5fefe86cbeb70b18317a7a168a7303d00548f6fb0f707ee605e0?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
-            alt="Brand name"
-            className="object-contain shrink-0 self-stretch my-auto aspect-[2.9] w-[110px]"
-          />
+          <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />
         </div>
         <nav className="flex flex-wrap gap-2.5 items-start min-w-[240px] max-md:max-w-full">
           <div className="flex overflow-hidden flex-col items-start px-4 text-xl text-center text-red-600 rounded-lg">
@@ -35,37 +28,31 @@ function Footer() {
             <Link to="/archive" className="gap-1 self-stretch">
               Search Archive
             </Link>
-
-          </div>
-          <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
-            <Link to="/support" className="gap-1 self-stretch text-xl text-center text-red-600">
-              Partner with Us
-            </Link>
             <Link to="/contact" className="mt-4 text-xl text-center text-red-600">
               Contact
             </Link>
+          </div>
+          <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
+            <div className="flex gap-2 items-center mt-4"></div>
             <div className="flex gap-2 items-center mt-4">
               <Link to="/" aria-label="Facebook">
                 <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/00c339f2f7a6fd602d44c1fdbc5edf7ee8dcfe46eebf520ba554ad841229efcb?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
-                  alt=""
-                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square fill-red-600"
+                  src={Facebook}
+                  alt="Facebook logo"
+                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
                 />
               </Link>
               <Link to="/" aria-label="Twitter">
                 <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/828776fe7eb5e9f2d5c0ce63e9e14d0ad2bac0003e29bb8b30c19d19043b581b?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
-                  alt=""
-                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square fill-red-600"
+                  src={Twitter}
+                  alt="Twitter logo"
+                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
                 />
               </Link>
               <Link to="#" aria-label="Instagram">
                 <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/07b034c2f69a7a49757501b7bc7e512e64eea3696ebb15d4ac7c00d45a90fc0b?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
-                  alt=""
+                  src={Instagram}
+                  alt="Instagram logo"
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square fill-red-600"
                 />
               </Link>
