@@ -16,15 +16,24 @@ function Timeline() {
       ]
      },
     { year: 1994, active: false, },
-    { year: 1995, active: false, }
+    { year: 1995, active: false, },
+    // { year: 1996, active: false, },
+    // { year: 1997, active: false, },
+    // { year: 1998, active: false, },
+    // { year: 1999, active: false, },
+    // { year: 2001, active: false, },
+    // { year: 2002, active: false, },
+    // { year: 2003, active: false, },
+    // { year: 2004, active: false, },
+    // { year: 2005, active: false, },
   ];
 
   return (
     <div className="flex flex-col max-md:ml-0 max-md:w-full">
       {timelineEvents.map((event, index) => (
         <div key={event.year} className="flex gap-2 relative pl-8 sm:pl-32 py-6 group">
-          <div className={`flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5 ${event.active ? 'after:bg-red-600 after:w-4 after:h-4 ' : 'after:bg-gray-600 after:w-2 after:h-2 '}`}>
-            <time classname={`sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 ${event.active ? 'text-xl translate-y-1.5 ' : 'text-xs '}`}>
+          <div className={`flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5 ${event.active ? 'after:bg-red-600 after:w-4 after:h-4 text-xl ' : 'after:bg-gray-600 after:w-2 after:h-2 '}`}>
+            <time classname="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center font-semibold uppercase w-20 h-6 mb-3 sm:mb-0">
               {event.year}
             </time>
           </div>
