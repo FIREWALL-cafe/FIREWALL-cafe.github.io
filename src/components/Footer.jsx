@@ -16,22 +16,6 @@ function Footer() {
           <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />
         </div>
         <nav className="flex flex-wrap gap-2.5 items-start min-w-[240px] max-md:max-w-full">
-          <div className="flex overflow-hidden flex-col items-start px-4 text-xl text-center text-red-600 rounded-lg">
-            <Link to="/about" className="gap-1 self-stretch">
-              About FIREWALL
-            </Link>
-            <Link to="/press" className="mt-3.5">
-              Press
-            </Link>
-          </div>
-          <div className="flex overflow-hidden flex-col items-start px-4 text-xl text-center text-red-600 rounded-lg">
-            <Link to="/archive" className="gap-1 self-stretch">
-              Search Archive
-            </Link>
-            <Link to="/contact" className="mt-4 text-xl text-center text-red-600">
-              Contact
-            </Link>
-          </div>
           <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
             <div className="flex gap-2 items-center mt-4"></div>
             <div className="flex gap-2 items-center mt-4">
@@ -57,6 +41,22 @@ function Footer() {
                 />
               </Link>
             </div>
+          </div>
+          <div className="flex overflow-hidden flex-col items-start px-4 text-xl text-center text-red-600 rounded-lg">
+            <Link to="/about" className="gap-1 self-stretch">
+              About FIREWALL
+            </Link>
+            <Link to="/press" className="mt-3.5">
+              Press
+            </Link>
+          </div>
+          <div className="flex overflow-hidden flex-col items-start px-4 text-xl text-center text-red-600 rounded-lg">
+            <Link to="/archive" className="gap-1 self-stretch">
+              Search Archive
+            </Link>
+            <Link to="/contact" className="mt-4 text-xl text-center text-red-600">
+              Contact
+            </Link>
           </div>
         </nav>
       </div>

@@ -36,11 +36,16 @@ const features = [
   
 function Search() {
   return (
-    <main>
+    <section className="flex overflow-hidden flex-col justify-center py-32 w-full bg-white max-md:py-24 max-md:max-w-full">
+      <h1 className="chinese flex flex-col w-full text-7xl font-medium leading-tight text-center tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+        <span className="text-black border-black max-md:max-w-full max-md:text-4xl">Search results</span>
+        <span className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">搜索结果</span>
+      </h1>
+
       <SearchInput />
       <SearchCompare />
       <FeatureCards features={features} />
-    </main>
+    </section>
   );
 }
 
