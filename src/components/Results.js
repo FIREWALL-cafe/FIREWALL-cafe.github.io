@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { LayoutContext } from './Layout';
+import { LayoutContext } from './SearchLayout';
 import '../style.css';
 
 const Translation = () => {

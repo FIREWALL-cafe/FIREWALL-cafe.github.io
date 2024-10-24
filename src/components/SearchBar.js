@@ -1,12 +1,17 @@
-import React, { useRef, useContext } from 'react';
-import { LayoutContext } from './Layout';
+import React, { useCallback, useRef, useContext, useState } from 'react';
+import { LayoutContext } from './SearchLayout';
 
 const SearchBar = () => {
-  const { isLoading, setResults, setTranslation, setSearchQuery, setSearchId, setLoading } = useContext(LayoutContext);
+  const [translation, setTranslation] = useState('');
+  const [imageResults, setImageResults] = useState({});
+  const { setSearchId } = useContext(LayoutContext);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const setResults = useCallback((results) => setImageResults(results), []);
   const ref = useRef();
 
   const handleSubmit = async () => {
-    setLoading(true);
+    setIsLoading(true);
     const query = ref.current.value;
     setSearchQuery(query);
     try {
@@ -27,7 +32,7 @@ const SearchBar = () => {
       setTranslation(e);
       ref.current.value = ''; // Reset search bar text
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }
 

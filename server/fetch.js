@@ -50,6 +50,7 @@ const getBaiduImageSrcs = (results) => {
  * @returns array of image urls from Google
  */
 const getGoogleImages = async (query) => {
+  console.log('fetching google images for', query);
   const url = `https://www.google.com/search?q=${encodeURI(query)}&tbm=isch`;
 
   const response = await axios.get(url)
@@ -62,6 +63,7 @@ const getGoogleImages = async (query) => {
  * @returns array of image urls from Baidu 
  */
 const getBaiduImages = async (query) => {
+  console.log('fetching baidu images for', query);
   const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`;
 
   const config = {

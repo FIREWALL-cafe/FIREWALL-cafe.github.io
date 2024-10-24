@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
-import { Layout } from './components';
 // import './style.css';
 
 function timeInShanghai() {
