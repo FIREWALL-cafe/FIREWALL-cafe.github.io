@@ -13,7 +13,7 @@ function Footer() {
     <footer className="flex overflow-hidden justify-between items-start px-6 pt-20 pb-44 w-full bg-white max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-start w-full max-w-screen-xl basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex gap-3 items-center">
-          <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />
+          <Link to="/"><img src={logo} alt="Logo" className="object-contain self-stretch my-auto" /></Link>
         </div>
         <nav className="flex flex-wrap gap-2.5 items-start min-w-[240px] max-md:max-w-full">
           <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">

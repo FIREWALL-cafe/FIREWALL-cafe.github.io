@@ -9,16 +9,17 @@ function AboutSection() {
         <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[526px] max-md:max-w-full">
           <div className="chinese flex flex-col w-full text-5xl font-medium leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
             <h2 className="text-black border-black max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
-              Would you know censorship if you saw it?
+              <Link to="/about">What does internet censorship look like?</Link>
             </h2>
             <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
               你知道什么时候会看到审查制度吗?
             </div>
           </div>
           <p className="mt-10 text-2xl leading-9 text-black max-md:max-w-full">
-            Lorem ipsum dolor sit amet. Sed inventore corrupti sit rerum animi
-            ut voluptate laborum. Qui repellat voluptatum qui enim debitis ut
-            dolore debitis vel dolorem exercitationem.
+            “Just Google it.” That phrase has become almost a knee-jerk response whenever we’re stumped. But does the internet truly have all the answers?
+          </p>
+          <p className="mt-10 text-2xl leading-9 text-black max-md:max-w-full">
+            FIREWALL Cafe is an art project launched in 2016 to shine a light on Google’s search engine monopoly and China’s suppression of free speech through Baidu, the primary Chinese search engine.
           </p>
           <Link to="/about">
             <button className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-lg leading-snug text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[56px]">

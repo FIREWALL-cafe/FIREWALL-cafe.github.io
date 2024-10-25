@@ -29,12 +29,12 @@ const features = [
 function WhyDidThisHappen() {
   return (
     <main>
-      <section className="flex overflow-hidden flex-col justify-center py-32 w-full text-6xl font-medium leading-tight text-center bg-white tracking-[2.16px] max-md:py-24 max-md:max-w-full max-md:text-4xl">
+      <section className="flex overflow-hidden flex-col justify-center py-16 w-full text-6xl font-medium leading-tight text-center bg-white tracking-[2.16px] max-md:py-24 max-md:max-w-full max-md:text-4xl">
         <div className="flex flex-col justify-center w-full max-md:max-w-full max-md:text-4xl">
           <div className="chinese flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
             <img loading="lazy" src={TimelineIcon} className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" alt="" />
             <h1 className="self-stretch my-auto border-black max-md:max-w-full max-md:text-4xl">
-              Why did all this happen?
+              How has internet censorship evolved?
             </h1>
           </div>
           <div className="chinese mt-2.5 text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">

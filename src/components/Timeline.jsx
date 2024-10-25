@@ -30,6 +30,9 @@ function Timeline() {
 
   return (
     <div className="flex flex-col max-md:ml-0 max-md:w-full">
+      <div className="flex flex-col text-xl items-center max-w-full max-md:max-w-full">
+        This timeline offers a comparative analysis of internet development and governance in both China and the United States. It explores how these two nations have shaped digital communication and information control through historical events and policies.
+      </div>
       {timelineEvents.map((event, index) => (
         <div key={event.year} className="flex gap-2 relative pl-8 sm:pl-32 py-6 group">
           <div className={`flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5 ${event.active ? 'after:bg-red-600 after:w-4 after:h-4 text-xl ' : 'after:bg-gray-600 after:w-2 after:h-2 '}`}>
