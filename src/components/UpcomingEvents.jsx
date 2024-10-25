@@ -13,16 +13,12 @@ function UpcomingEvents() {
               Upcoming events
             </h2>
           </div>
-          <div className="mt-2 text-7xl font-medium leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+          <div className="mt-2 text-6xl font-medium leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
             即将举行的活动
           </div>
         </div>
-        <p className="mt-5 text-xl leading-8 text-black underline max-md:max-w-full">
-          There are currently no upcoming events.{" "}
-          <span className="font-semibold text-black">
-            Want to be notified when one is scheduled?
-          </span>
-          <span className="underline"> Sign up for our newsletter.</span>
+        <p className="mt-5 text-xl max-md:max-w-full">
+          Explore our events, including exhibitions, screenings, and talks. These gatherings engage a global audience and further the mission of FIREWALL Internet Cafe.
         </p>
       </div>
     </section>
