@@ -28,13 +28,13 @@ const features = [
   
 const SearchArchive = () => {
   return (
-    <div className="flex overflow-hidden flex-col bg-white min-h-[200px]">
-      <main>
+    <main>
+      <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:py-24 max-md:max-w-full">
         <HeroArchive />
         <QueryList />
         <FeatureCards features={features} />
-      </main>
-    </div>
+      </section>
+    </main>
   );
 };
 

@@ -19,7 +19,7 @@ const HeroArchive = () => {
           </div>
         </div>
         <div className="mt-5 text-lg text-black max-md:max-w-full">
-          Browse what others are searching for, vote on results, and see how others voted.
+          Browse what others are searching, vote on their results, and see how they voted too.
         </div>
       </div>
       <SearchInput />
