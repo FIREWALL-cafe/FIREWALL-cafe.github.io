@@ -29,7 +29,7 @@ const features = [
     {
       title: "Expert commentary",
       chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
-      description: "Read and listen to in-depth commentary from experts in the east and west.",
+      description: "Read and listen to in-depth commentary from experts.",
       iconSrc: Commentary,
       bgColor: "bg-white",
       textColor: "text-black",

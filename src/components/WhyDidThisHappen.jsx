@@ -18,7 +18,7 @@ const features = [
     {
       title: "Expert commentary",
       chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
-      description: "Read and listen to in-depth commentary from experts in the east and west.",
+      description: "Read and listen to in-depth commentary from experts.",
       iconSrc: Commentary,
       bgColor: "bg-white",
       textColor: "text-black",
@@ -45,7 +45,7 @@ function WhyDidThisHappen() {
       
       <section className="flex flex-col w-full max-md:max-w-full">
         <div className="flex justify-center items-start px-44 pt-12 w-full bg-white min-h-[340px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
-          <div className="pb-32 min-w-[240px] w-[928px] max-md:pb-24">
+          <div className="pb-16 min-w-[240px] w-[928px] max-md:pb-24">
             <div className="flex max-md:flex-col">
               <Timeline />
             </div>

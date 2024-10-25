@@ -2,7 +2,7 @@ import React from 'react';
 
 function FeatureCard({ title, chineseTitle, description, iconSrc, bgColor, textColor, borderColor }) {
   return (
-    <div className={`flex flex-col flex-1 shrink justify-center items-center self-stretch px-8 my-auto ${bgColor} rounded-lg border ${borderColor} border-solid aspect-square basis-0 min-h-[400px] min-w-[240px] max-md:px-5`}>
+    <div className={`flex flex-col flex-1 shrink justify-center items-center self-stretch p-4 my-auto ${bgColor} rounded-lg border ${borderColor} border-solid basis-0 min-w-[240px] max-md:px-5`}>
       <div className="flex flex-col flex-1 justify-between w-full">
         <div className="flex flex-col w-full">
           <div className="flex gap-2 items-center w-full">
@@ -17,7 +17,7 @@ function FeatureCard({ title, chineseTitle, description, iconSrc, bgColor, textC
             {chineseTitle.text}
           </div>
         </div>
-        <div className={`mt-44 text-xl leading-8 ${textColor} max-md:mt-10`}>
+        <div className={`mt-32 text-xl leading-8 ${textColor} max-md:mt-10`}>
           {description}
         </div>
       </div>

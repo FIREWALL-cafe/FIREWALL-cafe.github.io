@@ -42,7 +42,7 @@ const articles = [
 
 function ArticleGrid() {
   return (
-    <section className="flex flex-col items-center px-14 pt-16 pb-32 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
+    <section className="flex flex-col items-center px-14 pt-16 pb-16 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full">
         <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
           {articles.map(article => (
