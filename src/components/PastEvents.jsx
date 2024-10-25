@@ -27,7 +27,7 @@ const pastEvents = [
 
 function PastEvents() {
   return (
-    <section className="flex flex-col items-center px-14 pt-12 pb-32 w-full border-t border-solid bg-slate-100 border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
+    <section className="flex flex-col items-center px-14 pt-12 pb-16 w-full border-t border-solid bg-slate-100 border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full">
         <h2 className="self-center text-5xl font-medium leading-tight text-black max-md:text-4xl">
           Past events

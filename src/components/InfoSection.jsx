@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function InfoSection() {
   return (
-    <section className="flex overflow-hidden flex-col justify-center items-center px-36 pb-32 w-full max-md:px-5 max-md:pb-24 max-md:max-w-full">
+    <section className="flex overflow-hidden flex-col justify-center items-center px-36 pb-16 w-full max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-col items-center w-full max-w-[1080px] max-md:max-w-full">
         <div className="chinese flex flex-col justify-center items-start w-full text-5xl font-medium leading-tight max-md:text-4xl">
           <h2 className="text-black border-black max-md:max-w-full max-md:text-4xl">

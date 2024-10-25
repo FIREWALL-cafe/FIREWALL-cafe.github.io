@@ -16,7 +16,7 @@ const queryData = [
 
 const QueryList = () => {
   return (
-    <section className="flex overflow-hidden flex-col pb-32 w-full bg-white max-md:pb-24 max-md:max-w-full">
+    <section className="flex overflow-hidden flex-col pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
       <div className="flex-1 shrink gap-2.5 self-stretch px-20 pb-6 w-full max-w-screen-xl text-2xl text-black min-h-[57px] max-md:px-5 max-md:max-w-full">
         25 related queries
       </div>

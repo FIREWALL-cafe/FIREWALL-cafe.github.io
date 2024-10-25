@@ -14,7 +14,7 @@ function HeroSupport() {
       <div className="flex flex-wrap gap-10 justify-center mt-32 max-w-full w-[1080px] max-md:mt-10">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl leading-9 text-black basis-0 min-w-[240px] max-md:max-w-full">
           <p className="w-full max-md:max-w-full">
-            Firewall Cafe is supported by individual contributions, corporate sponsorships, and foundation grants. Your contribution supports the maintenance of X and the expansion of Y so that we can continue to Z. Donate to our cause through <a href="https://www.nyfa.org/#button=45138" class="underline" target="_blank">NYFA</a>, a 501(c)3 supporting the arts in NY.
+            Firewall Cafe is supported by individual contributions, corporate sponsorships, and foundation grants. Your contribution supports the maintenance of X and the expansion of Y so that we can continue to Z. Donate to our cause through <a href="https://www.nyfa.org/#button=45138" className="underline" target="_blank">NYFA</a>, a 501(c)3 supporting the arts in NY.
           </p>
         </div>
         <div className="flex flex-col flex-1 shrink justify-center items-center basis-0 min-w-[240px] max-md:max-w-full">

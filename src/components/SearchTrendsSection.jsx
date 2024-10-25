@@ -10,7 +10,7 @@ function SearchTrendsSection() {
   ];
 
   return (
-    <section className="flex flex-col justify-center items-center pb-32 w-full max-md:pb-24 max-md:max-w-full">
+    <section className="flex flex-col justify-center items-center pb-16 w-full max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap gap-10 justify-center items-center max-w-full w-[1080px]">
         <div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto basis-0 min-w-[240px] max-md:max-w-full">
           <div className="chinese flex flex-col justify-center w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
