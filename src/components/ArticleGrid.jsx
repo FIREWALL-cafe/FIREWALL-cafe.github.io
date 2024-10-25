@@ -19,14 +19,12 @@ const articles = [
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/2096308054d06e519485b233486c0efbec4f43408a25472c61971ea4028318fd?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99",
     title: "The Real Story: Russia's New Internet Firewall (cue 35:06)",
     date: "Jan 01, 2024",
-    tag: { text: "Podcast", icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/7fefdc08b53e322b07458f1bba645a2606cefcd921108da1f79622329ed37e77?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" }
   },
   {
     id: 4,
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/d10e7b2f8dcfd19522cb029c496b96307b24039c7fa3f7062e8b98a4a107efcb?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99",
     title: "#42 Hacking China's Censorship | FIREWALL Cafe",
     date: "Jan 01, 2024",
-    tag: { text: "Special guest", color: "text-sky-400" }
   },
   {
     id: 5,
@@ -46,20 +44,6 @@ function ArticleGrid() {
   return (
     <section className="flex flex-col items-center px-14 pt-16 pb-32 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full">
-        <div className="flex flex-wrap gap-4 items-center self-center text-xl text-center text-gray-800 max-md:max-w-full">
-          <button className="gap-1 self-stretch px-3 py-px my-auto text-black bg-gray-100 rounded border border-black border-solid min-h-[32px]">
-            All articles
-          </button>
-          <button className="gap-1 self-stretch px-3 py-px my-auto rounded border border-solid border-neutral-300 min-h-[32px]">
-            Category 1
-          </button>
-          <button className="gap-1 self-stretch px-3 py-px my-auto rounded border border-solid border-neutral-300 min-h-[32px]">
-            Category 2
-          </button>
-          <button className="gap-1 self-stretch px-3 py-px my-auto rounded border border-solid border-neutral-300 min-h-[32px]">
-            Category 3
-          </button>
-        </div>
         <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
           {articles.map(article => (
             <ArticleCard key={article.id} {...article} />
