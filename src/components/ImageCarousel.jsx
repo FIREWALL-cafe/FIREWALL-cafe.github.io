@@ -4,14 +4,12 @@ function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    console.log("NEXT: " + currentIndex);
     setCurrentIndex((prevIndex) => 
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const goToPrevious = () => {
-    console.log("PREVIOUS: " + currentIndex);
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
@@ -26,7 +24,6 @@ function ImageCarousel({ images }) {
         />
       <div className="p-4 min-h-[240px]">
       <img
-        loading="lazy"
         src={images[currentIndex].src}
         alt={images[currentIndex].alt}
         className="object-contain w-full aspect-[15.63] max-md:max-w-full"
