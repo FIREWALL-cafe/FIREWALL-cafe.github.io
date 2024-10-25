@@ -14,7 +14,7 @@ function HeroPress() {
           <div className="mt-2 text-red-600 max-md:max-w-full max-md:text-4xl">在新闻界</div>
         </div>
         <div className="mt-5 text-xl leading-8 text-black max-md:max-w-full">
-          Body copy - Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.
+          Since its inception, FIREWALL Cafe has garnered media attention, including coverage by major outlets like the BBC and The Washington Post.
         </div>
       </div>
     </section>
