@@ -1,15 +1,15 @@
 import React from 'react';
 
+import Events from '../assets/icons/events.png';
+
 function UpcomingEvents() {
   return (
     <section className="flex flex-col justify-center items-center px-14 py-32 w-full max-md:px-5 max-md:py-24 max-md:max-w-full">
-      <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full">
-        <div className="flex flex-col max-w-full w-[588px]">
+      <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full items-center">
+        <div className="chinese flex flex-col items-center max-w-full w-[588px]">
           <div className="flex flex-wrap gap-5 items-center w-full max-md:max-w-full">
-            <div className="flex grow shrink gap-3 items-center self-stretch my-auto w-[42px]">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2aa10e3f8bfce387544bc6cdfd2173e727042b70bf144b2577b885e8e364def3?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="" className="object-contain self-stretch my-auto aspect-[1.02] w-[51px]" />
-            </div>
-            <h2 className="self-stretch my-auto text-7xl font-medium leading-tight text-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+            <img src={Events} alt="" className="object-contain self-stretch my-auto w-[51px]" />
+            <h2 className="self-stretch my-auto text-6xl font-medium leading-tight text-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
               Upcoming events
             </h2>
           </div>

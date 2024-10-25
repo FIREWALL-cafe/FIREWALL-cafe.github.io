@@ -5,7 +5,7 @@ function ContactSection() {
     <section className="flex overflow-hidden flex-wrap w-full bg-gray-800 border-t border-b border-solid border-y-black max-md:max-w-full">
       <div className="flex flex-col justify-center p-20 my-auto border-0 border-white border-solid min-w-[240px] w-[640px] max-md:px-5 max-md:max-w-full">
         <div className="flex flex-col w-full shadow-sm max-md:max-w-full">
-          <div className="flex flex-col w-full text-5xl font-medium leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+          <div className="chinese flex flex-col w-full text-5xl font-medium leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
             <h2 className="text-white max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
               Have an article idea? Get in touch.
             </h2>
