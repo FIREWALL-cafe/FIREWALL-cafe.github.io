@@ -5,7 +5,7 @@ function Newsletter() {
     <section className="flex overflow-hidden flex-wrap w-full bg-gray-800 border-t border-b border-solid border-y-black max-md:max-w-full">
       <div className="flex flex-col justify-center p-20 my-auto border-0 border-white border-solid min-w-[240px] w-[640px] max-md:px-5 max-md:max-w-full">
         <div className="flex flex-col w-full max-md:max-w-full">
-          <div className="flex flex-col w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
+          <div className="chinese flex flex-col w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
             <h2 className="text-white leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
               Want to be notified when we release new articles?
             </h2>
