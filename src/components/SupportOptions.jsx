@@ -1,10 +1,10 @@
 import React from 'react';
-import SupportCard from './SupportCard';
+import FeatureCards from './FeatureCards';
 
-const supportOptions = [
+const features = [
   {
     title: "Make a donation",
-    titleChinese: "进行信用卡捐赠",
+    chineseTitle: { text: "进行信用卡捐赠", color: "text-black border-black" },
     description: "Support us directly with a credit card donation.",
     bgColor: "bg-sky-400",
     textColor: "text-white",
@@ -12,7 +12,7 @@ const supportOptions = [
   },
   {
     title: "Become a sponsor",
-    titleChinese: "成为赞助商",
+    chineseTitle: { text: "成为赞助商", color: "text-red-600 border-red-600" },
     description: "Get in touch to learn about recurring donations, and how you can support our long term vision.",
     bgColor: "bg-cyan-100",
     textColor: "text-black",
@@ -21,7 +21,7 @@ const supportOptions = [
   },
   {
     title: "Other ways to support",
-    titleChinese: "以其他方式支持",
+    chineseTitle: { text: "以其他方式支持", color: "text-red-600 border-red-600" },
     description: "Have an idea? We'd love to hear about it.",
     bgColor: "bg-white",
     textColor: "text-black",
@@ -32,12 +32,8 @@ const supportOptions = [
 
 function SupportOptions() {
   return (
-    <section className="flex gap-4 justify-center items-start px-6 pb-32 w-full bg-white max-md:px-5 max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap flex-1 shrink gap-4 items-center w-full max-w-screen-xl basis-0 min-w-[240px] max-md:max-w-full">
-        {supportOptions.map((option, index) => (
-          <SupportCard key={index} {...option} />
-        ))}
-      </div>
+    <section className="flex flex-col justify-center w-full px-6 pb-32 w-full bg-white max-md:px-5 max-md:pb-24 max-md:max-w-full">
+      <FeatureCards features={features} />
     </section>
   );
 }

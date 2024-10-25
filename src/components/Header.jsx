@@ -7,7 +7,7 @@ function Header() {
     <header className="flex overflow-hidden justify-between px-8 w-full bg-red-600 min-h-[40px] max-md:px-5 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-between max-w-screen-xl basis-0 min-w-[240px] size-full max-md:max-w-full">
         <TimeDisplay />
-        <ul className="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+        <ul className="flex items-center justify-center text-gray-900 dark:text-white">
           <li className="me-4 hover:underline md:me-6">
             <Link to="/">Home</Link>
           </li>
