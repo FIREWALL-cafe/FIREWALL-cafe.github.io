@@ -9,23 +9,24 @@ import CallToAction from './CallToAction';
 function About() {
   return (
     <main>
-      <section className="flex overflow-hidden flex-col justify-center py-32 w-full text-6xl font-medium leading-tight text-center tracking-[2.16px] max-md:py-24 max-md:max-w-full max-md:text-4xl">
+      <section className="flex overflow-hidden flex-col justify-center py-32 w-full text-6xl leading-tight tracking-[2.16px] max-md:py-24 max-md:max-w-full max-md:text-4xl">
         <div className="flex flex-col max-w-[1080px] max-md:max-w-full items-center">
-          <div className="chinese flex flex-col items-center max-w-full">
-            <h2 className="flex flex-col justify-center items-center text-6xl font-medium leading-tight max-w-[1080px] tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+          <div className="chinese font-medium flex flex-col items-center max-w-full">
+            <h2 className="flex flex-col justify-center items-center text-6xl leading-tight max-w-[1080px] tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
               What do we lose in the dark?
             </h2>
-            <div className="mt-2 text-7xl font-medium leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+            <div className="mt-2 text-7xl leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
               我们在黑暗中失去了什么?
             </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-10 justify-center mt-24 w-full max-w-[1080px] max-md:mt-10 max-md:max-w-full">
           <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
-            <p className="text-2xl leading-8 text-black max-md:max-w-full">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis viverra mauris. Cras pretium blandit arcu ut accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis viverra mauris. Cras pretium blandit arcu ut accumsan.
-              <br /><br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis viverra mauris.
+            <p className="text-xl max-md:max-w-full mb-4">
+              FIREWALL Cafe exists to advocate for freedom of speech for the netizens around the world. Our goal is to investigate online censorship by comparing the disparities of Google searches in western nations versus Baidu searches in China. We aim to increase public awareness and dialogue about Internet freedom. We believe that power, if left unchallenged, inevitably leads to abuse.
+            </p>
+            <p className="text-xl max-md:max-w-full">
+              A pivotal moment occurred during our inaugural show in New York City in 2016 around our “Networked Feminism” roundtable. We faced interference from Chinese state authorities and this incident was covered by The Washington Post. The repercussions propelled the art project on an international exhibition tour, setting new stages for dialogue and understanding across borders.
             </p>
           </div>
           <div className="flex flex-col justify-center items-center min-w-[240px] w-[516px] max-md:max-w-full">
