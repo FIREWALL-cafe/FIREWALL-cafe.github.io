@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 
-import logo from "../assets/icons/logo.svg";
+import logo from "../assets/icons/logo_name.svg";
 import NavMenu from "../assets/icons/nav-menu.svg";
 
 const links = [
@@ -36,7 +36,7 @@ function Navigation() {
           </MenuButton>
           <MenuItems anchor="bottom" className={`border border-solid border-red-600 bg-pink-50 rounded`}>
             {links.map((link) => (
-              pathname === link.href ? <span className="block mt-1 py-1 px-2 bg-white">{link.label}</span> : (
+              pathname === link.href ? <span key={link.href} className="block mt-1 py-1 px-2 bg-white">{link.label}</span> : (
               <MenuItem key={link.href} className="block mt-1 py-1 px-2 data-[focus]:bg-red-600">
                 <a href={link.href}>{link.label}</a>
               </MenuItem>

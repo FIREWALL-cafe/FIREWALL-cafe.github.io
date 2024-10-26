@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/icons/logo.svg";
+import logo from "../assets/icons/logo_name.svg";
 import Facebook from "../assets/icons/Facebook_Logo.png";
 import Twitter from "../assets/icons/x-logo-black.png";
 import Instagram from "../assets/icons/Instagram_Logo.png";
