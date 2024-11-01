@@ -160,8 +160,8 @@ function Timeline() {
       <div className="flex text-xl max-w-full max-md:max-w-full">
         This timeline offers a comparative analysis of internet development and governance in both China and the United States. It explores how these two nations have shaped digital communication and information control through historical events and policies.
       </div>
-      <div className="flex flex-row max-md:ml-0 max-md:w-full">
-        <div className="flex flex-col max-md:ml-0 max-md:w-full">
+      <div className="flex flex-row max-md:ml-0 max-md:w-full h-[340px]">
+        <div className="flex flex-col max-md:ml-0 max-md:w-full min-w-[150px] overflow-auto">
           <div className="flex gap-2 relative pl-8 sm:pl-32 py-4 group">
             <div onClick={goToPrevious} className={`flex flex-col sm:flex-row mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5 after:absolute sm:after:left-0 text-xs after:h-0 after:w-0 after:border-x-8 after:border-x-transparent after:border-b-8 after:border-b-red-600 '}`}>
             </div>
