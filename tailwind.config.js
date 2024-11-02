@@ -8,5 +8,8 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  variants: {
+    position: ['responsive'],
+    inset: ['responsive'],}
 }
 
