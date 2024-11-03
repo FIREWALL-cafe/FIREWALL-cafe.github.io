@@ -46,7 +46,21 @@ function Navigation() {
           <img src={NavMenu} alt="Menu" className="object-contain self-stretch my-auto" />
         </button>
         {isMenuOpen && (
-          <nav className="flex flex-col absolute z-10 w-full text-2xl text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
+          <nav className="flex flex-col absolute z-10 text-2xl text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
+            <div className="gap-4 items-center self-stretch my-auto w-56">
+              <button
+                className="overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 rounded border border-black border-solid min-h-[36px]"
+                aria-label="Profile"
+                onClick={toggleMenu}
+              >
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/f0e822ad99ddec163f1240be68b0385290164fb113b525dc888e7a23845af72f?apiKey=d56f8d62d9074d509de3faeb2651bd99&"
+                  alt=""
+                  className="object-contain w-full aspect-square"
+                />
+              </button>
+            </div>
             {menuSections.map((section, index) => (
               <MenuSection
                 key={index}
@@ -62,6 +76,21 @@ function Navigation() {
   );
 }
 
+{/*
+  <div className="flex gap-4 items-center self-stretch my-auto w-56">
+    <button
+      className="flex overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 rounded border border-black border-solid min-h-[36px]"
+      aria-label="Profile"
+    >
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/f0e822ad99ddec163f1240be68b0385290164fb113b525dc888e7a23845af72f?apiKey=d56f8d62d9074d509de3faeb2651bd99&"
+        alt=""
+        className="object-contain w-full aspect-square"
+      />
+    </button>
+  </div>
+*/}
     {/* 
     const links = [
       { href: "/", label: "Home" },
