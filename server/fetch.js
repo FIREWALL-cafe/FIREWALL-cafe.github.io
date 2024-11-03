@@ -4,12 +4,6 @@ const querystring = require('querystring');
 const cheerio = require('cheerio');
 const serverConfig = require('./config');
 
-// import axios from 'axios';
-// import fetch from 'node-fetch';
-// import querystring from 'querystring';
-// import cheerio from 'cheerio';
-// import serverConfig from './config';
-
 const getTranslationUrl = endpoint => `https://babelfish.firewallcafe.com/${endpoint}`;
 
 const fetchResponseJson = async (url, config = {}) => {
@@ -25,8 +19,9 @@ const fetchResponseText = async (url, config = {}) => {
 }
 
 const getGoogleImageSrcs = (results) => {
+  // console.log('results', results);
   const html = cheerio.load(results);
-  const imgs = html('.DS1iW').toArray().slice(0, 10);
+  const imgs = html('.DS1iW').toArray().slice(0, 9);
   return imgs.map((img) => img.attribs.src)
 };
 
@@ -40,7 +35,7 @@ const getBaiduImageSrcs = (results) => {
   const inner = html(data).html();
   const { data: { images } } = JSON.parse(inner);
   return images
-    .slice(0, 10)
+    .slice(0, 9)
     .map(img => img?.thumburl);
 }
 
@@ -172,7 +167,7 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, translation 
     baidu_images: transformImgData(baidu),
   };
 
-  submitImagesToWordpress(imageData);
+  // submitImagesToWordpress(imageData);
 
   const { data } = await axios.post(
     url,

@@ -36,8 +36,9 @@ app.post('/images', async (req, res) => {
 
   try {
     const { language: langFrom } = await getDetectedLanguage(query);
-    langTo = langFrom === 'en' ? 'zh-CN' : 'en';
-    const translatedQuery = ''; //await getTranslation(query, langFrom, langTo);
+    console.log('langFrom', langFrom);
+    langTo = 'zh-CN';
+    const translatedQuery = await getTranslation(query, langFrom, langTo);
     const enQuery = langFrom === 'en' ? query : translatedQuery;
     const cnQuery = langFrom !== 'en' ? translatedQuery : query;
 
