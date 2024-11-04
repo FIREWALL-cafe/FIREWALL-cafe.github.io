@@ -164,6 +164,16 @@ const submitImagesToWordpress = async (data) => {
   return { data: responseData, response };
 }
 
+const getSearchesByTerm = async (query) => {
+  console.log('searches by term: starting: ', query);
+  const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
+  const { data } = await axios.get(url);
+
+  console.log('searches by term:', data);
+
+  return data;
+}
+
 const saveImages = async ({ query, google, baidu, langTo, langFrom, translation }) => {
   const url = `${serverConfig.apiUrl}saveSearchAndImages`;
   const imageData = {
@@ -212,6 +222,7 @@ module.exports = {
   getGoogleImages,
   getBaiduImages,
   getDetectedLanguage,
+  getSearchesByTerm,
   getTranslation,
   postVote,
   saveImages,
