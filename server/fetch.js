@@ -2,6 +2,7 @@ const axios = require('axios');
 const fetch = require('node-fetch')
 const querystring = require('querystring');
 const cheerio = require('cheerio');
+const { getJson } = require("serpapi");
 const serverConfig = require('./config');
 
 const getTranslationUrl = endpoint => `https://babelfish.firewallcafe.com/${endpoint}`;
@@ -19,10 +20,10 @@ const fetchResponseText = async (url, config = {}) => {
 }
 
 const getGoogleImageSrcs = (results) => {
-  // console.log('results', results);
-  const html = cheerio.load(results);
-  const imgs = html('.DS1iW').toArray().slice(0, 9);
-  return imgs.map((img) => img.attribs.src)
+  // const html = cheerio.load(results);
+  // const imgs = html('.DS1iW').toArray().slice(0, 9);
+  // const imgs = html('div.H8Rx8c g-img img').toArray().slice(0, 9);
+  return results.slice(0, 9).map((result) => result.original)
 };
 
 const getBaiduImageSrcs = (results) => {
@@ -46,10 +47,27 @@ const getBaiduImageSrcs = (results) => {
  */
 const getGoogleImages = async (query) => {
   console.log('fetching google images for', query);
-  const url = `https://www.google.com/search?q=${encodeURI(query)}&tbm=isch`;
+  // const url = `https://www.google.com/search?q=${encodeURI(query)}&imgsz=qsvga&as_st=y&udm=2`;
+  
+  // const config = {
+  //   cache: 'no-cache',
+  //   headers: {
+  //     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+  //   }
+  // };
+  // const response = await axios.get(url, config)
 
-  const response = await axios.get(url)
-  return getGoogleImageSrcs(response.data) || [];
+  const params = {
+    q: query,
+    engine: "google_images",
+    ijn: "0",
+    api_key: serverConfig.serpApiKey,
+  };
+
+  const results = await getJson(params);
+  console.log(results["images_results"].slice(0, 1));
+  
+  return getGoogleImageSrcs(results["images_results"]) || [];
 };
 
 /**
@@ -169,15 +187,16 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, translation 
 
   // submitImagesToWordpress(imageData);
 
-  const { data } = await axios.post(
-    url,
-    imageData,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-  });
+  // const { data } = await axios.post(
+  //   url,
+  //   imageData,
+  //   {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  // });
 
+  const data = 'empty';
   console.log('archive action complete:', data);
 
   /**
