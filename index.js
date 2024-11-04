@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getTranslation, postVote, saveImages } = require('./server/fetch');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchesByTerm, getTranslation, postVote, saveImages } = require('./server/fetch');
 var spreadsheetServiceKey = require('./service-key.json');
 
 const app = express();
@@ -57,6 +57,14 @@ app.post('/images', async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+
+  res.json(data);
+});
+
+app.post('/searches', async (req, res) => {
+  console.log('/searches:', req.query);
+  const { query } = req.query;
+  const data = await getSearchesByTerm(query);
 
   res.json(data);
 });
