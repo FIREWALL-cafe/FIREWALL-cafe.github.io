@@ -25,13 +25,12 @@ const features = [
     borderColor: "border-red-600"
   }
 ];
-  
+
 const SearchArchive = () => {
   return (
     <main>
       <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:py-24 max-md:max-w-full">
         <HeroArchive />
-        <QueryList />
         <FeatureCards features={features} />
       </section>
     </main>

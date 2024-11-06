@@ -22,7 +22,7 @@ const HeroArchive = () => {
           Browse what others are searching, vote on their results, and see how they voted too.
         </div>
       </div>
-      <SearchInput />
+      <SearchInput searchMode="archive"/>
     </section>
   );
 };
