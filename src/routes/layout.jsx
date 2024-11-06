@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 
 function Layout() {
   return (
-    <div className="flex flex-col items-end px-20 max-md:pl-5">
+    <div className="flex flex-col items-end w-full px:4">
       <div className="flex flex-col w-full max-md:max-w-full">
         <Header />
         <Navigation />

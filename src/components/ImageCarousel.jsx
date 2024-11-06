@@ -22,7 +22,7 @@ function ImageCarousel({ images }) {
   return (
     <div className="">
       <div className="flex flex-wrap mx-4 mb-4">
-        <div className="relative w-1/2 pb-5 h-[400px] border-r border-red-300">
+        <div className="relative w-1/2 pb-5 border-r border-red-300">
           <div><img src={googleLogo} /></div>
           <div className="flex max-h-[400px] justify-center items-center">
             <img
