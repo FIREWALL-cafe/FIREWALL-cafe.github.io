@@ -8,8 +8,8 @@ import NewsletterSection from "./NewsletterSection";
 function Home() {
   return (
     <main>
-      <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:py-24 max-md:max-w-full"></section>
-        <div className="flex flex-col items-end px-20 max-md:pl-5">
+      <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:max-w-full"></section>
+        <div className="flex flex-col items-end px-20 max-md:px-5">
           <div className="flex flex-col w-full max-md:max-w-full">
             <HeroSection />
             <AboutSection />

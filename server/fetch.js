@@ -65,7 +65,7 @@ const getGoogleImages = async (query) => {
   };
 
   const results = await getJson(params);
-  console.log(results["images_results"].slice(0, 1));
+  // console.log(results["images_results"].slice(0, 1));
   
   return getGoogleImageSrcs(results["images_results"]) || [];
 };
