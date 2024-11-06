@@ -38,7 +38,7 @@ function HeroSection() {
       <h1 aria-live="polite" className="chinese pt-0 text-6xl font-medium leading-tight text-center text-black border-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
         <Typewriter text={titles[Math.floor(Math.random() * titles.length)]} speed={100} />
       </h1>
-      <SearchInput />
+      <SearchInput searchMode="live" />
     </section>
   );
 }
