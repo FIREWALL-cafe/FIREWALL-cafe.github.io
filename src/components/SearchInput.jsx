@@ -1,4 +1,7 @@
 import React, { useRef, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import QueryList from './QueryList';
+
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import Question from '../assets/icons/question_red.svg';
@@ -6,9 +9,10 @@ import SearchIcon from '../assets/icons/search.svg';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
 
-function SearchInput() {
+function SearchInput({ searchMode }) {
   const [isLoading, setLoading] = useState(false);
   const [imageResults, setImageResults] = useState({});
+  const [archiveResults, setarchiveResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [translation, setTranslation] = useState('');
   const [currentSearchId, setSearchId] = useState(null);
@@ -16,23 +20,35 @@ function SearchInput() {
   const ref = useRef();
 
   const handleSubmit = async () => {
-    console.log('submitting');
-    setLoading(true);
+    console.log('submitting search');
     const query = ref.current.value;
+    const config = {
+          method: 'post',
+          headers: { 
+            'Accept': 'application/json' ,
+            'Content-Type': 'application/json' 
+          },
+          body: JSON.stringify({ query }),
+    };
+    
+    setLoading(true);
     setSearchQuery(query);
+    setResults({ googleResults: [], baiduResults: [] });
+
     try {
-      const response = await fetch(`/images`, {
-        method: 'post',
-        headers: { 
-          'Accept': 'application/json' ,
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify({ query }),
-      });
-      const { googleResults, baiduResults, translation, searchId } = await response.json();
-      setSearchId(searchId);
-      setResults({ googleResults, baiduResults });
-      setTranslation(translation);
+      if (searchMode === 'archive') {
+        const response = await fetch(`/searches?query=${query}`, config);
+        setSearchId("archived searches");
+        const results = await response.json();
+        console.log('results', results);
+        setarchiveResults(results);
+      } else {
+        const response = await fetch(`/images`, config);
+        const { googleResults, baiduResults, translation, searchId } = await response.json();
+        setSearchId(searchId);
+        setResults({ googleResults, baiduResults });
+        setTranslation(translation);
+      }
     } catch (e) {
       setResults({ googleResults: [], baiduResults: [] });
       setTranslation(e);
@@ -51,7 +67,7 @@ function SearchInput() {
       <div className="max-w-[720px] w-[720px] max-md:max-w-full">
         <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
           <div className="flex items-center self-stretch my-auto min-w-[240px]">
-            <div className="flex flex-col justify-center items-center self-stretch px-9 py-2 my-auto rounded border-t border-l border-solid bg-white border-l-red-600 border-t-red-600 w-[148px] max-md:px-5">
+            <div className={`${searchMode === 'live' ? 'bg-white' : 'bg-slate-100'} flex flex-col justify-center items-center self-stretch px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 w-[148px] max-md:px-5`}>
               <div className="flex gap-2 items-start">
                 <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
                   <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
@@ -61,8 +77,8 @@ function SearchInput() {
                 </div>
               </div>
             </div>
-            <div className="self-stretch px-8 py-2.5 my-auto text-2xl font-medium tracking-widest leading-none text-red-600 whitespace-nowrap bg-slate-100 rounded border border-red-600 border-red-600 border-solid min-h-[48px] w-[148px] max-md:px-5">
-              Archive
+            <div className={`${searchMode === 'archive' ? 'bg-white' : 'bg-slate-100'} self-stretch px-8 py-2.5 my-auto text-2xl font-medium tracking-widest leading-none text-red-600 whitespace-nowrap rounded border border-red-600 border-red-600 border-solid min-h-[48px] w-[148px] max-md:px-5`}>
+              <Link to="/archive">Archive</Link>
             </div>
           </div>
           <img src={Question} alt="Question mark red" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
@@ -78,7 +94,8 @@ function SearchInput() {
           </div>
         </div>
       </div>
-      {currentSearchId && <SearchCompare images={imageResults} />}
+      {(currentSearchId && (searchMode !== 'archive')) && <SearchCompare images={imageResults} />}
+      { (currentSearchId && (searchMode === 'archive')) && <QueryList results={archiveResults} /> }
     </div>
   );
 }

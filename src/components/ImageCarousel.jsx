@@ -5,8 +5,6 @@ import ArrowLeft from "../assets/icons/arrow_left_alt.svg";
 import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function ImageCarousel({ images }) {
-  console.log('images', images);
-  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
@@ -54,7 +52,7 @@ function ImageCarousel({ images }) {
             <img src={ArrowRight} alt="Next image" />
           </button>
         </div>
-        <div class="flex border-b border-red-300 w-full">
+        <div className="flex border-b border-red-300 w-full">
           <div className="grid grid-cols-3 gap-4 border-r border-red-300 w-1/2">
             {images.googleResults.map((image, index) => (
               <div className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-blue-200' : ''}`}>
