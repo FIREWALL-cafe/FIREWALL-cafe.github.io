@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function SearchTrendsSection() {
   const trendingSearches = [
-    { id: 1, text: "Most searched 1", isEnglish: true },
-    { id: 2, text: "Most searched 2", isEnglish: true },
-    { id: 3, text: "搜索最多 3", isEnglish: false },
-    { id: 4, text: "搜索最多 4", isEnglish: false },
-    { id: 5, text: "Most searched 5", isEnglish: true },
+    { id: 1, text: "tank man", isEnglish: true },
+    { id: 2, text: "june 4", isEnglish: true },
+    { id: 3, text: "tiananmen square", isEnglish: false },
+    { id: 4, text: "winnie the pooh and xi", isEnglish: false },
+    { id: 5, text: "uyghur", isEnglish: true },
   ];
 
   return (
@@ -31,12 +32,12 @@ function SearchTrendsSection() {
                     : "border-red-600 text-red-600 text-lg"
                 }`}
               >
-                {search.text}
+                <Link to={`/archive?search=${search.text}`}>{search.text}</Link>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex flex-col justify-center self-stretch py-4 my-auto min-w-[240px] w-[500px] max-md:max-w-full">
+        <div className="flex flex-col justify-center self-stretch py-4 my-auto min-w-[240px] max-md:max-w-full">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/28e7aeff41db3adb4b0df7f07df5c260e1d0367c7a1566bf9f2e69b2fb342371?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"

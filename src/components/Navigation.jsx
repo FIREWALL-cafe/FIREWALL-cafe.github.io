@@ -36,7 +36,7 @@ function Navigation() {
 
   return (
     <div className="flex flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full max-w-screen-xl basis-0 max-md:max-w-full">
-      <div className="flex gap-3">
+      <div className="flex gap-3 p-4">
         <Link to="/">
           <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />
         </Link>
@@ -92,18 +92,6 @@ function Navigation() {
   </div>
 */}
     {/* 
-    const links = [
-      { href: "/", label: "Home" },
-      { href: "/timeline", label: "Timeline" },
-      { href: "/search", label: "Search" },
-      { href: "/archive", label: "Archive" },
-      { href: "/experts", label: "Experts" },
-      { href: "/events", label: "Events" },
-      { href: "/press", label: "Press" },
-      { href: "/about", label: "About" },
-      { href: "/support", label: "Support" },
-      { href: "/contact", label: "Contact" },
-    ];
     <nav className="flex overflow-hidden gap-10 justify-center items-center px-8 py-5 w-full bg-white min-h-[80px] max-md:px-5 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full max-w-screen-xl basis-0 max-md:max-w-full">
         <div className="flex gap-3">
