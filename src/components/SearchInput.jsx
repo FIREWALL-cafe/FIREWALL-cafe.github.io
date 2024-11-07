@@ -1,5 +1,5 @@
-import React, { useRef, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import QueryList from './QueryList';
 
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
@@ -18,7 +18,15 @@ function SearchInput({ searchMode }) {
   const [currentSearchId, setSearchId] = useState(null);
   const setResults = useCallback((results) => setImageResults(results), []);
   const ref = useRef();
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    // if (searchParams.get("search")) {
+    //   console.log("loaded");
+    //   handleSubmit();
+    // }
+  });
+  
   const handleSubmit = async () => {
     console.log('submitting search');
     const query = ref.current.value;
@@ -85,7 +93,7 @@ function SearchInput({ searchMode }) {
         </div>
         <div className="flex flex-col justify-center p-5 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
           <div className="flex overflow-hidden flex-wrap w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px] max-md:max-w-full">
-            <input placeholder="Search" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} disabled={!!isLoading} className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] text-zinc-400 max-md:max-w-full" aria-label="Search query" />
+            <input placeholder="Search Google & Baidu" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} disabled={!!isLoading} className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] text-zinc-400 max-md:max-w-full" aria-label="Search query" />
             <div className="flex overflow-hidden gap-1 justify-center items-center py-4 pr-4 h-full">
               <button onClick={handleSubmit} disabled={!!isLoading}>
                 <img src={isLoading ? Spinner : SearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
@@ -95,7 +103,7 @@ function SearchInput({ searchMode }) {
         </div>
       </div>
       {(currentSearchId && (searchMode !== 'archive')) && <SearchCompare images={imageResults} />}
-      { (currentSearchId && (searchMode === 'archive')) && <QueryList results={archiveResults} /> }
+      {(currentSearchId && (searchMode === 'archive')) && <QueryList results={archiveResults} />}
     </div>
   );
 }

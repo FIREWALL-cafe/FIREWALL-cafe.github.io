@@ -18,7 +18,7 @@ function UpcomingEvents() {
           </div>
         </div>
         <p className="mt-5 text-xl max-md:max-w-full">
-          Explore our events, including exhibitions, screenings, and talks. These gatherings engage a global audience and further the mission of FIREWALL Internet Cafe.
+          Explore our events, including exhibitions, screenings, and talks. These gatherings engage a global audience and further the mission of FIREWALL Cafe.
         </p>
       </div>
     </section>
