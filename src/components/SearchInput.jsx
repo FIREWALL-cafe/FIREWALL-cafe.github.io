@@ -67,17 +67,17 @@ function SearchInput({ searchMode }) {
       <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
         <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
           <div className="flex items-center self-stretch my-auto min-w-[240px]">
-            <div className={`${searchMode === 'live' ? 'bg-white' : 'bg-slate-100'} flex flex-col justify-center items-center self-stretch px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 w-[148px] max-md:px-5`}>
+            <div className={`${searchMode === 'live' ? 'bg-slate-100' : 'bg-white' } flex flex-col justify-center items-center self-stretch px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 w-[148px] max-md:px-5`}>
               <div className="flex gap-2 items-start">
                 <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
-                  <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
+                  <Link to="/search"><img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" /></Link>
                 </div>
                 <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
-                  <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
+                  <Link to="/search"><img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" /></Link>
                 </div>
               </div>
             </div>
-            <div className={`${searchMode === 'archive' ? 'bg-white' : 'bg-slate-100'} self-stretch px-8 py-2.5 my-auto text-2xl font-medium tracking-widest leading-none text-red-600 whitespace-nowrap rounded border border-red-600 border-red-600 border-solid min-h-[48px] w-[148px] max-md:px-5`}>
+            <div className={`${searchMode === 'archive' ? 'bg-slate-100' : 'bg-white' } self-stretch px-8 py-2.5 my-auto text-2xl font-medium tracking-widest leading-none text-red-600 whitespace-nowrap rounded border-x border-t border-red-600 border-red-600 border-solid min-h-[48px] w-[148px] max-md:px-5`}>
               <Link to="/archive">Archive</Link>
             </div>
           </div>
