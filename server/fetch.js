@@ -166,10 +166,13 @@ const submitImagesToWordpress = async (data) => {
 
 const getSearchesByTerm = async (query) => {
   console.log('searches by term: starting: ', query);
-  const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
+  // const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
+
+  const url = `https://firewallcafe.com/wp-json/wp/v2/search-result?per_page=25&page=1&search=${query}`;
+
   const { data } = await axios.get(url);
 
-  console.log('searches by term:', data);
+  // console.log('searches by term: data', data[0]);
 
   return data;
 }
