@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import imageCollage from "../assets/images/homepage-section_2-image_collage.png";
 
 function SearchTrendsSection() {
   const trendingSearches = [
@@ -39,8 +40,7 @@ function SearchTrendsSection() {
         </div>
         <div className="flex flex-col justify-center self-stretch py-4 my-auto min-w-[240px] max-md:max-w-full">
           <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/28e7aeff41db3adb4b0df7f07df5c260e1d0367c7a1566bf9f2e69b2fb342371?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
+            src={imageCollage}
             alt="Search trends visualization"
             className="object-contain w-full aspect-[1.15] max-md:max-w-full"
           />

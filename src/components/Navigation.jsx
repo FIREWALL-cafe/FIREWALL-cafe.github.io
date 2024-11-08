@@ -55,7 +55,7 @@ function Navigation() {
         </Link>
       </div>
       <div className="flex gap-3 relative">
-        <button onClick={toggleDrawer} className="flex items-center justify-end w-full h-16 px-4 py-2 bg-white max-md:hidden">
+        <button onClick={toggleDrawer} className="flex items-center justify-end w-full h-16 px-4 py-2 bg-white">
           <img src={NavMenu} alt="Menu" className="object-contain self-stretch my-auto" />
         </button>
         <Drawer
