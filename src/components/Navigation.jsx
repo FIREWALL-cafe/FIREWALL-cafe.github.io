@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuSection from './MenuSection';
+import Drawer from 'react-modern-drawer';
+import 'react-modern-drawer/dist/index.css';
 
 import logo from "../assets/icons/logo_name.svg";
 import NavMenu from "../assets/icons/nav-menu.svg";
@@ -33,7 +35,18 @@ function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDrawer = () => {
+      setIsOpen((prevState) => !prevState)
+  }
 
+  const drawerStyle = {
+    transitionDuration: '500ms',
+    top: '0px',
+    right: '0px',
+    transform: 'translate3d(100 %, 0px, 0px)',
+    width: '550px',
+    height: '100vh'
+  }
   return (
     <div className="flex flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full max-w-screen-xl basis-0 max-md:max-w-full">
       <div className="flex gap-3 p-4">
@@ -42,16 +55,22 @@ function Navigation() {
         </Link>
       </div>
       <div className="flex gap-3 relative">
-        <button onClick={toggleMenu} className="flex items-center justify-end w-full h-16 px-4 py-2 bg-white max-md:hidden">
+        <button onClick={toggleDrawer} className="flex items-center justify-end w-full h-16 px-4 py-2 bg-white max-md:hidden">
           <img src={NavMenu} alt="Menu" className="object-contain self-stretch my-auto" />
         </button>
-        {isMenuOpen && (
-          <nav className="flex flex-col absolute z-10 text-2xl text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
-            <div className="gap-4 items-center self-stretch my-auto w-56">
+        <Drawer
+            open={isOpen}
+            onClose={toggleDrawer}
+            direction='right'
+            className='navDrawer w-1/4'
+            style={drawerStyle}
+        >
+          <nav className="flex flex-col absolute z-10 text-2xl w-full text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
+            <div className="flex self-end">
               <button
                 className="overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 rounded border border-black border-solid min-h-[36px]"
-                aria-label="Profile"
-                onClick={toggleMenu}
+                aria-label="Close"
+                onClick={toggleDrawer}
               >
                 <img
                   loading="lazy"
@@ -70,49 +89,10 @@ function Navigation() {
               />
             ))}
           </nav>
-        )}
+        </Drawer>
       </div>
     </div>
   );
 }
 
-{/*
-  <div className="flex gap-4 items-center self-stretch my-auto w-56">
-    <button
-      className="flex overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 rounded border border-black border-solid min-h-[36px]"
-      aria-label="Profile"
-    >
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/f0e822ad99ddec163f1240be68b0385290164fb113b525dc888e7a23845af72f?apiKey=d56f8d62d9074d509de3faeb2651bd99&"
-        alt=""
-        className="object-contain w-full aspect-square"
-      />
-    </button>
-  </div>
-*/}
-    {/* 
-    <nav className="flex overflow-hidden gap-10 justify-center items-center px-8 py-5 w-full bg-white min-h-[80px] max-md:px-5 max-md:max-w-full">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full max-w-screen-xl basis-0 max-md:max-w-full">
-        <div className="flex gap-3">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />
-          </Link>
-        </div>
-        <Menu>
-          <MenuButton className="data-[active]:bg-blue-200">
-            <img src={NavMenu} alt="Menu" className="object-contain self-stretch my-auto" />
-          </MenuButton>
-          <MenuItems anchor="bottom" className={`border border-solid border-red-600 bg-pink-50 rounded`}>
-            {links.map((link) => (
-              pathname === link.href ? <span key={link.href} className="block mt-1 py-1 px-2 bg-white">{link.label}</span> : (
-              <MenuItem key={link.href} className="block mt-1 py-1 px-2 data-[focus]:bg-red-600">
-                <a href={link.href}>{link.label}</a>
-              </MenuItem>
-              )
-            ))}
-          </MenuItems>
-        </Menu>
-      </div>
-    </nav> */}
 export default Navigation;

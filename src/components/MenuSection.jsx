@@ -2,7 +2,7 @@ import React from 'react';
 
 function MenuSection({ title, items, iconSrc }) {
   return (
-    <section className="flex flex-col py-3 w-full border-b border-solid border-b-black max-md:max-w-full">
+    <section className="flex flex-col py-3 px-5 w-full border-b border-solid border-b-black max-md:max-w-full">
       <div className="flex gap-10 justify-between items-center w-full text-4xl whitespace-nowrap max-md:max-w-full max-md:text-4xl">
         <h3 className="self-stretch my-auto max-md:text-4xl">{title}</h3>
         {iconSrc && (

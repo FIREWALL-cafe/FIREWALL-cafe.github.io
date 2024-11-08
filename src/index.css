@@ -78,6 +78,16 @@ code {
   width: 100%;
 }
 
+.navDrawer {
+  z-index: 101;
+  transition-duration: 500ms;
+  top: 0;
+  right: 0;
+  transform: translate3d(100%, 0, 0);
+  width: 550px;
+  height: 100vh;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
