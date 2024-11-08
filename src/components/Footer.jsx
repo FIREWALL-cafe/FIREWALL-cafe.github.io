@@ -19,7 +19,7 @@ function Footer() {
           <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
             <div className="flex gap-2 items-center"></div>
             <div className="flex gap-2 items-center">
-              <Link to="/" aria-label="Facebook">
+              <Link to="https://www.facebook.com/firewallcafe" aria-label="Facebook">
                 <img
                   src={Facebook}
                   alt="Facebook logo"
@@ -33,7 +33,7 @@ function Footer() {
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
                 />
               </Link>
-              <Link to="#" aria-label="Instagram">
+              <Link to="http://instagram.com/firewallcafe" aria-label="Instagram">
                 <img
                   src={Instagram}
                   alt="Instagram logo"
