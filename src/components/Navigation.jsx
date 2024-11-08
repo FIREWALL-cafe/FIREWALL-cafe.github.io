@@ -44,7 +44,7 @@ function Navigation() {
     top: '0px',
     right: '0px',
     transform: 'translate3d(100 %, 0px, 0px)',
-    width: '550px',
+    width: '450px',
     height: '100vh'
   }
   return (
