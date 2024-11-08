@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+import censoreda from "../assets/images/homepage-section_1-image_a-default.jpg";
+import censoredb from "../assets/images/homepage-section_1-image_b-default.jpg";
+import censoredc from "../assets/images/homepage-section_1-image_c-default.jpg";
+
+import hovera from "../assets/images/homepage-section_1-image_a-hover.jpg";
+import hoverb from "../assets/images/homepage-section_1-image_b-hover.jpg";
+import hoverc from "../assets/images/homepage-section_1-image_c-hover.jpg";
 
 function AboutSection() {
   return (
@@ -31,24 +38,27 @@ function AboutSection() {
         <div className="flex flex-col justify-center self-stretch my-auto min-w-[240px] w-[350px]">
           <div className="flex overflow-hidden flex-col justify-center max-w-full bg-white border-0 border-solid border-neutral-600 w-[350px]">
             <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/4e83176e6557e094c9a96c30ff7a256382fae0efed95838ec46e2cf2aa7f9b23?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
+              src={censoreda}
+              onMouseOver={e => (e.currentTarget.src = hovera)}
+              onMouseOut={e => (e.currentTarget.src = censoreda)}
               alt="Illustration 1"
               className="object-contain w-full bg-blend-multiply aspect-[2]"
             />
           </div>
           <div className="flex overflow-hidden flex-col justify-center mt-3.5 max-w-full border-0 border-solid bg-neutral-300 border-neutral-600 w-[350px]">
             <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1d779a3c08ab9ef95c88479c5d584ae09c1894d1955c171e157e8f5d8f762451?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
+              src={censoredb}
+              onMouseOver={e => (e.currentTarget.src = hoverb)}
+              onMouseOut={e => (e.currentTarget.src = censoredb)}
               alt="Illustration 2"
               className="object-contain w-full aspect-[1.99]"
             />
           </div>
           <div className="flex overflow-hidden flex-col justify-end mt-3.5 max-w-full border-0 border-solid bg-zinc-400 border-neutral-600 w-[350px]">
             <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/bd4b5a393167f943c99213a8af57a03b7f5fe3bb6f673589b121453182d97475?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
+              src={censoredc}
+              onMouseOver={e => (e.currentTarget.src = hoverc)}
+              onMouseOut={e => (e.currentTarget.src = censoredc)}
               alt="Illustration 3"
               className="object-contain w-full aspect-[2]"
             />
