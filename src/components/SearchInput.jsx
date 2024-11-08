@@ -5,7 +5,7 @@ import QueryList from './QueryList';
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import Question from '../assets/icons/question_red.svg';
-import SearchIcon from '../assets/icons/search.svg';
+import SearchIcon from '../assets/icons/folder_open_search.svg';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
 
