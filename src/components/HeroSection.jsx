@@ -36,7 +36,7 @@ function HeroSection() {
   return (
     <section className="flex overflow-hidden flex-col justify-center items-center py-16 w-full bg-white max-md:py-16 max-md:max-w-full">
       <h1 aria-live="polite" className="chinese pt-0 text-6xl font-medium leading-tight text-center text-black border-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
-        <Typewriter text={titles[Math.floor(Math.random() * titles.length)]} speed={100} />
+        <Typewriter text={titles[Math.floor(Math.random() * titles.length)]} speed={50} />
       </h1>
       <SearchInput searchMode="live" />
     </section>
