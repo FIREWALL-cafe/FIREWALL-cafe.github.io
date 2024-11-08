@@ -7,6 +7,11 @@ const QueryItem = ({ id, tags, title, excerpt, date, galleries }) => {
   const [dropdown, setDropdown] = useState(true);
   const toggleDropdown = () => setDropdown(!dropdown);
 
+  const parseLocation = (tags) => {
+    const locs = tags.filter(tag => tag.name.startsWith('has_search_location_'));
+    return locs.length > 0 ? locs[0].name.split('_').slice(-1)[0] : 'N/A';
+  }
+
   const handleOnLoad = () => {
     setStatus("fulfilled");
   };
@@ -24,7 +29,7 @@ const QueryItem = ({ id, tags, title, excerpt, date, galleries }) => {
         <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{excerpt.rendered.replace(/<[^>]*>/g, '')}</div>
       </div>
       <div className="flex flex-1 shrink gap-1 items-center h-full basis-0 min-w-[240px]">
-        <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{tags.filter(tag => tag.name === 'has_search_location_taipei')[0].name.split('_').slice(-1)[0]}</div>
+        <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{parseLocation(tags)}</div>
       </div>
       <div className="flex gap-6 items-center h-full whitespace-nowrap w-[191px]">
         <div className="flex-1 shrink self-stretch my-auto basis-0">{new Date(date).toLocaleDateString()}</div>
