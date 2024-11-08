@@ -48,7 +48,7 @@ function Navigation() {
     height: '100vh'
   }
   return (
-    <div className="flex flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full max-w-screen-xl basis-0 max-md:max-w-full">
+    <div className="flex flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full basis-0 max-md:max-w-full">
       <div className="flex gap-3 p-4">
         <Link to="/">
           <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />

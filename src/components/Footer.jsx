@@ -5,57 +5,59 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/icons/logo_name.svg";
 import Facebook from "../assets/icons/Facebook_Logo.png";
-import Twitter from "../assets/icons/x-logo-black.png";
+import Youtube from "../assets/icons/youtube_social_circle_red.png";
 import Instagram from "../assets/icons/Instagram_Logo.png";
 
 function Footer() {
   return (
     <footer className="flex overflow-hidden justify-between items-start px-5 py-16 w-full bg-white max-md:px-5 max-md:py-24 max-md:max-w-full">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-start w-full max-w-screen-xl basis-0 min-w-[240px] max-md:max-w-full">
+      <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-start w-1/2 basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex gap-3 items-center">
           <Link to="/"><img src={logo} alt="Logo" className="object-contain self-stretch my-auto" /></Link>
         </div>
-        <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
-          <div className="flex gap-2 items-center"></div>
-          <div className="flex gap-2 items-center">
-            <Link to="/" aria-label="Facebook">
-              <img
-                src={Facebook}
-                alt="Facebook logo"
-                className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
-              />
+        <div className="flex gap-10 items-center">
+          <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
+            <div className="flex gap-2 items-center"></div>
+            <div className="flex gap-2 items-center">
+              <Link to="/" aria-label="Facebook">
+                <img
+                  src={Facebook}
+                  alt="Facebook logo"
+                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+                />
+              </Link>
+              <Link to="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA" aria-label="Youtube">
+                <img
+                  src={Youtube}
+                  alt="Youtube logo"
+                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+                />
+              </Link>
+              <Link to="#" aria-label="Instagram">
+                <img
+                  src={Instagram}
+                  alt="Instagram logo"
+                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square fill-red-600"
+                />
+              </Link>
+            </div>
+          </div>
+          <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
+            <Link to="/about" className="gap-1 self-stretch">
+              About FIREWALL
             </Link>
-            <Link to="/" aria-label="Twitter">
-              <img
-                src={Twitter}
-                alt="Twitter logo"
-                className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
-              />
-            </Link>
-            <Link to="#" aria-label="Instagram">
-              <img
-                src={Instagram}
-                alt="Instagram logo"
-                className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square fill-red-600"
-              />
+            <Link to="/press" className="mt-3.5">
+              Press
             </Link>
           </div>
-        </div>
-        <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
-          <Link to="/about" className="gap-1 self-stretch">
-            About FIREWALL
-          </Link>
-          <Link to="/press" className="mt-3.5">
-            Press
-          </Link>
-        </div>
-        <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
-          <Link to="/archive" className="gap-1 self-stretch">
-            Search Archive
-          </Link>
-          <Link to="/contact" className="mt-4 text-xl text-center text-red-600">
-            Contact
-          </Link>
+          <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
+            <Link to="/archive" className="gap-1 self-stretch">
+              Search Archive
+            </Link>
+            <Link to="/contact" className="mt-4 text-xl text-center text-red-600">
+              Contact
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
