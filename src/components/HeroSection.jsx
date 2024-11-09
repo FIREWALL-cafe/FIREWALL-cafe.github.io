@@ -25,12 +25,12 @@ function Typewriter({ text, speed }) {
 
 function HeroSection() {
   const titles = [
-    "WHAT'S BEHIND THE WALL?",
     'What terms are banned on Baidu?',
     'What are sensitive political events in China?',
     'Do censorship levels vary?',
     'Does Google reveal banned truths?',
     'Does Google show the full truth?',
+    "WHAT'S BEHIND THE WALL?",
   ];
 
   return (
