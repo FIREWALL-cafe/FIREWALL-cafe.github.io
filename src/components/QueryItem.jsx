@@ -41,7 +41,7 @@ const QueryItem = ({ id, tags, title, excerpt, date, galleries }) => {
         </div>
       </div>
       <div className={`flex flex-wrap`} style={dropdown ? { display: 'none' } : {}}>
-        {displayCarousel(galleries[0].src, galleries[1].src) ? <SearchCompare images={ { googleResults: galleries[0].src, baiduResults: galleries[1].src } } /> : <div className="border border-dashed border-red-600 m-5 px-5">No images to display</div>}
+        {displayCarousel(galleries[0].src, galleries[1].src) ? <SearchCompare images={ { googleResults: galleries[0].src.slice(0, 9), baiduResults: galleries[1].src.slice(0, 9) } } /> : <div className="border border-dashed border-red-600 m-5 px-5">No images to display</div>}
       </div>
     </div>
   );
