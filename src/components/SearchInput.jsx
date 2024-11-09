@@ -79,7 +79,7 @@ function SearchInput({ searchMode }) {
 
   return (
     <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
-      <div className="flex flex-wrap self-center max-w-[720px] w-[720px] h-[207px] max-md:max-w-full">
+      <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
         <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
           <div className="flex items-center self-stretch my-auto min-w-[240px]">
             <div className={`${searchMode === 'live' ? 'bg-slate-100' : 'bg-white' } flex flex-col justify-center items-center self-stretch px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 w-[148px] max-md:px-5`}>
