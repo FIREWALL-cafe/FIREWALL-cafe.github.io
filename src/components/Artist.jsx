@@ -20,10 +20,15 @@ function Artist() {
               Motivated by a desire to challenge both state and corporate censorship, NYC-based artist Joyce Yu-Jean Lee founded the FIREWALL Cafe in 2013. This digital art project uses a participatory approach to examine internet visual culture, encouraging users to actively engage and see for themselves how censorship shapes their understanding of the world.
             </p>
             <p className="text-xl max-md:max-w-full mb-4">
-              Lee’s journey into this project was catalyzed by her experience abroad in 2011, when she coordinated an artist residency program in CaoChangDi, Beijing, China. There, she helped a dozen North American artists navigate the complexities of Chinese internet access, providing VPN software and advice on circumventing the “Great Firewall.” This experience inspired her to creatively show online audiences how the internet manifests differently across various parts of the world demonstrate to netizens the varied appearances of the internet across different global regions. Through FIREWALL Internet Cafe, Lee aims to make these disparities visible and provoke thoughtful discussion on Internet freedom and censorship.
+              Lee’s journey into this project was catalyzed by her experience abroad in 2011, when she coordinated an artist residency program in CaoChangDi, Beijing, China.
+              There, she helped a dozen North American artists navigate the complexities of Chinese internet access, providing VPN software and advice on circumventing the “Great Firewall.”
+              This experience inspired her to creatively show online audiences how the internet manifests differently across various parts of the world demonstrate to netizens the varied appearances of the internet across different global regions.
+              Through FIREWALL Internet Cafe, Lee aims to make these disparities visible and provoke thoughtful discussion on Internet freedom and censorship.
             </p>
             <p className="text-xl max-md:max-w-full mb-4">
-              Lee’s art practice spans video, glass, installation, and performance. She creates tech-based artwork that scrutinizes how visual culture and mass media influence our understanding of truth and shape perceptions of the “other.” Her work has been showcased in the United States and internationally, and has attracted attention from major media outlets, including The New York Times, The Washington Post, Huffington Post, NPR, Hyperallergic, and ArtCritical.
+              Lee’s art practice spans video, glass, installation, and performance.
+              She creates tech-based artwork that scrutinizes how visual culture and mass media influence our understanding of truth and shape perceptions of the “other.”
+              Her work has been showcased in the United States and internationally, and has attracted attention from major media outlets, including The New York Times, The Washington Post, Huffington Post, NPR, Hyperallergic, and ArtCritical.
             </p>
           </div>
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/264f652583cf9907439c55f0d28d677831d71eb68fac5cdc986c5807cb1832e4?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Joyce Yu-Jean Lee" className="object-contain shrink-0 aspect-[0.7] w-[214px]" />

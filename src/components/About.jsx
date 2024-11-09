@@ -25,10 +25,18 @@ function About() {
             <div className="flex flex-wrap gap-10 justify-center mt-24 w-full max-w-[1080px] max-md:mt-10 max-md:max-w-full">
               <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
                 <p className="text-xl max-md:max-w-full mb-4">
-                  FIREWALL Cafe exists to advocate for freedom of speech for the netizens around the world. Our goal is to investigate online censorship by comparing the disparities of Google searches in western nations versus Baidu searches in China. We aim to increase public awareness and dialogue about Internet freedom. We believe that power, if left unchallenged, inevitably leads to abuse.
+                  FIREWALL Cafe exists to advocate for freedom of speech for the netizens around the world.
+                  Our goal is to investigate online censorship by comparing the disparities of Google searches in western nations versus Baidu searches in China.
+                  We aim to increase public awareness and dialogue about Internet freedom. We believe that power, if left unchallenged, inevitably leads to abuse.
+                </p>
+                <p className="text-xl max-md:max-w-full mb-4">
+                  Through our innovative dual-image browser, we aim to visualize censorship in real time: simply enter a query, and the tool will present side-by-side image results from both search engines.
+                  By doing so, we hope to enhance public awareness and spark dialogue about internet freedom. We believe that power, if left unchallenged, inevitably leads to abuse.
                 </p>
                 <p className="text-xl max-md:max-w-full">
-                  A pivotal moment occurred during our inaugural show in New York City in 2016 around our “Networked Feminism” roundtable. We faced interference from Chinese state authorities and this incident was covered by The Washington Post. The repercussions propelled the art project on an international exhibition tour, setting new stages for dialogue and understanding across borders.
+                  A pivotal moment occurred during our inaugural show in New York City in 2016 around our “Networked Feminism” roundtable.
+                  We faced interference from Chinese state authorities and this incident was covered by The Washington Post.
+                  The repercussions propelled the art project on an international exhibition tour, setting new stages for dialogue and understanding across borders.
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center min-w-[240px] w-[516px] max-md:max-w-full">
