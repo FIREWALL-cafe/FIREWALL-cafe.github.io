@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Hero from './Hero';
-import Consequences from './Consequences';
 import Artist from './Artist';
 import Supporters from './Supporters';
 import CallToAction from './CallToAction';
+import AboutHero from '../assets/images/about-hero.jpg';
 
 function About() {
   return (
@@ -22,7 +21,7 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap gap-10 justify-center mt-24 w-full max-w-[1080px] max-md:mt-10 max-md:max-w-full">
+            <div className="flex flex-wrap gap-10 justify-center mt-10 w-full max-md:mt-10 max-md:max-w-full">
               <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
                 <p className="text-xl max-md:max-w-full mb-4">
                   FIREWALL Cafe exists to advocate for freedom of speech for the netizens around the world.
@@ -40,12 +39,12 @@ function About() {
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center min-w-[240px] w-[516px] max-md:max-w-full">
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5c49e04bc86e21ff43a3bd05456f7c220ddd3dbb5d573f89ca6d4a5301b63a96?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Illustration related to the topic" className="object-contain max-w-full aspect-[1.07] w-[395px]" />
+                <img src={AboutHero} alt="Illustration related to the topic" className="object-contain max-w-full aspect-[1.07]" />
               </div>
             </div>
             <Artist />
             <Supporters />
-          <CallToAction />
+            <CallToAction />
         </div>
       </div>
     </main>

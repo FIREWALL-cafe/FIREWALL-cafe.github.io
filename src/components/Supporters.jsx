@@ -3,8 +3,8 @@ import React from 'react';
 function Supporters() {
   return (
     <section className="flex overflow-hidden flex-col px-32 pb-16 max-md:px-5 max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap grid grid-rows-3 grid-flow-col gap-4 gap-10 justify-center w-full max-md:max-w-full">
-        <div className="chinese flex flex-col col-span-1 self-stretch my-auto min-w-[240px] max-md:max-w-full w-[700px]">
+      <div className="flex flex-wrap grid grid-rows-2 grid-flow-col gap-4 gap-10 justify-center w-full max-md:max-w-full">
+        <div className="chinese flex flex-col col-span-1 self-stretch my-auto min-w-[240px] max-md:max-w-full">
           <h2 className="text-6xl font-medium leading-[56px] max-md:max-w-full max-md:text-4xl max-md:leading-10">
             Thanks to our supporters.
           </h2>
@@ -12,7 +12,7 @@ function Supporters() {
             感谢我们的支持者。
           </div>
         </div>
-        <div className="flex col-span-1 max-w-full max-md:max-w-full text-xl w-[700px]">
+        <div className="flex col-span-1 max-w-full max-md:max-w-full text-xl">
           FIREWALL was made possible by the Asian Women Giving Circle; by the Franklin Furnace Fund supported by Jerome Foundation, the Lambent Foundation, The SHS Foundation; and in part with public funds from Creative Engagement, supported by the New York City Department of Cultural Affairs in partnership with the City Council and administered by Lower Manhattan Cultural Council.
         </div>
         <div className="flex flex-col col-span-2 row-span-2 self-stretch my-auto w-[240px]">
