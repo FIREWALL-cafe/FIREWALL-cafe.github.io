@@ -1,5 +1,6 @@
 import React from "react";
 import UsHeadlines from "../assets/images/subscribe-d-desktop.jpg";
+import SubscribeMailchimp from "../assets/images/subscribe_mailchimp.jpg";
 
 function NewsletterSection() {
   return (
@@ -8,32 +9,16 @@ function NewsletterSection() {
         <div className="flex flex-col max-w-full border-0 border-white border-solid shadow-sm">
           <div className="flex flex-col w-full shadow-sm">
             <div className="chinese flex flex-col w-full text-5xl font-medium leading-tight max-md:text-4xl">
-              <h2 className="text-white max-md:text-4xl">Stay connected</h2>
-              <div className="text-red-600 max-md:text-4xl">保持联系</div>
+              <h2 className="text-white max-md:text-4xl">Subscribe</h2>
+              <div className="text-red-600 max-md:text-4xl">订阅</div>
             </div>
-            <div className="flex flex-col mt-10 w-full text-xl">
-              <p className="leading-8 text-white">
-                Get updates about upcoming events, press releases, and expert
-                commentary with the Firewall Cafe newsletter.
+            <div className="flex flex-col mt-5 w-full text-xl">
+              <p className="leading-8 text-white w-3/4">
+                Get newsletter updates about upcoming events, press releases, and expert editorial.
               </p>
-              <form className="flex mt-5 w-full bg-gray-50 rounded border border-solid border-neutral-300 min-h-[56px]">
-                <label htmlFor="emailInput" className="sr-only">
-                  Email 电子邮件
-                </label>
-                <input
-                  type="email"
-                  id="emailInput"
-                  className="overflow-hidden flex-1 shrink px-4 py-3.5 text-rose-500 min-w-[240px] max-md:pr-5"
-                  placeholder="Email 电子邮件"
-                  aria-label="Email 电子邮件"
-                />
-                <button
-                  type="submit"
-                  className="gap-1 self-start px-4 text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[56px]"
-                >
-                  Submit
-                </button>
-              </form>
+              <div className="w-1/2">
+                <img src={SubscribeMailchimp} />
+              </div>
             </div>
           </div>
         </div>

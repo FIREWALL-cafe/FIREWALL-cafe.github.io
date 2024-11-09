@@ -12,8 +12,8 @@ import hoverc from "../assets/images/homepage-section_1-image_c-hover.jpg";
 function AboutSection() {
   return (
     <section className="flex overflow-hidden flex-col items-center px-32  pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap gap-10 justify-center items-center max-w-full w-[1080px]">
-        <div className="flex flex-col self-stretch my-auto min-w-[240px] w-[526px] max-md:max-w-full">
+      <div className="flex gap-10 justify-center items-center max-w-full w-[1080px]">
+        <div className="flex flex-col self-stretch my-auto min-w-[240px] max-md:max-w-full">
           <div className="chinese flex flex-col w-full text-5xl font-medium leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
             <h2 className="text-black border-black max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
               <Link to="/about">What does internet censorship look like?</Link>
