@@ -21,7 +21,6 @@ const QueryItem = ({ id, tags, title, excerpt, date, galleries }) => {
   };
   
   const displayCarousel = (googleResults, baiduResults) => {
-    console.log('any images?', googleResults.length, baiduResults.length);
     return (googleResults.length > 0 || baiduResults.length > 0);
   };
 
