@@ -55,7 +55,7 @@ function ImageCarousel({ images }) {
         <div className="flex border-b border-red-300 w-full">
           <div className="grid grid-cols-3 gap-4 border-r border-red-300 w-1/2">
             {images.googleResults.map((image, index) => (
-              <div className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-blue-200' : ''}`}>
+              <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-blue-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
                   <img src={image} className={`object-cover aspect-square rounded-lg`} />
                 </button>
@@ -64,7 +64,7 @@ function ImageCarousel({ images }) {
           </div>
           <div className="grid grid-cols-3 gap-4 w-1/2 pl-4">
             {images.baiduResults.map((image, index) => (
-              <div className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-red-200' : ''}`}>
+              <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-red-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
                   <img src={image} className="object-cover aspect-square rounded-lg" />
                 </button>
