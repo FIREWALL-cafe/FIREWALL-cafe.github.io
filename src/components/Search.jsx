@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SearchInput from './SearchInput';
-import SearchCompare from './SearchCompare';
 import FeatureCards from './FeatureCards';
 import Archive from '../assets/icons/Archive_grayscale.png';
 import TimelineIcon from '../assets/icons/Timeline.png';
@@ -18,16 +17,7 @@ const features = [
       borderColor: "border-red-600"
     },
     {
-      title: "Timeline",
-      chineseTitle: { text: "时间线", color: "text-red-600 border-red-600" },
-      description: "Why did all this happen?",
-      iconSrc: TimelineIcon,
-      bgColor: "bg-rose-100",
-      textColor: "text-black",
-      borderColor: "border-red-600"
-    },
-    {
-      title: "Expert commentary",
+      title: "Expert editorial",
       chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
       description: "Read and listen to in-depth commentary from experts.",
       iconSrc: Commentary,
@@ -46,8 +36,7 @@ function Search() {
           <span className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">搜索结果</span>
         </h1>
 
-        <SearchInput />
-        <SearchCompare />
+        <SearchInput searchMode='live' />
         <FeatureCards features={features} />
       </section>
     </main>
