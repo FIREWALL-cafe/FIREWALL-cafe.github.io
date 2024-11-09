@@ -7,7 +7,7 @@ function EventCard({ image, title, date, time, location }) {
         <img loading="lazy" src={image} alt={title} className="object-contain w-full aspect-[1.45]" />
       </div>
       <div className="flex flex-col justify-between px-5 py-6 w-full bg-white min-h-[220px]">
-        <h3 className="flex-1 text-xl leading-8 text-black whitespace-nowrap text-ellipsis">
+        <h3 className="flex-1 text-xl leading-8 text-black text-ellipsis">
           {title}
         </h3>
         <div className="flex flex-col w-full text-lg text-zinc-400">

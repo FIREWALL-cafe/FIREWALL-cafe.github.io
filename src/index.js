@@ -13,6 +13,7 @@ import Search from "./components/Search";
 import SearchBar from "./components/SearchBar";
 import Support from "./components/Support";
 import SearchArchive from "./components/SearchArchive";
+import LanYu from "./components/LanYu";
 
 import {
   createBrowserRouter,
@@ -43,6 +44,12 @@ const router = createBrowserRouter([
       {
         path: "editorial",
         element: <Experts />,
+        children: [
+          {
+            path: "lan-yu",
+            element: <LanYu />,
+          },
+        ],
       },
       {
         path: "events",
