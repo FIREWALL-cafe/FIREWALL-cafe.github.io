@@ -3,7 +3,7 @@ import ContactForm from './ContactForm';
 
 const GetInTouch = () => {
   return (
-    <section className="flex flex-col justify-center items-center py-32 w-full bg-gray-100 border-b border-solid border-b-red-600 max-md:py-24 max-md:max-w-full">
+    <section className="flex flex-col justify-center items-center py-32 w-full bg-gray-100 max-md:py-24 max-md:max-w-full">
       <div className="chinese flex flex-col pr-20 max-w-full w-[692px] max-md:pr-5">
         <h1 className="flex gap-10 items-center text-7xl font-medium leading-tight text-black tracking-[2.16px] max-md:text-4xl">
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c15b618ad2d727f699efbb100c0b696857b4d04895014c58b5bdc803f264ff20?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" alt="" />
