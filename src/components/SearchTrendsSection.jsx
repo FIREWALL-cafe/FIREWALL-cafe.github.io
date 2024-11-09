@@ -7,14 +7,14 @@ function SearchTrendsSection() {
     { id: 1, text: "tank man", isEnglish: true },
     { id: 2, text: "june 4", isEnglish: true },
     { id: 3, text: "tiananmen square", isEnglish: false },
-    { id: 4, text: "winnie the pooh and xi", isEnglish: false },
+    { id: 4, text: "winnie the pooh xi", isEnglish: false },
     { id: 5, text: "uyghur", isEnglish: true },
   ];
 
   return (
     <section className="flex flex-col justify-center items-center pb-16 w-full max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap gap-10 justify-center items-center max-w-full w-[1080px]">
-        <div className="flex flex-col flex-1 shrink justify-center self-stretch my-auto basis-0 min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col p-12 flex-1 min-w-[240px] max-md:max-w-full">
           <div className="chinese flex flex-col justify-center w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
             <h2 className="text-black border-black leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
               What are others seeking over the wall?
@@ -38,7 +38,7 @@ function SearchTrendsSection() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col justify-center self-stretch py-4 my-auto min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col w-1/2 justify-center self-stretch py-4 my-auto min-w-[240px] max-md:max-w-full">
           <img
             src={imageCollage}
             alt="Search trends visualization"

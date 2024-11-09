@@ -1,17 +1,11 @@
 import React from "react";
+import UsHeadlines from "../assets/images/subscribe-d-desktop.jpg";
 
 function NewsletterSection() {
   return (
-    <section className="flex overflow-hidden relative justify-center items-start w-full bg-rose-100 border-0 border-black border-solid min-h-[500px] max-md:max-w-full">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/d7b8323ea47a870d70eb941f18280ff6d635a297dfb12a0025469b7d272761a8?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
-        alt="Background pattern"
-        className="object-contain absolute top-2/4 left-2/4 z-0 justify-center items-center -translate-x-2/4 -translate-y-2/4 aspect-[3.76] min-w-[240px] w-[1878px] max-md:max-w-full"
-      />
-      <div className="flex absolute top-0 left-0 z-0 shrink-0 h-[499px] min-w-[240px] w-[640px]" />
-      <div className="flex z-0 flex-col justify-center items-start self-stretch my-auto max-w-[1080px] min-w-[240px] w-[1080px] max-md:max-w-full">
-        <div className="flex flex-col max-w-full border-0 border-white border-solid shadow-sm w-[420px]">
+    <section className="flex overflow-hidden relative justify-center items-start w-full bg-gray-800 border-0 border-black border-solid min-h-[500px] max-md:max-w-full">
+      <div className="flex flex-col px-24 justify-center items-start self-stretch w-1/2 max-md:max-w-full">
+        <div className="flex flex-col max-w-full border-0 border-white border-solid shadow-sm">
           <div className="flex flex-col w-full shadow-sm">
             <div className="chinese flex flex-col w-full text-5xl font-medium leading-tight max-md:text-4xl">
               <h2 className="text-white max-md:text-4xl">Stay connected</h2>
@@ -43,6 +37,9 @@ function NewsletterSection() {
             </div>
           </div>
         </div>
+      </div>
+      <div class="w-1/2">
+        <img src={UsHeadlines} />
       </div>
     </section>
   );
