@@ -5,7 +5,8 @@ import QueryList from './QueryList';
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import Question from '../assets/icons/question_red.svg';
-import SearchIcon from '../assets/icons/folder_open_search.svg';
+import SearchIcon from '../assets/icons/image_search.svg';
+import ArchiveIcon from '../assets/icons/folder_open_search.svg';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
 
@@ -62,6 +63,8 @@ function SearchInput({ searchMode }) {
     if (e.keyCode === 13) handleSubmit();
   }
 
+  const displaySearchIcon = searchMode === 'live' ? SearchIcon : ArchiveIcon;
+
   return (
     <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
       <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
@@ -88,7 +91,7 @@ function SearchInput({ searchMode }) {
             <input placeholder="Search" name="query" type="text" ref={ref} onKeyDown={handleKeyDown} disabled={!!isLoading} className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] text-zinc-400 max-md:max-w-full" aria-label="Search query" />
             <div className="flex overflow-hidden gap-1 justify-center items-center py-4 pr-4 h-full">
               <button onClick={handleSubmit} disabled={!!isLoading}>
-                <img src={isLoading ? Spinner : SearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                <img src={isLoading ? Spinner : displaySearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
               </button>
             </div>
           </div>
