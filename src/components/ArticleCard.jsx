@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function ArticleCard({ image, title, date, tag }) {
+function ArticleCard({ image, title, date, tag, url }) {
   return (
     <article className="flex overflow-hidden flex-col grow shrink self-stretch my-auto w-64 rounded border border-black border-solid min-h-[400px] min-w-[240px]">
-      <img loading="lazy" src={image} className="object-contain flex-1 w-full aspect-[1.78]" />
+      <img src={image} className="object-contain flex-1 w-full mt-4 aspect-[1.78]" />
       <div className="flex flex-col justify-between px-5 py-6 w-full bg-white min-h-[220px]">
-        <h3 className="flex-1 text-xl leading-8 text-black whitespace-nowrap text-ellipsis">
-          {title}
+        <h3 className="flex-1 text-xl leading-8 text-black text-ellipsis">
+          <Link to={url}>{title}</Link>
         </h3>
         <div className="flex gap-3 items-center mt-8 w-full h-5 text-lg text-zinc-400">
           <time className="flex-1 shrink gap-2 self-stretch my-auto w-full min-w-[240px] text-ellipsis">
