@@ -7,7 +7,7 @@ function InfoSection() {
       <div className="flex flex-col items-center w-full max-w-[1080px] max-md:max-w-full">
         <div className="chinese flex flex-col justify-center items-start w-full text-5xl font-medium leading-tight max-md:text-4xl">
           <h2 className="text-black border-black max-md:max-w-full max-md:text-4xl">
-            Peer over the wall. Decide for yourself.
+            <Link to="/search">Peer over the wall. Decide for yourself.</Link>
           </h2>
           <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">
             越过墙往外看。自己决定。

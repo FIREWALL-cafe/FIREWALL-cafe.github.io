@@ -13,7 +13,7 @@ function Experts() {
             <div className="flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
               <img src={Commentary} alt="" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" />
               <h1 className="self-stretch my-auto max-md:max-w-full max-md:text-4xl">
-                Expert commentary
+                Expert editorial
               </h1>
             </div>
             <div className="text-red-600 max-md:max-w-full max-md:text-4xl">
