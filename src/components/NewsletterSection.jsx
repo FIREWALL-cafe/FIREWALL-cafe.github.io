@@ -38,7 +38,7 @@ function NewsletterSection() {
           </div>
         </div>
       </div>
-      <div class="w-1/2">
+      <div className="w-1/2">
         <img src={UsHeadlines} />
       </div>
     </section>
