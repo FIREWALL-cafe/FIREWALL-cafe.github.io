@@ -9,6 +9,7 @@ import Commentary from '../assets/icons/expert-commentary_grayscale.png';
 const features = [
     {
       title: "Archive",
+      url: "/archive",
       chineseTitle: { text: "档案", color: "text-black border-black" },
       description: "Explore what other users have searched and vote on results.",
       iconSrc: Archive,
@@ -18,6 +19,7 @@ const features = [
     },
     {
       title: "Expert editorial",
+      url: "/editorial",
       chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
       description: "Read and listen to in-depth commentary from experts.",
       iconSrc: Commentary,

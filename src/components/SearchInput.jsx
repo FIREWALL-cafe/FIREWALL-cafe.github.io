@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import QueryList from './QueryList';
 
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
@@ -19,6 +19,8 @@ function SearchInput({ searchMode }) {
   const [translation, setTranslation] = useState('');
   const [currentSearchId, setSearchId] = useState(null);
   const setResults = useCallback((results) => setImageResults(results), []);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     // Update the input field when query params change
@@ -29,6 +31,10 @@ function SearchInput({ searchMode }) {
   }, [searchParams]);
 
   const handleSubmit = async () => {
+    if (location.pathname === '/') {
+      navigate('/search?q=' + query);
+    }
+
     console.log('submitting search');
     const config = {
           method: 'post',
