@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ArtistHeadshot from '../assets/images/joyce-BW-450x450.jpg';
 
 function Artist() {
   return (
-    <section className="flex overflow-hidden flex-col justify-center py-16 w-full bg-white max-md:py-24 max-md:max-w-full">
+    <section className="flex overflow-hidden flex-col px-32 py-16 w-full bg-white max-md:py-24 max-md:max-w-full">
       <div className="flex flex-col px-8 max-md:px-5 max-md:max-w-full">
         <div className="chinese flex flex-col max-w-full">
           <h2 className="text-6xl font-medium leading-[56px] max-md:text-4xl max-md:leading-10">
@@ -14,8 +15,8 @@ function Artist() {
           </div>
           <p className="mt-2 text-2xl text-zinc-400">Artist</p>
         </div>
-        <div className="flex flex-wrap gap-10 items-start mt-10 text-xl leading-8 text-black max-md:max-w-full">
-          <div className="w-[500px] max-md:max-w-full">
+        <div className="flex gap-10 items-start mt-10 text-xl leading-8 text-black max-md:max-w-full">
+          <div className="w-3/4">
             <p className="text-xl max-md:max-w-full mb-4">
               Motivated by a desire to challenge both state and corporate censorship, NYC-based artist Joyce Yu-Jean Lee founded the FIREWALL Cafe in 2013. This digital art project uses a participatory approach to examine internet visual culture, encouraging users to actively engage and see for themselves how censorship shapes their understanding of the world.
             </p>
@@ -31,7 +32,11 @@ function Artist() {
               Her work has been showcased in the United States and internationally, and has attracted attention from major media outlets, including The New York Times, The Washington Post, Huffington Post, NPR, Hyperallergic, and ArtCritical.
             </p>
           </div>
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/264f652583cf9907439c55f0d28d677831d71eb68fac5cdc986c5807cb1832e4?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Joyce Yu-Jean Lee" className="object-contain shrink-0 aspect-[0.7] w-[214px]" />
+          <div className="w-1/4 max-md:max-w-full">
+            <Link to="http://www.joyceyujeanlee.com/">
+              <img src={ArtistHeadshot} alt="Joyce Yu-Jean Lee" className="object-top w-[314px]" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

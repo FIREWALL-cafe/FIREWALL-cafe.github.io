@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function CallToAction() {
   return (
@@ -16,10 +18,10 @@ function CallToAction() {
       <p className="mt-6 leading-8 text-center text-black w-[590px] max-md:max-w-full">
         Learn how you can support Firewall Cafe and fight for the freedom of information in China and worldwide.
       </p>
-      <a href="#learn-more" className="flex gap-1 justify-center items-center px-4 mt-6 text-center text-black rounded border border-black border-solid min-h-[56px]">
+      <Link to="/support" className="flex gap-1 justify-center items-center px-4 mt-6 text-center text-black rounded border border-black border-solid min-h-[56px]">
         <span className="self-stretch my-auto">Learn more</span>
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b9f9bbeff432762e242862067806e0329598fe2f2f2a63fb33fe33da0837cca1?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
-      </a>
+        <img src={ArrowRight} alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+      </Link>
     </section>
   );
 }
