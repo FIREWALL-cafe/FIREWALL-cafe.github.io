@@ -19,9 +19,14 @@ const QueryItem = ({ id, tags, title, excerpt, date, galleries }) => {
   const handleOnError = () => {
     setStatus("failed");
   };
-      
+  
+  const displayCarousel = (googleResults, baiduResults) => {
+    console.log('any images?', googleResults.length, baiduResults.length);
+    return (googleResults.length > 0 || baiduResults.length > 0);
+  };
+
   return (
-    <div className="flex flex-wrap gap-4 py-2 w-full min-h-[48px] max-md:max-w-full">
+    <div className="flex flex-wrap gap-4 py-2 w-full min-h-[48px] max-md:max-w-full hover:bg-sky-100">
       <div className="flex flex-wrap gap-4 py-2 w-full text-xl text-black min-h-[48px] max-md:max-w-full" onClick={toggleDropdown}>
         <div className="flex flex-1 shrink gap-1 items-center h-full basis-0 min-w-[240px]">
           <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{title.rendered}</div>
@@ -37,7 +42,7 @@ const QueryItem = ({ id, tags, title, excerpt, date, galleries }) => {
         </div>
       </div>
       <div className={`flex flex-wrap`} style={dropdown ? { display: 'none' } : {}}>
-        <SearchCompare images={ { googleResults: galleries[0].src, baiduResults: galleries[1].src } } />
+        {displayCarousel(galleries[0].src, galleries[1].src) ? <SearchCompare images={ { googleResults: galleries[0].src, baiduResults: galleries[1].src } } /> : <div className="border border-dashed border-red-600 m-5 px-5">No images to display</div>}
       </div>
     </div>
   );
