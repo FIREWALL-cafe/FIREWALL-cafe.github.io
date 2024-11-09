@@ -5,17 +5,17 @@ const QueryList = ({ results }) => {
   return (
     <section className="flex overflow-hidden flex-col pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
       
-      <div className="flex-1 shrink gap-2.5 self-stretch px-20 pb-6 w-full max-w-screen-xl text-2xl text-black min-h-[57px] max-md:px-5 max-md:max-w-full">
+      <div className="flex-1 shrink gap-2.5 self-stretch px-10 pt-6 w-full max-w-screen-xl text-2xl text-black min-h-[57px] max-md:px-5 max-md:max-w-full">
         {results.length} related queries
       </div>
       <div className="flex flex-col items-center px-9 w-full max-md:px-5 max-md:max-w-full">
         <div className="flex flex-col w-full max-w-screen-xl max-md:max-w-full">
           <div className="flex flex-wrap gap-4 py-2 w-full text-xl text-black border-b border-solid border-b-neutral-300 min-h-[48px] max-md:max-w-full">
             <div className="flex flex-1 shrink gap-1 items-center h-full basis-0">
-              <div className="z-10 flex-1 shrink self-stretch my-auto w-full">Query EN</div>
+              <div className="z-10 flex-1 shrink self-stretch my-auto w-full">Query</div>
             </div>
             <div className="flex flex-1 shrink gap-1 items-center h-full basis-0">
-              <div className="z-10 flex-1 shrink self-stretch my-auto w-full">搜索结果 中文</div>
+              <div className="z-10 flex-1 shrink self-stretch my-auto w-full">Translation</div>
             </div>
             <div className="flex flex-1 shrink gap-1 items-center h-full whitespace-nowrap basis-0">
               <div className="z-10 flex-1 shrink self-stretch my-auto w-full">Location</div>

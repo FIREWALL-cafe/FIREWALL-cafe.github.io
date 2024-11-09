@@ -33,7 +33,7 @@ function SearchTrendsSection() {
                     : "border-red-600 text-red-600 text-lg"
                 }`}
               >
-                <Link to={`/archive?search=${search.text}`}>{search.text}</Link>
+                <Link to={`/archive?q=${search.text}`}>{search.text}</Link>
               </div>
             ))}
           </div>
