@@ -1,9 +1,10 @@
 import React from 'react';
+import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function ContactSection() {
   return (
-    <section className="flex overflow-hidden flex-wrap w-full bg-gray-800 border-t border-b border-solid border-y-black max-md:max-w-full">
-      <div className="flex flex-col justify-center p-20 my-auto border-0 border-white border-solid min-w-[240px] w-[640px] max-md:px-5 max-md:max-w-full">
+    <section className="flex overflow-hidden flex-wrap mx-5 bg-gray-800 border-t border-b border-solid border-y-black max-w-[1400px]">
+      <div className="flex flex-col justify-center p-20 border-0 border-white border-solid min-w-[240px] w-1/2 max-md:px-5">
         <div className="flex flex-col w-full shadow-sm max-md:max-w-full">
           <div className="chinese flex flex-col w-full text-5xl font-medium leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
             <h2 className="text-white max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
@@ -15,7 +16,7 @@ function ContactSection() {
           </div>
           <button className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-xl text-center text-white whitespace-nowrap rounded border border-white border-solid min-h-[56px]">
             <span className="self-stretch my-auto">Contact</span>
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dcb83f5f376687317f888fd84ea1c84754917b624a5a5fc788082b3db3bdc683?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+            <img src={ArrowRight} alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
           </button>
         </div>
       </div>
