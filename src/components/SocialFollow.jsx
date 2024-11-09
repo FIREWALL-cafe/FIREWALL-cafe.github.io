@@ -5,7 +5,7 @@ import Instagram from "../assets/icons/Instagram_Logo.png";
 
 const SocialFollow = () => {
   return (
-    <section className="flex flex-col flex-1 shrink p-20 bg-rose-100 basis-0 min-w-[240px] max-md:px-5 max-md:max-w-full">
+    <section className="flex flex-col flex-1 shrink p-20 bg-rose-100 basis-0 mx-5 min-w-[240px] max-md:px-5 max-w-[1400px]">
       <h2 className="flex flex-col w-full text-5xl font-medium leading-tight whitespace-nowrap max-md:max-w-full max-md:text-4xl">
         <span className="text-black max-md:max-w-full max-md:text-4xl">Follow</span>
         <span className="chinese text-red-600 max-md:max-w-full max-md:text-4xl">跟随</span>
