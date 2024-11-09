@@ -14,17 +14,17 @@ const SocialFollow = () => {
         <div className="flex gap-2 justify-center items-center self-stretch my-auto">
           <div className="">
           <a href="http://instagram.com/firewallcafe" aria-label="Follow us on Instagram">
-            <img src={Instagram} className="object-contain w-full aspect-square w-[48px]" alt="" />
+            <img src={Instagram} className="object-contain aspect-square w-[48px]" alt="" />
           </a>
           </div>
           <div className="">
           <a href="https://www.facebook.com/firewallcafe" aria-label="Follow us on Facebook">
-            <img src={Facebook} className="object-contain w-full aspect-square w-[48px]" alt="" />
+            <img src={Facebook} className="object-contain aspect-square w-[48px]" alt="" />
             </a>
           </div>
           <div className="">
             <a href="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA" aria-label="Follow us on Youtube">
-              <img src={Youtube} className="object-contain w-full aspect-square w-[48px]" alt="" />
+              <img src={Youtube} className="object-contain aspect-square w-[48px]" alt="" />
             </a>
           </div>
         </div>
