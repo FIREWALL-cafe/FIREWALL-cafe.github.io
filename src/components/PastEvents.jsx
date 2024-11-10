@@ -166,7 +166,7 @@ const pastEvents = [
     image: Eventp,
     imageHover: EventpHover,
     title: "10th Anniversary 2018 Oslo Freedom Forum",
-    date: "JMay 28, 2018, 11 AM-5:30 PM",
+    date: "May 28, 2018, 11 AM-5:30 PM",
     location: "Sentralen, Oslo, Norway",
     link: "https://firewallcafe.com/events/off-2018/"
   },
