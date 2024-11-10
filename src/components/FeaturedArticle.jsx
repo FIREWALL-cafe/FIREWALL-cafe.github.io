@@ -28,7 +28,7 @@ function FeaturedArticle() {
           </div>
         </div>
         <div className="flex flex-col flex-1 shrink justify-center items-center basis-0 min-w-[240px] max-md:max-w-full">
-          <img src={PressPost} alt="Featured article illustration" className="object-contain max-w-full aspect-[1.47] w-[432px]" />
+          <img src={PressPost} alt="Featured article illustration" className="object-contain max-w-full aspect-[1.47]" />
         </div>
       </div>
     </section>

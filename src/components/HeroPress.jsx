@@ -4,7 +4,7 @@ import Press from '../assets/icons/press.png';
 
 function HeroPress() {
   return (
-    <section className="flex flex-col justify-center items-center px-20 py-32 w-full max-md:px-5 max-md:py-24 max-md:max-w-full">
+    <section className="flex flex-col justify-center items-center px-20 py-16 w-full max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-col items-center w-full max-w-[1080px] max-md:max-w-full">
         <div className="chinese flex flex-col w-full text-7xl font-medium leading-tight tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
           <div className="flex flex-wrap gap-5 items-center text-black max-md:max-w-full max-md:text-4xl">
