@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactForm = () => {
   return (
-    <form className="flex flex-col p-8 mt-2 bg-white rounded-lg border border-red-600 border-solid max-md:px-5 max-md:max-w-full w-[500px]">
+    <form className="grow flex flex-col p-8 mt-2 bg-white rounded-lg border border-red-600 border-solid max-md:px-5">
       <div className="flex flex-col w-full max-md:max-w-full">
         <div className="flex flex-col w-full whitespace-nowrap max-md:max-w-full">
           <div className="flex overflow-hidden gap-1 items-start py-1.5 w-full max-md:max-w-full">

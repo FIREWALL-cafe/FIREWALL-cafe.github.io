@@ -1,14 +1,14 @@
 import React from 'react';
 import GetInTouch from './GetInTouch';
-import Newsletter from './Newsletter';
+import SubscribeSection from './SubscribeSection';
 import SocialFollow from './SocialFollow';
 
 const Contact = () => {
   return (
     <main className="flex overflow-hidden flex-col bg-white min-h-[200px]">
       <GetInTouch />
-      <div className="flex overflow-hidden flex-wrap w-full max-md:max-w-full">
-        <Newsletter />
+      <div className="flex overflow-hidden flex-wrap w-full max-md:max-w-full px-10">
+        <SubscribeSection />
         <SocialFollow />
       </div>
     </main>
