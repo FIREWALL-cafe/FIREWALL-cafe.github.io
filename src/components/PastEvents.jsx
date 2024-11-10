@@ -136,7 +136,7 @@ const pastEvents = [
     title: "Tiger Strikes Asteroid presents \"REDIRECT\"",
     date: "Jan. 24 - Feb. 24, 2020",
     location: "RAMP Gallery, 821 Riverside Drive, Asheville, NC",
-    link: "https://firewallcafe.com/events/tiger-strikes-asteroid-presents-redirect/"
+    link: "https://firewallcafe.com/events/redirect-at-ramp-gallery-asheville-nc/"
   },
   {
     image: Eventm,
@@ -160,7 +160,7 @@ const pastEvents = [
     title: "\"NOT FOUND\" in Hong Kong",
     date: "Jan. 12-23, 2019",
     location: "Green Wave Art 404 Shanghai Street, Yau Ma Tei, Kowloon Two",
-    link: "https://firewallcafe.com/events/not-found-in-hong-kong/"
+    link: "https://firewallcafe.com/events/hknotfound/"
   },
   {
     image: Eventp,
@@ -168,7 +168,7 @@ const pastEvents = [
     title: "10th Anniversary 2018 Oslo Freedom Forum",
     date: "JMay 28, 2018, 11 AM-5:30 PM",
     location: "Sentralen, Oslo, Norway",
-    link: "https://firewallcafe.com/events/10th-anniversary-2018-oslo-freedom-forum/"
+    link: "https://firewallcafe.com/events/off-2018/"
   },
   {
     image: Eventq,
@@ -176,7 +176,7 @@ const pastEvents = [
     title: "2017 OFF New York Interactive Expo",
     date: "Sep. 19, 2017, 9 AM-5 PM",
     location: "Alice Tully Hall, Lincoln Center, NYC",
-    link: "https://firewallcafe.com/events/2017-off-new-york-interactive-expo/"
+    link: "https://firewallcafe.com/events/off-nyc-2017/"
   },
   {
     image: Eventr,
@@ -184,7 +184,7 @@ const pastEvents = [
     title: "2017 Oslo Freedom Forum Pop-Up",
     date: "May 20-24, 2017",
     location: "Spikersuppa Square, Oslo, Norway",
-    link: "https://firewallcafe.com/events/2017-oslo-freedom-forum-pop-up/"
+    link: "https://firewallcafe.com/events/off2017/"
   },
   {
     image: Events,
