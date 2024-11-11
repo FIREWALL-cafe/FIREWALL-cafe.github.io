@@ -1,10 +1,13 @@
 import React from 'react';
 import FeaturedEditorial from './FeaturedEditorial';
-import Newsletter from './Newsletter';
+import NewsletterSection from './NewsletterSection';
 
 import Commentary from '../assets/icons/expert-commentary.png';
+import Newsweek from '../assets/images/subscribe-a-desktop.jpg';
 
 function Experts() {
+  const image = <img src={Newsweek} alt="Subscribe" className="object-cover w-full h-full" />;
+
   return (
     <main className="flex overflow-hidden flex-col bg-white min-h-[200px]">
       <section className="flex flex-col justify-center items-center px-14 py-16 w-full max-md:px-5 max-md:py-24 max-md:max-w-full">
@@ -26,6 +29,7 @@ function Experts() {
         </div>
       </section>
       <FeaturedEditorial />
+      <NewsletterSection image={image} />
     </main>
   );
 }
