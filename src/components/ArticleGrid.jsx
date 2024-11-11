@@ -17,7 +17,7 @@ const articles = [
     image: PressBurnway,
     imageHover: PressBurnwayHover,
     title: "Slow Connection: TSA GVL presents REDIRECT in Asheville",
-    url: " https://burnaway.org/daily/tsa-gvl-redirect-avl/",
+    url: "https://burnaway.org/daily/tsa-gvl-redirect-avl/",
     date: "Feb 13, 2020"
   },
   {
