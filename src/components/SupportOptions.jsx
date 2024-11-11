@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import FeatureCards from './FeatureCards';
 import Support from '../assets/icons/support.png';
 import SupportGray from '../assets/icons/support_grayscale.png';
 import Sponsor from '../assets/icons/sponsor.png';
@@ -10,7 +8,7 @@ import DonationGray from '../assets/icons/donation_grayscale.png';
 
 function SupportOptions() {
   return (
-    <section className="flex flex-col w-full px-6 pb-16 w-full bg-white max-md:px-5 max-md:pb-24 max-md:max-w-full">
+    <section className="flex w-full gap-2 px-6 pb-16 w-full bg-white max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className={`flex-1 shrink justify-center items-center self-stretch p-4 bg-sky-400 rounded-lg border border-solid basis-0 max-md:px-5`}>
         <a href="https://www.nyfa.org/#button=45138" target="_blank">
           <div className="flex flex-col flex-1 justify-between w-full">
