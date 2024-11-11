@@ -10,12 +10,12 @@ import NavMenu from "../assets/icons/nav-menu.svg";
 const menuSections = [
     {
       title: 'Analysis',
-      items: [<Link to="/search">Search</Link>, <Link to="/archive">Query archive</Link>, <Link to="/editorial">Editorial</Link>],
+      items: [<Link to="/search">Search</Link>, <Link to="/archive">Archive</Link>, <Link to="/editorial">Editorial</Link>],
       iconSrc: 'https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/405ba1e178feb620f32f3df09aea26ed9eb080ba6cb4b555e946e0c55fcb8739?apiKey=d56f8d62d9074d509de3faeb2651bd99&'
     },
     {
       title: 'About',
-      items: [<Link to="/about">Firewall Cafe</Link>, <Link to="/events">Events</Link>, <Link to="/press">Press</Link>],
+      items: [<Link to="/about">FIREWALL Cafe</Link>, <Link to="/events">Events</Link>, <Link to="/press">Press</Link>],
       iconSrc: 'https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/33683d061f3f1aec6bb62f00876dd7c94d17c54cf2a0ff1719271fa07c97d162?apiKey=d56f8d62d9074d509de3faeb2651bd99&'
     },
     {

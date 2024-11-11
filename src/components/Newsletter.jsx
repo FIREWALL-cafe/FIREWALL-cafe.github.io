@@ -15,7 +15,7 @@ function Newsletter() {
           </div>
           <div className="flex flex-col mt-10 w-full text-xl max-md:max-w-full">
             <p className="leading-8 text-white max-md:max-w-full">
-              Get updates about upcoming events, press releases, and expert commentary with the Firewall Cafe newsletter.
+              Get updates about upcoming events, press releases, and expert commentary with the FIREWALL Cafe newsletter.
             </p>
             <form className="flex mt-5 w-full bg-gray-50 rounded border border-solid border-neutral-300 min-h-[56px] max-md:max-w-full">
               <label htmlFor="newsletterEmail" className="sr-only">Email</label>

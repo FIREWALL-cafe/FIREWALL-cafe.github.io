@@ -202,7 +202,7 @@ function App() {
                 className="object-contain mt-10 max-w-full aspect-[11.11] w-[720px]"
               />
               <div className="gap-8 self-stretch mt-10 w-full text-2xl leading-9 text-black max-md:max-w-full">
-                Firewall Cafe was created in 2015 to shine a light on the CCP’s
+                FIREWALL Cafe was created in 2015 to shine a light on the CCP’s
                 suppression of free speech, and educate others on authoritarian
                 control on public discourse.
                 <br />
