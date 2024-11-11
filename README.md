@@ -1,5 +1,5 @@
 # firewall-web-app
-Firewall Cafe web app
+FIREWALL Cafe web app
 
 # Installation
 

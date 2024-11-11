@@ -194,7 +194,7 @@ function App() {
                 className="object-contain mt-10 max-w-full aspect-[11.11] w-[720px]"
               />
               <div className="gap-8 self-stretch mt-10 w-full text-2xl leading-9 text-black max-md:max-w-full">
-                Firewall Cafe was created in 2015 to shine a light on the CCP’s
+                FIREWALL Cafe was created in 2015 to shine a light on the CCP’s
                 suppression of free speech, and educate others on authoritarian
                 control on public discourse.
                 <br />
@@ -282,7 +282,7 @@ function App() {
                   <div className="flex flex-col mt-10 w-full text-xl">
                     <div className="leading-8 text-white">
                       Get updates about upcoming events, press releases, and
-                      expert commentary with the Firewall Cafe newsletter.
+                      expert commentary with the FIREWILL Cafe newsletter.
                     </div>
                     <div className="flex mt-5 w-full bg-gray-50 rounded border border-solid border-neutral-300 min-h-[56px]">
                       <div className="overflow-hidden flex-1 shrink px-4 py-3.5 text-rose-500 min-w-[240px] max-md:pr-5">
