@@ -71,8 +71,10 @@ app.post('/searches', async (req, res) => {
 
 app.post('/vote', async (req, res) => {
   let totalVotes = 0;
-
+  console.log('/vote:', req.body);
+  
   try {
+    // req.body.vote_ip_address = req.ip;
     totalVotes = await postVote({ ...req.body });
   } catch (e) {
     console.error(e);

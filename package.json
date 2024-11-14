@@ -34,6 +34,7 @@
     "react-modern-drawer": "^1.4.0",
     "react-router-dom": "^6.27.0",
     "react-scripts": "^5.0.1",
+    "react-tooltip": "^5.28.0",
     "serpapi": "^2.1.0"
   },
   "devDependencies": {
