@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuSection from './MenuSection';
+import MenuLink from './MenuLink';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
@@ -28,7 +29,18 @@ const menuSections = [
       items: [],
       iconSrc: ''
     }
-  ];
+];
+  
+const menuLinks = [
+  { to: "/search", title: "Search" },
+  { to: "/archive", title: "Archive" },
+  { to: "editorial", title: "Editorial" },
+  { to: "/about", title: "FIREWALL Cafe" },
+  { to: "/events", title: "Events" },
+  { to: "/press", title: "Press" },
+  { to: "/support", title: "Partner with us" },
+  { to: "/contact", title: "Contact" },
+];
   
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +56,7 @@ function Navigation() {
     top: '0px',
     right: '0px',
     transform: 'translate3d(100 %, 0px, 0px)',
-    width: '450px',
+    width: 'none',
     height: '100vh'
   }
   return (
@@ -62,7 +74,7 @@ function Navigation() {
             open={isOpen}
             onClose={toggleDrawer}
             direction='right'
-            className='navDrawer w-1/4'
+            className='navDrawer w-1/2'
             style={drawerStyle}
         >
           <nav className="flex flex-col absolute z-10 text-2xl w-full text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
@@ -80,13 +92,16 @@ function Navigation() {
                 />
               </button>
             </div>
-            {menuSections.map((section, index) => (
+            {/* {menuSections.map((section, index) => (
               <MenuSection
                 key={index}
                 title={section.title}
                 items={section.items}
                 iconSrc={section.iconSrc}
               />
+            ))} */}
+            {menuLinks.map((link, index) => (
+              <MenuLink key={index} link={link} toggleDrawer={toggleDrawer} />
             ))}
           </nav>
         </Drawer>
