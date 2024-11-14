@@ -6,20 +6,20 @@ function SubscribeSection() {
 
   return (
     <div className="flex flex-col px-24 justify-center items-start bg-black self-stretch w-1/2 max-md:max-w-full">
-      <div className="flex flex-col max-w-full bg-white border-0 border-white border-solid shadow-sm">
+      <div className="flex flex-col max-w-full border-0 border-white border-solid shadow-sm">
         <div className="flex flex-col flex-wrap w-full shadow-sm">
-          <div className="flex flex-col mt-5 w-full text-xl">
-            <div className="">
+          <div className="flex flex-col mt-5 w-full text-xl text-white">
+            <div>
               <div id="mc_embed_shell">
                 <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
                 <div id="mc_embed_signup">
-                  <form action="https://joyceyujeanlee.us12.list-manage.com/subscribe/post?u=9a0599467edb506239b6ed989&amp;id=a007452c99&amp;f_id=0037bce2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_self">
+                  <form action="https://joyceyujeanlee.us12.list-manage.com/subscribe/post?u=9a0599467edb506239b6ed989&amp;id=a007452c99&amp;f_id=0037bce2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate bg-black" target="_self">
                     <div id="mc_embed_signup_scroll" className="relative">
                       <h2 className="text-2xl">Subscribe 订阅</h2>
                       <div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
                       <div className="mc-field-group">
                         <label for="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
-                        <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" />
+                        <input type="email" name="EMAIL" data-lpignore='true' className="required email" id="mce-EMAIL" />
                         <span id="mce-EMAIL-HELPERTEXT" className="helper_text">Get newsletter updates about upcoming events and information</span>
                       </div>
                       <div hidden="">
