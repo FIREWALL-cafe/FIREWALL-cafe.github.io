@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <main className="flex overflow-hidden flex-col bg-white min-h-[200px]">
       <GetInTouch />
-      <div className="flex overflow-hidden flex-wrap w-full max-md:max-w-full px-10">
+      <div className="flex overflow-hidden flex-wrap w-full max-md:max-w-full">
         <SubscribeSection />
         <SocialFollow />
       </div>
