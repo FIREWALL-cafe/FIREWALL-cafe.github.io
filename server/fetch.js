@@ -114,8 +114,8 @@ const getTranslation = async (query, langFrom, langTo) => {
   return translated;
 }
 
-const postVote = async ({ meta_key, post_id, search_id }) => {
-  const url = `${serverConfig.apiUrl}vote`;
+const postVote = async ({ meta_key, post_id, search_id, vote_client_name }) => {
+  const url = `${serverConfig.apiUrl}createVote`;
   const metaKeyToId = {
     votes_censored: 1,
     votes_uncensored: 2,
@@ -126,15 +126,18 @@ const postVote = async ({ meta_key, post_id, search_id }) => {
     votes_nsfw: 7,
   }
 
-  const { data: apiData } = await axios.post(
-    url,
-    {
-      vote_id: metaKeyToId[meta_key],
-      search_id,
-      vote_timestamp: Date.now(),
-      vote_client_name: serverConfig.clientName,
-    }
-  );
+  const voteData = {
+    vote_id: metaKeyToId[meta_key],
+    search_id,
+    vote_timestamp: Date.now(),
+    vote_client_name: vote_client_name,
+    secret: serverConfig.apiSecret,
+    vote_ip_address: '127.0.0.1',
+  }
+
+  console.log('vote data', voteData);
+
+  const { data } = await axios.post(url, voteData);
 
   // const { data: wpData } = await axios.post(
   //   'https://firewallcafe.com/wp-admin/admin-ajax.php',
@@ -146,9 +149,9 @@ const postVote = async ({ meta_key, post_id, search_id }) => {
   //   })
   // );
 
-  console.log('wp data', wpData);
+  console.log('vote successful', data);
 
-  return apiData;
+  return data;
 }
 
 const transformImgData = imgArray => JSON.stringify(imgArray.map(img => ({ href: img, src: img })));
@@ -209,7 +212,7 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, translation 
   //     }
   // });
 
-  const data = 'empty';
+  const data = { }
   console.log('archive action complete:', data);
 
   /**

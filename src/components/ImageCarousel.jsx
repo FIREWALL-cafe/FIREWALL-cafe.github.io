@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { Tooltip } from 'react-tooltip';
+
 import googleLogo from '../assets/icons/Google-logo_long.svg';
 import baiduLogo from '../assets/icons/baidu_logo_long.svg';
 import ArrowLeft from "../assets/icons/arrow_left_alt.svg";
 import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+import QuestionBaidu from '../assets/icons/question_red.svg';
+import QuestionGoogle from '../assets/icons/question.svg';
 
 function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +27,18 @@ function ImageCarousel({ images }) {
     <div className="">
       <div className="flex flex-wrap mx-4 mb-4">
         <div className="relative w-1/2 pb-5 border-r border-red-300">
-          <div><img src={googleLogo} /></div>
+          <div className="flex flex-wrap justify-between">
+            <img src={googleLogo} />
+            <img
+              src={QuestionGoogle}
+              alt="Google results"
+              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square mr-5"
+              data-tooltip-id="tooltip-google"
+              data-tooltip-content='Results from US based Google images.'
+              data-tooltip-place="top"
+            />
+            <Tooltip id="tooltip-google" />
+          </div>
           <div className="flex max-h-[400px] justify-center items-center">
             <img
             src={images.googleResults[currentIndex]}
@@ -38,7 +53,18 @@ function ImageCarousel({ images }) {
           </button>
         </div>
         <div className="relative w-1/2 px-4">
-          <div><img src={baiduLogo} className="pt-1" /></div>
+          <div className="flex flex-wrap justify-between">
+            <img src={baiduLogo} className="pt-1" />
+            <img
+              src={QuestionBaidu}
+              alt="Baidu results"
+              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+              data-tooltip-id="tooltip-baidu"
+              data-tooltip-content='Results from China based Baidu images.'
+              data-tooltip-place="top"
+            />
+            <Tooltip id="tooltip-baidu" />
+          </div>
           <div className="flex justify-center items-center">
             <img
               src={images.baiduResults[currentIndex]}
