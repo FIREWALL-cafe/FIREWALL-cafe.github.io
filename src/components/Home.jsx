@@ -18,9 +18,9 @@ function Home() {
             <AboutSection />
             <InfoSection />
             <SearchTrendsSection />
-            <NewsletterSection image={image} />
           </div>
         </div>
+      <NewsletterSection image={image} />
     </main>
   );
 }
