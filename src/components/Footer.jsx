@@ -16,9 +16,38 @@ function Footer() {
           <Link to="/"><img src={logo} alt="Logo" className="object-contain self-stretch my-auto" /></Link>
         </div>
         <div className="flex gap-10 items-center">
+          <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
+            <Link to="/about" className="gap-1 self-stretch">
+              About FIREWALL
+            </Link>
+            <Link to="/press" className="mt-3.5">
+              Press
+            </Link>
+            <Link to="/events" className="mt-3.5">
+              Events
+            </Link>
+          </div>
+          <div className="flex overflow-hidden flex-col items-start text-xl text-red-600 rounded-lg">
+            <Link to="/search" className="gap-1 self-stretch">
+              Search
+            </Link>
+            <Link to="/archive" className="mt-4 gap-1 self-stretch">
+              Search Archive
+            </Link>
+            <Link to="/editorial" className="mt-4 text-xl text-center text-red-600">
+              Editorial
+            </Link>
+          </div>
           <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
-            <div className="flex gap-2 items-center"></div>
-            <div className="flex gap-2 items-center">
+            <div className="flex flex-col gap-2">
+              <Link to="/support" className="text-xl text-red-600">
+                Partner with us
+              </Link>
+              <Link to="/contact" className="mt-2 text-xl text-red-600">
+                Contact
+              </Link>
+            </div>
+            <div className="flex gap-2 mt-2 items-center">
               <Link to="https://www.facebook.com/firewallcafe" aria-label="Facebook">
                 <img
                   src={Facebook}
@@ -41,22 +70,6 @@ function Footer() {
                 />
               </Link>
             </div>
-          </div>
-          <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
-            <Link to="/about" className="gap-1 self-stretch">
-              About FIREWALL
-            </Link>
-            <Link to="/press" className="mt-3.5">
-              Press
-            </Link>
-          </div>
-          <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
-            <Link to="/archive" className="gap-1 self-stretch">
-              Search Archive
-            </Link>
-            <Link to="/contact" className="mt-4 text-xl text-center text-red-600">
-              Contact
-            </Link>
           </div>
         </div>
       </div>
