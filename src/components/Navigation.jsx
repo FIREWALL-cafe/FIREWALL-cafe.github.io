@@ -77,7 +77,7 @@ function Navigation() {
             className='navDrawer w-1/2'
             style={drawerStyle}
         >
-          <nav className="flex flex-col absolute z-10 text-2xl w-full text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
+          <nav className="flex flex-col absolute z-10 text-xl w-full text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
             <div className="flex self-end">
               <button
                 className="overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 rounded border border-black border-solid min-h-[36px]"
