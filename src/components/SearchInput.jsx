@@ -45,7 +45,7 @@ function SearchInput({ searchMode }) {
       navigate('/search?q=' + query);
     }
 
-    console.log('submitting search');
+    console.log('submitting search for:', query);
     const config = {
           method: 'post',
           headers: { 

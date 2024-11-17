@@ -2,7 +2,7 @@ import React from 'react';
 import ImageCarousel from './ImageCarousel';
 import VotingSection from './VotingSection';
   
-const displayVoting = true;
+const displayVoting = false;
 
 function SearchCompare({ images, query, searchId }) {
   return (

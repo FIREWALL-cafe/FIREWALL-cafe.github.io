@@ -21,7 +21,7 @@ function About() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap gap-10 justify-center mt-10 w-full max-md:mt-10 max-md:max-w-full">
+            <div className="flex flex-wrap px-32 gap-10 justify-center mt-10 w-full max-md:mt-10 max-md:max-w-full">
               <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
                 <p className="text-xl max-md:max-w-full mb-4">
                   FIREWALL Cafe exists to advocate for freedom of speech for the netizens around the world.
@@ -38,15 +38,15 @@ function About() {
                   The repercussions propelled the art project on an international exhibition tour, setting new stages for dialogue and understanding across borders.
                 </p>
               </div>
-              <div className="flex flex-col justify-center items-center min-w-[240px] w-[516px] max-md:max-w-full">
-                <img src={AboutHero} alt="Illustration related to the topic" className="object-contain max-w-full aspect-[1.07]" />
+              <div className="flex flex-col mt-5 min-w-[240px] w-[516px] max-md:max-w-full">
+                <img src={AboutHero} alt="Illustration related to the topic" className="object-top max-w-full" />
               </div>
             </div>
             <Artist />
             <Supporters />
-            <CallToAction />
         </div>
       </div>
+      <CallToAction />
     </main>
   );
 }

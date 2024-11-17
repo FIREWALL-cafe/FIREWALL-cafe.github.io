@@ -4,7 +4,7 @@ import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function CallToAction() {
   return (
-    <section className="flex flex-col items-center px-16 py-16 w-full text-xl bg-rose-100 max-md:px-5 max-md:py-24 max-md:max-w-full">
+    <section className="flex flex-col items-center py-16 w-full text-xl bg-rose-100 max-md:py-24 max-md:max-w-full">
       <div className="chinese flex flex-col items-center max-w-full">
         <div className="flex flex-wrap gap-5 items-center max-md:max-w-full">
           <h2 className="flex flex-col items-center mt-6 text-5xl font-medium leading-none max-md:max-w-full max-md:text-4xl">
