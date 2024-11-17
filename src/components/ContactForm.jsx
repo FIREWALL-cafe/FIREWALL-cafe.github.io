@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-const [displayAlert, setDisplayAlert] = useState(false);
-const [alertMessage, setAlertMessage] = useState('');
 
 const ContactForm = () => {
+  const [displayAlert, setDisplayAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
