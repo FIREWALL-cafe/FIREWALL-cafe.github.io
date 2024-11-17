@@ -22,7 +22,7 @@ function MenuLink({ link, toggleDrawer }) {
           />
         )}
       </div> */}
-      <div className="mt-4">
+      <div className="mt-2">
         <Link to={link.to} onClick={handleClick} className="text-medium">{link.title}</Link>
       </div>
     </section>

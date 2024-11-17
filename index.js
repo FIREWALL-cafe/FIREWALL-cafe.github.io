@@ -2,7 +2,8 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchesByTerm, getTranslation, postVote, saveImages } = require('./server/fetch');
-var spreadsheetServiceKey = require('./service-key.json');
+const postmark = require('postmark');
+const serverConfig = require('./server/config');
 
 const app = express();
 
@@ -81,6 +82,27 @@ app.post('/vote', async (req, res) => {
   }
 
   res.json({ meta_key: req.body.meta_key, totalVotes });
+});
+
+app.post('/send-email', async (req, res) => {
+  console.log('/send-email: trying!', req.body);
+  const { to, subject, text } = req.body;
+  const client = new postmark.ServerClient(serverConfig.postmarkApiKey);
+
+  try {
+    await client.sendEmail({
+      From: 'info@firewallcafe.com',
+      To: to,
+      Subject: subject,
+      TextBody: text
+    });
+
+    console.log('Email sent successfully:', { to, subject, text });
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
 });
 
 const PORT = process.env.PORT || 8080;

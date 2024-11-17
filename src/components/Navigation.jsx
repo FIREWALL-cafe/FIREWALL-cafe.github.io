@@ -35,10 +35,10 @@ const menuLinks = [
   { to: "/search", title: "Search" },
   { to: "/archive", title: "Archive" },
   { to: "editorial", title: "Editorial" },
-  { to: "/about", title: "FIREWALL Cafe" },
+  { to: "/about", title: "About" },
   { to: "/events", title: "Events" },
   { to: "/press", title: "Press" },
-  { to: "/support", title: "Partner with us" },
+  { to: "/support", title: "Support" },
   { to: "/contact", title: "Contact" },
 ];
   
@@ -74,7 +74,7 @@ function Navigation() {
             open={isOpen}
             onClose={toggleDrawer}
             direction='right'
-            className='navDrawer w-1/2'
+            className='navDrawer w-1/4'
             style={drawerStyle}
         >
           <nav className="flex flex-col absolute z-10 text-xl w-full text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
