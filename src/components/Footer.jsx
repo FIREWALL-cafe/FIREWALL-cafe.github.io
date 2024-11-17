@@ -18,7 +18,7 @@ function Footer() {
         <div className="flex gap-10 items-center">
           <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
             <Link to="/about" className="gap-1 self-stretch">
-              About FIREWALL
+              About
             </Link>
             <Link to="/press" className="mt-3.5">
               Press
