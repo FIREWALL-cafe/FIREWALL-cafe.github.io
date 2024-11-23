@@ -48,8 +48,7 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    // await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, translation: translatedQuery })
-    const { searchId } = { searchId: 1 };
+    const { searchId } = await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, translation: translatedQuery })
 
     data.searchId = searchId;
     data.googleResults = results[0];
@@ -75,7 +74,7 @@ app.post('/vote', async (req, res) => {
   console.log('/vote:', req.body);
   
   try {
-    // req.body.vote_ip_address = req.ip;
+    req.body.vote_ip_address = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     totalVotes = await postVote({ ...req.body });
   } catch (e) {
     console.error(e);

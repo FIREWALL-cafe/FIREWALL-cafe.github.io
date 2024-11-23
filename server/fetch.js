@@ -114,7 +114,7 @@ const getTranslation = async (query, langFrom, langTo) => {
   return translated;
 }
 
-const postVote = async ({ meta_key, post_id, search_id, vote_client_name }) => {
+const postVote = async ({ meta_key, post_id, search_id, vote_client_name, vote_ip_address }) => {
   const url = `${serverConfig.apiUrl}createVote`;
   const metaKeyToId = {
     votes_censored: 1,
@@ -132,7 +132,7 @@ const postVote = async ({ meta_key, post_id, search_id, vote_client_name }) => {
     vote_timestamp: Date.now(),
     vote_client_name: vote_client_name,
     secret: serverConfig.apiSecret,
-    vote_ip_address: '127.0.0.1',
+    vote_ip_address: vote_ip_address,
   }
 
   console.log('vote data', voteData);
@@ -169,18 +169,22 @@ const submitImagesToWordpress = async (data) => {
 
 const getSearchesByTerm = async (query) => {
   console.log('searches by term: starting: ', query);
-  // const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
+  const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
 
-  const url = `https://firewallcafe.com/wp-json/wp/v2/search-result?per_page=25&page=1&search=${query}`;
+  // const url = `https://firewallcafe.com/wp-json/wp/v2/search-result?per_page=25&page=1&search=${query}`;
 
   const { data } = await axios.get(url);
 
-  // console.log('searches by term: data', data[0]);
+  console.log('searches by term: data', data);
 
   return data;
 }
 
 const saveImages = async ({ query, google, baidu, langTo, langFrom, translation }) => {
+  console.log('saving images for', query);
+  console.log('- google images', google);
+  console.log('- baidu images', baidu);
+  
   const url = `${serverConfig.apiUrl}saveSearchAndImages`;
   const imageData = {
     timestamp: Date.now(),
@@ -197,22 +201,21 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, translation 
     lang_name: langFrom === 'en' ? 'English' : langFrom,
     banned: baidu.length === 0, // TODO: find a better way to identify banned terms
     sensitive: false,
-    google_images: transformImgData(google), // transform array of url strings to objects
-    baidu_images: transformImgData(baidu),
+    google_images: google, // transform array of url strings to objects
+    baidu_images: baidu,
   };
 
   // submitImagesToWordpress(imageData);
 
-  // const { data } = await axios.post(
-  //   url,
-  //   imageData,
-  //   {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     }
-  // });
+  const { data } = await axios.post(
+    url,
+    imageData,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+  });
 
-  const data = { }
   console.log('archive action complete:', data);
 
   /**
