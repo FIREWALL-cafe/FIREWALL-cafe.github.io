@@ -1,4 +1,5 @@
-// const axios = require('axios')
+const axios = require('axios');
+const cheerio = require('cheerio');
 const { query } = require('express');
 const config = require('./config.js')
 const {pool,secret} = config
@@ -327,6 +328,7 @@ const getVoteByVoteID = (request, response) => {
 	})
 }
 
+// GET: Searches by vote category
 const getSearchesByCategory = (request, response, category, title) => {
     const query = `SELECT s.*, COUNT(*) as "votes"
         FROM searches s INNER JOIN have_votes hv on s.search_id = hv.search_id
@@ -662,7 +664,9 @@ const getImagesOnlyWTF = (request, response) => {
 /****************/
 
 const checkSecret = (request, response, next) => {
+    console.log("checking secret");
     if(request.body.secret !== secret) {
+        console.log("wrong secret")
         response.status(401).json("wrong secret")
     } else {
         next()
@@ -749,8 +753,8 @@ const deleteSearch = async (request, response) => {
 
 //POST: createVote -- Add searches
 const createVote = (request, response) => {
-	const {vote_id, search_id, vote_timestamp, vote_client_name, vote_ip_address} = request.body
-    console.log("createVote:", vote_id, search_id, vote_client_name, vote_ip_address)
+	const { vote_id, search_id, vote_timestamp, vote_client_name, vote_ip_address } = request.body
+    console.log("createVote:", vote_id, search_id, vote_timestamp, vote_client_name, vote_ip_address)
 
     const query = 'INSERT INTO have_votes (vote_id, search_id, vote_timestamp, vote_client_name, vote_ip_address) VALUES ($1, $2, $3, $4, $5)';
     const values = [vote_id, search_id, vote_timestamp, vote_client_name, vote_ip_address];
@@ -864,18 +868,14 @@ const saveImages = (request, response, searchId) => {
         baidu_images: baiduImagesString
     } = request.body
 
-    if(!searchId) {
-        return response.status(400).json("searchId not found")
+    if (!searchId || !search_engine) {
+        response.status(400).json("Requires search id and search_engine.")
+        return;
     }
 
     const images = googleImagesString
         ? JSON.parse(googleImagesString)
         : JSON.parse(baiduImagesString);
-
-    if (!searchId || !search_engine) {
-        response.status(400).json("Need a search id and search_engine.")
-        return;
-    }
 
     if (!images) {
         response.status(400).json("No images provided.")
@@ -972,6 +972,14 @@ const saveImagesToWordpress = async (request, response) => {
     response.sendStatus(200);
 };
 
+// Find image results in Google Image result response and return the first 10 results
+const getGoogleImageSrcs = (results) => {
+    const html = cheerio.load(results);
+    const imgs = html('.DS1iW').toArray().slice(10);
+    // return a stringified array of objects containing href and src
+    return JSON.stringify(imgs.map((img) => ({ href: '', src: img.attribs.src })));
+};
+
 const saveSearchAndImages = async (request, response) => {
     const {
         timestamp,
@@ -990,8 +998,22 @@ const saveSearchAndImages = async (request, response) => {
         baidu_images,
         banned,
         sensitive,
+        queryURL,
     } = request.body;
     console.log(`[saveSearchAndImages for ${search_engine}]`);
+
+    let fetchedGoogleImgs = null;
+    if (queryURL) {
+        try {
+            const response = await axios.get(queryURL)
+            fetchedGoogleImgs = getGoogleImageSrcs(response.data);
+            console.log(fetchedGoogleImgs)
+          } catch (error) {
+            console.log(error);
+            response.status(500).json(error);
+            return;
+          }
+    }
 
     const searchQuery = `INSERT INTO searches (
         search_timestamp,
@@ -1032,7 +1054,8 @@ const saveSearchAndImages = async (request, response) => {
     console.log('searchId', searchId)
 
     console.log(`[saving images for ${search_engine}...]`);
-    const imagePromises = saveImages(request, response, searchId);
+    const saveImageParam = fetchedGoogleImgs ? { body: { ...request.body, google_images: fetchedGoogleImgs } } : request;
+    const imagePromises = saveImages(saveImageParam, response, searchId);
     let imageResults;
 
     try {
@@ -1067,7 +1090,7 @@ const saveSearchAndImages = async (request, response) => {
     //     return;
     // }
 
-    response.status(201).json(imageResults);
+    response.status(201).json({ results: imageResults, googleImages: fetchedGoogleImgs, searchId });
 };
 
 module.exports = {
@@ -1116,3 +1139,4 @@ module.exports = {
     saveSearchAndImages,
     saveImagesToWordpress,
 }
+
