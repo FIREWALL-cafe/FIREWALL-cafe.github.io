@@ -8,8 +8,21 @@ import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 import QuestionBaidu from '../assets/icons/question_red.svg';
 import QuestionGoogle from '../assets/icons/question.svg';
 
+import BrokenImage from '../assets/icons/broken-image_grayscale.png';
+
 function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [status, setStatus] = useState("loading");
+
+  const handleOnLoad = (e) => {
+    e.target.src = e.target.src;
+    e.target.setAttribute("src", e.target.src);
+    setStatus("fulfilled");
+  };
+
+  const handleOnError = (e) => {
+    e.target.src = BrokenImage;
+  };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => 
@@ -41,8 +54,10 @@ function ImageCarousel({ images }) {
           </div>
           <div className="flex max-h-[400px] justify-center items-center">
             <img
-            src={images.googleResults[currentIndex]}
-            className="object-cover aspect-square max-h-[320px] max-md:max-w-full" />
+              src={images.googleResults[currentIndex]}
+              className="object-cover aspect-square max-h-[320px] max-md:max-w-full"
+              onError={handleOnError}
+             />
           </div>
           <button
             onClick={goToPrevious}
@@ -68,7 +83,9 @@ function ImageCarousel({ images }) {
           <div className="flex justify-center items-center">
             <img
               src={images.baiduResults[currentIndex]}
-              className="object-cover aspect-square max-h-[320px]" />
+              className="object-cover aspect-square max-h-[320px]"
+              onError={handleOnError}
+            />
           </div>
           <button
             onClick={goToNext}
@@ -83,7 +100,11 @@ function ImageCarousel({ images }) {
             {images.googleResults.map((image, index) => (
               <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-blue-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
-                  <img src={image} className={`object-cover aspect-square rounded-lg`} />
+                  <img
+                    src={image}
+                    className={`object-cover aspect-square rounded-lg`}
+                    onError={handleOnError}
+                  />
                 </button>
               </div>
             ))}
@@ -92,7 +113,11 @@ function ImageCarousel({ images }) {
             {images.baiduResults.map((image, index) => (
               <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-red-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
-                  <img src={image} className="object-cover aspect-square rounded-lg" />
+                  <img
+                    src={image}
+                    className={`object-cover aspect-square rounded-lg`}
+                    onError={handleOnError}
+                  />
                 </button>
               </div>
             ))}
