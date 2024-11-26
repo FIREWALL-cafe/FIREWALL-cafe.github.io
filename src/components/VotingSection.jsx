@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
+import useCookie from '../useCookie';
 
 import Archive from '../assets/icons/Archive_grayscale.png';
 import Question from '../assets/icons/question.svg';
@@ -51,9 +52,13 @@ meta_key: votes_uncensored
 post_id: 310504
 security: 83376c1e81
 */
-function VoteButton({ imgSrc, voteId, setVote, isDisabled, setDisabled, currentSearchId })  {
-  useEffect(() => setDisabled(false), [currentSearchId])
-
+function VoteButton({ voteCategory, searchId, setVote, isDisabled, setDisabled })  {
+  useEffect(() => setDisabled(false), [searchId]);
+  const [username, setUsername, deleteUsername] = useCookie("username");
+  
+  const imgSrc = voteMeta[voteCategory].img;
+  const voteId = voteMeta[voteCategory].name;
+  
   const handleVote = async voteId => {
     // Disable vote buttons until another search has completed
     setDisabled(true);
@@ -66,8 +71,7 @@ function VoteButton({ imgSrc, voteId, setVote, isDisabled, setDisabled, currentS
           'Accept': 'application/json',
           'Content-Type': 'application/json' 
         },
-        // body: JSON.stringify({ meta_key: voteId, post_id: 310504 }),
-        body: JSON.stringify({ meta_key: convertToMetaKey(voteId), search_id: 364572, vote_client_name: 'Bob' }),
+        body: JSON.stringify({ meta_key: convertToMetaKey(voteId), search_id: searchId, vote_client_name: username }),
       });
 
       console.log('handleVote:', data);
@@ -106,25 +110,25 @@ function VotingSection({ query, searchId }) {
             </div>
           </div>
           <div className="flex flex-wrap gap-4 items-start mt-8 w-full rounded-md max-md:max-w-full">
-            <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]">
+            <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px] hover:bg-sky-700">
               <div className="flex gap-2.5 items-center w-full h-9">
-                <VoteButton imgSrc={voteMeta.votes_censored.img} voteId={voteMeta.votes_censored.name} setVote={() => {}} isDisabled={false} setDisabled={() => {}} currentSearchId={searchId} />
+                <VoteButton voteCategory="votes_censored" setVote={() => {}} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
               </div>
               <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-black">
                 Censored
               </div>
             </div>
-            <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]">
+            <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]  hover:bg-sky-700">
               <div className="flex gap-2.5 items-center w-full h-9">
-                <img src={Visibility} className="object-contain self-stretch my-auto w-12 aspect-square" alt="" />
+                <VoteButton voteCategory="votes_uncensored" setVote={() => {}} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
               </div>
               <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-black">
                 Not censored
               </div>
             </div>
-            <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]">
+            <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]  hover:bg-sky-700">
               <div className="flex gap-2.5 items-center w-full h-9">
-                <img src={LostInTranslation} className="object-contain self-stretch my-auto w-12 aspect-square" alt="" />
+                <VoteButton voteCategory="votes_lost_in_translation" setVote={() => {}} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
               </div>
               <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-black">
                 Lost in translation
@@ -149,7 +153,7 @@ function VotingSection({ query, searchId }) {
               </div>
             </div>
             <div className="flex gap-4 items-start mt-8 w-full rounded-md">
-              <div className="flex flex-col justify-between p-3 rounded border border-solid bg-slate-200 border-zinc-400 min-h-[124px]">
+              <div className={`flex flex-col justify-between p-3 rounded border border-solid bg-slate-200 border-zinc-400 min-h-[124px]`}>
                 <div className="flex gap-2.5 items-center w-full h-9">
                   <img src={ThumbDown} className="object-contain self-stretch my-auto w-12 aspect-square" alt="" />
                 </div>

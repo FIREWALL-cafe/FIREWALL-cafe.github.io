@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 
-.vote__button:hover:not(:disabled) {
+.vote__button_container:hover:not(:disabled) {
   border: 3px solid #e60011;
 }
 
