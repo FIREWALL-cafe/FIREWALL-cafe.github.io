@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchesByTerm, getTranslation, postVote, saveImages } = require('./server/fetch');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getTranslation, postVote, saveImages } = require('./server/fetch');
 const postmark = require('postmark');
 const serverConfig = require('./server/config');
 
@@ -29,10 +29,20 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
+app.post("/searches/:search_id/images", async (req, res) => {
+  console.log('/searches/:search_id/images:', req.params);
+  console.log("trying to get images for search id", req.params.search_id);
+  const { search_id } = req.params;
+
+  const data = await getSearchImages(search_id);
+
+  res.json(data);
+});
+
 app.post('/images', async (req, res) => {
   const data = {};
   let langTo;
-  const { query } = req.body;
+  const { query, search_client_name } = req.body;
   console.log('query', query)
 
   try {
@@ -48,7 +58,7 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    const { searchId } = await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, translation: translatedQuery })
+    const { searchId } = await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, search_client_name, translation: translatedQuery })
 
     data.searchId = searchId;
     data.googleResults = results[0];

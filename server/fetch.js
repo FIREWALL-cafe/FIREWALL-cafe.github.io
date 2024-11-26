@@ -167,6 +167,15 @@ const submitImagesToWordpress = async (data) => {
   return { data: responseData, response };
 }
 
+const getSearchImages = async (search_id) => {
+  console.log('search images for', search_id);
+
+  const url = `${serverConfig.apiUrl}images/search_id/${search_id}`;
+  const { data } = await axios.get(url);
+
+  return data;
+}
+
 const getSearchesByTerm = async (query) => {
   console.log('searches by term: starting: ', query);
   const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
@@ -175,12 +184,12 @@ const getSearchesByTerm = async (query) => {
 
   const { data } = await axios.get(url);
 
-  console.log('searches by term: data', data);
+  console.log('searches by term: data', data.length);
 
   return data;
 }
 
-const saveImages = async ({ query, google, baidu, langTo, langFrom, translation }) => {
+const saveImages = async ({ query, google, baidu, langTo, langFrom, search_client_name, translation }) => {
   console.log('saving images for', query);
   console.log('- google images', google);
   console.log('- baidu images', baidu);
@@ -189,7 +198,7 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, translation 
   const imageData = {
     timestamp: Date.now(),
     location: serverConfig.location,
-    client: serverConfig.clientName,
+    search_client_name: search_client_name,
     secret: serverConfig.apiSecret,
     search_engine: 'google',
     search: query,
@@ -217,12 +226,6 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, translation 
   });
 
   console.log('archive action complete:', data);
-
-  /**
-   * TODO:
-   * - save vote to postgres
-   * - update saveSearchAndImage to return searchId
-   */
   
   return data;
 }
@@ -231,6 +234,7 @@ module.exports = {
   getGoogleImages,
   getBaiduImages,
   getDetectedLanguage,
+  getSearchImages,
   getSearchesByTerm,
   getTranslation,
   postVote,
