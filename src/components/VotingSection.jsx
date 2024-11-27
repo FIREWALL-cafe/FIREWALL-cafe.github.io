@@ -178,7 +178,7 @@ function VotingSection({ query, searchId }) {
           </div>
         </div>
         <div className="flex flex-wrap gap-10 items-center px-8 py-5 w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
-          <button disabled="true" className="gap-1 px-4 my-auto text-lg rounded border border-solid bg-slate-200 border-zinc-400 min-h-[56px]">
+          <button disabled={true} className="gap-1 px-4 my-auto text-lg rounded border border-solid bg-slate-200 border-zinc-400 min-h-[56px]">
             Submit
           </button>
           <div className="flex gap-6 items-center self-stretch my-auto text-xl min-w-[240px] max-md:max-w-full">

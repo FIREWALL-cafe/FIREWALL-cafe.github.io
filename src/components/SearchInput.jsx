@@ -35,8 +35,28 @@ function SearchInput({ searchMode }) {
         handleSubmit(); 
         ranonce = true;
       }
+    } else if (searchMode === 'archive' && location.pathname === '/archive') {
+      loadDefaultResults();
     }
   }, [searchParams]);
+
+  const loadDefaultResults = async () => {
+    console.log('fetching default archive results');
+    const config = {
+        method: 'post',
+        headers: { 
+          'Accept': 'application/json' ,
+          'Content-Type': 'application/json' 
+        },
+    };
+    const response = await fetch(`/searches?page=${1}&page_size=${10}`, config);
+    const results = await response.json();
+    console.log('results', results);
+    setSearchId("archived searches");
+    setarchiveResults(results);
+  }
+    
+
 
   const handleSubmit = async () => {
     setLoading(true);

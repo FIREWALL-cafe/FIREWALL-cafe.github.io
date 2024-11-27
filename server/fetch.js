@@ -184,7 +184,17 @@ const getSearchesByTerm = async (query) => {
 
   const { data } = await axios.get(url);
 
-  console.log('searches by term: data', data.length);
+  console.log('searches by term: data', data[0]);
+
+  return data;
+}
+
+const getSearchesFilter = async (filterOptions) => {
+  console.log('searches by filter: starting: ', filterOptions);
+  const url = `${serverConfig.apiUrl}searches/filter?${querystring.stringify(filterOptions)}`;
+
+  const { data } = await axios.get(url);
+  console.log('searches by filter: data', data.length);
 
   return data;
 }
@@ -236,6 +246,7 @@ module.exports = {
   getDetectedLanguage,
   getSearchImages,
   getSearchesByTerm,
+  getSearchesFilter,
   getTranslation,
   postVote,
   saveImages,

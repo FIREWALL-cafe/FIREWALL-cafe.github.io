@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getTranslation, postVote, saveImages } = require('./server/fetch');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
 const postmark = require('postmark');
 const serverConfig = require('./server/config');
 
@@ -72,9 +72,12 @@ app.post('/images', async (req, res) => {
 });
 
 app.post('/searches', async (req, res) => {
-  console.log('/searches:', req.query);
   const { query } = req.query;
-  const data = await getSearchesByTerm(query);
+  const filterOptions = req.query;
+
+  console.log('/searches params:', req.query);
+  console.log('/searches body:', req.body);
+  const data =  query ? await getSearchesByTerm(query) : await getSearchesFilter(filterOptions);
 
   res.json(data);
 });
