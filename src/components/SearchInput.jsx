@@ -25,6 +25,13 @@ function SearchInput({ searchMode }) {
   
   const navigate = useNavigate();
   const location = useLocation();
+  const urlConfig = {
+      method: 'post',
+      headers: { 
+        'Accept': 'application/json' ,
+        'Content-Type': 'application/json' 
+      },
+  };
 
   var ranonce = false;
   useEffect(() => {
@@ -42,15 +49,9 @@ function SearchInput({ searchMode }) {
 
   const loadDefaultResults = async () => {
     console.log('fetching default archive results');
-    const config = {
-        method: 'post',
-        headers: { 
-          'Accept': 'application/json' ,
-          'Content-Type': 'application/json' 
-        },
-    };
-    const response = await fetch(`/searches?page=${1}&page_size=${10}`, config);
+    const response = await fetch(`/searches?page=${1}&page_size=${10}`, urlConfig);
     const results = await response.json();
+
     console.log('results', results);
     setSearchId("archived searches");
     setarchiveResults(results);
@@ -67,26 +68,19 @@ function SearchInput({ searchMode }) {
     }
 
     console.log('submitting search for:', query);
-    const config = {
-          method: 'post',
-          headers: { 
-            'Accept': 'application/json' ,
-            'Content-Type': 'application/json' 
-          },
-          body: JSON.stringify({ query, search_client_name: username }),
-    };
+    urlConfig.body = JSON.stringify({ query, search_client_name: username });
     setResults({ googleResults: [], baiduResults: [] });
 
     try {
       if (searchMode === 'archive') {
         setarchiveResults([]);
-        const response = await fetch(`/searches?query=${query}`, config);
+        const response = await fetch(`/searches?query=${query}`, urlConfig);
         setSearchId("archived searches");
         const results = await response.json();
         console.log('results', results);
         setarchiveResults(results);
       } else {
-        const response = await fetch(`/images`, config);
+        const response = await fetch(`/images`, urlConfig);
         const { googleResults, baiduResults, translation, searchId } = await response.json();
         setSearchId(searchId);
         setResults({ googleResults, baiduResults });
