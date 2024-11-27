@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
 
-const QueryItem = ({ search_id, search_term_initial, search_term_translation, search_location, search_timestamp, image_hrefs }) => {
+const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp }) => {
   const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
   const humanize = str => str.split('_').map(capitalize).join(' ');
   const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
@@ -20,10 +20,13 @@ const QueryItem = ({ search_id, search_term_initial, search_term_translation, se
 
   // Load images for search id
   const loadGallery = async () => {
-    console.log('loadGallery:', `/searches/${search_id}/images`);
-    const response = await fetch(`/searches/${search_id}/images`, { method: 'post' });
+    const url = `/searches/${search_id}/images`;
+
+    console.log('loadGallery:', url);
+    const response = await fetch(url, { method: 'post' });
     const results = await response.json();
-    const [ googleResults, baiduResults ] = [ results.filter(result => result.image_search_engine === 'google').map(result => result.image_href).slice(0, 9), results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9) ];
+    const [googleResults, baiduResults] = [results.filter(result => result.image_search_engine === 'google').map(result => result.image_href).slice(0, 9), results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9)];
+    
     console.log('gallery results', results);
     setImageResults({ googleResults: googleResults, baiduResults: baiduResults });
   };
@@ -33,7 +36,7 @@ const QueryItem = ({ search_id, search_term_initial, search_term_translation, se
       <div className="flex flex-wrap gap-4 py-2 w-full text-xl text-black min-h-[48px] max-md:max-w-full" onClick={toggleDropdown}>
         <div className="flex gap-1 items-center my-auto w-16 whitespace-nowrap">
           <img src={VoteIcon} alt="Votes" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
-          <div className="self-stretch my-auto">???</div>
+          <div className="self-stretch my-auto">{total_votes}</div>
         </div>
         <div className="flex flex-1 shrink gap-1 items-center h-full basis-0 min-w-[240px]">
           <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{search_term_initial}</div>
