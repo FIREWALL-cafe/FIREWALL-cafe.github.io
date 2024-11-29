@@ -31,7 +31,7 @@ function SubscribeSection() {
                       </div>
                       <div aria-hidden="true"  className="absolute left-[5000px]">
                           /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-                          <input type="text" name="b_9a0599467edb506239b6ed989_a007452c99" tabindex="-1" value="" />
+                          <input type="text" name="b_9a0599467edb506239b6ed989_a007452c99" tabIndex="-1" />
                       </div>
                       <div className="optionalParent">
                         <div className="clear foot">
