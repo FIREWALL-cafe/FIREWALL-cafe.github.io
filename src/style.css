@@ -26,8 +26,6 @@
   flex-grow: 0;
   flex-shrink: 0;
   border-radius: 100%;
-  width: 100px;
-  height: 100px;
   border: 3px solid transparent;
   cursor: pointer;
 }
@@ -40,9 +38,9 @@
   filter: grayscale(1);
   cursor: not-allowed;}
 
-.vote__button:not(:last-child) {
+/* .vote__button:not(:last-child) {
   margin-right: 10px;
-}
+} */
 
 .results__container {
   display: flex;

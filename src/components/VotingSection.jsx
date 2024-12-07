@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import VoteButton from './VoteButton';
+import useCookie from '../useCookie';
 
 import Archive from '../assets/icons/Archive_grayscale.png';
 import Question from '../assets/icons/question.svg';
-import ThumbUp from '../assets/icons/thumb_up.svg';
-import ThumbDown from '../assets/icons/thumb_down.svg';
 import ExpandDown from '../assets/icons/expand_circle_down.svg';
 import ExpandUp from '../assets/icons/expand_circle_up.png';
 
@@ -14,7 +13,24 @@ function VotingSection({ query, searchId }) {
   const location = useLocation();
   const notArchive = location.pathname !== '/archive';
   const [isOpen, setIsOpen] = useState(false);
-  
+  const [username, setUsername, deleteUsername] = useCookie("username");
+  const handleVote = async(voteCategory) => {
+    try {
+      const { data } = await fetch('/vote', {
+        method: 'POST',
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({ meta_key: voteCategory, search_id: searchId, vote_client_name: username }),
+      });
+
+      console.log('handleVote:', data);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return (
     <div className="flex overflow-hidden flex-col w-full bg-gray-50 border border-red-600 border-solid max-md:max-w-full">
       <div className={`${isOpen ? 'visible' : 'hidden' }`}>
@@ -33,31 +49,10 @@ function VotingSection({ query, searchId }) {
                 />
               </div>
             </div>
-            <div className="flex flex-wrap gap-4 items-start mt-8 w-full rounded-md max-md:max-w-full">
-              <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px] hover:bg-sky-700">
-                <div className="flex gap-2.5 items-center w-full h-9">
-                  <VoteButton voteCategory="votes_censored" setVote={() => {}} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
-                </div>
-                <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-black">
-                  Censored
-                </div>
-              </div>
-              <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]  hover:bg-sky-700">
-                <div className="flex gap-2.5 items-center w-full h-9">
-                  <VoteButton voteCategory="votes_uncensored" setVote={() => {}} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
-                </div>
-                <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-black">
-                  Not censored
-                </div>
-              </div>
-              <div className="flex flex-col grow shrink justify-between items-center p-3 rounded border border-solid border-neutral-300 min-h-[124px]  hover:bg-sky-700">
-                <div className="flex gap-2.5 items-center w-full h-9">
-                  <VoteButton voteCategory="votes_lost_in_translation" setVote={() => {}} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
-                </div>
-                <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-black">
-                  Lost in translation
-                </div>
-              </div>
+            <div className="flex gap-4 items-stretch mt-8 w-full rounded-md max-md:max-w-full">
+              <VoteButton voteCategory="votes_censored" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
+              <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
+              <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
             </div>
           </div>
           <div className="flex overflow-hidden justify-center items-start h-full min-w-[240px] w-[395px]">
@@ -77,22 +72,8 @@ function VotingSection({ query, searchId }) {
                 </div>
               </div>
               <div className="flex gap-4 items-start mt-8 w-full rounded-md">
-                <div className={`flex flex-col justify-between p-3 rounded border border-solid bg-slate-200 border-zinc-400 min-h-[124px]`}>
-                  <div className="flex gap-2.5 items-center w-full h-9">
-                    <img src={ThumbDown} className="object-contain self-stretch my-auto w-12 aspect-square" alt="" />
-                  </div>
-                  <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-zinc-400">
-                    Bad translation
-                  </div>
-                </div>
-                <div className="flex flex-col justify-between p-3 rounded border border-solid bg-slate-200 border-zinc-400 min-h-[124px]">
-                  <div className="flex gap-2.5 items-center w-full h-9">
-                    <img src={ThumbUp} className="object-contain self-stretch my-auto w-12 aspect-square" alt="" />
-                  </div>
-                  <div className="flex-1 shrink gap-2 self-stretch mt-10 w-full text-xl font-semibold leading-tight text-zinc-400">
-                    Good translation
-                  </div>
-                </div>
+                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
+                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
               </div>
             </div>
           </div>

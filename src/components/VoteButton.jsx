@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Tooltip } from 'react-tooltip';
-import useCookie from '../useCookie';
+
+import VisibilityOff from '../assets/icons/visibility_off.svg';
+import Visibility from '../assets/icons/visibility.svg';
+import ThumbDown from '../assets/icons/thumb_down.svg';
+import ThumbUp from '../assets/icons/thumb_up.svg';
+import LostInTranslation from '../assets/icons/lost_in_translation.svg';
+
 /**
  * Wordpress vote endpoint
  * 
@@ -12,15 +16,11 @@ post_id: 310504
 security: 83376c1e81
 */
 
-import VisibilityOff from '../assets/icons/visibility_off.svg';
-import Visibility from '../assets/icons/visibility.svg';
-import ThumbDown from '../assets/icons/thumb_down.svg';
-import ThumbUp from '../assets/icons/thumb_up.svg';
-import LostInTranslation from '../assets/icons/lost_in_translation.svg';
 
-function VoteButton({ voteCategory, searchId, setVote, isDisabled, setDisabled }) {
+function VoteButton({ voteCategory, voteHandler, searchId, setDisabled }) {
   useEffect(() => setDisabled(false), [searchId]);
-  
+  const [isSelected, setSelected] = useState(false);
+
   const voteMeta = {
     votes_censored: {
       name: 'Censored',
@@ -53,34 +53,23 @@ function VoteButton({ voteCategory, searchId, setVote, isDisabled, setDisabled }
   }
 
   const convertToMetaKey = (key) => 'votes_' + key.toLowerCase().replace(' ', '_');
-  const [username, setUsername, deleteUsername] = useCookie("username");
   const imgSrc = voteMeta[voteCategory].img;
-  const voteId = voteMeta[voteCategory].name;
-  
-  const handleVote = async voteId => {
-    // Disable vote buttons until another search has completed
-    setDisabled(true);
-    setVote(voteId);
-
-    try {
-      const { data } = await fetch('/vote', {
-        method: 'POST',
-        headers: { 
-          'Accept': 'application/json',
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify({ meta_key: convertToMetaKey(voteId), search_id: searchId, vote_client_name: username }),
-      });
-
-      console.log('handleVote:', data);
-    } catch (e) {
-      console.log(e)
-    }
+  const vote = (e) => {
+    e.preventDefault();
+    setSelected(!isSelected);
+    voteHandler(voteCategory);
   }
-  
+
   return (
-    <button className="vote__button" disabled={isDisabled} onClick={() => handleVote(voteId)}>
+    <button
+      className={`flex gap-2.5 items-center w-full rounded border border-solid hover:bg-sky-700 ${isSelected ? 'bg-sky-700' : ''}`}
+      onClick={vote}
+    >
       <img src={imgSrc} className="object-contain self-stretch my-auto w-12 aspect-square" />
+      <input type="hidden" id={voteCategory} name={voteCategory} />
+      <div className="flex-1 shrink gap-2 self-stretch mt-2 w-full text-xl font-semibold text-black">
+        {voteMeta[voteCategory].name}
+      </div>
     </button>
   );
 }
