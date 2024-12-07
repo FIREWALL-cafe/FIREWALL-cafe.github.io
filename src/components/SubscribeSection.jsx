@@ -18,7 +18,7 @@ function SubscribeSection() {
                       <h2 className="text-2xl">Subscribe 订阅</h2>
                       <div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
                       <div className="mc-field-group">
-                        <label for="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
+                        <label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
                         <input type="email" name="EMAIL" data-lpignore='true' className="required email" id="mce-EMAIL" />
                         <span id="mce-EMAIL-HELPERTEXT" className="mt-2 text-sm">Get newsletter updates about upcoming events and information</span>
                       </div>
