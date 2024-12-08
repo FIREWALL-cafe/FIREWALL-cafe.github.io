@@ -16,6 +16,7 @@ const QueryList = ({ results }) => {
 
   const getFilterOptions = () => {
     let form = document.getElementById('filter-options-form');
+    if (!form) return false;
     const formData = new FormData(form);
     const filterOptions = { votes: [], years: [], cities: [] };
     for (let [key, value] of formData.entries()) {
