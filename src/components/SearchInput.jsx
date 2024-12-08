@@ -16,7 +16,6 @@ import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
 
 function SearchInput({ searchMode }) {
-  const { doSearch, searchResults } = useContext(SearchContext);
   const { searchImages, searchArchive } = useContext(ApiContext);
   const [isLoading, setLoading] = useState(false);
   const [imageResults, setImageResults] = useState({});
@@ -57,9 +56,9 @@ function SearchInput({ searchMode }) {
 
   const loadDefaultResults = async () => {
     console.log('fetching default archive results');
-    const response = await fetch(`/searches?page=${1}&page_size=${10}`, urlConfig);
-    const results = await response.json();
+    const filterOptions = getFilterOptions();
 
+    const results = await searchArchive({ ...filterOptions, ...{ page: 1, page_size: 10 } });
     setSearchId("archived searches");
     setarchiveResults(results);
   }
@@ -105,7 +104,6 @@ function SearchInput({ searchMode }) {
       navigate('/search?q=' + query);
       return;
     }
-    // doSearch()
     console.log('submitting search for:', query);
     urlConfig.body = JSON.stringify({ query, search_client_name: username });
     setResults({ googleResults: [], baiduResults: [] });
@@ -114,8 +112,6 @@ function SearchInput({ searchMode }) {
       if (isArchive) {
         setarchiveResults([]);
         const filterOptions = getFilterOptions();
-        // const filters = filterOptions ? querystring.stringify(filterOptions) : '';
-        // const response = await fetch(`/searches?query=${query}&${filters}`, urlConfig);
         let results;
         if (filterOptions) {
           if (query) {
@@ -211,7 +207,7 @@ function SearchInput({ searchMode }) {
         </span>
       </div>
       {(currentSearchId && !isArchive) && <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />}
-      { (currentSearchId && isArchive) && <QueryList results={archiveResults} /> }
+      {(currentSearchId && isArchive) && <QueryList results={archiveResults} />}
     </div>
   );
 }
