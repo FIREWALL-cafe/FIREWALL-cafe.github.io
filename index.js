@@ -58,7 +58,7 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    const { searchId } = await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, search_client_name, translation: translatedQuery })
+    const { searchId } = await saveImages({ query, google: results[0].slice(0, 9), baidu: results[1].slice(0, 9), langTo, langFrom, search_client_name, translation: translatedQuery })
 
     data.searchId = searchId;
     data.googleResults = results[0];
