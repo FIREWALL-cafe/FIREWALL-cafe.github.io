@@ -3,8 +3,8 @@ import { Tooltip } from 'react-tooltip';
 
 import googleLogo from '../assets/icons/Google-logo_long.svg';
 import baiduLogo from '../assets/icons/baidu_logo_long.svg';
-import ArrowLeft from "../assets/icons/arrow_left_alt.svg";
-import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+import CarouselLeft from "../assets/icons/carousel-left.svg";
+import CarouselRight from "../assets/icons/carousel-right.svg";
 import QuestionBaidu from '../assets/icons/question_red.svg';
 import QuestionGoogle from '../assets/icons/question.svg';
 
@@ -64,10 +64,10 @@ function ImageCarousel({ images }) {
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full"
             aria-label="Previous image"
           >
-            <img src={ArrowLeft} alt="Previous image" />
+            <img src={CarouselLeft} alt="Previous image" />
           </button>
         </div>
-        <div className="relative w-1/2 px-4">
+        <div className="relative w-1/2 px-4 bg-sky-50">
           <div className="flex flex-wrap justify-between">
             <img src={baiduLogo} className="pt-1" />
             <img
@@ -92,7 +92,7 @@ function ImageCarousel({ images }) {
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full"
             aria-label="Next image"
           >
-            <img src={ArrowRight} alt="Next image" />
+            <img src={CarouselRight} alt="Next image" />
           </button>
         </div>
         <div className="flex border-b border-red-300 w-full">
@@ -109,7 +109,7 @@ function ImageCarousel({ images }) {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-3 gap-4 w-1/2 pl-4">
+          <div className="grid grid-cols-3 gap-4 w-1/2 pl-4 bg-sky-50">
             {images.baiduResults.map((image, index) => (
               <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-red-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
