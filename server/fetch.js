@@ -115,7 +115,7 @@ const getTranslation = async (query, langFrom, langTo) => {
 }
 
 const postVote = async ({ meta_key, post_id, search_id, vote_client_name, vote_ip_address }) => {
-  const url = `${serverConfig.apiUrl}createVote`;
+  const url = `${serverConfig.apiUrl}vote`;
   const metaKeyToId = {
     votes_censored: 1,
     votes_uncensored: 2,
