@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import Megha from './events/Megha';
+import Megha from './Megha';
 import Marymount from './events/Marymount';
 import OsloTaiwan from './events/OsloTaiwan';
 import Reactions from './events/Reactions';
