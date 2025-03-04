@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import VoteButton from './VoteButton';
@@ -14,6 +14,8 @@ function VotingSection({ query, searchId }) {
   const notArchive = location.pathname !== '/archive';
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername, deleteUsername] = useCookie("username");
+  const [translationDisabled, setTranslationDisabled] = useState(true);
+
   const handleVote = async(voteCategory) => {
     try {
       const { data } = await fetch('/vote', {
@@ -24,7 +26,9 @@ function VotingSection({ query, searchId }) {
         },
         body: JSON.stringify({ meta_key: voteCategory, search_id: searchId, vote_client_name: username }),
       });
-
+      if (voteCategory === 'votes_lost_in_translation') {
+        setTranslationDisabled(false);
+      }
       console.log('handleVote:', data);
     } catch (e) {
       console.log(e)
@@ -50,9 +54,9 @@ function VotingSection({ query, searchId }) {
               </div>
             </div>
             <div className="flex gap-4 items-stretch mt-8 w-full rounded-md max-md:max-w-full">
-              <VoteButton voteCategory="votes_censored" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
-              <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
-              <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
+              <VoteButton voteCategory="votes_censored" voteHandler={handleVote} disabled={false} />
+              <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} disabled={false} />
+              <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} disabled={false} />
             </div>
           </div>
           <div className="flex overflow-hidden justify-center items-start h-full min-w-[240px] w-[395px]">
@@ -72,8 +76,8 @@ function VotingSection({ query, searchId }) {
                 </div>
               </div>
               <div className="flex gap-4 items-start mt-8 w-full rounded-md">
-                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
-                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} isDisabled={false} setDisabled={() => {}} searchId={searchId} />
+                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} disabled={translationDisabled} />
+                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} disabled={translationDisabled} />
               </div>
             </div>
           </div>

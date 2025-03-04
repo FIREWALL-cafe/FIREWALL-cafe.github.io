@@ -17,6 +17,15 @@ function FilterOptionsModal({ open, onClose }) {
   ];
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
+  const metaKeyToId = {
+    votes_censored: 1,
+    votes_uncensored: 2,
+    votes_bad_translation: 3,
+    votes_good_translation: 4,
+    votes_lost_in_translation: 5,
+    votes_bad_result: 6,
+    votes_nsfw: 7,
+  }
   const searchLocations = async () => {
     console.log('searching locations');
   }
@@ -29,12 +38,12 @@ function FilterOptionsModal({ open, onClose }) {
     e.preventDefault();
     let form = document.getElementById('filter-options-form');
     const formData = new FormData(form);
-    const filterOptions = { votes: [], years: [], cities: [] };
+    const filterOptions = { vote_ids: [], years: [], cities: [] };
     for (let [key, value] of formData.entries()) {
       if (value) {
         console.log(key, value);
         if (key.startsWith('votes')) {
-          filterOptions.votes.push(value);
+          filterOptions.vote_ids.push(value);
         } else if (value === 'on') {
           filterOptions.years.push(key);
         } else if (key.startsWith('city')) {
@@ -50,7 +59,7 @@ function FilterOptionsModal({ open, onClose }) {
 
   const voteHandler = (voteCategory) => {
     let votebtn = document.getElementById(voteCategory);
-    votebtn.value = votebtn.value === voteCategory ? '' : voteCategory;
+    votebtn.value = votebtn.value === metaKeyToId[voteCategory] ? '' : metaKeyToId[voteCategory];
     console.log('voteHandler:', votebtn.value);
   }
 
