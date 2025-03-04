@@ -15,6 +15,7 @@ import SearchBar from "./components/SearchBar";
 import Support from "./components/Support";
 import SearchArchive from "./components/SearchArchive";
 import LanYu from "./components/LanYu";
+import ShowEvent from './components/ShowEvent';
 
 import {
   createBrowserRouter,
@@ -53,7 +54,11 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "events",
+        path: "/events/:eventId",
+        element: <ShowEvent />,
+      },
+      {
+        path: "/events",
         element: <Events />,
       },
       {
@@ -77,10 +82,6 @@ const router = createBrowserRouter([
         element: <Support />,
       },
     ],
-  },
-  {
-    path: "/old_search",
-    element: <SearchBar />,
   },
 ]);
 
