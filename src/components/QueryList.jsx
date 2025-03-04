@@ -18,12 +18,12 @@ const QueryList = ({ results }) => {
     let form = document.getElementById('filter-options-form');
     if (!form) return false;
     const formData = new FormData(form);
-    const filterOptions = { votes: [], years: [], cities: [] };
+    const filterOptions = { vote_ids: [], years: [], cities: [] };
     for (let [key, value] of formData.entries()) {
       if (value) {
         console.log(key, value);
         if (key.startsWith('votes')) {
-          filterOptions.votes.push(value);
+          filterOptions.vote_ids.push(value);
         } else if (value === 'on') {
           filterOptions.years.push(key);
         } else if (key.startsWith('city')) {

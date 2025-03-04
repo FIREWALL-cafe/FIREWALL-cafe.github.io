@@ -17,53 +17,74 @@ security: 83376c1e81
 */
 
 
-function VoteButton({ voteCategory, voteHandler, searchId, setDisabled }) {
-  useEffect(() => setDisabled(false), [searchId]);
+function VoteButton({ voteCategory, voteHandler, disabled }) {
   const [isSelected, setSelected] = useState(false);
+  const [isDisabled, setDisabled] = useState(disabled);
 
+  const metaKeyToId = {
+    votes_censored: 1,
+    votes_uncensored: 2,
+    votes_bad_translation: 3,
+    votes_good_translation: 4,
+    votes_lost_in_translation: 5,
+    votes_bad_result: 6,
+    votes_nsfw: 7,
+  }
+  
   const voteMeta = {
     votes_censored: {
+      id: metaKeyToId['votes_censored'],
       name: 'Censored',
       img: VisibilityOff
     },
     votes_uncensored: {
-      name: 'Uncensored', 
+      id: metaKeyToId['votes_uncensored'],
+      name: 'Uncensored',
       img: Visibility
     },
     votes_bad_translation: {
-      name: 'Bad Translation', 
+      id: metaKeyToId['votes_bad_translation'],
+      name: 'Bad Translation',
       img: ThumbDown
     },
     votes_good_translation: {
-      name: 'Good Translation', 
+      id: metaKeyToId['votes_good_translation'],
+      name: 'Good Translation',
       img: ThumbUp
     },
     votes_lost_in_translation: {
-      name: 'Lost in Translation', 
+      id: metaKeyToId['votes_lost_in_translation'],
+      name: 'Lost in Translation',
       img: LostInTranslation
     },
     votes_nsfw: {
-      name: 'NSFW', 
+      id: metaKeyToId['votes_nsfw'],
+      name: 'NSFW',
       img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg'
     },
     votes_bad_result: {
-      name: 'WTF', 
+      id: metaKeyToId['votes_bad_result'],
+      name: 'WTF',
       img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg'
     },
   }
 
-  const convertToMetaKey = (key) => 'votes_' + key.toLowerCase().replace(' ', '_');
   const imgSrc = voteMeta[voteCategory].img;
   const vote = (e) => {
     e.preventDefault();
-    setSelected(!isSelected);
+    setSelected(true);
+    setDisabled(true);
     voteHandler(voteCategory);
+    if (voteCategory === 'votes_lost_in_translation') {
+      console.log('votes_lost_in_translation');
+    }
   }
 
   return (
     <button
-      className={`flex gap-2.5 items-center w-full rounded border border-solid hover:bg-sky-700 ${isSelected ? 'bg-sky-700' : ''}`}
+      className={`flex gap-2.5 items-center w-full rounded border border-solid ${ isDisabled ? 'cursor-not-allowed' : 'hover:bg-sky-700' } ${isSelected ? 'bg-sky-700' : ''}`}
       onClick={vote}
+      disabled={isDisabled}
     >
       <img src={imgSrc} className="object-contain self-stretch my-auto w-12 aspect-square" />
       <input type="hidden" id={voteCategory} name={voteCategory} />

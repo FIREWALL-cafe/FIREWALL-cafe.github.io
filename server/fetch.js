@@ -23,6 +23,7 @@ const getGoogleImageSrcs = (results) => {
   // const html = cheerio.load(results);
   // const imgs = html('.DS1iW').toArray().slice(0, 9);
   // const imgs = html('div.H8Rx8c g-img img').toArray().slice(0, 9);
+  // const imgs = html('div[jscontroller] a[jsname] img').toArray().slice(0, 9);
   return results.slice(0, 9).map((result) => result.original)
 };
 
