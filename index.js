@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModifie
 //   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
 // });
 
-app.get("/events/*", (req, res) => {
+app.get("/events/:event_id", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
