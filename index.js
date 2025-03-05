@@ -17,13 +17,13 @@ app.use((err, req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModified: false }));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
+// });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
+// });
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
