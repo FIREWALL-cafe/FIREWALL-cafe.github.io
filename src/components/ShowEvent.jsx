@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import Megha from './Megha';
+import Megha from './events/Megha';
 import Marymount from './events/Marymount';
 import OsloTaiwan from './events/OsloTaiwan';
 import Reactions from './events/Reactions';
@@ -50,9 +50,9 @@ function ShowEvent() {
   console.log('eventData:', eventId)
   return (
     <div>
-      {eventId ? (
+      {EventUrls[eventId] ? (
         <>
-          {EventUrls[eventId]}
+          <div>IMAGINE THIS WORKING</div>
         </>
       ) : (
         <p>No event data available.</p>
