@@ -9,29 +9,30 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use((err, req, res, next) => {
-  console.error(err.stack)
+// app.use((err, req, res, next) => {
+//   console.error(err.stack)
 
-  res.status(500).send('Something broke!')
-})
+//   res.status(500).send('Something broke!')
+// })
 
 app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModified: false }));
 
 // app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
+//   res.sendFile(path.join(__dirname, "index.html"), { lastModified: false, etag: false });
 // });
 
 // app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
+//   res.sendFile(path.join(__dirname, "index.html"), { lastModified: false, etag: false });
 // });
 
-app.get("/events/:event_id", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get('/events/:eventId', (req, res) => {
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
 
 app.post("/searches/:search_id/images", async (req, res) => {
   console.log('/searches/:search_id/images:', req.params);
