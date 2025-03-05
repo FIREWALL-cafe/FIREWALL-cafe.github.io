@@ -52,7 +52,7 @@ function ShowEvent() {
     <div>
       {EventUrls[eventId] ? (
         <>
-          <div>IMAGINE THIS WORKING</div>
+          {EventUrls[eventId]}
         </>
       ) : (
         <p>No event data available.</p>
