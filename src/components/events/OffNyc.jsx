@@ -25,10 +25,8 @@ function OffNyc() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <div className="text-zinc-400">Oslo Freedom Forum</div>
-            
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
-              2017 OFF New York Interactive Expo
+              2017 Oslo Freedom Forum New York Interactive Expo
             </h1>
             
             <h2 className="mt-6 text-2xl">
