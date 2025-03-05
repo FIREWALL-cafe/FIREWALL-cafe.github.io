@@ -41,7 +41,6 @@ function SearchInput({ searchMode }) {
   var ranonce = false;
   useEffect(() => {
     // Update the input field when query params change
-    console.log('useEffecting!');
     if (searchParams.get('q')) {
       setQuery(searchParams.get('q'));
       if (!ranonce) {
