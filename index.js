@@ -25,8 +25,12 @@ app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModifie
 //   res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
 // });
 
+app.get("/events/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"), { lastModified: false, etag: false });
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.post("/searches/:search_id/images", async (req, res) => {
