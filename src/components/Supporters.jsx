@@ -1,5 +1,9 @@
 import React from 'react';
 
+import Lambent from '../assets/images/Lambent_logo_typeimage_CS5-300x196.jpg';
+import NYC from '../assets/images/NYCulture_current_vector-04_16_2008-300x139.jpg';
+import Jerome from '../assets/images/JEROME_LOGO_4c-300x76.jpg';
+
 function Supporters() {
   return (
     <section className="flex overflow-hidden flex-col px-32 pb-16 max-md:px-5 max-md:pb-24 max-md:max-w-full">
@@ -17,13 +21,13 @@ function Supporters() {
         </div>
         <div className="flex flex-col col-span-2 row-span-2 self-stretch my-auto w-[240px]">
           <div className="mt-10">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/aab69bcb014261f1b3a67055083fa4625b97808fdd84aca00f36c9cc99978571?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Supporter logo 1" className="object-contain aspect-[3.98] w-[251px]" />
+            <img loading="lazy" src={Jerome} alt="Supporter logo 1" className="object-contain aspect-[3.98] w-[251px]" />
           </div>
           <div className="mt-10 min-h-[116px]">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/61281a411d3d25b43d23bf93f6e8f6a9e1b8689f6c560aa330bcd1be513fdefc?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Supporter logo 2" className="object-contain w-full aspect-[2.16]" />
+            <img loading="lazy" src={NYC} alt="Supporter logo 2" className="object-contain w-full aspect-[2.16]" />
           </div>
           <div className="mt-10">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/461091cb584185d91fbdb602455a16d5e1af4fc7bee6b09550826e3bccc6c756?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Supporter logo 3" className="object-contain w-full aspect-[2.24]" />
+            <img loading="lazy" src={Lambent} alt="Supporter logo 3" className="object-contain w-full aspect-[2.24]" />
           </div>
         </div>
       </div>
