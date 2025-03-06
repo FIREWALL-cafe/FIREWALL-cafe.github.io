@@ -5,23 +5,23 @@ import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.s
 function ApexYouth() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLApex-49.jpg",
+      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-49.jpg',
       description: "Middle schoolers from PS 184 trying out the FIREWALL plugin"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLApex-47.jpg",
+      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-47.jpg',
       description: "Students interacting with FIREWALL"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLApex-41.jpg",
+      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-41.jpg',
       description: "Roundtable conversation with students from PS 184"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLApex-25.jpg",
+      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-25.jpg',
       description: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLApex-22.jpg",
+      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-22.jpg',
       description: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship"
     }
   ];

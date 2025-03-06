@@ -2,27 +2,22 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import SerendipityAus1 from '../../assets/images/StPolten3.jpg';
-import SerendipityAus2 from '../../assets/images/StPolten1.jpg';
-import SerendipityAus3 from '../../assets/images/StPolten2.jpg';
-import SerendipityAus4 from '../../assets/images/StPolten5.jpg';
-
 function SerendipityAus() {
   const images = [
     {
-      src: SerendipityAus1,
+      src: process.env.PUBLIC_URL + '/images/StPolten3.jpg',
       description: "Pop-up exhibition at REDpoint, St. Pölten"
     },
     {
-      src: SerendipityAus2,
+      src: process.env.PUBLIC_URL + '/images/StPolten1.jpg',
       description: "Participants conducting \"search session\" at exhibition, St. Pölten"
     },
     {
-      src: SerendipityAus3,
+      src: process.env.PUBLIC_URL + '/images/StPolten2.jpg',
       description: "\"Search session\" at exhibition, St. Pölten"
     },
     {
-      src: SerendipityAus4,
+      src: process.env.PUBLIC_URL + '/images/StPolten5.jpg',
       description: "Exterior View of Internet Cafe pop-up in St.Pölten"
     }
   ];

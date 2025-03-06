@@ -2,37 +2,30 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import GroupRvcc1 from '../../assets/images/2022_FIREWALL_RVC-05.png';
-import GroupRvcc2 from '../../assets/images/2022_FIREWALL_RVC-04.png';
-import GroupRvcc3 from '../../assets/images/2022_FIREWALL_RVC-07.png';
-import GroupRvcc4 from '../../assets/images/2022_FIREWALL_RVC-08.png';
-import GroupRvcc5 from '../../assets/images/2022_FIREWALL_RVC-06.png';
-import GroupRvcc6 from '../../assets/images/2022_FIREWALL_RVC-01.png';
-
 function GroupRvcc() {
   const images = [
     {
-      src: GroupRvcc1,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-05.png',
       description: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Lydia Grey, curator of 'The Future is'."
     },
     {
-      src: GroupRvcc2,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-04.png',
       description: "FIREWALL Pop-up at RVCC Art Gallery."
     },
     {
-      src: GroupRvcc3,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-07.png',
       description: "A group of students engaging in FIREWALL searching and discussing the results."
     },
     {
-      src: GroupRvcc4,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-08.png',
       description: "A group of students engaging in FIREWALL searching and discussing the results."
     },
     {
-      src: GroupRvcc5,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-06.png',
       description: "A visitor being surprised by the censored results on Baidu."
     },
     {
-      src: GroupRvcc6,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-01.png',
       description: "An artist sharing by Joyce Yu-Jean Lee about FIREWALL and internet censorship to a full room at Raritan Valley Community College."
     }
   ];

@@ -2,21 +2,18 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import HongKongNotFound1 from '../../assets/images/Firewall_HK_1920.jpg';
-import HongKongNotFound2 from '../../assets/images/Firewall_HK5_1920-1.jpg';
-import HongKongNotFound3 from '../../assets/images/Firewall_HK6_1920-950x629-1.jpg';
 function HongKongNotFound() {
   const images = [
     {
-      src: HongKongNotFound1,
+      src: process.env.PUBLIC_URL + '/images/Firewall_HK_1920.jpg',
       description: "Participants keying search terms into FIREWALL dual-search browser"
     },
     {
-      src: HongKongNotFound2,
+      src: process.env.PUBLIC_URL + '/images/Firewall_HK5_1920-1.jpg',
       description: "Artist Joyce Yu-Jean Lee explains the concept of FIREWALL to participants"
     },
     {
-      src: HongKongNotFound3,
+      src: process.env.PUBLIC_URL + '/images/Firewall_HK6_1920-950x629-1.jpg',
       description: "Discussion group after \"Not Found\", a performance by artist Ying Ting"
     }
   ];

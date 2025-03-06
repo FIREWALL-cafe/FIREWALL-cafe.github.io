@@ -2,27 +2,22 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import CreativeHack1 from '../../assets/images/FIREWALLCreativeHactivism2.19-8.jpg';
-import CreativeHack2 from '../../assets/images/FIREWALLCreativeHactivism2.19-5.jpg';
-import CreativeHack3 from '../../assets/images/FIREWALLCreativeHactivism2.19-4.jpg';
-import CreativeHack4 from '../../assets/images/FIREWALLCreativeHactivism2.19-2.jpg';
-
 function CreativeHack() {
   const images = [
     {
-      src: CreativeHack1,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-8.jpg',
       description: "Panelists Joyce Yu-Jean Lee, Jason Q. Ng, Sisi Wei, Dan Phiffer, and Josh B"
     },
     {
-      src: CreativeHack2,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-5.jpg',
       description: "Jason speaks about words blocked on Weibo"
     },
     {
-      src: CreativeHack3,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-4.jpg',
       description: "Dan discusses coding and designing FIREWALL"
     },
     {
-      src: CreativeHack4,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-2.jpg',
       description: "Panelists engage the FIREWALL Installation"
     }
   ];

@@ -2,22 +2,18 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import ProxyPals1 from '../../assets/images/FIREWALLuProxy2.18-1.jpg';
-import ProxyPals2 from '../../assets/images/FIREWALLuProxy2.18-2.jpg';
-import ProxyPals3 from '../../assets/images/FIREWALLuProxy2.18-3-1.jpg';
-
 function ProxyPals() {
   const images = [
     {
-      src: ProxyPals1,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLuProxy2.18-1.jpg',
       description: "uProxy team leader explains how proxy technology works"
     },
     {
-      src: ProxyPals2,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLuProxy2.18-2.jpg',
       description: "Participants test out uProxy"
     },
     {
-      src: ProxyPals3,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLuProxy2.18-3-1.jpg',
       description: "Participants test out uProxy"
     }
   ];

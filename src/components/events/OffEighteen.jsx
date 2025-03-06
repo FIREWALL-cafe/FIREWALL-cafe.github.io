@@ -2,37 +2,30 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import OffEighteen1 from '../../assets/images/OFF18_expo1.jpg';
-import OffEighteen2 from '../../assets/images/OFF18_expo2.jpg';
-import OffEighteen3 from '../../assets/images/OFF18_expo3.jpg';
-import OffEighteen4 from '../../assets/images/OFF18_expo4.jpg';
-import OffEighteen5 from '../../assets/images/OFF18_expo5.jpg';
-import OffEighteen6 from '../../assets/images/OFF18_expo6.jpg';
-
 function OffEighteen() {
   const images = [
     {
-      src: OffEighteen1,
+      src: process.env.PUBLIC_URL + '/images/OFF18_expo1.jpg',
       description: "Artist Joyce Yu-Jean Lee giving participants a tour of FIREWALL"
     },
     {
-      src: OffEighteen2,
+      src: process.env.PUBLIC_URL + '/images/OFF18_expo2.jpg',
       description: "An audience member studies how the FIREWALL dual-search engine works."
     },
     {
-      src: OffEighteen3,
+      src: process.env.PUBLIC_URL + '/images/OFF18_expo3.jpg',
       description: "Co-founders of FIREWALL: Dan Phiffer, coder and Joyce Yu-Jean Lee, artist."
     },
     {
-      src: OffEighteen4,
+      src: process.env.PUBLIC_URL + '/images/OFF18_expo4.jpg',
       description: "Participants wrote their most interesting searches on a brick. Lucky winners would walk away with a raffle prize!"
     },
     {
-      src: OffEighteen5,
+      src: process.env.PUBLIC_URL + '/images/OFF18_expo5.jpg',
       description: "FIREWALL installation with raffle and bricks"
     },
     {
-      src: OffEighteen6,
+      src: process.env.PUBLIC_URL + '/images/OFF18_expo6.jpg',
       description: "A happy raffle winner with his prize – a book about Censorship!"
     }
   ];

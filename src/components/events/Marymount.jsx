@@ -2,32 +2,26 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import Marymount1 from '../../assets/images/FIREWALLMarymount2.29-4_edit.jpg';
-import Marymount2 from '../../assets/images/FIREWALLMarymount2.29-7.jpg';
-import Marymount3 from '../../assets/images/FIREWALLMarymount2.29-9.jpg';
-import Marymount4 from '../../assets/images/FIREWALLMarymount2.29-12.jpg';
-import Marymount5 from '../../assets/images/FIREWALLMarymount2.29-2_edit.jpg';
-
 function Marymount() {
   const images = [
     {
-      src: Marymount1,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-4_edit.jpg',
       description: "Students trying out FIREWALL"
     },
     {
-      src: Marymount2,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-7.jpg',
       description: "Students ask questions about how censorship works in China"
     },
     {
-      src: Marymount3,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-9.jpg',
       description: "Student discussion about censorship in China"
     },
     {
-      src: Marymount4,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-12.jpg',
       description: "FIREWALL founder Joyce Yu-Jean Lee with students"
     },
     {
-      src: Marymount5,
+      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-2_edit.jpg',
       description: "Students engage in FIREWALL search sessions"
     }
   ];

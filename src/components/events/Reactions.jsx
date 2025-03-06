@@ -2,22 +2,18 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import Reactions1 from '../../assets/images/VBKO_Panel-2-of-4.jpg';
-import Reactions2 from '../../assets/images/VBKO_Panel-4-of-4.jpg';
-import Reactions3 from '../../assets/images/A6_Flyer_SearchforFeminism_FINAL-back.jpg';
-
 function Reactions() {
   const images = [
     {
-      src: Reactions1,
+      src: process.env.PUBLIC_URL + '/images/VBKO_Panel-2-of-4.jpg',
       description: "From left to right: Julia Hartmann, Ye Hui, Ingrid Fischer-Schreiber, Joyce Yu-Jean Lee, at the panel discussion Re(actions) to the Great Chinese Firewall. Photo by Claudia Romero."
     },
     {
-      src: Reactions2,
+      src: process.env.PUBLIC_URL + '/images/VBKO_Panel-4-of-4.jpg',
       description: "From left to right: Joyce Yu-Jean Lee, Ye Hui, Julia Hartmann, Ingrid Fischer-Schreiber. In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
     },
     {
-      src: Reactions3,
+      src: process.env.PUBLIC_URL + '/images/A6_Flyer_SearchforFeminism_FINAL-back.jpg',
       description: "Event flyer"
     }
   ];

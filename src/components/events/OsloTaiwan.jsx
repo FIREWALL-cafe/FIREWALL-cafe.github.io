@@ -2,37 +2,30 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import Firewall1 from '../../assets/images/2022_FIREWALL_OFF_TW-02.png';
-import Firewall2 from '../../assets/images/2022_FIREWALL_OFF_TW-04.png';
-import Firewall3 from '../../assets/images/2022_FIREWALL_OFF_TW-07.png';
-import Firewall4 from '../../assets/images/2022_FIREWALL_OFF_TW-08.png';
-import Firewall5 from '../../assets/images/2022_FIREWALL_OFF_TW-05.png';
-import Firewall6 from '../../assets/images/2022_FIREWALL_OFF_TW-06.jpg';
-
 function OsloTaiwan() {
   const images = [
     {
-      src: Firewall1,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-02.png',
       description: "Taiwanese visitors keying search terms into FIREWALL dual-search browser."
     },
     {
-      src: Firewall2,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-04.png',
       description: "People searching for the China-Taiwan specific topics on the FIREWALL system."
     },
     {
-      src: Firewall3,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-07.png',
       description: "FIREWALL Pop-up at OFF TW."
     },
     {
-      src: Firewall4,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-08.png',
       description: "A group of high school students understanding the influence of censorship from China."
     },
     {
-      src: Firewall5,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-05.png',
       description: "A picture of Joyce Yu-Jean Lee with Lingwei Li, who is known as \"Queer Lawyer\", advocating for LGBTQ+ and equality Justice in Taiwan."
     },
     {
-      src: Firewall6,
+      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-06.jpg',
       description: "A picture of Joyce Yu-Jean Lee with Wu'erkaixi, one of the leaders of the Tiananmen protests."
     }
   ];
