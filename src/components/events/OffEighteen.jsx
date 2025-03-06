@@ -1,29 +1,38 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import OffEighteen1 from '../../assets/images/OFF18_expo1.jpg';
+import OffEighteen2 from '../../assets/images/OFF18_expo2.jpg';
+import OffEighteen3 from '../../assets/images/OFF18_expo3.jpg';
+import OffEighteen4 from '../../assets/images/OFF18_expo4.jpg';
+import OffEighteen5 from '../../assets/images/OFF18_expo5.jpg';
+import OffEighteen6 from '../../assets/images/OFF18_expo6.jpg';
 
 function OffEighteen() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF18_expo1.jpg",
+      src: OffEighteen1,
       description: "Artist Joyce Yu-Jean Lee giving participants a tour of FIREWALL"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF18_expo2.jpg",
+      src: OffEighteen2,
       description: "An audience member studies how the FIREWALL dual-search engine works."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF18_expo3.jpg",
+      src: OffEighteen3,
       description: "Co-founders of FIREWALL: Dan Phiffer, coder and Joyce Yu-Jean Lee, artist."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF18_expo4.jpg",
+      src: OffEighteen4,
       description: "Participants wrote their most interesting searches on a brick. Lucky winners would walk away with a raffle prize!"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF18_expo5.jpg",
+      src: OffEighteen5,
       description: "FIREWALL installation with raffle and bricks"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF18_expo6.jpg",
+      src: OffEighteen6,
       description: "A happy raffle winner with his prize – a book about Censorship!"
     }
   ];
@@ -37,14 +46,22 @@ function OffEighteen() {
               10th Anniversary 2018 Oslo Freedom Forum
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              May 28, 2018, 11 AM-5:30 PM
-            </h2>
-
             <div className="mt-8 space-y-6">
-              <p className="text-gray-700">
-                Location: Sentralen, Oslo, Norway
-              </p>
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">May 28, 2018, 11 AM-5:30 PM</span>
+              </div>
+
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Sentralen
+                    <br />
+                    Oslo, Norway
+                  </p>
+                </div>
+              </div>
 
               <div className="space-y-4">
                 <p>

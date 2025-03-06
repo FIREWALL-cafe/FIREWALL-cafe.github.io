@@ -1,21 +1,28 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import SerendipityAus1 from '../../assets/images/StPolten3.jpg';
+import SerendipityAus2 from '../../assets/images/StPolten1.jpg';
+import SerendipityAus3 from '../../assets/images/StPolten2.jpg';
+import SerendipityAus4 from '../../assets/images/StPolten5.jpg';
 
 function SerendipityAus() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2017/04/StPolten3.jpg",
+      src: SerendipityAus1,
       description: "Pop-up exhibition at REDpoint, St. Pölten"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2017/04/StPolten1.jpg",
+      src: SerendipityAus2,
       description: "Participants conducting \"search session\" at exhibition, St. Pölten"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2017/04/StPolten2.jpg",
+      src: SerendipityAus3,
       description: "\"Search session\" at exhibition, St. Pölten"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2017/04/StPolten5.jpg",
+      src: SerendipityAus4,
       description: "Exterior View of Internet Cafe pop-up in St.Pölten"
     }
   ];
@@ -40,20 +47,28 @@ function SerendipityAus() {
               "Search for... Serendipity" in Austria
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Dec. 3-31, 2016
-            </h2>
-
             <div className="mt-8 space-y-6">
-              <div>
-                <p className="text-gray-700">
-                  Location: REDpoint, WeinerStr. 1300 St. Pölten, Austria
-                </p>
-                <p className="mt-2 text-gray-600">
-                  curated by Julia Hartmann and Magdalena Stöger
-                  <br />
-                  photos by Magdalena Stöger
-                </p>
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Dec. 3-31, 2016</span>
+              </div>
+
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    REDpoint
+                    <br />
+                    WeinerStr. 1300
+                    <br />
+                    St. Pölten, Austria
+                  </p>
+                  <p className="mt-2 text-sm text-gray-600">
+                    curated by Julia Hartmann and Magdalena Stöger
+                    <br />
+                    photos by Magdalena Stöger
+                  </p>
+                </div>
               </div>
 
               <div>

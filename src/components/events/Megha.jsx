@@ -1,45 +1,58 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import Megha1 from '../../assets/images/FWC_POU_1.jpg';
+import Megha2 from '../../assets/images/FWC_POU_2.jpg';
+import Megha3 from '../../assets/images/FWC_POU_3.jpg';
+import Megha4 from '../../assets/images/FWC_POU_4.jpg';
+import Megha5 from '../../assets/images/FWC_POU_5.jpg';
+import Megha6 from '../../assets/images/FWC_POU_6.jpg';
+import Megha7 from '../../assets/images/FWC_POU_7.jpg';
+import Megha8 from '../../assets/images/FWC_POU_8.jpg';
+import Megha9 from '../../assets/images/FWC_POU_9.jpg';
+import Megha10 from '../../assets/images/FWC_POU_10.jpg';
 
 function Megha() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_1.jpg",
+      src: Megha1,
       description: 'Students search for "Beyonce" in the FIREWALL plugin.',
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_2.jpg",
+      src: Megha2,
       description: "A search term censored by Baidu displays limited image results."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_3.jpg",
+      src: Megha3,
       description: "Students interact with the FIREWALL Pop-up at Marist College, Poughkeepsie, NY."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_4.jpg",
+      src: Megha4,
       description: "Buzzfeed correspondent, Megha Rajagopalan delivering her lecture on China and the Rise of AI and Mass Surveillance Technology."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_5.jpg",
+      src: Megha5,
       description: 'Attendees at "China and the Rise of AI and Mass Surveillance Technology", a lecture by Megha Rajagopalan at Fusco Hall, Marist College, Poughkeepsie, NY.',
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_6.jpg",
+      src: Megha6,
       description: "A student poses a question to Megha Rajagopalan after the lecture."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_7.jpg",
+      src: Megha7,
       description: "A student poses a question to Megha Rajagopalan after the lecture."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_8.jpg",
+      src: Megha8,
       description: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Megha Rajagopalan, Buzzfeed Correspondent, Peter Behr, Web Developer for FIREWALL."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_9.jpg",
+      src: Megha9,
       description: "FIREWALL badges, stickers, and postcards."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/02/FWC_POU_10.jpg",
+      src: Megha10,
       description: "FIREWALL Pop-up stations at Marist College, Poughkeepsie, NY."
     }
   ];
@@ -53,20 +66,34 @@ function Megha() {
               FIREWALL Pop-up with "Inside China's Surveillance State", a Lecture by Megha Rajagopalan!
             </h1>
             
-            <div className="mt-6 text-2xl">
-              <h2>Exhibition: Feb. 26, 2020, 5:00 PM - 10:00PM</h2>
-              <h2>Lecture: Feb. 26, 2020, 6:30 PM - 8:00PM</h2>
-            </div>
+            <div className="mt-8 space-y-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <ClockIcon className="w-5 h-5" />
+                  <span className="text-xl">Exhibition: Feb. 26, 2020, 5:00 PM - 10:00 PM</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-600 pl-7">
+                  <span className="text-xl">Lecture: Feb. 26, 2020, 6:30 PM - 8:00 PM</span>
+                </div>
+              </div>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location: <a href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703" 
-                   className="text-blue-600 hover:text-blue-800">
-                  Fusco Recital Hall, Murray Student Center, Marist College
-                </a>
-                <br />
-                3399 North Rd, Poughkeepsie, NY 12601
-              </p>
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <a 
+                    href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
+                    className="text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Fusco Recital Hall, Murray Student Center, Marist College
+                  </a>
+                  <br />
+                  3399 North Rd
+                  <br />
+                  Poughkeepsie, NY 12601
+                </div>
+              </div>
 
               <p className="mb-4">
                 Megha Rajagopalan, an international correspondent for Buzzfeed News who has reported on digital rights from Southeast Asia to the Persian Gulf, will share her work documenting the rise of state surveillance from China's campaign targeting its Muslim minorities to cameras on the streets of New York City. How do we redefine public and private spaces at a time when we are digitally monitored without consent?

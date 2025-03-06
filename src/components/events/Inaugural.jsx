@@ -1,41 +1,53 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import Inaugural1 from '../../assets/images/IMG_3948.jpg';
+import Inaugural2 from '../../assets/images/IMG_3814.jpg';
+import Inaugural3 from '../../assets/images/IMG_3774-1.jpg';
+import Inaugural4 from '../../assets/images/IMG_3864-2.jpg';
+import Inaugural5 from '../../assets/images/IMG_3960crop-1.jpeg';
+import Inaugural6 from '../../assets/images/IMG_4230crop.jpeg';
+import Inaugural7 from '../../assets/images/IMG_4212crop.jpeg';
+import Inaugural8 from '../../assets/images/IMG_4248.jpg';
+import Inaugural9 from '../../assets/images/IMG_3973.jpg';
 
 function Inaugural() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_3948.jpg",
+      src: Inaugural1,
       description: "View from main Search Station inside gallery"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_3814.jpg",
+      src: Inaugural2,
       description: "Title Wall at Entrance of Exhibition"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_3774-1.jpg",
+      src: Inaugural3,
       description: "Exterior View of Internet Cafe"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_3864-2.jpg",
+      src: Inaugural4,
       description: "Search Stations"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_3960crop-1.jpeg",
+      src: Inaugural5,
       description: "FIREWALL Cafe paraphernalia"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_4230crop.jpeg",
+      src: Inaugural6,
       description: "FIREWALL Cafe Special Events"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_4212crop.jpeg",
+      src: Inaugural7,
       description: "Exhibition view"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_4248.jpg",
+      src: Inaugural8,
       description: "FIREWALL Cafe Tea Menu"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/04/IMG_3973.jpg",
+      src: Inaugural9,
       description: "TenRen Tea served at FIREWALL Cafe"
     }
   ];
@@ -52,21 +64,31 @@ function Inaugural() {
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
-                INAUGURAL New York 2016 Pop-up!
+              INAUGURAL New York 2016 Pop-up!
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Feb. 8 - Mar. 6, 2016
-            </h2>
-
             <div className="mt-8 space-y-6">
-              <div>
-                <p className="text-gray-700">
-                  Location: Chinatown Soup, 16B Orchard Street, NYC, 10002
-                </p>
-                <p className="mt-4 font-semibold">
-                  ARTIST RECEPTION: Sun, Feb 21, 2016, 6–9pm
-                </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <ClockIcon className="w-5 h-5" />
+                  <div>
+                    <p className="text-xl">Exhibition: Feb. 8 - Mar. 6, 2016</p>
+                    <p className="text-gray-600 pl-7">Artist Reception: Feb. 21, 2016, 6–9 PM</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Chinatown Soup
+                    <br />
+                    16B Orchard Street
+                    <br />
+                    NYC, 10002
+                  </p>
+                </div>
               </div>
 
               <div>

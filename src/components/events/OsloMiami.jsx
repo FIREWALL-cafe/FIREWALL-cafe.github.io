@@ -1,21 +1,28 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import OsloMiami1 from '../../assets/images/2021_FIREWALL_OFF_MIA-31-copy.jpg';
+import OsloMiami2 from '../../assets/images/2021_FIREWALL_OFF_MIA-31-copy-4.jpg';
+import OsloMiami3 from '../../assets/images/2021_FIREWALL_OFF_MIA-25-copy.jpg';
+import OsloMiami4 from '../../assets/images/2021_FIREWALL_OFF_MIA-31-copy-1.jpg';
 
 function OsloMiami() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2021/10/2021_FIREWALL_OFF_MIA-31-copy.jpg",
+      src: OsloMiami1,
       description: "People engage with the FIREWALL search engine comparison."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2021/10/2021_FIREWALL_OFF_MIA-31-copy-4.jpg",
+      src: OsloMiami2,
       description: "FIREWALL Pop-up at OFF MIA."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2021/10/2021_FIREWALL_OFF_MIA-25-copy.jpg",
+      src: OsloMiami3,
       description: "FIREWALL installation view"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2021/10/2021_FIREWALL_OFF_MIA-31-copy-1.jpg",
+      src: OsloMiami4,
       description: "Gulchehra Hoja, a media personality, journalist and outspoken activist who speaks about China's violation, specifically the Uyghur culture genocide."
     }
   ];
@@ -29,31 +36,36 @@ function OsloMiami() {
               Oslo Freedom Forum 2021 Miami Interactive Expo
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Oct. 4–5, 2021
-            </h2>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Oct. 4–5, 2021</span>
+              </div>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location:{' '}
-                <a 
-                  href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
-                  className="text-blue-600 hover:text-blue-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  New World Center, Miami, Florida
-                </a>
-                <br />
-                500 17th St, Miami Beach, FL 33139
-              </p>
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <a 
+                    href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
+                    className="text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    New World Center, Miami, Florida
+                  </a>
+                  <br />
+                  500 17th St
+                  <br />
+                  Miami Beach, FL 33139
+                </div>
+              </div>
 
-              <p className="mb-4">
+              <p className="text-gray-700">
                 A two-day pop-up at an interactive expo focusing on fake news, censorship and encryption. 
                 The event was part of the Oslo Freedom Forum 2021, Miami.
               </p>
 
-              <p className="mb-8">
+              <p>
                 Click{' '}
                 <a 
                   href="https://oslofreedomforum.com/off21/#2021interactive"

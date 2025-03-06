@@ -1,17 +1,23 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import Reactions1 from '../../assets/images/VBKO_Panel-2-of-4.jpg';
+import Reactions2 from '../../assets/images/VBKO_Panel-4-of-4.jpg';
+import Reactions3 from '../../assets/images/A6_Flyer_SearchforFeminism_FINAL-back.jpg';
 
 function Reactions() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_Panel-2-of-4.jpg",
+      src: Reactions1,
       description: "From left to right: Julia Hartmann, Ye Hui, Ingrid Fischer-Schreiber, Joyce Yu-Jean Lee, at the panel discussion Re(actions) to the Great Chinese Firewall. Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_Panel-4-of-4.jpg",
+      src: Reactions2,
       description: "From left to right: Joyce Yu-Jean Lee, Ye Hui, Julia Hartmann, Ingrid Fischer-Schreiber. In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/A6_Flyer_SearchforFeminism_FINAL-back.jpg",
+      src: Reactions3,
       description: "Event flyer"
     }
   ];
@@ -47,27 +53,35 @@ function Reactions() {
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
               Re(actions) to the Great Chinese Firewall
             </h1>
-            
-            <h2 className="mt-6 text-2xl">
-              Jan. 16, 2020, 6:00 PM
-            </h2>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location:{' '}
-                <a 
-                  href="https://www.vbkoe.org/"
-                  className="text-blue-600 hover:text-blue-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  VBKÖ – Vereinigung bildender Künstlerinnen Österreichs (Austrian Association of Women Artists)
-                </a>
-                <br />
-                Maysedergasse 2 (4th floor), 1010 Vienna
-              </p>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Jan. 16, 2020, 6:00 PM</span>
+              </div>
 
-              <p className="mb-4">
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <a 
+                    href="https://www.vbkoe.org/"
+                    className="text-blue-600 hover:text-blue-800 text-xl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    VBKÖ – Vereinigung bildender Künstlerinnen Österreichs
+                  </a>
+                  <p className="text-gray-600">
+                    (Austrian Association of Women Artists)
+                    <br />
+                    Maysedergasse 2 (4th floor)
+                    <br />
+                    1010 Vienna
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-700">
                 Please join{' '}
                 {panelists.map((panelist, index) => (
                   <span key={index}>
@@ -84,19 +98,19 @@ function Reactions() {
                 ))}
                 in "Re(actions) to the Great Chinese Firewall", a panel discussion held in conjunction with the exhibition "Search for Feminism" at VBKÖ, Vienna, Austria.
               </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {images.map((image, index) => (
-                <div key={index} className="flex flex-col">
-                  <img 
-                    src={image.src} 
-                    alt={image.description}
-                    className="w-full h-auto rounded-lg"
-                  />
-                  <p className="mt-2 text-sm text-gray-600">{image.description}</p>
-                </div>
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                {images.map((image, index) => (
+                  <div key={index} className="flex flex-col">
+                    <img 
+                      src={image.src} 
+                      alt={image.description}
+                      className="w-full h-auto rounded-lg"
+                    />
+                    <p className="mt-2 text-sm text-gray-600 italic">{image.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

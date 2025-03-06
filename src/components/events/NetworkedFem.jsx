@@ -1,41 +1,53 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import NetworkedFem1 from '../../assets/images/Feminism_panel_edit.jpg';
+import NetworkedFem2 from '../../assets/images/Feminism_audience_edit.jpg';
+import NetworkedFem3 from '../../assets/images/Feminism_Susan_edit.jpg';
+import NetworkedFem4 from '../../assets/images/Feminism_Mingming_edit.jpg';
+import NetworkedFem5 from '../../assets/images/Feminism_Shitou_edit.jpg';
+import NetworkedFem6 from '../../assets/images/Feminism_Joyce_edit.jpg';
+import NetworkedFem7 from '../../assets/images/Feminism_Xintong_edit.jpg';
+import NetworkedFem8 from '../../assets/images/Feminism_Siodhbhra_edit.jpg';
+import NetworkedFem9 from '../../assets/images/Feminism_Barbara_edit.jpg';
 
 function NetworkedFem() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_panel_edit.jpg",
+      src: NetworkedFem1,
       description: "Lu Pin, Program manager of Media Monitor for Women Network and chief editor of Feminist Voices, speaks in front of audience"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_audience_edit.jpg",
+      src: NetworkedFem2,
       description: "Audience at the panel discussion 'Networked Feminism in China', Chinatown Soup, NYC."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Susan_edit.jpg",
+      src: NetworkedFem3,
       description: "Susan E. McGregor, panel moderator, Assistant Director of the Tow Center for Digital Journalism & Assistant Professor at Columbia Journalism School"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Mingming_edit.jpg",
+      src: NetworkedFem4,
       description: "Shitou, queer filmmaker and activist from Beijing, China."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Shitou_edit.jpg",
+      src: NetworkedFem5,
       description: "Mingming, queer filmmaker and activist from Beijing, China."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Joyce_edit.jpg",
+      src: NetworkedFem6,
       description: "Joyce Yu-Jean Lee, Founder of FIREWALL"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Xintong_edit.jpg",
+      src: NetworkedFem7,
       description: "Xintong Liu, designer, social innovator, and feminist organizer."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Siodhbhra_edit.jpg",
+      src: NetworkedFem8,
       description: "Siodhbhra Parkin, Translator/Fellow of the Paul Tsai China Center at Yale Law School."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Feminism_Barbara_edit.jpg",
+      src: NetworkedFem9,
       description: "Barbara Pollack, art critic, curator, and journalist"
     }
   ];
@@ -82,22 +94,51 @@ function NetworkedFem() {
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
-                Networked Feminism in China
+              Networked Feminism in China
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Feb. 19, 2016, 7:30 PM
-              </h2>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Feb. 19, 2016, 7:30 PM</span>
+              </div>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location: Orbital, 155 Rivington Street, NYC 10002
-              </p>
+              <div className="space-y-4">
+                <div className="flex gap-2">
+                  <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                  <div>
+                    <p className="text-gray-600">
+                      Panel Discussion:
+                      <br />
+                      Orbital
+                      <br />
+                      155 Rivington Street
+                      <br />
+                      NYC, 10002
+                    </p>
+                  </div>
+                </div>
 
-              <p className="mb-4">
+                <div className="flex gap-2">
+                  <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                  <div>
+                    <p className="text-gray-600">
+                      Exhibition & Reception (5-7 PM):
+                      <br />
+                      Chinatown Soup
+                      <br />
+                      16B Orchard Street
+                      <br />
+                      NYC, 10002
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-gray-700">
                 Please join us for a FIREWALL exhibition viewing and reception from 5-7p at Chinatown Soup, 
-                16B Orchard Street, NYC 10002, followed by a roundtable discussion about China's Young 
-                Feminist Activists, and the role of the Internet in this movement at 7:30p at Orbital.
+                followed by a roundtable discussion about China's Young Feminist Activists, and the role of 
+                the Internet in this movement at 7:30p at Orbital.
               </p>
 
               <p className="mb-8">

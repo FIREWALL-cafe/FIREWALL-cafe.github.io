@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import ArrowLeft from "../assets/icons/arrow_left_alt.svg";
-import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+
 import Megha from './events/Megha';
 import Marymount from './events/Marymount';
 import OsloTaiwan from './events/OsloTaiwan';

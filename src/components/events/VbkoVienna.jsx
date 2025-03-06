@@ -1,33 +1,42 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
+import VbkoVienna1 from '../../assets/images/VBKO_1.jpg';
+import VbkoVienna2 from '../../assets/images/VBKO_2.jpg';
+import VbkoVienna3 from '../../assets/images/VBKO_3.jpg';
+import VbkoVienna4 from '../../assets/images/VBKO_4.jpg';
+import VbkoVienna5 from '../../assets/images/VBKO_5.jpg';
+import VbkoVienna6 from '../../assets/images/VBKO_6.jpg';
+import VbkoVienna7 from '../../assets/images/VBKO_7.jpg';
 function VbkoVienna() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_1.jpg",
+      src: VbkoVienna1,
       description: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_2.jpg",
+      src: VbkoVienna2,
       description: "FIREWALL founder Joyce Yu-Jean Lee in conversation with a participant. Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_3.jpg",
+      src: VbkoVienna3,
       description: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_4.jpg",
+      src: VbkoVienna4,
       description: "Joyce Yu Jean-Lee in conversation with participants about FIREWALL. Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_5.jpg",
+      src: VbkoVienna5,
       description: "Search Session Instructions from the FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_6.jpg",
+      src: VbkoVienna6,
       description: "Stickers inspired by \"sensitive-term\" Search Votes alongside the Search for Feminism exhibition catalogue. Photo by Claudia Romero."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2020/01/VBKO_7.jpg",
+      src: VbkoVienna7,
       description: "Exhibition installation view"
     }
   ];
@@ -41,14 +50,21 @@ function VbkoVienna() {
               "Search for Feminism" at VBKÖ, Vienna, Austria
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Jan. 10 - Feb. 1, 2020
-            </h2>
-
             <div className="mt-8 space-y-6">
-              <div>
-                <p className="mb-2">
-                  Location:{' '}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <ClockIcon className="w-5 h-5" />
+                  <div>
+                    <p className="text-xl">Exhibition: Jan. 10 - Feb. 1, 2020</p>
+                    <p className="text-gray-600 pl-7">Opening Reception: Jan. 10, 2020, 7 PM</p>
+                    <p className="text-gray-600 pl-7">Gallery Hours: Fri 2-6 PM, Sat 11 AM-4 PM</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
                   <a 
                     href="https://www.vbkoe.org/"
                     className="text-blue-600 hover:text-blue-800"
@@ -58,24 +74,16 @@ function VbkoVienna() {
                     VBKÖ – Vereinigung bildender Künstlerinnen Österreichs
                   </a>
                   {' '}(Austrian Association of Women Artists)
-                </p>
-                <p className="text-gray-700">
-                  Maysedergasse 2 (4th floor), 1010 Vienna
-                </p>
+                  <br />
+                  Maysedergasse 2 (4th floor)
+                  <br />
+                  1010 Vienna
+                </div>
               </div>
 
-              <p>
+              <p className="text-gray-700">
                 Group exhibition Curated by Aline Rezende Lara & Julia Hartmann
               </p>
-
-              <div className="space-y-2">
-                <p>
-                  <span className="underline">Opening</span>: Fri, Jan 10th, 2020, 7pm
-                </p>
-                <p>
-                  <span className="underline">On View</span>: 2-6p Fri, and 11-4p Sat until Feb 1st
-                </p>
-              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 {images.map((image, index) => (

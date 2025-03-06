@@ -1,5 +1,7 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 
+import Bbc from '../../assets/images/BBC.png';
 function FeaturedBbc() {
   return (
     <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
@@ -10,9 +12,10 @@ function FeaturedBbc() {
               FIREWALL Featured on BBC "The Real Story"
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Nov. 1, 2019
-            </h2>
+            <div className="mt-8 flex items-center gap-2 text-gray-600">
+              <ClockIcon className="w-5 h-5" />
+              <span className="text-xl">Nov. 1, 2019</span>
+            </div>
 
             <div className="mt-8">
               <p className="mb-4">
@@ -48,7 +51,7 @@ function FeaturedBbc() {
 
             <div className="mt-8">
               <img 
-                src="https://firewallcafe.com/wp-content/uploads/2019/11/Screenshot-2019-11-01-10.37.13.png"
+                src={Bbc}
                 alt="BBC The Real Story screenshot"
                 className="w-full h-auto rounded-lg"
               />

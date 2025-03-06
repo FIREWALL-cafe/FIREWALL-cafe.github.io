@@ -1,21 +1,28 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import OffNyc1 from '../../assets/images/OFF17_1-1.jpg';
+import OffNyc2 from '../../assets/images/OFF17_2-1.jpg';
+import OffNyc3 from '../../assets/images/OFF17_3-1.jpg';
+import OffNyc4 from '../../assets/images/OFF17_4-1.jpg';
 
 function OffNyc() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF17_1-1.jpg",
+      src: OffNyc1,
       description: "From left to right: Teng Biao, human rights activist and lawyer, Joyce Yu-Jean Lee, founder of FIREWALL, Lu Miaoqing, human rights laywer"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF17_2-1.jpg",
+      src: OffNyc2,
       description: "A search session for \"Xi Jinping Winnie the Pooh\""
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF17_3-1.jpg",
+      src: OffNyc3,
       description: "Professor Joyce Yu-Jean Lee with students from New Jersey City University"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/OFF17_4-1.jpg",
+      src: OffNyc4,
       description: "A search station at Alice Tully Hall, Lincoln Center"
     }
   ];
@@ -29,16 +36,26 @@ function OffNyc() {
               2017 Oslo Freedom Forum New York Interactive Expo
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Sep. 19, 2017, 9 AM-5 PM
-            </h2>
-
             <div className="mt-8 space-y-6">
-              <p className="text-gray-700">
-                Location: Alice Tully Hall, Lincoln Center, NYC
-              </p>
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Sep. 19, 2017, 9 AM-5 PM</span>
+              </div>
 
-              <p>
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Alice Tully Hall
+                    <br />
+                    Lincoln Center
+                    <br />
+                    NYC
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-700">
                 A one-day "Search Session" at an Interactive Expo focusing on the 
                 intersection of human rights with technology, media and politics. 
                 Event held concurrent with the UN General Assembly in NYC.

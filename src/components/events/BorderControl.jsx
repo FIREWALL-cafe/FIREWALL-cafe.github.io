@@ -1,4 +1,6 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
 function BorderControl() {
   const images = [
@@ -57,19 +59,27 @@ function BorderControl() {
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
-                New Media Caucus "Border Control" Symposium
+              New Media Caucus "Border Control" Symposium
             </h1>
-            
-            <h2 className="mt-6 text-2xl">
-              Sep. 21, 2019, 10:45 AM to 12:15 PM
-            </h2>
 
             <div className="mt-8 space-y-6">
-              <p className="text-gray-700">
-                Location: Univ. of Michigan Penny Stamps Gallery, Penny W. Stamps School Of Art & Design
-                <br />
-                2000 Bonisteel Boulevard, Ann Arbor, MI 48109
-              </p>
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Sep. 21, 2019, 10:45 AM to 12:15 PM</span>
+              </div>
+
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Univ. of Michigan Penny Stamps Gallery
+                    <br />
+                    Penny W. Stamps School Of Art & Design
+                    <br />
+                    2000 Bonisteel Boulevard, Ann Arbor, MI 48109
+                  </p>
+                </div>
+              </div>
 
               <p className="italic">
                 Please join Nadav Assor, Patricia Villalobos Echeverría, and Maria del Carmen Montoya, 
@@ -111,7 +121,7 @@ function BorderControl() {
                   </div>
                 ))}
               </div>
-					</div>
+            </div>
           </div>
         </div>
       </div>

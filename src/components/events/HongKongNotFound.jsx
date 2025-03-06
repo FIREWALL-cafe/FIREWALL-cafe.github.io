@@ -1,17 +1,22 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
+import HongKongNotFound1 from '../../assets/images/Firewall_HK_1920.jpg';
+import HongKongNotFound2 from '../../assets/images/Firewall_HK5_1920-1.jpg';
+import HongKongNotFound3 from '../../assets/images/Firewall_HK6_1920-950x629-1.jpg';
 function HongKongNotFound() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/06/Firewall_HK_1920.jpg",
+      src: HongKongNotFound1,
       description: "Participants keying search terms into FIREWALL dual-search browser"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Firewall_HK5_1920-1.jpg",
+      src: HongKongNotFound2,
       description: "Artist Joyce Yu-Jean Lee explains the concept of FIREWALL to participants"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/Firewall_HK6_1920-950x629-1.jpg",
+      src: HongKongNotFound3,
       description: "Discussion group after \"Not Found\", a performance by artist Ying Ting"
     }
   ];
@@ -25,39 +30,39 @@ function HongKongNotFound() {
               "NOT FOUND" in Hong Kong
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Jan. 12-23, 2019
-            </h2>
+            <div className="mt-8 space-y-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <ClockIcon className="w-5 h-5" />
+                  <div>
+                    <p className="text-xl">Exhibition: Jan. 12-23, 2019</p>
+                    <p className="text-gray-600 pl-7">Opening Reception: Jan. 12, 2019, 1-8 PM</p>
+                    <p className="text-gray-600 pl-7">Gallery Hours: Tues-Sun, 1-8 PM</p>
+                    <p className="text-gray-600 pl-7">Ying Ting Performances: Jan. 12 & 13, 3 PM & 7 PM</p>
+                  </div>
+                </div>
+              </div>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location:{' '}
-                <a 
-                  href="https://www.facebook.com/greenwaveart/photos/a.934648293318071/1977824189000471/?type=3&theater"
-                  className="text-blue-600 hover:text-blue-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Center for Community Cultural Development – Green Wave Art
-                </a>
-                <br />
-                404 Shanghai Street, Yau Ma Tei, Kowloon
-              </p>
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <a 
+                    href="https://www.facebook.com/greenwaveart/photos/a.934648293318071/1977824189000471/?type=3&theater"
+                    className="text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Center for Community Cultural Development – Green Wave Art
+                  </a>
+                  <br />
+                  404 Shanghai Street
+                  <br />
+                  Yau Ma Tei, Kowloon
+                </div>
+              </div>
 
-              <p className="mb-4">
+              <p className="text-gray-700">
                 Two-person exhibition with artist, Ying Ting; curated by Iago
-              </p>
-
-              <p className="mb-4">
-                <span className="underline">Opening</span>: Sat, Jan 12th, 2019 1-8pm
-              </p>
-
-              <p className="mb-4">
-                <span className="underline">On view</span>: 1-8p Tues-Sun until Jan 23rd
-              </p>
-
-              <p className="mb-4">
-                <span className="underline">Ying Ting Performances</span>: 3 & 7p on Sat, Jan 12th & Sun, the 13th
               </p>
             </div>
 

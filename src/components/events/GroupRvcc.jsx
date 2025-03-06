@@ -1,29 +1,38 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import GroupRvcc1 from '../../assets/images/2022_FIREWALL_RVC-05.png';
+import GroupRvcc2 from '../../assets/images/2022_FIREWALL_RVC-04.png';
+import GroupRvcc3 from '../../assets/images/2022_FIREWALL_RVC-07.png';
+import GroupRvcc4 from '../../assets/images/2022_FIREWALL_RVC-08.png';
+import GroupRvcc5 from '../../assets/images/2022_FIREWALL_RVC-06.png';
+import GroupRvcc6 from '../../assets/images/2022_FIREWALL_RVC-01.png';
 
 function GroupRvcc() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2022/11/2022_FIREWALL_RVC-05.png",
+      src: GroupRvcc1,
       description: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Lydia Grey, curator of 'The Future is'."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2022/11/2022_FIREWALL_RVC-04.png",
+      src: GroupRvcc2,
       description: "FIREWALL Pop-up at RVCC Art Gallery."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2022/11/2022_FIREWALL_RVC-07.png",
+      src: GroupRvcc3,
       description: "A group of students engaging in FIREWALL searching and discussing the results."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2022/11/2022_FIREWALL_RVC-08.png",
+      src: GroupRvcc4,
       description: "A group of students engaging in FIREWALL searching and discussing the results."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2022/11/2022_FIREWALL_RVC-06.png",
+      src: GroupRvcc5,
       description: "A visitor being surprised by the censored results on Baidu."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2022/11/2022_FIREWALL_RVC-01.png",
+      src: GroupRvcc6,
       description: "An artist sharing by Joyce Yu-Jean Lee about FIREWALL and internet censorship to a full room at Raritan Valley Community College."
     }
   ];
@@ -50,31 +59,36 @@ function GroupRvcc() {
               FIREWALL Pop-up Group Show in RVCC
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Aug. 31 - Sep. 30, 2022
-            </h2>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Aug. 31 - Sep. 30, 2022</span>
+              </div>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location:{' '}
-                <a 
-                  href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
-                  className="text-blue-600 hover:text-blue-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Raritan Valley Community College Art Gallery
-                </a>
-                <br />
-                118 Lamington Road, Branchburg, NJ 08876
-              </p>
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <a 
+                    href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
+                    className="text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Raritan Valley Community College Art Gallery
+                  </a>
+                  <br />
+                  118 Lamington Road
+                  <br />
+                  Branchburg, NJ 08876
+                </div>
+              </div>
 
-              <p className="mb-8">
+              <p className="text-gray-700">
                 FIREWALL Pops-Up in a Group exhibition, <em>The Future is</em>, curated by Lydia Grey Barnes 
                 and coordinated by Darren McManus, featuring artists:
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2">
                 {artists.map((artist, index) => (
                   <span 
                     key={index}
