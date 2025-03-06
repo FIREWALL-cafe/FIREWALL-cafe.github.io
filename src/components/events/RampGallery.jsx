@@ -2,36 +2,30 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import RampGallery1 from '../../assets/images/REDIRECT_1.jpg';
-import RampGallery2 from '../../assets/images/REDIRECT_2.jpg';
-import RampGallery3 from '../../assets/images/REDIRECT_3.jpg';
-import RampGallery4 from '../../assets/images/REDIRECT_4.jpg';
-import RampGallery5 from '../../assets/images/REDIRECT_5.jpg';
-import RampGallery6 from '../../assets/images/REDIRECT_6.jpg';
 function RampGallery() {
   const images = [
     {
-      src: RampGallery1,
+      src: process.env.PUBLIC_URL + '/images/REDIRECT_1.jpg',
       description: "in conversation with a FIREWALL participant"
     },
     {
-      src: RampGallery2,
+      src: process.env.PUBLIC_URL + '/images/REDIRECT_2.jpg',
       description: "FIREWALL Pop-up at Ramp Gallery in Asheville, NC"
     },
     {
-      src: RampGallery3,
+      src: process.env.PUBLIC_URL + '/images/REDIRECT_3.jpg',
       description: "Artist talks moderated by Lei Han with (left to right) Janna Dyk, Joyce, Victoria Bradbury and Ben Duvall"
     },
     {
-      src: RampGallery4,
+      src: process.env.PUBLIC_URL + '/images/REDIRECT_4.jpg',
       description: "Artist talks moderated by Lei Han, Director of New Media program at University of North Carolina, Asheville"
     },
     {
-      src: RampGallery5,
+      src: process.env.PUBLIC_URL + '/images/REDIRECT_5.jpg',
       description: "Exhibiting artists (left to right): Ben Duvall, Janna Dyk, Joyce Yu-Jean Lee, Suzanne Dittenber (curator) and Victoria Bradbury"
     },
     {
-      src: RampGallery6,
+      src: process.env.PUBLIC_URL + '/images/REDIRECT_6.jpg',
       description: "FIREWALL Pop-up at Ramp Gallery"
     }
   ];

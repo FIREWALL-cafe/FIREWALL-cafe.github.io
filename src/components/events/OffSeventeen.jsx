@@ -2,37 +2,30 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import OffSeventeen1 from '../../assets/images/FirewallOFFoslo6_1920.jpg';
-import OffSeventeen2 from '../../assets/images/FirewallOFFoslo3_1920.jpg';
-import OffSeventeen3 from '../../assets/images/FirewallOFFoslo5_1920.jpg';
-import OffSeventeen4 from '../../assets/images/FirewallOFFoslo1_1920.jpg';
-import OffSeventeen5 from '../../assets/images/FirewallOFFoslo_1920.jpg';
-import OffSeventeen6 from '../../assets/images/FirewallOFFoslo5_1920-1.jpg';
-
 function OffSeventeen() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2018/01/FirewallOFFoslo6_1920.jpg",
+      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo6_1920.jpg',
       description: "LED lights released in the Spikersuppa Square foundtain outside FIREWALL"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2018/01/FirewallOFFoslo3_1920.jpg",
+      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo3_1920.jpg',
       description: "Free wi-fi and Starbucks inside tent"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2018/01/FirewallOFFoslo5_1920.jpg",
+      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo5_1920.jpg',
       description: "Dan Phiffer & activist Maria Toorpakai Wazir search Pakistani conspiracy theory, \"Is Donald Trump Pakistani?\""
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2018/01/FirewallOFFoslo1_1920.jpg",
+      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo1_1920.jpg',
       description: "Searching Chinese political dissidents with Oslo Freedom Forum founder, Thor Halvorssen"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2018/01/FirewallOFFoslo_1920.jpg",
+      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo_1920.jpg',
       description: "Inside pop-up at Spikersuppa Square, Oslo, Norway"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2018/01/FirewallOFFoslo5_1920-1.jpg",
+      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo5_1920-1.jpg',
       description: "FIREWALL pop-up in Spikersuppa Square, Oslo, Norway during Oslo Freedom Forum 2017"
     }
   ];

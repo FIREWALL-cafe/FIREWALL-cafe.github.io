@@ -5,23 +5,23 @@ import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.s
 function BorderControl() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/1_FWC_NMC_-7626.jpg",
+      src: process.env.PUBLIC_URL + '/images/1_FWC_NMC_-7626.jpg',
       description: "FIREWALL popup at New Media Caucus \"Border Control\" Symposium."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/2_NMC_CoCreatingBorder-7512.jpg",
+      src: process.env.PUBLIC_URL + '/images/2_NMC_CoCreatingBorder-7512.jpg',
       description: "From left to right: Nadav Assor, Patricia Villalobos Echeverría, Joyce Yu-Jean Lee, Maria del Carmen Montoya"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/3_FWC_NMC_-7601.jpg",
+      src: process.env.PUBLIC_URL + '/images/3_FWC_NMC_-7601.jpg',
       description: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/4_FWC_NMC_-7632.jpg",
+      src: process.env.PUBLIC_URL + '/images/4_FWC_NMC_-7632.jpg',
       description: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/5_FWC_NMC_-7615.jpg",
+      src: process.env.PUBLIC_URL + '/images/5_FWC_NMC_-7615.jpg',
       description: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
     }
   ];

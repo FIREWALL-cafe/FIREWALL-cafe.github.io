@@ -2,52 +2,42 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import Inaugural1 from '../../assets/images/IMG_3948.jpg';
-import Inaugural2 from '../../assets/images/IMG_3814.jpg';
-import Inaugural3 from '../../assets/images/IMG_3774-1.jpg';
-import Inaugural4 from '../../assets/images/IMG_3864-2.jpg';
-import Inaugural5 from '../../assets/images/IMG_3960crop-1.jpeg';
-import Inaugural6 from '../../assets/images/IMG_4230crop.jpeg';
-import Inaugural7 from '../../assets/images/IMG_4212crop.jpeg';
-import Inaugural8 from '../../assets/images/IMG_4248.jpg';
-import Inaugural9 from '../../assets/images/IMG_3973.jpg';
-
 function Inaugural() {
   const images = [
     {
-      src: Inaugural1,
+      src: process.env.PUBLIC_URL + '/images/IMG_3948.jpg',
       description: "View from main Search Station inside gallery"
     },
     {
-      src: Inaugural2,
+      src: process.env.PUBLIC_URL + '/images/IMG_3814.jpg',
       description: "Title Wall at Entrance of Exhibition"
     },
     {
-      src: Inaugural3,
+      src: process.env.PUBLIC_URL + '/images/IMG_3774-1.jpg',
       description: "Exterior View of Internet Cafe"
     },
     {
-      src: Inaugural4,
+      src: process.env.PUBLIC_URL + '/images/IMG_3864-2.jpg',
       description: "Search Stations"
     },
     {
-      src: Inaugural5,
+      src: process.env.PUBLIC_URL + '/images/IMG_3960crop-1.jpeg',
       description: "FIREWALL Cafe paraphernalia"
     },
     {
-      src: Inaugural6,
+      src: process.env.PUBLIC_URL + '/images/IMG_4230crop.jpeg',
       description: "FIREWALL Cafe Special Events"
     },
     {
-      src: Inaugural7,
+      src: process.env.PUBLIC_URL + '/images/IMG_4212crop.jpeg',
       description: "Exhibition view"
     },
     {
-      src: Inaugural8,
+      src: process.env.PUBLIC_URL + '/images/IMG_4248.jpg',
       description: "FIREWALL Cafe Tea Menu"
     },
     {
-      src: Inaugural9,
+      src: process.env.PUBLIC_URL + '/images/IMG_3973.jpg',
       description: "TenRen Tea served at FIREWALL Cafe"
     }
   ];

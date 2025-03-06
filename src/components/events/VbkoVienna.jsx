@@ -2,41 +2,34 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import VbkoVienna1 from '../../assets/images/VBKO_1.jpg';
-import VbkoVienna2 from '../../assets/images/VBKO_2.jpg';
-import VbkoVienna3 from '../../assets/images/VBKO_3.jpg';
-import VbkoVienna4 from '../../assets/images/VBKO_4.jpg';
-import VbkoVienna5 from '../../assets/images/VBKO_5.jpg';
-import VbkoVienna6 from '../../assets/images/VBKO_6.jpg';
-import VbkoVienna7 from '../../assets/images/VBKO_7.jpg';
 function VbkoVienna() {
   const images = [
     {
-      src: VbkoVienna1,
+      src: process.env.PUBLIC_URL + '/images/VBKO_1.jpg',
       description: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
     },
     {
-      src: VbkoVienna2,
+      src: process.env.PUBLIC_URL + '/images/VBKO_2.jpg',
       description: "FIREWALL founder Joyce Yu-Jean Lee in conversation with a participant. Photo by Claudia Romero."
     },
     {
-      src: VbkoVienna3,
+      src: process.env.PUBLIC_URL + '/images/VBKO_3.jpg',
       description: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
     },
     {
-      src: VbkoVienna4,
+      src: process.env.PUBLIC_URL + '/images/VBKO_4.jpg',
       description: "Joyce Yu Jean-Lee in conversation with participants about FIREWALL. Photo by Claudia Romero."
     },
     {
-      src: VbkoVienna5,
+      src: process.env.PUBLIC_URL + '/images/VBKO_5.jpg',
       description: "Search Session Instructions from the FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
     },
     {
-      src: VbkoVienna6,
+      src: process.env.PUBLIC_URL + '/images/VBKO_6.jpg',
       description: "Stickers inspired by \"sensitive-term\" Search Votes alongside the Search for Feminism exhibition catalogue. Photo by Claudia Romero."
     },
     {
-      src: VbkoVienna7,
+      src: process.env.PUBLIC_URL + '/images/VBKO_7.jpg',
       description: "Exhibition installation view"
     }
   ];

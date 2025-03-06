@@ -2,52 +2,42 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import NetworkedFem1 from '../../assets/images/Feminism_panel_edit.jpg';
-import NetworkedFem2 from '../../assets/images/Feminism_audience_edit.jpg';
-import NetworkedFem3 from '../../assets/images/Feminism_Susan_edit.jpg';
-import NetworkedFem4 from '../../assets/images/Feminism_Mingming_edit.jpg';
-import NetworkedFem5 from '../../assets/images/Feminism_Shitou_edit.jpg';
-import NetworkedFem6 from '../../assets/images/Feminism_Joyce_edit.jpg';
-import NetworkedFem7 from '../../assets/images/Feminism_Xintong_edit.jpg';
-import NetworkedFem8 from '../../assets/images/Feminism_Siodhbhra_edit.jpg';
-import NetworkedFem9 from '../../assets/images/Feminism_Barbara_edit.jpg';
-
 function NetworkedFem() {
   const images = [
     {
-      src: NetworkedFem1,
+      src: process.env.PUBLIC_URL + '/images/Feminism_panel_edit.jpg',
       description: "Lu Pin, Program manager of Media Monitor for Women Network and chief editor of Feminist Voices, speaks in front of audience"
     },
     {
-      src: NetworkedFem2,
+      src: process.env.PUBLIC_URL + '/images/Feminism_audience_edit.jpg',
       description: "Audience at the panel discussion 'Networked Feminism in China', Chinatown Soup, NYC."
     },
     {
-      src: NetworkedFem3,
+      src: process.env.PUBLIC_URL + '/images/Feminism_Susan_edit.jpg',
       description: "Susan E. McGregor, panel moderator, Assistant Director of the Tow Center for Digital Journalism & Assistant Professor at Columbia Journalism School"
     },
     {
-      src: NetworkedFem4,
+      src: process.env.PUBLIC_URL + '/images/Feminism_Mingming_edit.jpg',
       description: "Shitou, queer filmmaker and activist from Beijing, China."
     },
     {
-      src: NetworkedFem5,
-      description: "Mingming, queer filmmaker and activist from Beijing, China."
-    },
-    {
-      src: NetworkedFem6,
-      description: "Joyce Yu-Jean Lee, Founder of FIREWALL"
-    },
-    {
-      src: NetworkedFem7,
+      src: process.env.PUBLIC_URL + '/images/Feminism_Xintong_edit.jpg',
       description: "Xintong Liu, designer, social innovator, and feminist organizer."
     },
     {
-      src: NetworkedFem8,
+      src: process.env.PUBLIC_URL + '/images/Feminism_Joyce_edit.jpg',
+      description: "Joyce Yu-Jean Lee, Founder of FIREWALL"
+    },
+    {
+      src: process.env.PUBLIC_URL + '/images/Feminism_Xintong_edit.jpg',
+      description: "Xintong Liu, designer, social innovator, and feminist organizer."
+    },
+    {
+      src: process.env.PUBLIC_URL + '/images/Feminism_Siodhbhra_edit.jpg',
       description: "Siodhbhra Parkin, Translator/Fellow of the Paul Tsai China Center at Yale Law School."
     },
     {
-      src: NetworkedFem9,
+      src: process.env.PUBLIC_URL + '/images/Feminism_Barbara_edit.jpg',
       description: "Barbara Pollack, art critic, curator, and journalist"
     }
   ];

@@ -2,27 +2,22 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import OffNyc1 from '../../assets/images/OFF17_1-1.jpg';
-import OffNyc2 from '../../assets/images/OFF17_2-1.jpg';
-import OffNyc3 from '../../assets/images/OFF17_3-1.jpg';
-import OffNyc4 from '../../assets/images/OFF17_4-1.jpg';
-
 function OffNyc() {
   const images = [
     {
-      src: OffNyc1,
+      src: process.env.PUBLIC_URL + '/images/OFF17_1-1.jpg',
       description: "From left to right: Teng Biao, human rights activist and lawyer, Joyce Yu-Jean Lee, founder of FIREWALL, Lu Miaoqing, human rights laywer"
     },
     {
-      src: OffNyc2,
+      src: process.env.PUBLIC_URL + '/images/OFF17_2-1.jpg',
       description: "A search session for \"Xi Jinping Winnie the Pooh\""
     },
     {
-      src: OffNyc3,
+      src: process.env.PUBLIC_URL + '/images/OFF17_3-1.jpg',
       description: "Professor Joyce Yu-Jean Lee with students from New Jersey City University"
     },
     {
-      src: OffNyc4,
+      src: process.env.PUBLIC_URL + '/images/OFF17_4-1.jpg',
       description: "A search station at Alice Tully Hall, Lincoln Center"
     }
   ];

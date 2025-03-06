@@ -2,27 +2,22 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import OsloMiami1 from '../../assets/images/2021_FIREWALL_OFF_MIA-31-copy.jpg';
-import OsloMiami2 from '../../assets/images/2021_FIREWALL_OFF_MIA-31-copy-4.jpg';
-import OsloMiami3 from '../../assets/images/2021_FIREWALL_OFF_MIA-25-copy.jpg';
-import OsloMiami4 from '../../assets/images/2021_FIREWALL_OFF_MIA-31-copy-1.jpg';
-
 function OsloMiami() {
   const images = [
     {
-      src: OsloMiami1,
+      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-31-copy.jpg',
       description: "People engage with the FIREWALL search engine comparison."
     },
     {
-      src: OsloMiami2,
+      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-31-copy-4.jpg',
       description: "FIREWALL Pop-up at OFF MIA."
     },
     {
-      src: OsloMiami3,
+      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-25-copy.jpg',
       description: "FIREWALL installation view"
     },
     {
-      src: OsloMiami4,
+      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-31-copy-1.jpg',
       description: "Gulchehra Hoja, a media personality, journalist and outspoken activist who speaks about China's violation, specifically the Uyghur culture genocide."
     }
   ];
