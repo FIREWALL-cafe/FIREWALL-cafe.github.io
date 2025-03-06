@@ -31,9 +31,7 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "build")));
 
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get('/events/:eventId', (req, res) => {
+app.get('/events*', (req, res) => {
   console.log('EVENT HANDLER:no cache for events/:eventId?')
   var indexHtml = path.join(__dirname, "public/index.html");
   res.sendFile(indexHtml);
