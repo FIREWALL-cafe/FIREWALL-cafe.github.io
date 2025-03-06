@@ -1,8 +1,10 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchesByTerm, getTranslation, postVote, saveImages } = require('./server/fetch');
+const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
 const postmark = require('postmark');
+const fs = require('fs');
+
 const serverConfig = require('./server/config');
 
 const app = express();
@@ -15,24 +17,58 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
+// app.set('etag', false)
+
+app.disable('x-powered-by');
+
+app.use((req, res, next) => {
+  // hide x-powered-by for security reasons
+  res.set( 'X-Powered-By', 'gabriel server' );
+  // This should apply to other routes
+  // res.set('Cache-Control', 'no-store')
+  next()
+})
+
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get('/events*', (req, res) => {
+  console.log('EVENT HANDLER:no cache for events/:eventId?')
+  var indexHtml = path.join(__dirname, "public/index.html");
+  res.sendFile(indexHtml);
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  // res.set('Cache-Control', 'no-store')
+  console.log('FALL THRU: /*')
+  res.sendFile(path.join(__dirname, "public/index.html"));
+});
+
+app.get("/", (req, res) => {
+  res.set('Cache-Control', 'no-store')
+  console.log('FALL THRU: /')
+  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
+});
+
+app.get("*", (req, res) => {
+  res.set('Cache-Control', 'no-store')
+  console.log('FALL THRU: *')
+  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
+});
+
+app.post("/searches/:search_id/images", async (req, res) => {
+  console.log('/searches/:search_id/images:', req.params);
+  console.log("trying to get images for search id", req.params.search_id);
+  const { search_id } = req.params;
+
+  const data = await getSearchImages(search_id);
+
+  res.json(data);
 });
 
 app.post('/images', async (req, res) => {
   const data = {};
   let langTo;
-  const { query } = req.body;
+  const { query, search_client_name } = req.body;
   console.log('query', query)
 
   try {
@@ -48,8 +84,7 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    // await saveImages({ query, google: results[0].slice(0, 5), baidu: results[1].slice(0, 5), langTo, langFrom, translation: translatedQuery })
-    const { searchId } = { searchId: 1 };
+    const { searchId } = await saveImages({ query, google: results[0].slice(0, 9), baidu: results[1].slice(0, 9), langTo, langFrom, search_client_name, translation: translatedQuery })
 
     data.searchId = searchId;
     data.googleResults = results[0];
@@ -63,9 +98,12 @@ app.post('/images', async (req, res) => {
 });
 
 app.post('/searches', async (req, res) => {
-  console.log('/searches:', req.query);
   const { query } = req.query;
-  const data = await getSearchesByTerm(query);
+  const filterOptions = req.query;
+
+  console.log('/searches params:', req.query);
+  console.log('/searches body:', req.body);
+  const data =  query ? await getSearchesByTerm(query) : await getSearchesFilter(filterOptions);
 
   res.json(data);
 });
@@ -75,7 +113,7 @@ app.post('/vote', async (req, res) => {
   console.log('/vote:', req.body);
   
   try {
-    // req.body.vote_ip_address = req.ip;
+    req.body.vote_ip_address = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     totalVotes = await postVote({ ...req.body });
   } catch (e) {
     console.error(e);

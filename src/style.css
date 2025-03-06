@@ -26,13 +26,11 @@
   flex-grow: 0;
   flex-shrink: 0;
   border-radius: 100%;
-  width: 100px;
-  height: 100px;
   border: 3px solid transparent;
   cursor: pointer;
 }
 
-.vote__button:hover:not(:disabled) {
+.vote__button_container:hover:not(:disabled) {
   border: 3px solid #e60011;
 }
 
@@ -40,9 +38,9 @@
   filter: grayscale(1);
   cursor: not-allowed;}
 
-.vote__button:not(:last-child) {
+/* .vote__button:not(:last-child) {
   margin-right: 10px;
-}
+} */
 
 .results__container {
   display: flex;

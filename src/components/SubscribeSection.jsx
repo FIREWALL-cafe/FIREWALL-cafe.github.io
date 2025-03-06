@@ -18,7 +18,7 @@ function SubscribeSection() {
                       <h2 className="text-2xl">Subscribe 订阅</h2>
                       <div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
                       <div className="mc-field-group">
-                        <label for="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
+                        <label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
                         <input type="email" name="EMAIL" data-lpignore='true' className="required email" id="mce-EMAIL" />
                         <span id="mce-EMAIL-HELPERTEXT" className="mt-2 text-sm">Get newsletter updates about upcoming events and information</span>
                       </div>
@@ -31,7 +31,7 @@ function SubscribeSection() {
                       </div>
                       <div aria-hidden="true"  className="absolute left-[5000px]">
                           /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-                          <input type="text" name="b_9a0599467edb506239b6ed989_a007452c99" tabindex="-1" value="" />
+                          <input type="text" name="b_9a0599467edb506239b6ed989_a007452c99" tabIndex="-1" />
                       </div>
                       <div className="optionalParent">
                         <div className="clear foot">

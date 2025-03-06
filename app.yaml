@@ -13,5 +13,9 @@
 
 # [START gae_quickstart_yaml]
 runtime: nodejs20
-default_expiration: "0"
+default_expiration: "5s"
 # [END gae_quickstart_yaml]
+# - url: /(.*\.png)
+# mime_type: image/png
+# static_files: public/images/\1
+# upload: public/images/(.*\.png)

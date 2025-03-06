@@ -1,35 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MenuSection from './MenuSection';
 import MenuLink from './MenuLink';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 import logo from "../assets/icons/logo_name.svg";
 import NavMenu from "../assets/icons/nav-menu.svg";
-
-const menuSections = [
-    {
-      title: 'Analysis',
-      items: [<Link to="/search">Search</Link>, <Link to="/archive">Archive</Link>, <Link to="/editorial">Editorial</Link>],
-      iconSrc: 'https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/405ba1e178feb620f32f3df09aea26ed9eb080ba6cb4b555e946e0c55fcb8739?apiKey=d56f8d62d9074d509de3faeb2651bd99&'
-    },
-    {
-      title: 'About',
-      items: [<Link to="/about">FIREWALL Cafe</Link>, <Link to="/events">Events</Link>, <Link to="/press">Press</Link>],
-      iconSrc: 'https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/33683d061f3f1aec6bb62f00876dd7c94d17c54cf2a0ff1719271fa07c97d162?apiKey=d56f8d62d9074d509de3faeb2651bd99&'
-    },
-    {
-      title: <Link to="/support">Partner with us</Link>,
-      items: [],
-      iconSrc: ''
-    },
-    {
-      title: <Link to="/contact">Contact</Link>,
-      items: [],
-      iconSrc: ''
-    }
-];
+import Close from "../assets/icons/close_large.svg";
   
 const menuLinks = [
   { to: "/search", title: "Search" },
@@ -80,26 +57,17 @@ function Navigation() {
           <nav className="flex flex-col absolute z-10 text-xl w-full text-right bg-white text-black max-md:mt-10 max-md:max-w-full">
             <div className="flex self-end">
               <button
-                className="overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 rounded border border-black border-solid min-h-[36px]"
+                className="overflow-hidden flex-col justify-center items-center self-stretch my-auto w-9 h-9 min-h-[36px]"
                 aria-label="Close"
                 onClick={toggleDrawer}
               >
                 <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/d56f8d62d9074d509de3faeb2651bd99/f0e822ad99ddec163f1240be68b0385290164fb113b525dc888e7a23845af72f?apiKey=d56f8d62d9074d509de3faeb2651bd99&"
+                  src={Close}
                   alt=""
                   className="object-contain w-full aspect-square"
                 />
               </button>
             </div>
-            {/* {menuSections.map((section, index) => (
-              <MenuSection
-                key={index}
-                title={section.title}
-                items={section.items}
-                iconSrc={section.iconSrc}
-              />
-            ))} */}
             {menuLinks.map((link, index) => (
               <MenuLink key={index} link={link} toggleDrawer={toggleDrawer} />
             ))}

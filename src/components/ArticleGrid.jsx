@@ -11,6 +11,7 @@ import PressBBC from '../assets/images/press/press-bbc-default.jpg';
 import PressBBCHover from '../assets/images/press/press-bbc-hover.jpg';
 import PressChinaUnscripted from '../assets/images/press/press-china_unscripted-default.jpg';
 import PressChinaUnscriptedHover from '../assets/images/press/press-china_unscripted-hover.jpg';
+import PressMonocle from '../assets/images/press-monocle-default.jpeg';
 
 const articles = [
   {
@@ -30,16 +31,24 @@ const articles = [
   {
     image: PressBBC,
     imageHover: PressBBCHover,
-    title: "The Real Story: Russia's New Internet Firewall (cue 35:06)",
+    title: "The Real Story: Russia's New Internet Firewall",
     url: "https://www.bbc.co.uk/sounds/play/w3csydds",
     date: "Nov 1, 2019",
+    note: "(cue 35:06)"
   },
   {
     image: PressChinaUnscripted,
     imageHover: PressChinaUnscriptedHover,
-    title: "#42 Hacking China’s Censorship | FIREWALL Cafe",
+    title: "#42 Hacking China's Censorship | FIREWALL Cafe",
     url: "http://chinaunscripted.libsyn.com/42-hacking-chinas-censorship-firewall-cafe",
-    date: "Aug 23, 2019",
+    date: "Aug 23, 2019"
+  },
+  {
+    image: PressHKFP,
+    imageHover: PressHKFPHover,
+    title: "Google vs. Baidu – Artist Joyce Yu-Jean Lee examines cultural and political bias online… and in ourselves",
+    url: "https://www.hongkongfp.com/2019/02/24/video-google-vs-baidu-artist-joyce-yu-jean-lee-examines-cultural-political-bias-online/",
+    date: "February 24, 2019"
   },
   {
     image: PressHKFP,
@@ -49,21 +58,130 @@ const articles = [
     date: "January 20, 2019"
   },
   {
-    image: PressHKFP,
-    imageHover: PressHKFPHover,
-    title: "Google vs. Baidu – Artist Joyce Yu-Jean Lee examines cultural and political bias online… and in ourselves",
-    url: "https://www.hongkongfp.com/2019/02/24/video-google-vs-baidu-artist-joyce-yu-jean-lee-examines-cultural-political-bias-online/",
-    date: "February 24, 2019"
+    title: "Data Justice: Joyce Yu-Jean Lee on \"The Great Firewall\"",
+    url: "https://www.mediasanctuary.org/podcasts/data-justice-joyce-yu-jean-lee-on-the-great-firewall/",
+    date: "March 13, 2018",
+    source: "Sanctuary for Independent Media, WOOC 105.3 FM radio"
   },
+  {
+    title: "Professor creates political commentary through art",
+    url: "http://www.tcnjsignal.net/2018/02/20/professor-creates-political-commentary-through-art/",
+    date: "February 20, 2018",
+    source: "The Signal"
+  },
+  {
+    image: PressMonocle,
+    title: "FIREWALL at Oslo Freedom Forum in NY",
+    url: "https://monocle.com/radio/shows/the-monocle-daily/1527/",
+    date: "September 19, 2017",
+    source: "The Monocle Daily radio",
+    note: "episode 1527 (cue 38:12)"
+  },
+  {
+    title: "Art Attack: Ai Weiwei and other artists have increased the popularity of Chinese art, but censorship has followed",
+    url: "https://journals.sagepub.com/doi/full/10.1177/0306422016670329",
+    date: "September 20, 2016",
+    source: "Index on Censorship"
+  },
+  {
+    title: "How a New York art show about Chinese online censorship found itself censored",
+    url: "https://www.washingtonpost.com/news/worldviews/wp/2016/03/11/how-a-new-york-art-show-about-chinese-online-censorship-found-itself-censored/",
+    date: "March 11, 2016",
+    source: "The Washington Post"
+  },
+  {
+    title: "Surf China's Censored Web at an Internet Cafe in New York",
+    url: "http://hyperallergic.com/280849/surf-chinas-censored-web-at-an-internet-cafe-in-new-york/",
+    date: "March 4, 2016",
+    source: "Hyperallergic"
+  },
+  {
+    title: "How an Art Exhibition in New York Led to Harassment from Chinese Authorities",
+    url: "http://artfcity.com/2016/02/26/how-an-art-exhibition-in-new-york-led-to-harassment-from-chinese-authorities/",
+    date: "Feb 26, 2016",
+    source: "Art F City"
+  },
+  {
+    title: "When Chinese state censorship reached the L.E.S.",
+    url: "http://thevillager.com/2016/03/31/when-chinese-state-censorship-reached-the-l-e-s/",
+    date: "March 31, 2016",
+    source: "The Villager"
+  },
+  // {
+  //   title: "Exercycles and Sweethearts: Firewall Internet Café",
+  //   url: "http://www.artcritical.com/2016/03/03/david-brody-on-firewall-internat-cafe/",
+  //   date: "March 3, 2016",
+  //   source: "Art Critical"
+  // },
+  {
+    title: "華埠「防火牆」網吧 體驗中共網路封鎖",
+    url: "http://chinadigitaltimes.net/2016/03/chinas-overseas-critics-pressure/",
+    date: "March 11, 2016",
+    source: "China's Digital Times",
+    language: "Chinese"
+  },
+  {
+    title: "How China Censors Mass Media in Your World",
+    url: "http://www.eweek.com/cloud/how-china-censors-mass-media-in-your-world.html",
+    date: "March 11, 2016",
+    source: "eWeek",
+  },
+  {
+    title: "You can Surf China’s Censored Web at this Lower East Side Internet Cafe",
+    url: "http://www.papermag.com/manhattan-downtown-china-censored-web-1646138164.html",
+    date: "March 6, 2016",
+    source: "Paper Magazine",
+    language: "English"
+  },
+  // Chinese Language Press
+  {
+    title: "華埠「防火牆」網吧 體驗中共網路封鎖",
+    url: "http://www.ntdtv.com/xtr/b5/2016/03/08/a1256569.html",
+    date: "March 7, 2016",
+    source: "New Tang Dynasty (NTD) Television",
+    language: "Chinese"
+  },
+  {
+    title: "專訪李玉瑾：華裔藝術家為什麼要在紐約開防火牆網吧",
+    url: "https://theinitium.com/article/20160322-culture-feature-FirewallCafe/",
+    date: "March 22, 2016",
+    source: "The Initium",
+    language: "Chinese"
+  },
+  {
+    title: "網路長城有多威？台裔女孩開網咖讓老美體驗",
+    url: "http://www.appledaily.com.tw/realtimenews/article/international/20160304/808253/applesearch/網路長城有多威？台裔女孩開網咖讓老美體驗",
+    date: "March 4, 2016",
+    source: "Apple Daily Taiwan",
+    language: "Chinese"
+  },
+  {
+    title: "紐約一特色網咖 體驗內地網絡審查",
+    url: "http://litenewshk.blogspot.com/2016/03/blog-post_88.html",
+    date: "March 3, 2016",
+    source: "Lite News(Hong Kong)",
+    language: "Chinese"
+  },
+  {
+    title: "纽约开了一家体验中美信息审查的网络咖啡馆",
+    url: "https://botanwang.com/articles/201603/纽约开了一家体验中美信息审查的网络咖啡馆.html",
+    date: "March 4, 2016",
+    source: "Botanwang.com",
+    language: "Chinese"
+  }
 ];
 
 function ArticleGrid() {
   return (
     <section className="flex flex-col items-center px-14 pt-16 pb-16 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full">
+        <div className="flex gap-8 mb-12">
+          <a href="#English" className="text-lg font-medium text-gray-700 hover:text-black">English</a>
+          <a href="#Chinese" className="text-lg font-medium text-gray-700 hover:text-black">中文</a>
+        </div>
         <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
-          {articles.map(article => (
-            <ArticleCard key={article.id} {...article} />
+          {articles.map((article, index) => (
+            <ArticleCard key={index} {...article} />
           ))}
         </div>
       </div>

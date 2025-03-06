@@ -6,7 +6,7 @@ function EventCard({ image, imageHover, link, title, date, location }) {
   return (
     <article className="flex overflow-hidden flex-col self-stretch my-auto w-80 rounded border border-black border-solid min-h-[440px] min-w-[240px]">
       <div className="flex flex-col flex-1 w-full">
-        <Link to={link} target="_blank" className="flex-1">
+        <Link to={link} className="flex-1">
           <img
             src={image}
             alt={title}
