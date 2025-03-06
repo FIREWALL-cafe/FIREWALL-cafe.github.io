@@ -1,17 +1,23 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import ProxyPals1 from '../../assets/images/FIREWALLuProxy2.18-1.jpg';
+import ProxyPals2 from '../../assets/images/FIREWALLuProxy2.18-2.jpg';
+import ProxyPals3 from '../../assets/images/FIREWALLuProxy2.18-3-1.jpg';
 
 function ProxyPals() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLuProxy2.18-1.jpg",
+      src: ProxyPals1,
       description: "uProxy team leader explains how proxy technology works"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLuProxy2.18-2.jpg",
+      src: ProxyPals2,
       description: "Participants test out uProxy"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLuProxy2.18-3-1.jpg",
+      src: ProxyPals3,
       description: "Participants test out uProxy"
     }
   ];
@@ -25,16 +31,26 @@ function ProxyPals() {
               Proxy Pals: Trial by FIREwall
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              Feb. 25, 2016, 8 PM
-            </h2>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Feb. 25, 2016, 8 PM</span>
+              </div>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location: Chinatown Soup, 16B Orchard Street, NYC, 10002
-              </p>
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Chinatown Soup
+                    <br />
+                    16B Orchard Street
+                    <br />
+                    NYC, 10002
+                  </p>
+                </div>
+              </div>
 
-              <p className="mb-4">
+              <p className="text-gray-700">
                 <a 
                   href="https://www.uproxy.org/"
                   className="text-blue-600 hover:text-blue-800"

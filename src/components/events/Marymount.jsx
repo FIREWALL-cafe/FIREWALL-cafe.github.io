@@ -1,25 +1,33 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import Marymount1 from '../../assets/images/FIREWALLMarymount2.29-4_edit.jpg';
+import Marymount2 from '../../assets/images/FIREWALLMarymount2.29-7.jpg';
+import Marymount3 from '../../assets/images/FIREWALLMarymount2.29-9.jpg';
+import Marymount4 from '../../assets/images/FIREWALLMarymount2.29-12.jpg';
+import Marymount5 from '../../assets/images/FIREWALLMarymount2.29-2_edit.jpg';
 
 function Marymount() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLMarymount2.29-4_edit.jpg",
+      src: Marymount1,
       description: "Students trying out FIREWALL"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLMarymount2.29-7.jpg",
+      src: Marymount2,
       description: "Students ask questions about how censorship works in China"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLMarymount2.29-9.jpg",
+      src: Marymount3,
       description: "Student discussion about censorship in China"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLMarymount2.29-12.jpg",
+      src: Marymount4,
       description: "FIREWALL founder Joyce Yu-Jean Lee with students"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2019/09/FIREWALLMarymount2.29-2_edit.jpg",
+      src: Marymount5,
       description: "Students engage in FIREWALL search sessions"
     }
   ];
@@ -32,17 +40,27 @@ function Marymount() {
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
               Marymount Manhattan "Digital Media & Society" Class Field Trip
             </h1>
-            
-            <h2 className="mt-6 text-2xl">
-              Feb. 29, 2016, 8-9:30 PM
-            </h2>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location: Chinatown Soup, 16B Orchard Street, NYC, 10002
-              </p>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Feb. 29, 2016, 8-9:30 PM</span>
+              </div>
 
-              <p className="mb-4">
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Chinatown Soup
+                    <br />
+                    16B Orchard Street
+                    <br />
+                    NYC, 10002
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-700">
                 16 college students from the "Digital Media & Society" communications course at{' '}
                 <a 
                   href="http://www.mmm.edu/departments/communication-arts/"
@@ -57,19 +75,19 @@ function Marymount() {
                 distribute and consume culture and information. The professor and a FIREWALL representative led discussion 
                 about collective intelligence, user-generated content, governmental and corporate content filtering.
               </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {images.map((image, index) => (
-                <div key={index} className="flex flex-col">
-                  <img 
-                    src={image.src} 
-                    alt={image.description}
-                    className="w-full h-auto rounded-lg"
-                  />
-                  <p className="mt-2 text-sm text-gray-600">{image.description}</p>
-                </div>
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                {images.map((image, index) => (
+                  <div key={index} className="flex flex-col">
+                    <img 
+                      src={image.src} 
+                      alt={image.description}
+                      className="w-full h-auto rounded-lg"
+                    />
+                    <p className="mt-2 text-sm text-gray-600 italic">{image.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

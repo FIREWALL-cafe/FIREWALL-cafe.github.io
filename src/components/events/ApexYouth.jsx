@@ -1,4 +1,6 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
 function ApexYouth() {
   const images = [
@@ -32,17 +34,25 @@ function ApexYouth() {
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
               Apex for Youth After-School Field Trip
             </h1>
-            
-            <h2 className="mt-6 text-2xl">
-              Feb. 25 & Mar. 3, 2016, 4-6 PM
-            </h2>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location: Chinatown Soup, 16B Orchard Street, NYC, 10002
-              </p>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Feb. 25 & Mar. 3, 2016, 4-6 PM</span>
+              </div>
 
-              <p className="mb-4">
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Chinatown Soup
+                    <br />
+                    16B Orchard Street, NYC, 10002
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-700">
                 60 local middle schoolers from the{' '}
                 <a 
                   href="http://www.apexforyouth.org/"
@@ -58,7 +68,7 @@ function ApexYouth() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {images.map((image, index) => (
                 <div key={index} className="flex flex-col">
                   <img 
@@ -66,7 +76,7 @@ function ApexYouth() {
                     alt={image.description}
                     className="w-full h-auto rounded-lg"
                   />
-                  <p className="mt-2 text-sm text-gray-600">{image.description}</p>
+                  <p className="mt-2 text-sm text-gray-600 italic">{image.description}</p>
                 </div>
               ))}
             </div>

@@ -1,4 +1,13 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import OffSeventeen1 from '../../assets/images/FirewallOFFoslo6_1920.jpg';
+import OffSeventeen2 from '../../assets/images/FirewallOFFoslo3_1920.jpg';
+import OffSeventeen3 from '../../assets/images/FirewallOFFoslo5_1920.jpg';
+import OffSeventeen4 from '../../assets/images/FirewallOFFoslo1_1920.jpg';
+import OffSeventeen5 from '../../assets/images/FirewallOFFoslo_1920.jpg';
+import OffSeventeen6 from '../../assets/images/FirewallOFFoslo5_1920-1.jpg';
 
 function OffSeventeen() {
   const images = [
@@ -37,14 +46,22 @@ function OffSeventeen() {
               2017 Oslo Freedom Forum Pop-Up
             </h1>
             
-            <h2 className="mt-6 text-2xl">
-              May 20-24, 2017
-            </h2>
-
             <div className="mt-8 space-y-6">
-              <p className="text-gray-700">
-                Location: Spikersuppa Square, Oslo, Norway
-              </p>
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">May 20-24, 2017</span>
+              </div>
+
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Spikersuppa Square
+                    <br />
+                    Oslo, Norway
+                  </p>
+                </div>
+              </div>
 
               <p>
                 Learn firsthand about online censorship through FIREWALL at the{' '}

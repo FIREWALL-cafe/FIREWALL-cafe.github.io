@@ -1,21 +1,28 @@
 import React from 'react';
+import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+
+import CreativeHack1 from '../../assets/images/FIREWALLCreativeHactivism2.19-8.jpg';
+import CreativeHack2 from '../../assets/images/FIREWALLCreativeHactivism2.19-5.jpg';
+import CreativeHack3 from '../../assets/images/FIREWALLCreativeHactivism2.19-4.jpg';
+import CreativeHack4 from '../../assets/images/FIREWALLCreativeHactivism2.19-2.jpg';
 
 function CreativeHack() {
   const images = [
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/06/FIREWALLCreativeHactivism2.19-8.jpg",
+      src: CreativeHack1,
       description: "Panelists Joyce Yu-Jean Lee, Jason Q. Ng, Sisi Wei, Dan Phiffer, and Josh B"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/06/FIREWALLCreativeHactivism2.19-5.jpg",
+      src: CreativeHack2,
       description: "Jason speaks about words blocked on Weibo"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/06/FIREWALLCreativeHactivism2.19-4.jpg",
+      src: CreativeHack3,
       description: "Dan discusses coding and designing FIREWALL"
     },
     {
-      src: "https://firewallcafe.com/wp-content/uploads/2016/06/FIREWALLCreativeHactivism2.19-2.jpg",
+      src: CreativeHack4,
       description: "Panelists engage the FIREWALL Installation"
     }
   ];
@@ -62,23 +69,31 @@ function CreativeHack() {
             <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
               Creative Hacktivism Roundtable
             </h1>
-            
-            <h2 className="mt-6 text-2xl">
-              Feb. 26, 2016, 7:30 PM
-            </h2>
 
-            <div className="mt-8">
-              <p className="mb-4">
-                Location: Orbital, 155 Rivington Street, NYC 10002
-              </p>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="text-xl">Feb. 26, 2016, 7:30 PM</span>
+              </div>
 
-              <p className="mb-4 italic">
+              <div className="flex gap-2">
+                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-600">
+                    Orbital
+                    <br />
+                    155 Rivington Street, NYC 10002
+                  </p>
+                </div>
+              </div>
+
+              <p className="italic text-gray-700">
                 Discussion about Internet censorship in China and international hacktivism in its many creative forms: 
                 constructing virtual networks; implementing collateral freedom; creating research, journalism, 
                 infographics, development, and design.
               </p>
 
-              <p className="mb-8">
+              <p>
                 <a 
                   href="https://www.youtube.com/watch?v=PMj4aQcighU"
                   className="text-blue-600 hover:text-blue-800"
@@ -89,41 +104,43 @@ function CreativeHack() {
                 </a>
               </p>
 
-              <h3 className="text-2xl font-bold mb-4 underline">PANELISTS</h3>
-              <div className="space-y-6">
-                {panelists.map((panelist, index) => (
-                  <div key={index} className="mb-4">
-                    <h4 className="font-bold mb-2">{panelist.name}</h4>
-                    <p className="mb-2">{panelist.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {panelist.links.map((link, linkIndex) => (
-                        <a 
-                          key={linkIndex}
-                          href={link.url}
-                          className="text-blue-600 hover:text-blue-800 mr-3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.text}
-                        </a>
-                      ))}
+              <div>
+                <h3 className="text-2xl font-bold mb-4 underline">PANELISTS</h3>
+                <div className="space-y-6">
+                  {panelists.map((panelist, index) => (
+                    <div key={index} className="mb-4">
+                      <h4 className="font-bold mb-2">{panelist.name}</h4>
+                      <p className="mb-2">{panelist.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {panelist.links.map((link, linkIndex) => (
+                          <a 
+                            key={linkIndex}
+                            href={link.url}
+                            className="text-blue-600 hover:text-blue-800 mr-3"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.text}
+                          </a>
+                        ))}
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                {images.map((image, index) => (
+                  <div key={index} className="flex flex-col">
+                    <img 
+                      src={image.src} 
+                      alt={image.description}
+                      className="w-full h-auto rounded-lg"
+                    />
+                    <p className="mt-2 text-sm text-gray-600">{image.description}</p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-8">
-              {images.map((image, index) => (
-                <div key={index} className="flex flex-col">
-                  <img 
-                    src={image.src} 
-                    alt={image.description}
-                    className="w-full h-auto rounded-lg"
-                  />
-                  <p className="mt-2 text-sm text-gray-600">{image.description}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
