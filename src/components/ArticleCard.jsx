@@ -7,8 +7,8 @@ function ArticleCard({ image, imageHover, title, date, tag, url }) {
       <Link to={url} target="_blank">
         <img
           src={image}
-          onMouseOver={e => (e.currentTarget.src = imageHover)}
-          onMouseOut={e => (e.currentTarget.src = image)}
+          onMouseOver={e => (imageHover ? e.currentTarget.src = imageHover : null)}
+          onMouseOut={e => (imageHover ? e.currentTarget.src = image : null)}
           className="object-contain flex-1 w-full mt-4 aspect-[1.78]"
         />
       </Link>

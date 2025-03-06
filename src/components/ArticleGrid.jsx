@@ -11,6 +11,7 @@ import PressBBC from '../assets/images/press/press-bbc-default.jpg';
 import PressBBCHover from '../assets/images/press/press-bbc-hover.jpg';
 import PressChinaUnscripted from '../assets/images/press/press-china_unscripted-default.jpg';
 import PressChinaUnscriptedHover from '../assets/images/press/press-china_unscripted-hover.jpg';
+import PressMonocle from '../assets/images/press-monocle-default.jpeg';
 
 const articles = [
   {
@@ -69,6 +70,7 @@ const articles = [
     source: "The Signal"
   },
   {
+    image: PressMonocle,
     title: "FIREWALL at Oslo Freedom Forum in NY",
     url: "https://monocle.com/radio/shows/the-monocle-daily/1527/",
     date: "September 19, 2017",
