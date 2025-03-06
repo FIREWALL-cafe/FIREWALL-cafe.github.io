@@ -16,43 +16,43 @@ import Megha10 from '../../assets/images/FWC_POU_10.jpg';
 function Megha() {
   const images = [
     {
-      src: Megha1,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_1.jpg',
       description: 'Students search for "Beyonce" in the FIREWALL plugin.',
     },
     {
-      src: Megha2,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_2.jpg',
       description: "A search term censored by Baidu displays limited image results."
     },
     {
-      src: Megha3,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_3.jpg',
       description: "Students interact with the FIREWALL Pop-up at Marist College, Poughkeepsie, NY."
     },
     {
-      src: Megha4,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_4.jpg',
       description: "Buzzfeed correspondent, Megha Rajagopalan delivering her lecture on China and the Rise of AI and Mass Surveillance Technology."
     },
     {
-      src: Megha5,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_5.jpg',
       description: 'Attendees at "China and the Rise of AI and Mass Surveillance Technology", a lecture by Megha Rajagopalan at Fusco Hall, Marist College, Poughkeepsie, NY.',
     },
     {
-      src: Megha6,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_6.jpg',
       description: "A student poses a question to Megha Rajagopalan after the lecture."
     },
     {
-      src: Megha7,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_7.jpg',
       description: "A student poses a question to Megha Rajagopalan after the lecture."
     },
     {
-      src: Megha8,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_8.jpg',
       description: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Megha Rajagopalan, Buzzfeed Correspondent, Peter Behr, Web Developer for FIREWALL."
     },
     {
-      src: Megha9,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_9.jpg',
       description: "FIREWALL badges, stickers, and postcards."
     },
     {
-      src: Megha10,
+      src: process.env.PUBLIC_URL + '/images/FWC_POU_10.jpg',
       description: "FIREWALL Pop-up stations at Marist College, Poughkeepsie, NY."
     }
   ];
