@@ -2,17 +2,6 @@ import React from 'react';
 import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
 import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
 
-import Megha1 from '../../assets/images/FWC_POU_1.jpg';
-import Megha2 from '../../assets/images/FWC_POU_2.jpg';
-import Megha3 from '../../assets/images/FWC_POU_3.jpg';
-import Megha4 from '../../assets/images/FWC_POU_4.jpg';
-import Megha5 from '../../assets/images/FWC_POU_5.jpg';
-import Megha6 from '../../assets/images/FWC_POU_6.jpg';
-import Megha7 from '../../assets/images/FWC_POU_7.jpg';
-import Megha8 from '../../assets/images/FWC_POU_8.jpg';
-import Megha9 from '../../assets/images/FWC_POU_9.jpg';
-import Megha10 from '../../assets/images/FWC_POU_10.jpg';
-
 function Megha() {
   const images = [
     {
@@ -113,7 +102,7 @@ function Megha() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {images.map((image, index) => (
                 <div key={index} className="flex flex-col">
                   <img 

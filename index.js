@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
-app.set('etag', false)
+// app.set('etag', false)
 
 app.disable('x-powered-by');
 
@@ -25,33 +25,24 @@ app.use((req, res, next) => {
   // hide x-powered-by for security reasons
   res.set( 'X-Powered-By', 'gabriel server' );
   // This should apply to other routes
-  res.set('Cache-Control', 'no-store')
+  // res.set('Cache-Control', 'no-store')
   next()
 })
 
-app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModified: false, setHeaders: (res, path) => {
-  // No cache for index html otherwhise there's gonna be problems loading the scripts
-  if (path.indexOf('index.html') !== -1) {
-    console.log('no cache for index.html')
-    res.set('Cache-Control', 'no-store')
-  }
-} }));
+app.use(express.static(path.join(__dirname, "build")));
 
-app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModified: false }));
+app.use(express.static(path.join(__dirname, "build")));
 
 app.get('/events/:eventId', (req, res) => {
   console.log('EVENT HANDLER:no cache for events/:eventId?')
   var indexHtml = path.join(__dirname, "public/index.html");
-  if (fs.existsSync(indexHtml)) {
-    console.log('found index.html');
-  }
-  res.sendFile(indexHtml, { lastModified: false, etag: false });
+  res.sendFile(indexHtml);
 });
 
 app.get("/*", (req, res) => {
-  res.set('Cache-Control', 'no-store')
+  // res.set('Cache-Control', 'no-store')
   console.log('FALL THRU: /*')
-  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 app.get("/", (req, res) => {

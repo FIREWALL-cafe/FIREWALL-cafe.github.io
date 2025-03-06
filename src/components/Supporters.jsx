@@ -7,7 +7,7 @@ import Jerome from '../assets/images/JEROME_LOGO_4c-300x76.jpg';
 function Supporters() {
   return (
     <section className="flex overflow-hidden flex-col px-32 pb-16 max-md:px-5 max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap grid grid-rows-2 grid-flow-col gap-4 gap-10 justify-center w-full max-md:max-w-full">
+      <div className="flex-wrap grid grid-rows-2 grid-flow-col gap-4 justify-center w-full max-md:max-w-full">
         <div className="chinese flex flex-col col-span-1 self-stretch my-auto min-w-[240px] max-md:max-w-full">
           <h2 className="text-6xl font-medium leading-[56px] max-md:max-w-full max-md:text-4xl max-md:leading-10">
             Thanks to our supporters.
