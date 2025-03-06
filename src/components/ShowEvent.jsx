@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import ArrowLeft from "../assets/icons/arrow_left_alt.svg";
+import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 import Megha from './events/Megha';
 import Marymount from './events/Marymount';
 import OsloTaiwan from './events/OsloTaiwan';
@@ -52,6 +54,7 @@ function ShowEvent() {
     <div>
       {EventUrls[eventId] ? (
         <>
+          <div className="flex px-32"><Link to="/events"><img src={ArrowLeft} alt="Back to Events" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square inline" /> Back to Events</Link></div>
           {EventUrls[eventId]}
         </>
       ) : (

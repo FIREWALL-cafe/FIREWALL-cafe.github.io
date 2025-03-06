@@ -3,36 +3,68 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
 const postmark = require('postmark');
+const fs = require('fs');
+
 const serverConfig = require('./server/config');
 
 const app = express();
 
 app.use(bodyParser.json());
 
-// app.use((err, req, res, next) => {
-//   console.error(err.stack)
+app.use((err, req, res, next) => {
+  console.error(err.stack)
 
-//   res.status(500).send('Something broke!')
-// })
+  res.status(500).send('Something broke!')
+})
+
+app.set('etag', false)
+
+app.disable('x-powered-by');
+
+app.use((req, res, next) => {
+  // hide x-powered-by for security reasons
+  res.set( 'X-Powered-By', 'gabriel server' );
+  // This should apply to other routes
+  res.set('Cache-Control', 'no-store')
+  next()
+})
+
+app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModified: false, setHeaders: (res, path) => {
+  // No cache for index html otherwhise there's gonna be problems loading the scripts
+  if (path.indexOf('index.html') !== -1) {
+    console.log('no cache for index.html')
+    res.set('Cache-Control', 'no-store')
+  }
+} }));
 
 app.use(express.static(path.join(__dirname, "build"), { etag: false, lastModified: false }));
 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "index.html"), { lastModified: false, etag: false });
-// });
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "index.html"), { lastModified: false, etag: false });
-// });
-
 app.get('/events/:eventId', (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
+  console.log('EVENT HANDLER:no cache for events/:eventId?')
+  var indexHtml = path.join(__dirname, "public/index.html");
+  if (fs.existsSync(indexHtml)) {
+    console.log('found index.html');
+  }
+  res.sendFile(indexHtml, { lastModified: false, etag: false });
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
+  res.set('Cache-Control', 'no-store')
+  console.log('FALL THRU: /*')
+  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
 });
 
+app.get("/", (req, res) => {
+  res.set('Cache-Control', 'no-store')
+  console.log('FALL THRU: /')
+  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
+});
+
+app.get("*", (req, res) => {
+  res.set('Cache-Control', 'no-store')
+  console.log('FALL THRU: *')
+  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
+});
 
 app.post("/searches/:search_id/images", async (req, res) => {
   console.log('/searches/:search_id/images:', req.params);
