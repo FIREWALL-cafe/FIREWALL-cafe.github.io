@@ -61,7 +61,6 @@ const VoteButton = ({ imgSrc, voteId, setVote, isDisabled, setDisabled }) => {
           'Accept': 'application/json',
           'Content-Type': 'application/json' 
         },
-        // body: JSON.stringify({ meta_key: voteId, post_id: 310504 }),
         body: JSON.stringify({ meta_key: voteId, search_id: currentSearchId }),
       });
 
@@ -73,7 +72,7 @@ const VoteButton = ({ imgSrc, voteId, setVote, isDisabled, setDisabled }) => {
   }
 
   return (
-    <button className="vote__button" disabled={isDisabled} onClick={() => handleVote(voteId)}>
+    <button className="vote__button hover:bg-sky-700" disabled={isDisabled} onClick={() => handleVote(voteId)}>
       <img src={imgSrc}></img>
     </button>
   );
@@ -91,7 +90,6 @@ const VotePanel = () => {
         <span style={{ color: '#e60011' }}>VOTE</span> by clicking buttons below that match what you think about this search result.
       </h2>
       <div className="vote__container vote__button_container">
-        {/* TODO: download svg files and package them in this repo */}
         {Object.keys(voteMeta).map(v => (
           <VoteButton voteId={v} imgSrc={voteMeta[v].img} setVote={setVote} isDisabled={isDisabled} setDisabled={setDisabled} />
         ))}

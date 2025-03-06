@@ -11,10 +11,12 @@ import Experts from "./components/Experts";
 import Events from "./components/Events";
 import Press from "./components/Press";
 import Search from "./components/Search";
-import SearchBar from "./components/SearchBar";
 import Support from "./components/Support";
 import SearchArchive from "./components/SearchArchive";
 import LanYu from "./components/LanYu";
+import ShowEvent from './components/ShowEvent';
+import Partners from './components/Partners';
+import Contributors from './components/Contributors';
 
 import {
   createBrowserRouter,
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "events/:eventId",
+        element: <ShowEvent />,
+      },
+      {
         path: "events",
         element: <Events />,
       },
@@ -76,11 +82,15 @@ const router = createBrowserRouter([
         path: "support",
         element: <Support />,
       },
+      {
+        path: "partners",
+        element: <Partners />,
+      },
+      {
+        path: "contributors",
+        element: <Contributors />,
+      },
     ],
-  },
-  {
-    path: "/old_search",
-    element: <SearchBar />,
   },
 ]);
 

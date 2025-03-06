@@ -1,47 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
+import VoteIcon from '../assets/icons/how_to_vote.svg';
 
-const QueryItem = ({ id, tags, title, excerpt, date, galleries, searchId }) => {
+const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp }) => {
   const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
+  const humanize = str => str.split('_').map(capitalize).join(' ');
+  const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
 
   const [dropdown, setDropdown] = useState(true);
-  const toggleDropdown = () => setDropdown(!dropdown);
-
-  const parseLocation = (tags) => {
-    const locs = tags.filter(tag => tag.name.startsWith('has_search_location_'));
-    return locs.length > 0 ? locs[0].name.split('_').slice(-1)[0] : 'N/A';
-  }
-
-  const handleOnLoad = () => {
-    setStatus("fulfilled");
-  };
-
-  const handleOnError = () => {
-    setStatus("failed");
-  };
+  const [imageResults, setImageResults] = useState({});
   
-  const displayCarousel = (googleResults, baiduResults) => {
-    return (googleResults.length > 0 || baiduResults.length > 0);
+  const toggleDropdown = () => {
+    setDropdown(!dropdown);
+    if (dropdown && !imageResults.googleResults) {
+      console.log('loading gallery:', search_id);
+      loadGallery();
+    }
+  };
+
+  // Load images for search id
+  const loadGallery = async () => {
+    const url = `/searches/${search_id}/images`;
+
+    console.log('loadGallery:', url);
+    const response = await fetch(url, { method: 'post' });
+    const results = await response.json();
+    const [googleResults, baiduResults] = [results.filter(result => result.image_search_engine === 'google').map(result => result.image_href).slice(0, 9), results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9)];
+    
+    console.log('gallery results', results);
+    setImageResults({ googleResults: googleResults, baiduResults: baiduResults });
   };
 
   return (
-    <div className="flex flex-wrap gap-4 py-2 w-full min-h-[48px] max-md:max-w-full hover:bg-sky-100">
+    <div className="flex flex-wrap gap-4 py-2 w-full text-xl text-black min-h-[48px] max-md:max-w-full hover:bg-gray-100">
       <div className="flex flex-wrap gap-4 py-2 w-full text-xl text-black min-h-[48px] max-md:max-w-full" onClick={toggleDropdown}>
+        <div className="flex gap-1 items-center my-auto w-16 whitespace-nowrap">
+          <img src={VoteIcon} alt="Votes" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+          <div className="self-stretch my-auto">{total_votes}</div>
+        </div>
         <div className="flex flex-1 shrink gap-1 items-center h-full basis-0 min-w-[240px]">
-          <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{title.rendered}</div>
+          {search_term_initial}
         </div>
         <div className="flex flex-1 shrink gap-1 items-center h-full basis-0 min-w-[240px] text-zinc-400">
-          <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{excerpt.rendered.replace(/<[^>]*>/g, '')}</div>
+          {search_term_translation}
         </div>
         <div className="flex flex-1 shrink gap-1 items-center h-full basis-0 min-w-[240px]">
-          <div className="z-10 flex-1 shrink self-stretch my-auto w-full min-w-[240px]">{parseLocation(tags)}</div>
+          {search_location && humanize(search_location)}
         </div>
-        <div className="flex gap-6 items-center h-full whitespace-nowrap w-[191px]">
-          <div className="flex-1 shrink self-stretch my-auto basis-0">{new Date(date).toLocaleDateString()}</div>
+        <div className="flex gap-6 items-center h-full text-right">
+          {formatDate(search_timestamp)}
         </div>
       </div>
       <div className={`flex flex-wrap`} style={dropdown ? { display: 'none' } : {}}>
-        {displayCarousel(galleries[0].src, galleries[1].src) ? <SearchCompare images={ { googleResults: galleries[0].src.slice(0, 9), baiduResults: galleries[1].src.slice(0, 9) } } searchId={id} /> : <div className="border border-dashed border-red-600 m-5 px-5">No images to display</div>}
+        {imageResults && imageResults.googleResults && <SearchCompare images={ imageResults } searchId={search_id} />}
       </div>
     </div>
   );
