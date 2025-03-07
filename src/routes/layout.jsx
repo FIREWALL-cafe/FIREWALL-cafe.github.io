@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import TermsAndConditions from "../components/TermsAndConditions";
 
 function Layout() {
   return (
@@ -11,6 +12,7 @@ function Layout() {
         <Navigation />
         <Outlet />
         <Footer />
+        <TermsAndConditions />
       </div>
     </div>
   );

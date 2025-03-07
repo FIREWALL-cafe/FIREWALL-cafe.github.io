@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
 const postmark = require('postmark');
-const fs = require('fs');
 
 const serverConfig = require('./server/config');
 
@@ -17,24 +17,37 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
-// app.set('etag', false)
-
-app.disable('x-powered-by');
-
-app.use((req, res, next) => {
-  // hide x-powered-by for security reasons
-  res.set( 'X-Powered-By', 'gabriel server' );
-  // This should apply to other routes
-  // res.set('Cache-Control', 'no-store')
-  next()
-})
-
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get('/events*', (req, res) => {
-  console.log('EVENT HANDLER:no cache for events/:eventId?')
   var indexHtml = path.join(__dirname, "public/index.html");
   res.sendFile(indexHtml);
+});
+
+app.get('/proxy-image', async (req, res) => {
+  console.log('proxy-image:', req.query);
+  try {
+    const imageUrl = req.query.url;
+    
+    if (!imageUrl) {
+      return res.status(400).json({ error: 'Image URL is required' });
+    }
+
+    const response = await axios({
+      url: imageUrl,
+      method: 'GET',
+      responseType: 'stream'
+    });
+
+    // Forward the content-type header
+    res.set('Content-Type', response.headers['content-type']);
+
+    // Pipe the image data directly to the response
+    response.data.pipe(res);
+  } catch (error) {
+    console.error('Error proxying image:', error);
+    res.status(500).json({ error: 'Failed to fetch image' });
+  }
 });
 
 app.get("/*", (req, res) => {
@@ -43,14 +56,7 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
-app.get("/", (req, res) => {
-  res.set('Cache-Control', 'no-store')
-  console.log('FALL THRU: /')
-  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
-});
-
 app.get("*", (req, res) => {
-  res.set('Cache-Control', 'no-store')
   console.log('FALL THRU: *')
   res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
 });

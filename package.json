@@ -23,7 +23,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.4.0",
+    "axios": "^1.8.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "customize-cra": "^1.0.0",
