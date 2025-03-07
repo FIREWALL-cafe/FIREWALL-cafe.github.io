@@ -40,12 +40,12 @@ export default function Modal({
         <div className="absolute bottom-0 left-0 bg-white flex flex-wrap gap-10 justify-between items-center p-4 w-full text-lg text-center border-t border-solid border-t-black max-md:max-w-full">
           <button 
             onClick={() => onClose(false)}
-            className="gap-1 self-stretch px-4 py-2 my-auto text-black min-h-[40px] rounded-[10000px]">
+            className="gap-1 self-stretch px-4 py-2 my-auto text-black bg-white border-black border border-solid min-h-[40px]">
             {clearButtonText}
           </button>
           <button
             onClick={onUpdate}
-            className="gap-1 px-4 py-2 my-auto text-red-600 border border-red-600 border-solid min-h-[40px] rounded-[10000px]">
+            className="gap-1 px-4 py-2 my-auto text-white bg-black min-h-[40px]">
             {updateButtonText}
           </button>
         </div>
