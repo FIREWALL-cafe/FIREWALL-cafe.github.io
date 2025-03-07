@@ -7,21 +7,13 @@ import CarouselLeft from "../assets/icons/carousel-left.svg";
 import CarouselRight from "../assets/icons/carousel-right.svg";
 import QuestionBaidu from '../assets/icons/question_red.svg';
 import QuestionGoogle from '../assets/icons/question.svg';
-
-import BrokenImage from '../assets/icons/broken-image_grayscale.png';
+import NoImageAvailable from '../assets/icons/no-image-available.svg';
 
 function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [status, setStatus] = useState("loading");
-
-  const handleOnLoad = (e) => {
-    e.target.src = e.target.src;
-    e.target.setAttribute("src", e.target.src);
-    setStatus("fulfilled");
-  };
 
   const handleOnError = (e) => {
-    e.target.src = BrokenImage;
+    e.target.src = NoImageAvailable;
   };
 
   const goToNext = () => {
@@ -54,7 +46,7 @@ function ImageCarousel({ images }) {
           </div>
           <div className="flex max-h-[400px] justify-center items-center">
             <img
-              src={images.googleResults[currentIndex]}
+              src={`/proxy-image?url=${encodeURIComponent(images.googleResults[currentIndex])}`}
               className="object-cover aspect-square max-h-[320px] max-md:max-w-full"
               onError={handleOnError}
              />
@@ -82,7 +74,7 @@ function ImageCarousel({ images }) {
           </div>
           <div className="flex justify-center items-center">
             <img
-              src={images.baiduResults[currentIndex]}
+              src={`/proxy-image?url=${encodeURIComponent(images.baiduResults[currentIndex])}`}
               className="object-cover aspect-square max-h-[320px]"
               onError={handleOnError}
             />
@@ -101,8 +93,8 @@ function ImageCarousel({ images }) {
               <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-blue-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
                   <img
-                    src={image}
-                    className={`object-cover aspect-square rounded-lg`}
+                    src={`/proxy-image?url=${encodeURIComponent(image)}`}
+                    className="object-cover aspect-square rounded-lg"
                     onError={handleOnError}
                   />
                 </button>
@@ -114,8 +106,8 @@ function ImageCarousel({ images }) {
               <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-red-200' : ''}`}>
                 <button onClick={() => setCurrentIndex(index)}>
                   <img
-                    src={image}
-                    className={`object-cover aspect-square rounded-lg`}
+                    src={`/proxy-image?url=${encodeURIComponent(image)}`}
+                    className="object-cover aspect-square rounded-lg"
                     onError={handleOnError}
                   />
                 </button>
