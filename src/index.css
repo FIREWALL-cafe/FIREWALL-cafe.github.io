@@ -93,6 +93,7 @@ code {
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   pointer-events: none;
+  z-index: -1;
 }
 
 #mc_embed_signup { clear:left; font:16px Helvetica,Arial,sans-serif; width: px; }

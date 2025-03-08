@@ -62,10 +62,10 @@ const router = createBrowserRouter([
         path: "events",
         element: <Events />,
       },
-      {
-        path: "timeline",
-        element: <WhyDidThisHappen />,
-      },
+      // {
+      //   path: "timeline",
+      //   element: <WhyDidThisHappen />,
+      // },
       {
         path: "press",
         element: <Press />,

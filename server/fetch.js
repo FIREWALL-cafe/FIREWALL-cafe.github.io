@@ -191,11 +191,12 @@ const getSearchesByTerm = async (query) => {
 }
 
 const getSearchesFilter = async (filterOptions) => {
-  console.log('searches by filter: starting: ', filterOptions);
+  console.log('FETCH.js: searches by filter: starting: ', filterOptions);
+  console.log('FETCH.js:  filterOptions: ', querystring.stringify(filterOptions));
   const url = `${serverConfig.apiUrl}searches/filter?${querystring.stringify(filterOptions)}`;
 
   const { data } = await axios.get(url);
-  console.log('searches by filter: data', data.length);
+  console.log('FETCH.js: searches by filter: data', data.length);
 
   return data;
 }

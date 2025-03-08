@@ -222,11 +222,10 @@ function SearchInput({ searchMode }) {
         </span>
       </div>
       {isArchive && <FilterControls onUpdate={applyFilters} isOpen={filterOpen} />}
-      {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />}
+      {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.
+            <h2 className="text-xl font-bold mb-2">Filtered Results</h2>length > 0) && <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />}
       {(currentSearchId && isArchive) && (
-        <>
-          <div className="flex flex-col self-center max-w-[720px] w-[720px] mt-4">
-            {(currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0) && (
+           {(currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0) && (
               <>
                 <h2 className="text-xl font-bold mb-2">Current Filters</h2>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -240,8 +239,7 @@ function SearchInput({ searchMode }) {
                     Cities: {currentFilters.cities.join(', ')}
                   </span>
                 )}
-                {currentFilters.vote_ids.length > 0 && (
-                  <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                {currentFilrs.vote_ids.length )}       <span className="px-2 py-1 bg-gray-100 rounded text-sm">
                     Votes: {currentFilters.vote_ids.length} selected
                   </span>
                 )}
