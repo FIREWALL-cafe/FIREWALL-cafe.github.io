@@ -29,91 +29,100 @@ function ImageCarousel({ images }) {
   };
 
   return (
-    <div className="">
-      <div className="flex flex-wrap mx-4 mb-4">
-        <div className="relative w-1/2 pb-5 border-r border-red-300">
-          <div className="flex flex-wrap justify-between">
-            <img src={googleLogo} />
+    <div className="w-full max-w-screen-xl mx-auto">
+      <div className="flex flex-col md:flex-row mx-4 mb-4">
+        {/* Google Section */}
+        <div className="w-full md:w-1/2 pb-5 md:border-r border-red-300">
+          <div className="flex justify-between items-center px-4 mb-4">
+            <img src={googleLogo} alt="Google" className="h-8 object-contain" />
             <img
               src={QuestionGoogle}
               alt="Google results"
-              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square mr-5"
+              className="w-6 h-6"
               data-tooltip-id="tooltip-google"
               data-tooltip-content='Results from US based Google images.'
               data-tooltip-place="top"
             />
             <Tooltip id="tooltip-google" />
           </div>
-          <div className="flex max-h-[400px] justify-center items-center">
+          <div className="relative flex justify-center items-center h-[320px] px-4">
             <img
               src={`/proxy-image?url=${encodeURIComponent(images.googleResults[currentIndex])}`}
-              className="object-cover aspect-square max-h-[320px] max-md:max-w-full"
+              className="object-contain max-h-full max-w-full rounded-lg"
               onError={handleOnError}
-             />
+            />
+            <button
+              onClick={goToPrevious}
+              className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white/90 transition-colors"
+              aria-label="Previous image"
+            >
+              <img src={CarouselLeft} alt="Previous" className="w-6 h-6" />
+            </button>
           </div>
-          <button
-            onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full"
-            aria-label="Previous image"
-          >
-            <img src={CarouselLeft} alt="Previous image" />
-          </button>
         </div>
-        <div className="relative w-1/2 px-4 bg-sky-50">
-          <div className="flex flex-wrap justify-between">
-            <img src={baiduLogo} className="pt-1" />
+
+        {/* Baidu Section */}
+        <div className="w-full md:w-1/2 pb-5 bg-sky-50">
+          <div className="flex justify-between items-center px-4 mb-4">
+            <img src={baiduLogo} alt="Baidu" className="h-8 object-contain pt-1" />
             <img
               src={QuestionBaidu}
               alt="Baidu results"
-              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+              className="w-6 h-6"
               data-tooltip-id="tooltip-baidu"
               data-tooltip-content='Results from China based Baidu images.'
               data-tooltip-place="top"
             />
             <Tooltip id="tooltip-baidu" />
           </div>
-          <div className="flex justify-center items-center">
+          <div className="relative flex justify-center items-center h-[320px] px-4">
             <img
               src={`/proxy-image?url=${encodeURIComponent(images.baiduResults[currentIndex])}`}
-              className="object-cover aspect-square max-h-[320px]"
+              className="object-contain max-h-full max-w-full rounded-lg"
               onError={handleOnError}
             />
+            <button
+              onClick={goToNext}
+              className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white/90 transition-colors"
+              aria-label="Next image"
+            >
+              <img src={CarouselRight} alt="Next" className="w-6 h-6" />
+            </button>
           </div>
-          <button
-            onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full"
-            aria-label="Next image"
-          >
-            <img src={CarouselRight} alt="Next image" />
-          </button>
         </div>
-        <div className="flex border-b border-red-300 w-full">
-          <div className="grid grid-cols-3 gap-4 border-r border-red-300 w-1/2">
-            {images.googleResults.map((image, index) => (
-              <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-blue-200' : ''}`}>
-                <button onClick={() => setCurrentIndex(index)}>
-                  <img
-                    src={`/proxy-image?url=${encodeURIComponent(image)}`}
-                    className="object-cover aspect-square rounded-lg"
-                    onError={handleOnError}
-                  />
-                </button>
-              </div>
-            ))}
-          </div>
-          <div className="grid grid-cols-3 gap-4 w-1/2 pl-4 bg-sky-50">
-            {images.baiduResults.map((image, index) => (
-              <div key={index} className={`flex justify-center items-center aspect-w-1 aspect-h-1 ${currentIndex === index ? 'bg-red-200' : ''}`}>
-                <button onClick={() => setCurrentIndex(index)}>
-                  <img
-                    src={`/proxy-image?url=${encodeURIComponent(image)}`}
-                    className="object-cover aspect-square rounded-lg"
-                    onError={handleOnError}
-                  />
-                </button>
-              </div>
-            ))}
-          </div>
+      </div>
+
+      {/* Thumbnails */}
+      <div className="flex flex-col md:flex-row border-t border-red-300">
+        <div className="w-full md:w-1/2 grid grid-cols-3 gap-2 p-4 md:border-r border-red-300">
+          {images.googleResults.map((image, index) => (
+            <button 
+              key={index} 
+              onClick={() => setCurrentIndex(index)}
+              className={`aspect-square rounded-lg overflow-hidden ${currentIndex === index ? 'ring-2 ring-blue-400' : ''}`}
+            >
+              <img
+                src={`/proxy-image?url=${encodeURIComponent(image)}`}
+                className="w-full h-full object-cover"
+                onError={handleOnError}
+              />
+            </button>
+          ))}
+        </div>
+        <div className="w-full md:w-1/2 grid grid-cols-3 gap-2 p-4 bg-sky-50">
+          {images.baiduResults.map((image, index) => (
+            <button 
+              key={index} 
+              onClick={() => setCurrentIndex(index)}
+              className={`aspect-square rounded-lg overflow-hidden ${currentIndex === index ? 'ring-2 ring-red-400' : ''}`}
+            >
+              <img
+                src={`/proxy-image?url=${encodeURIComponent(image)}`}
+                className="w-full h-full object-cover"
+                onError={handleOnError}
+              />
+            </button>
+          ))}
         </div>
       </div>
     </div>

@@ -25,15 +25,18 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
     console.log('loadGallery:', url);
     const response = await fetch(url, { method: 'post' });
     const results = await response.json();
-    const [googleResults, baiduResults] = [results.filter(result => result.image_search_engine === 'google').map(result => result.image_href).slice(0, 9), results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9)];
+    const [googleResults, baiduResults] = [
+      results.filter(result => result.image_search_engine === 'google').map(result => result.image_href).slice(0, 9),
+      results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9)
+    ];
     
     console.log('gallery results', results);
     setImageResults({ googleResults: googleResults, baiduResults: baiduResults });
   };
 
   return (
-    <div className="hover:bg-gray-100">
-      <div className="flex flex-wrap gap-4 py-1 w-full text-sm text-black min-h-[32px] max-md:max-w-full cursor-pointer" onClick={toggleDropdown}>
+    <div className="hover:bg-gray-100 w-full">
+      <div className="flex flex-wrap gap-4 py-1 w-full text-sm text-black min-h-[32px] cursor-pointer" onClick={toggleDropdown}>
         <div className="w-16 flex items-center max-sm:w-12">
           <img src={VoteIcon} alt="Votes" className="w-4 h-4 mr-1" />
           <span>{total_votes}</span>
