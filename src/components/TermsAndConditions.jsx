@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from './Modal';
+import useCookie from '../useCookie';
 
 export default function TermsAndConditions() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,7 @@ export default function TermsAndConditions() {
   const [showUsernameInput, setShowUsernameInput] = useState(false);
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
+  const [usernameCookie, setUsernameCookie] = useCookie("username");
 
   useEffect(() => {
     // Check if user has seen the terms before
@@ -70,7 +72,11 @@ export default function TermsAndConditions() {
     }
 
     localStorage.setItem('hasSeenTerms', 'true');
-    localStorage.setItem('username', finalUsername);
+    
+    // Set cookie with max expiration (effectively never expires)
+    const maxDate = new Date('9999-12-31');
+    setUsernameCookie(finalUsername, maxDate);
+    
     setIsOpen(false);
   };
 
