@@ -7,27 +7,39 @@ function ImageGallery() {
   ];
 
   return (
-    <div className="flex flex-col ml-5 w-[85%] max-md:ml-0 max-md:w-full">
-      <div className="flex flex-col mt-0 w-full max-md:mt-0 max-md:max-w-full">
-        <div className="flex overflow-hidden gap-10 items-start p-12 w-full rounded-lg border border-red-600 border-solid bg-slate-100 text-neutral-600 max-md:px-5 max-md:max-w-full">
-          <div className="flex flex-col flex-1 shrink justify-center w-full rounded-lg border-0 border-red-600 border-solid basis-0 min-w-[240px] max-md:max-w-full">
-            <p className="text-xl leading-8 max-md:max-w-full">
+    <div className="w-full max-w-screen-xl mx-auto px-4 md:px-8">
+      <div className="flex flex-col w-full">
+        <div className="flex overflow-hidden flex-col p-6 md:p-12 w-full rounded-lg border border-red-600 border-solid bg-slate-100 text-neutral-600">
+          <div className="flex flex-col justify-center w-full rounded-lg">
+            <p className="text-xl leading-8">
               June 4th, known as the Tiananmen Square Incident, is a collective trauma for a generation of people, yet it remains a taboo topic in China.
             </p>
-            <p className="mt-5 text-base leading-6 max-md:max-w-full">
+            <p className="mt-5 text-base leading-6">
               The crackdown, where People's Liberation Army soldiers opened fire on unarmed pro-democracy protesters, killing hundreds, drove the CCP to implement strict censorship (and eventually create the Great Firewall).
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-4 items-start mt-6 w-full max-md:max-w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {images.map((image, index) => (
-            <div key={index} className="flex flex-col grow shrink min-w-[240px] w-[234px]">
-              <img loading="lazy" src={image.src} className="object-contain self-end max-w-full aspect-[1.25] w-[292px]" alt={`Gallery image ${index + 1}`} />
-              <div className="flex gap-10 justify-between items-center mt-2 w-full">
-                <div className="flex gap-2 justify-center items-center self-stretch p-1 my-auto w-6 min-h-[24px]">
-                  <img loading="lazy" src={`http://b.io/ext_${11 + index * 2}-`} className="object-contain self-stretch my-auto aspect-square w-[18px]" alt="" />
+            <div key={index} className="flex flex-col">
+              <div className="aspect-[5/4] rounded-lg overflow-hidden">
+                <img 
+                  loading="lazy" 
+                  src={image.src} 
+                  className="w-full h-full object-cover" 
+                  alt={`Gallery image ${index + 1}`} 
+                />
+              </div>
+              <div className="flex justify-between items-center mt-2">
+                <div className="flex items-center p-1">
+                  <img 
+                    loading="lazy" 
+                    src={`http://b.io/ext_${11 + index * 2}-`} 
+                    className="w-[18px] h-[18px] object-contain" 
+                    alt="" 
+                  />
                 </div>
-                <div className="self-stretch my-auto text-base text-zinc-400">{image.date}</div>
+                <div className="text-base text-zinc-400">{image.date}</div>
               </div>
             </div>
           ))}

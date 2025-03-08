@@ -77,11 +77,8 @@ function SearchInput({ searchMode }) {
       if (isArchive) {
         setarchiveResults([]);
         setFilteredResults([]);
-        let results = await searchArchive({ 
-          keyword: query,
-          page: 1, 
-          page_size: 25 
-        });
+
+        let results = await searchArchive({ query});
         setSearchId("archived searches");
         setarchiveResults(results);
         setFilteredResults(results);
@@ -154,12 +151,13 @@ function SearchInput({ searchMode }) {
     : "Explore the archive to view past results from other users and see how they've changed over time.";
   
   return (
-    <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
-      <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
-        <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
-          <div className="flex items-center self-stretch my-auto min-w-[240px]">
-            <div className={`${!isArchive ? 'bg-slate-100' : 'bg-white' } flex flex-col justify-center items-center px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 cursor-pointer`}>
-              <div onClick={() => setIsArchive(false)}className="flex gap-2 items-start">
+    <>
+      <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
+        <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
+          <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
+            <div className="flex items-center self-stretch my-auto min-w-[240px]">
+            <div className={`${!isArchive ? 'bg-slate-100' : 'bg-white'} flex flex-col justify-center items-center px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 cursor-pointer`}>
+              <div onClick={() => setIsArchive(false)} className="flex gap-2 items-start">
                 <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
                   <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
                 </div>
@@ -181,8 +179,7 @@ function SearchInput({ searchMode }) {
             className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
             data-tooltip-id="tooltip"
             data-tooltip-content={displayTooltipContent}
-            data-tooltip-place="top"
-          />
+            data-tooltip-place="top" />
           <Tooltip id="tooltip" />
           <span className="font-bold">Username:</span> {username}
         </div>
@@ -195,8 +192,7 @@ function SearchInput({ searchMode }) {
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={!!isLoading}
-              className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" aria-label="Search query"
-            />
+              className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" aria-label="Search query" />
             <div className="flex overflow-hidden gap-1 justify-center items-center py-4 pr-4 h-full">
               <button onClick={handleSubmit} disabled={!!isLoading}>
                 <img src={isLoading ? Spinner : displaySearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
@@ -204,16 +200,15 @@ function SearchInput({ searchMode }) {
             </div>
           </div>
           {isArchive && (
-            <button 
-              onClick={() => setFilterOpen(!filterOpen)} 
+            <button
+              onClick={() => setFilterOpen(!filterOpen)}
               className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 ${filterOpen ? 'bg-red-50' : ''}`}
             >
               <div>filters</div>
-              <img 
-                src={FilterIcon} 
-                alt="Filter" 
-                className={`ml-2 w-5 h-5 transition-transform duration-200 ${filterOpen ? 'rotate-180' : ''}`} 
-              />
+              <img
+                src={FilterIcon}
+                alt="Filter"
+                className={`ml-2 w-5 h-5 transition-transform duration-200 ${filterOpen ? 'rotate-180' : ''}`} />
             </button>
           )}
         </div>
@@ -222,35 +217,34 @@ function SearchInput({ searchMode }) {
         </span>
       </div>
       {isArchive && <FilterControls onUpdate={applyFilters} isOpen={filterOpen} />}
-      {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.
-            <h2 className="text-xl font-bold mb-2">Filtered Results</h2>length > 0) && <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />}
-      {(currentSearchId && isArchive) && (
-           {(currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0) && (
-              <>
-                <h2 className="text-xl font-bold mb-2">Current Filters</h2>
-                <div className="flex flex-wrap gap-2 mb-4">
-                {currentFilters.years.length > 0 && (
-                  <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                    Years: {currentFilters.years.join(', ')}
-                  </span>
-                )}
-                {currentFilters.cities.length > 0 && (
-                  <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                    Cities: {currentFilters.cities.join(', ')}
-                  </span>
-                )}
-                {currentFilrs.vote_ids.length )}       <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                    Votes: {currentFilters.vote_ids.length} selected
-                  </span>
-                )}
-                </div>
-              </>
+      {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && (
+        <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
+      )}
+      {(currentSearchId && isArchive && (currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0)) && (
+        <>
+          <h2 className="text-xl font-bold mb-2">Current Filters</h2>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {currentFilters.years.length > 0 && (
+              <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                Years: {currentFilters.years.join(', ')}
+              </span>
+            )}
+            {currentFilters.cities.length > 0 && (
+              <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                Cities: {currentFilters.cities.join(', ')}
+              </span>
+            )}
+            {currentFilters.vote_ids.length > 0 && (
+              <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                Votes: {currentFilters.vote_ids.length} selected
+              </span>
             )}
           </div>
-          <QueryList results={filteredResults} />
         </>
       )}
     </div>
+      <QueryList results={filteredResults} />
+    </>
   );
 }
 
