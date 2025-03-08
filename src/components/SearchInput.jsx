@@ -3,7 +3,7 @@ import { Link, useSearchParams, useNavigate, useLocation } from 'react-router-do
 import { Tooltip } from 'react-tooltip';
 import QueryList from './QueryList';
 import useCookie from '../useCookie';
-import FilterOptionsModal from './FilterOptionsModal';
+import FilterControls from './FilterControls';
 import ApiContext from '../contexts/ApiContext';
 
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
@@ -11,6 +11,7 @@ import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import Question from '../assets/icons/question_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
 import ArchiveIcon from '../assets/icons/folder_open_search.svg';
+import FilterIcon from '../assets/icons/tune.svg';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
 
@@ -19,6 +20,7 @@ function SearchInput({ searchMode }) {
   const [isLoading, setLoading] = useState(false);
   const [imageResults, setImageResults] = useState({});
   const [archiveResults, setarchiveResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
   const [translation, setTranslation] = useState('');
@@ -27,6 +29,7 @@ function SearchInput({ searchMode }) {
   const [username, setUsername, deleteUsername] = useCookie("username");
   const [filterOpen, setFilterOpen] = useState(false);
   const [isArchive, setIsArchive] = useState(searchMode === 'archive');
+  const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [] });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,45 +58,11 @@ function SearchInput({ searchMode }) {
 
   const loadDefaultResults = async () => {
     console.log('fetching default archive results');
-    const filterOptions = getFilterOptions();
-
-    const results = await searchArchive({ ...filterOptions, ...{ page: 1, page_size: 10 } });
+    const filterOptions = { page: 1, page_size: 25 }
+    const results = await searchArchive({ ...filterOptions });
     setSearchId("archived searches");
     setarchiveResults(results);
-  }
-
-  const allValuesEmpty = (obj) => {
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        const value = obj[key];
-        if (value !== null && value !== undefined && value !== "" && value.length !== 0) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  const getFilterOptions = () => {
-    let form = document.getElementById('filter-options-form');
-    const formData = new FormData(form);
-    const filterOptions = { votes: [], years: [], cities: [] };
-    for (let [key, value] of formData.entries()) {
-      if (value) {
-        console.log(key, value);
-        if (key.startsWith('votes')) {
-          filterOptions.votes.push(value);
-        } else if (value === 'on') {
-          filterOptions.years.push(key);
-        } else if (key.startsWith('city')) {
-          filterOptions.cities.push(value);
-        } else {
-          console.log('unknown filter option:', key, value);
-        }
-      }
-    }
-    console.log('filter options:', filterOptions);
-    let empty = allValuesEmpty(filterOptions);
-    return !empty ? filterOptions : false;
+    setFilteredResults(results);
   }
 
   const handleSubmit = async () => {
@@ -103,45 +72,77 @@ function SearchInput({ searchMode }) {
       navigate('/search?q=' + query);
       return;
     }
-    console.log('submitting search for:', query);
-    urlConfig.body = JSON.stringify({ query, search_client_name: username });
-    setResults({ googleResults: [], baiduResults: [] });
 
     try {
       if (isArchive) {
         setarchiveResults([]);
-        const filterOptions = getFilterOptions();
-        let results;
-        if (filterOptions) {
-          if (query) {
-            results = await searchArchive({ ...filterOptions, ...{ keyword: query } });
-          } else {
-            results = await searchArchive({ ...filterOptions });
-          }
-        } else {
-          results = await searchArchive({ query});
-        }
+        setFilteredResults([]);
+        let results = await searchArchive({ 
+          keyword: query,
+          page: 1, 
+          page_size: 25 
+        });
         setSearchId("archived searches");
-        console.log('results', results);
         setarchiveResults(results);
+        setFilteredResults(results);
       } else {
-        const { googleResults, baiduResults, translation, searchId } = await searchImages({ body: JSON.stringify({ query, search_client_name: username }) });
+        const { googleResults, baiduResults, translation, searchId } = await searchImages({ 
+          body: JSON.stringify({ query, search_client_name: username }) 
+        });
         setSearchId(searchId);
         setResults({ googleResults, baiduResults });
         setTranslation(translation);
-        let user = 'Bob:'+ searchId;
-        let nextWeek = new Date();
-        nextWeek.setDate(nextWeek.getDate() + 7);
-        setUsername(user, nextWeek);
       }
     } catch (e) {
-      setResults({ googleResults: [], baiduResults: [] });
-      setTranslation(e);
-      setQuery('');
+      if (!isArchive) {
+        setResults({ googleResults: [], baiduResults: [] });
+        setTranslation(e);
+        setQuery('');
+      }
     } finally {
       setLoading(false);
     }
   }
+
+  const applyFilters = (filterOptions) => {
+    setCurrentFilters(filterOptions);
+    
+    // If all filters are empty, close the filter panel
+    if (filterOptions.years.length === 0 && 
+        filterOptions.cities.length === 0 && 
+        filterOptions.vote_ids.length === 0) {
+      setFilterOpen(false);
+    }
+    
+    let filtered = [...archiveResults];
+
+    // Filter by years
+    if (filterOptions.years.length > 0) {
+      filtered = filtered.filter(item => {
+        const itemYear = new Date(parseInt(item.search_timestamp)).getFullYear().toString();
+        return filterOptions.years.includes(itemYear);
+      });
+    }
+
+    // Filter by cities
+    if (filterOptions.cities.length > 0) {
+      filtered = filtered.filter(item => 
+        filterOptions.cities.includes(item.search_location)
+      );
+    }
+
+    // Filter by votes
+    if (filterOptions.vote_ids.length > 0) {
+      filtered = filtered.filter(item => {
+        // Check if any of the item's votes match the filter vote IDs
+        return filterOptions.vote_ids.some(voteId => 
+          item.votes && item.votes.includes(parseInt(voteId))
+        );
+      });
+    }
+
+    setFilteredResults(filtered);
+  };
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) handleSubmit();
@@ -202,14 +203,55 @@ function SearchInput({ searchMode }) {
               </button>
             </div>
           </div>
-          {isArchive && <FilterOptionsModal open={filterOpen} onClose={setFilterOpen} />}
+          {isArchive && (
+            <button 
+              onClick={() => setFilterOpen(!filterOpen)} 
+              className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 ${filterOpen ? 'bg-red-50' : ''}`}
+            >
+              <div>filters</div>
+              <img 
+                src={FilterIcon} 
+                alt="Filter" 
+                className={`ml-2 w-5 h-5 transition-transform duration-200 ${filterOpen ? 'rotate-180' : ''}`} 
+              />
+            </button>
+          )}
         </div>
-        <span class={`mt-4 p-1 leading-8 text-medium bg-slate-50 border border-black rounded ${translation ? '' : 'hidden'}`}>
+        <span className={`mt-4 p-1 leading-8 text-medium bg-slate-50 border border-black rounded ${translation ? '' : 'hidden'}`}>
           <span className="font-bold">Translation:</span> {translation}
         </span>
       </div>
+      {isArchive && <FilterControls onUpdate={applyFilters} isOpen={filterOpen} />}
       {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />}
-      {(currentSearchId && isArchive) && <QueryList results={archiveResults} />}
+      {(currentSearchId && isArchive) && (
+        <>
+          <div className="flex flex-col self-center max-w-[720px] w-[720px] mt-4">
+            {(currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0) && (
+              <>
+                <h2 className="text-xl font-bold mb-2">Current Filters</h2>
+                <div className="flex flex-wrap gap-2 mb-4">
+                {currentFilters.years.length > 0 && (
+                  <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                    Years: {currentFilters.years.join(', ')}
+                  </span>
+                )}
+                {currentFilters.cities.length > 0 && (
+                  <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                    Cities: {currentFilters.cities.join(', ')}
+                  </span>
+                )}
+                {currentFilters.vote_ids.length > 0 && (
+                  <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                    Votes: {currentFilters.vote_ids.length} selected
+                  </span>
+                )}
+                </div>
+              </>
+            )}
+          </div>
+          <QueryList results={filteredResults} />
+        </>
+      )}
     </div>
   );
 }

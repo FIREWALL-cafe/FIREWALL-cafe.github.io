@@ -17,9 +17,20 @@ security: 83376c1e81
 */
 
 
-function VoteButton({ voteCategory, voteHandler, disabled }) {
+function VoteButton({ voteCategory, voteHandler, disabled, shouldReset }) {
   const [isSelected, setSelected] = useState(false);
   const [isDisabled, setDisabled] = useState(disabled);
+
+  // Reset state when shouldReset changes
+  useEffect(() => {
+    if (shouldReset) {
+      setSelected(false);
+      setDisabled(false);
+      // Reset the hidden input value
+      const votebtn = document.getElementById(voteCategory);
+      if (votebtn) votebtn.value = '';
+    }
+  }, [shouldReset, voteCategory]);
 
   const metaKeyToId = {
     votes_censored: 1,
@@ -82,13 +93,13 @@ function VoteButton({ voteCategory, voteHandler, disabled }) {
 
   return (
     <button
-      className={`flex gap-2.5 items-center w-full rounded border border-solid ${ isDisabled ? 'cursor-not-allowed' : 'hover:bg-sky-700' } ${isSelected ? 'bg-sky-700' : ''}`}
+      className={`flex items-center px-2 py-1 rounded border border-solid text-sm ${isDisabled ? 'cursor-not-allowed opacity-50' : 'hover:bg-red-50'} ${isSelected ? 'bg-red-50' : ''}`}
       onClick={vote}
       disabled={isDisabled}
     >
-      <img src={imgSrc} className="object-contain self-stretch my-auto w-12 aspect-square" />
+      <img src={imgSrc} className="w-4 h-4 mr-1" />
       <input type="hidden" id={voteCategory} name={voteCategory} />
-      <div className="flex-1 shrink gap-2 self-stretch mt-2 w-full text-xl font-semibold text-black">
+      <div className="text-sm font-medium text-gray-700">
         {voteMeta[voteCategory].name}
       </div>
     </button>
