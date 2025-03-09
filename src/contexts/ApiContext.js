@@ -10,18 +10,41 @@ const defaultConfig = {
   };
 
 const searchArchive = async (options) => {
-  const defaultQuery = { page: 1, page_size: 25 };
-  const response = await fetch(`/searches?${querystring.stringify({ ...defaultQuery, ...options })}`, defaultConfig);
-  const results = await response.json();
-  console.log('searchArchive:', results);
-  return results;
+  try {
+    const defaultQuery = { page: 1, page_size: 25 };
+    const queryParams = options.query ? 
+      { ...defaultQuery, query: encodeURIComponent(options.query.trim()) } : 
+      { ...defaultQuery, ...options };
+    
+    const url = `/searches?${querystring.stringify(queryParams)}`;
+    console.log('searchArchive request URL:', url);
+    console.log('searchArchive request config:', defaultConfig);
+    
+    const response = await fetch(url, defaultConfig);
+    console.log('searchArchive response status:', response.status);
+    
+    const results = await response.json();
+    console.log('searchArchive results:', results);
+    return results;
+  } catch (error) {
+    console.error('searchArchive error:', error);
+    throw error;
+  }
 }
 
 const searchImages = async (options) => {
-  const response = await fetch('/images', {...defaultConfig, ...options});
-  const results = await response.json();
-  console.log('searchImages:', results);
-  return results;
+  try {
+    console.log('searchImages request options:', options);
+    const response = await fetch('/images', {...defaultConfig, ...options});
+    console.log('searchImages response status:', response.status);
+    
+    const results = await response.json();
+    console.log('searchImages results:', results);
+    return results;
+  } catch (error) {
+    console.error('searchImages error:', error);
+    throw error;
+  }
 }
 
 const ApiContext = createContext({

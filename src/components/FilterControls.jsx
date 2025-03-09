@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import VoteButton from './VoteButton';
-import { useContext } from 'react';
-import SearchContext from '../SearchContext';
 
 function FilterControls({ onUpdate, isOpen }) {
-  const { doSearch, searchResults } = useContext(SearchContext);
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
   const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
   const cities = [
-    "Miami beach", "New York city", "Oslo", "St. Polten", 
+    "Miami beach", "New York City", "Oslo", "St. Polten", 
     "hong Kong", "Ann Arbor", "Vienna", "Asheville", "Poughkeepsie"
   ];
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
@@ -56,7 +53,8 @@ function FilterControls({ onUpdate, isOpen }) {
     // Reset the flag after a short delay to allow for future resets
     setTimeout(() => {
       setShouldResetVotes(false);
-      handleFilterChange(); // Trigger update after reset
+      // Update with empty filters but don't close the panel
+      onUpdate({ vote_ids: [], years: [], cities: [] }, false);
     }, 100);
   };
 
@@ -132,7 +130,7 @@ function FilterControls({ onUpdate, isOpen }) {
               </button>
               <button
                 type="button"
-                onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] })}
+                onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] }, true)}
                 className="px-3 py-1.5 text-sm text-white bg-black hover:bg-gray-800">
                 Close
               </button>
