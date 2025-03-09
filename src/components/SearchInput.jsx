@@ -66,6 +66,11 @@ function SearchInput({ searchMode }) {
   }
 
   const handleSubmit = async () => {
+    if (!query || query.trim() === '') {
+      setTranslation('Please enter a search query');
+      return;
+    }
+
     setLoading(true);
     if (location.pathname === '/') {
       console.log('navigating to search');
@@ -78,34 +83,52 @@ function SearchInput({ searchMode }) {
         setarchiveResults([]);
         setFilteredResults([]);
 
-        let results = await searchArchive({ query});
+        const results = await searchArchive({ query: query.trim() });
+        
+        if (results.error) {
+          throw new Error(results.error);
+        }
+
         setSearchId("archived searches");
         setarchiveResults(results);
         setFilteredResults(results);
       } else {
-        const { googleResults, baiduResults, translation, searchId } = await searchImages({ 
-          body: JSON.stringify({ query, search_client_name: username }) 
+        const response = await searchImages({ 
+          body: JSON.stringify({ 
+            query: query.trim(), 
+            search_client_name: username || 'anonymous' 
+          })
         });
+
+        if (response.error) {
+          throw new Error(response.error);
+        }
+
+        const { googleResults, baiduResults, translation, searchId } = response;
         setSearchId(searchId);
-        setResults({ googleResults, baiduResults });
-        setTranslation(translation);
+        setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
+        setTranslation(translation || '');
       }
     } catch (e) {
+      console.error('Search error:', e);
       if (!isArchive) {
         setResults({ googleResults: [], baiduResults: [] });
-        setTranslation(e);
-        setQuery('');
+        setTranslation(e.message || String(e));
+      } else {
+        setarchiveResults([]);
+        setFilteredResults([]);
+        setTranslation(e.message || 'Failed to search archives');
       }
     } finally {
       setLoading(false);
     }
   }
 
-  const applyFilters = (filterOptions) => {
+  const applyFilters = (filterOptions, shouldClose = true) => {
     setCurrentFilters(filterOptions);
     
-    // If all filters are empty, close the filter panel
-    if (filterOptions.years.length === 0 && 
+    // Only close the filter panel if shouldClose is true
+    if (shouldClose && filterOptions.years.length === 0 && 
         filterOptions.cities.length === 0 && 
         filterOptions.vote_ids.length === 0) {
       setFilterOpen(false);

@@ -11,12 +11,12 @@
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "start:server": "nodemon index.js --watch index.js server/*",
+    "start:server": "NODE_ENV=development nodemon index.js --watch index.js server/*",
     "start:client": "BROWSER=none react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"yarn run start:server\" \"yarn run start:client\" --kill-others",
-    "start": "node index.js"
+    "dev": "NODE_ENV=development concurrently \"yarn run start:server\" \"yarn run start:client\" --kill-others",
+    "start": "NODE_ENV=production node index.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

@@ -19,46 +19,75 @@ app.use((err, req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get('/events*', (req, res) => {
-  var indexHtml = path.join(__dirname, "public/index.html");
-  res.sendFile(indexHtml);
-});
+// app.get('/events*', (req, res) => {
+//   var indexHtml = path.join(__dirname, "public/index.html");
+//   res.sendFile(indexHtml);
+// });
 
 app.get('/proxy-image', async (req, res) => {
-  console.log('proxy-image:', req.query);
+  console.log('Received proxy-image request:', req.query);
+  
   try {
     const imageUrl = req.query.url;
     
     if (!imageUrl) {
+      console.error('No image URL provided');
       return res.status(400).json({ error: 'Image URL is required' });
     }
+
+    console.log('Fetching image from:', imageUrl);
 
     const response = await axios({
       url: imageUrl,
       method: 'GET',
-      responseType: 'stream'
+      responseType: 'stream',
+      timeout: 10000, // 10 second timeout
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
+      }
     });
 
-    // Forward the content-type header
-    res.set('Content-Type', response.headers['content-type']);
+    console.log('Image fetch successful, content-type:', response.headers['content-type']);
 
-    // Pipe the image data directly to the response
+    // Set appropriate headers
+    res.set({
+      'Content-Type': response.headers['content-type'],
+      'Cache-Control': 'public, max-age=31536000',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    // Pipe the image stream to the response
     response.data.pipe(res);
+
+    // Handle errors in the pipeline
+    response.data.on('error', (error) => {
+      console.error('Error in image stream:', error);
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to stream image' });
+      }
+    });
   } catch (error) {
-    console.error('Error proxying image:', error);
-    res.status(500).json({ error: 'Failed to fetch image' });
+    console.error('Error proxying image:', error.message);
+    console.error('Error details:', error);
+    
+    if (!res.headersSent) {
+      res.status(500).json({ 
+        error: 'Failed to fetch image',
+        details: error.message,
+        url: imageUrl
+      });
+    }
   }
 });
 
-app.get("/*", (req, res) => {
-  // res.set('Cache-Control', 'no-store')
-  console.log('FALL THRU: /*')
-  res.sendFile(path.join(__dirname, "public/index.html"));
-});
+// app.get("/*", (req, res) => {
+//   // res.set('Cache-Control', 'no-store')
+//   res.sendFile(path.join(__dirname, "public/index.html"));
+// });
 
 app.get("*", (req, res) => {
   console.log('FALL THRU: *')
-  res.sendFile(path.join(__dirname, "public/index.html"), { lastModified: false, etag: false });
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 app.post("/searches/:search_id/images", async (req, res) => {
@@ -78,10 +107,15 @@ app.post('/images', async (req, res) => {
   console.log('query', query)
 
   try {
-    const { language: langFrom } = await getDetectedLanguage(query);
+    if (!query || query.trim() === '') {
+      throw new Error('Search query is required');
+    }
+
+    const { language: langFrom } = await getDetectedLanguage(encodeURIComponent(query));
     console.log('langFrom', langFrom);
     langTo = 'zh-CN';
-    const translatedQuery = await getTranslation(query, langFrom, langTo);
+    
+    const translatedQuery = await getTranslation(encodeURIComponent(query), langFrom, langTo);
     const enQuery = langFrom === 'en' ? query : translatedQuery;
     const cnQuery = langFrom !== 'en' ? translatedQuery : query;
 
@@ -90,28 +124,62 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    const { searchId } = await saveImages({ query, google: results[0].slice(0, 9), baidu: results[1].slice(0, 9), langTo, langFrom, search_client_name, translation: translatedQuery })
+    const { searchId } = await saveImages({ 
+      query, 
+      google: results[0].slice(0, 9), 
+      baidu: results[1].slice(0, 9), 
+      langTo, 
+      langFrom, 
+      search_client_name, 
+      translation: translatedQuery 
+    });
 
     data.searchId = searchId;
     data.googleResults = results[0];
     data.baiduResults = results[1];
-    data.translation = translatedQuery
+    data.translation = translatedQuery;
   } catch (error) {
-    console.error(error);
+    console.error('Error processing image search:', error);
+    return res.status(400).json({ 
+      error: error.message || 'Failed to process search request',
+      details: error.toString()
+    });
   }
 
   res.json(data);
 });
 
 app.post('/searches', async (req, res) => {
-  const { query } = req.query;
-  const filterOptions = req.query;
+  try {
+    console.log('Received /searches request');
+    console.log('Query params:', req.query);
+    console.log('Request body:', req.body);
+    console.log('Request headers:', req.headers);
 
-  console.log('/searches params:', req.query);
-  console.log('/searches body:', req.body);
-  const data =  query ? await getSearchesByTerm(query) : await getSearchesFilter(filterOptions);
+    const { query, ...filterOptions } = req.query;
 
-  res.json(data);
+    let data;
+    if (query) {
+      console.log('Processing search by term:', query);
+      const decodedQuery = decodeURIComponent(query);
+      console.log('Decoded query:', decodedQuery);
+      data = await getSearchesByTerm(decodedQuery);
+    } else {
+      console.log('Processing filter options:', filterOptions);
+      data = await getSearchesFilter(filterOptions);
+    }
+
+    console.log('Search results:', data);
+    res.json(data);
+  } catch (error) {
+    console.error('Error in /searches endpoint:', error);
+    console.error('Error stack:', error.stack);
+    res.status(400).json({ 
+      error: error.message || 'Failed to process search request',
+      details: error.toString(),
+      stack: error.stack
+    });
+  }
 });
 
 app.post('/vote', async (req, res) => {
@@ -151,7 +219,9 @@ app.post('/send-email', async (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server listening at http://localhost:${PORT}`)
+  console.log(`Server listening at http://localhost:${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV}`);
+  console.log(`Using API URL: ${serverConfig.apiUrl}`);
 })
 
 module.exports = app;
