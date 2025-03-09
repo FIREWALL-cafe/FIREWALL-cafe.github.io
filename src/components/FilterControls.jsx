@@ -4,10 +4,10 @@ import VoteButton from './VoteButton';
 function FilterControls({ onUpdate, isOpen }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
-  const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+  const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025];
   const cities = [
-    "Miami beach", "New York City", "Oslo", "St. Polten", 
-    "hong Kong", "Ann Arbor", "Vienna", "Asheville", "Poughkeepsie"
+    "Miami", "New York City", "Oslo", "St. Polten", 
+    "Hong Kong", "Ann Arbor", "Vienna", "Asheville", "Poughkeepsie"
   ];
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
@@ -32,23 +32,33 @@ function FilterControls({ onUpdate, isOpen }) {
     const formData = new FormData(form);
     const filterOptions = { vote_ids: [], years: [], cities: [] };
     
+    // Get selected years
+    const yearsSelect = form.querySelector('select[name="years"]');
+    if (yearsSelect.value) {
+      filterOptions.years = [yearsSelect.value];
+    }
+
+    // Get selected cities
+    const citiesSelect = form.querySelector('select[name="cities"]');
+    if (citiesSelect.value) {
+      filterOptions.cities = [citiesSelect.value];
+    }
+
+    // Get vote values
     for (let [key, value] of formData.entries()) {
-      if (value) {
-        if (key.startsWith('votes')) {
-          filterOptions.vote_ids.push(value);
-        } else if (value === 'on') {
-          filterOptions.years.push(key);
-        } else if (key.startsWith('city')) {
-          filterOptions.cities.push(value);
-        }
+      if (key.startsWith('votes') && value) {
+        filterOptions.vote_ids.push(value);
       }
     }
     
+    console.log('Filter options being sent:', filterOptions);
     onUpdate(filterOptions);
   };
 
   const handleReset = () => {
-    document.getElementById('filter-options-form').reset();
+    const form = document.getElementById('filter-options-form');
+    form.reset();
+
     setShouldResetVotes(true);
     // Reset the flag after a short delay to allow for future resets
     setTimeout(() => {
@@ -68,41 +78,36 @@ function FilterControls({ onUpdate, isOpen }) {
           <div className="grid grid-cols-2 gap-6 mb-4">
             {/* Years Section */}
             <div className="flex flex-col">
-              <label htmlFor="year" className="text-lg font-black mb-2">Year</label>
-              <div className="grid grid-cols-3 gap-x-4 gap-y-1">
-                {years.map((year, index) => (
-                  <div key={index} className="flex items-center">
-                    <input 
-                      type="checkbox" 
-                      id={year} 
-                      name={year} 
-                      className="w-4 h-4 border border-solid border-zinc-400 mr-2" 
-                      onChange={handleFilterChange}
-                    />
-                    <label htmlFor={year} className="text-sm">{year}</label>
-                  </div>
+              <label htmlFor="years" className="text-lg font-black mb-2">Year</label>
+              <select 
+                name="years"
+                className="w-full border border-zinc-400 rounded p-2"
+                onChange={handleFilterChange}
+              >
+                <option value="">All Years</option>
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
 
             {/* Cities Section */}
             <div className="flex flex-col">
-              <label htmlFor="location" className="text-lg font-black mb-2">Location</label>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                {cities.slice(0, 8).map((city, index) => (
-                  <div key={index} className="flex items-center">
-                    <input 
-                      type="checkbox" 
-                      value={city} 
-                      id={`city-${index}`} 
-                      name={`city-${index}`} 
-                      className="w-4 h-4 border border-solid border-zinc-400 mr-2" 
-                      onChange={handleFilterChange}
-                    />
-                    <label htmlFor={`city-${index}`} className="text-sm truncate">{city}</label>
-                  </div>
+              <label htmlFor="cities" className="text-lg font-black mb-2">Location</label>
+              <select
+                name="cities"
+                className="w-full border border-zinc-400 rounded p-2"
+                onChange={handleFilterChange}
+              >
+                <option value="">All Locations</option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
           </div>
 
