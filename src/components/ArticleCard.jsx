@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ArticleCard({ image, imageHover, title, date, tag, url }) {
   return (
-    <article className="flex overflow-hidden flex-col grow shrink self-stretch my-auto w-64 rounded border border-black border-solid min-h-[400px] min-w-[240px]">
+    <article className="flex overflow-hidden flex-col shrink self-stretch my-auto w-64 rounded border border-black border-solid min-h-[400px] min-w-[240px]">
       <Link to={url} target="_blank">
         <img
           src={image}
