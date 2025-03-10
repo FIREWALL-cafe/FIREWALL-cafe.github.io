@@ -26,7 +26,7 @@ function SearchInput({ searchMode }) {
   const [translation, setTranslation] = useState('');
   const [currentSearchId, setSearchId] = useState(null);
   const setResults = useCallback((results) => setImageResults(results), []);
-  const [username, setUsername, deleteUsername] = useCookie("username");
+  const [username] = useCookie("username");
   const [filterOpen, setFilterOpen] = useState(false);
   const [isArchive, setIsArchive] = useState(searchMode === 'archive');
   const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [] });
@@ -223,7 +223,6 @@ function SearchInput({ searchMode }) {
               data-tooltip-content={displayTooltipContent}
               data-tooltip-place="top" />
             <Tooltip id="tooltip" />
-            <span className="font-bold">Username:</span> {username}
           </div>
           <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
             <div className="flex overflow-hidden flex-wrap w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px] max-md:max-w-full">
@@ -234,10 +233,20 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" aria-label="Search query" />
-              <div className="flex overflow-hidden gap-1 justify-center items-center py-4 pr-4 h-full">
-                <button onClick={handleSubmit} disabled={!!isLoading}>
-                  <img src={isLoading ? Spinner : displaySearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" 
+                aria-label="Search query" 
+              />
+              <div className="flex overflow-hidden gap-1 justify-center items-center py-2 pr-2 md:py-4 md:pr-4">
+                <button 
+                  onClick={handleSubmit} 
+                  disabled={!!isLoading}
+                  className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10"
+                >
+                  <img 
+                    src={isLoading ? Spinner : displaySearchIcon} 
+                    alt="Search icon" 
+                    className="w-5 h-5 md:w-6 md:h-6 object-contain" 
+                  />
                 </button>
               </div>
             </div>
