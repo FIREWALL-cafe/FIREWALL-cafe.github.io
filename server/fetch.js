@@ -177,26 +177,76 @@ const getSearchImages = async (search_id) => {
   return data;
 }
 
-const getSearchesByTerm = async (query) => {
+const getSearchesByTerm = async (query, options = {}) => {
   console.log('searches by term: starting: ', query);
-  const url = `${serverConfig.apiUrl}searches/terms?term=${query}`;
-
-  // const url = `https://firewallcafe.com/wp-json/wp/v2/search-result?per_page=25&page=1&search=${query}`;
-
+  
+  // Ensure pagination parameters are present
+  const page = parseInt(options.page) || 1;
+  const page_size = parseInt(options.page_size) || 25;
+  
+  // Add pagination and query to parameters
+  const queryParams = {
+    term: query,
+    page,
+    page_size,
+    ...options
+  };
+  
+  const url = `${serverConfig.apiUrl}searches/terms?${querystring.stringify(queryParams)}`;
   const { data } = await axios.get(url);
 
-  console.log('searches by term: data', data[0]);
+  console.log('searches by term: data count:', Array.isArray(data) ? data.length : 'paginated');
+
+  // If the API doesn't return paginated data, we'll handle pagination here
+  if (!data.total && Array.isArray(data)) {
+    const total = data.length;
+    const start = (page - 1) * page_size;
+    const end = start + page_size;
+    
+    return {
+      total,
+      page,
+      page_size,
+      data: data.slice(start, end)
+    };
+  }
 
   return data;
 }
 
 const getSearchesFilter = async (filterOptions) => {
   console.log('FETCH.js: searches by filter: starting: ', filterOptions);
-  console.log('FETCH.js:  filterOptions: ', querystring.stringify(filterOptions));
-  const url = `${serverConfig.apiUrl}searches/filter?${querystring.stringify(filterOptions)}`;
+  
+  // Ensure pagination parameters are present
+  const page = parseInt(filterOptions.page) || 1;
+  const page_size = parseInt(filterOptions.page_size) || 25;
+  
+  // Add pagination to query string
+  const queryParams = {
+    ...filterOptions,
+    page,
+    page_size
+  };
+  
+  console.log('FETCH.js: filterOptions:', querystring.stringify(queryParams));
+  const url = `${serverConfig.apiUrl}searches/filter?${querystring.stringify(queryParams)}`;
 
   const { data } = await axios.get(url);
-  console.log('FETCH.js: searches by filter: data', data.length);
+  console.log('FETCH.js: searches by filter: data length:', data.length);
+
+  // If the API doesn't return paginated data, we'll handle pagination here
+  if (!data.total && Array.isArray(data)) {
+    const total = data.length;
+    const start = (page - 1) * page_size;
+    const end = start + page_size;
+    
+    return {
+      total,
+      page,
+      page_size,
+      data: data.slice(start, end)
+    };
+  }
 
   return data;
 }
