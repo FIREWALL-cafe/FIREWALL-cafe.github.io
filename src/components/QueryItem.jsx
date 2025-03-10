@@ -41,7 +41,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
   };
 
   return (
-    <div className="hover:bg-gray-100 w-full">
+    <div id={search_id} className="hover:bg-gray-100 w-full">
       <div className="flex flex-wrap gap-4 py-1 w-full text-sm text-black min-h-[32px] cursor-pointer" onClick={toggleDropdown}>
         <div className="w-16 flex items-center max-sm:w-12">
           <img src={VoteIcon} alt="Votes" className="w-4 h-4 mr-1" />

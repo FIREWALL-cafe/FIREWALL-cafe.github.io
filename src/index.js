@@ -17,6 +17,7 @@ import LanYu from "./components/LanYu";
 import ShowEvent from './components/ShowEvent';
 import Partners from './components/Partners';
 import Contributors from './components/Contributors';
+import Dashboard from './components/Dashboard';
 
 import {
   createBrowserRouter,
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: "contributors",
         element: <Contributors />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
       },
     ],
   },
