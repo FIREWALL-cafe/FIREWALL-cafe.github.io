@@ -11,22 +11,24 @@ import hoverc from "../assets/images/homepage-section_1-image_c-hover.jpg";
 
 function AboutSection() {
   return (
-    <section className="flex overflow-hidden flex-col items-center px-32  pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
-      <div className="flex gap-10 justify-center items-center max-w-full w-[1080px]">
-        <div className="flex flex-col self-stretch my-auto min-w-[240px] max-md:max-w-full">
-          <div className="chinese flex flex-col w-full text-5xl font-medium leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
-            <h2 className="text-black border-black max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+    <section className="flex overflow-hidden flex-col items-center px-4 md:px-8 lg:px-32 pb-16 w-full bg-white 
+      max-md:pb-24 max-md:max-w-full">
+      <div className="flex flex-col lg:flex-row gap-10 justify-center items-center max-w-full w-[1080px]">
+        <div className="flex flex-col self-stretch my-auto w-full lg:min-w-[240px] max-md:max-w-full">
+          <div className="chinese flex flex-col w-full text-3xl md:text-4xl lg:text-5xl font-medium leading-tight 
+            lg:leading-[58px]">
+            <h2 className="text-black border-black">
               <Link to="/about">What does internet censorship look like?</Link>
             </h2>
-            <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+            <div className="text-red-600 border-red-600">
               你知道什么时候会看到审查制度吗?
             </div>
           </div>
-          <p className="mt-10 text-2xl leading-9 text-black max-md:max-w-full">
-            “Just Google it.” That phrase has become almost a knee-jerk response whenever we’re stumped. But does the internet truly have all the answers?
+          <p className="mt-6 md:mt-10 text-xl md:text-2xl leading-normal md:leading-9 text-black">
+            "Just Google it." That phrase has become almost a knee-jerk response whenever we're stumped. But does the internet truly have all the answers?
           </p>
-          <p className="mt-10 text-2xl leading-9 text-black max-md:max-w-full">
-            FIREWALL Cafe is an art project launched in 2016 to shine a light on Google’s search engine monopoly and China’s suppression of free speech through Baidu, the primary Chinese search engine.
+          <p className="mt-6 md:mt-10 text-xl md:text-2xl leading-normal md:leading-9 text-black">
+            FIREWALL Cafe is an art project launched in 2016 to shine a light on Google's search engine monopoly and China's suppression of free speech through Baidu, the primary Chinese search engine.
           </p>
           <Link to="/about">
             <button className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-lg leading-snug text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[56px]">
@@ -35,8 +37,8 @@ function AboutSection() {
             </button>
           </Link>
         </div>
-        <div className="flex flex-col self-stretch min-w-[240px] w-[350px]">
-          <div className="flex overflow-hidden flex-col justify-center max-w-full bg-white border-0 border-solid border-neutral-600 w-[350px]">
+        <div className="flex flex-col self-stretch w-full lg:w-[350px] lg:min-w-[240px]">
+          <div className="flex overflow-hidden flex-col justify-center w-full lg:w-[350px] bg-white">
             <img
               src={censoreda}
               onMouseOver={e => (e.currentTarget.src = hovera)}
@@ -45,7 +47,7 @@ function AboutSection() {
               className="object-contain w-full bg-blend-multiply aspect-[2]"
             />
           </div>
-          <div className="flex overflow-hidden flex-col justify-center mt-3.5 max-w-full border-0 border-solid bg-neutral-300 border-neutral-600 w-[350px]">
+          <div className="flex overflow-hidden flex-col justify-center mt-3.5 w-full lg:w-[350px] bg-neutral-300">
             <img
               src={censoredb}
               onMouseOver={e => (e.currentTarget.src = hoverb)}
@@ -54,7 +56,7 @@ function AboutSection() {
               className="object-contain w-full aspect-[1.99]"
             />
           </div>
-          <div className="flex overflow-hidden flex-col justify-end mt-3.5 max-w-full border-0 border-solid bg-zinc-400 border-neutral-600 w-[350px]">
+          <div className="flex overflow-hidden flex-col justify-end mt-3.5 w-full lg:w-[350px] bg-zinc-400">
             <img
               src={censoredc}
               onMouseOver={e => (e.currentTarget.src = hoverc)}

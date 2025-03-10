@@ -8,13 +8,21 @@ import CarouselRight from "../assets/icons/carousel-right.svg";
 import QuestionBaidu from '../assets/icons/question_red.svg';
 import QuestionGoogle from '../assets/icons/question.svg';
 import NoImageAvailable from '../assets/icons/no-image-available.svg';
+import CensoredBrokenImage from '../assets/icons/censored-broken-image.png';
 
 function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleOnError = (e) => {
-    e.target.src = NoImageAvailable;
+  const handleOnError = (e, isBaidu = false) => {
+    console.log("Baidu, images.baiduResults.length", isBaidu, images.baiduResults.length);
+    if (isBaidu && images.baiduResults.length === 0) {
+      e.target.src = CensoredBrokenImage;
+    } else {
+      e.target.src = NoImageAvailable;
+    }
   };
+
+  const baiduImage = (image) => images.baiduResults.length > 0 ? `/proxy-image?url=${encodeURIComponent(image)}` : CensoredBrokenImage;
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => 
@@ -77,9 +85,9 @@ function ImageCarousel({ images }) {
           </div>
           <div className="relative flex justify-center items-center h-[320px] px-4">
             <img
-              src={`/proxy-image?url=${encodeURIComponent(images.baiduResults[currentIndex])}`}
+              src={baiduImage(images.baiduResults[currentIndex])}
               className="object-contain max-h-full max-w-full rounded-lg"
-              onError={handleOnError}
+              onError={(e) => handleOnError(e, true)}
             />
             <button
               onClick={goToNext}
@@ -119,7 +127,7 @@ function ImageCarousel({ images }) {
               <img
                 src={`/proxy-image?url=${encodeURIComponent(image)}`}
                 className="w-full h-full object-cover"
-                onError={handleOnError}
+                onError={(e) => handleOnError(e, true)}
               />
             </button>
           ))}
