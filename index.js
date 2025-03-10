@@ -30,9 +30,17 @@ app.get('/proxy-image', async (req, res) => {
   try {
     const imageUrl = req.query.url;
     
-    if (!imageUrl) {
-      console.error('No image URL provided');
-      return res.status(400).json({ error: 'Image URL is required' });
+    if (!imageUrl || imageUrl === 'undefined' || imageUrl === 'null') {
+      console.error('No valid image URL provided');
+      return res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+    }
+
+    // Basic URL validation
+    try {
+      new URL(imageUrl);
+    } catch (e) {
+      console.error('Invalid URL format:', imageUrl);
+      return res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
     }
 
     console.log('Fetching image from:', imageUrl);
@@ -47,11 +55,18 @@ app.get('/proxy-image', async (req, res) => {
       }
     });
 
-    console.log('Image fetch successful, content-type:', response.headers['content-type']);
+    // Validate content type is an image
+    const contentType = response.headers['content-type'];
+    if (!contentType || !contentType.startsWith('image/')) {
+      console.error('Invalid content type:', contentType);
+      return res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+    }
+
+    console.log('Image fetch successful, content-type:', contentType);
 
     // Set appropriate headers
     res.set({
-      'Content-Type': response.headers['content-type'],
+      'Content-Type': contentType,
       'Cache-Control': 'public, max-age=31536000',
       'Access-Control-Allow-Origin': '*'
     });
@@ -63,7 +78,7 @@ app.get('/proxy-image', async (req, res) => {
     response.data.on('error', (error) => {
       console.error('Error in image stream:', error);
       if (!res.headersSent) {
-        res.status(500).json({ error: 'Failed to stream image' });
+        res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
       }
     });
   } catch (error) {
@@ -71,11 +86,7 @@ app.get('/proxy-image', async (req, res) => {
     console.error('Error details:', error);
     
     if (!res.headersSent) {
-      res.status(500).json({ 
-        error: 'Failed to fetch image',
-        details: error.message,
-        url: imageUrl
-      });
+      res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
     }
   }
 });
@@ -156,20 +167,32 @@ app.post('/searches', async (req, res) => {
     console.log('Request body:', req.body);
     console.log('Request headers:', req.headers);
 
-    const { query, ...filterOptions } = req.query;
+    const { query, page, page_size, ...otherFilters } = req.query;
+
+    // Ensure pagination parameters are numbers
+    const paginationParams = {
+      page: parseInt(page) || 1,
+      page_size: parseInt(page_size) || 25
+    };
 
     let data;
     if (query) {
       console.log('Processing search by term:', query);
       const decodedQuery = decodeURIComponent(query);
       console.log('Decoded query:', decodedQuery);
-      data = await getSearchesByTerm(decodedQuery);
+      data = await getSearchesByTerm(decodedQuery, paginationParams);
     } else {
-      console.log('Processing filter options:', filterOptions);
-      data = await getSearchesFilter(filterOptions);
+      console.log('Processing filter options:', { ...otherFilters, ...paginationParams });
+      data = await getSearchesFilter({ ...otherFilters, ...paginationParams });
     }
 
-    console.log('Search results:', data);
+    console.log('Search results:', {
+      total: data.total,
+      page: data.page,
+      page_size: data.page_size,
+      data_length: data.data?.length
+    });
+    
     res.json(data);
   } catch (error) {
     console.error('Error in /searches endpoint:', error);

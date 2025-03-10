@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
 
-const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp }) => {
+const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, isFirst }) => {
   const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
   const humanize = str => str.split('_').map(capitalize).join(' ');
   const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
 
-  const [dropdown, setDropdown] = useState(true);
+  const [dropdown, setDropdown] = useState(!isFirst);
   const [imageResults, setImageResults] = useState({});
   
+  useEffect(() => {
+    if (isFirst && !imageResults.googleResults) {
+      loadGallery();
+    }
+  }, []);
+
   const toggleDropdown = () => {
     setDropdown(!dropdown);
     if (dropdown && !imageResults.googleResults) {

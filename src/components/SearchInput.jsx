@@ -19,8 +19,8 @@ function SearchInput({ searchMode }) {
   const { searchImages, searchArchive } = useContext(ApiContext);
   const [isLoading, setLoading] = useState(false);
   const [imageResults, setImageResults] = useState({});
-  const [archiveResults, setarchiveResults] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
+  const [archiveResults, setarchiveResults] = useState({ total: 0, page: 1, page_size: 25, data: [] });
+  const [filteredResults, setFilteredResults] = useState({ total: 0, page: 1, page_size: 25, data: [] });
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
   const [translation, setTranslation] = useState('');
@@ -33,13 +33,6 @@ function SearchInput({ searchMode }) {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const urlConfig = {
-      method: 'post',
-      headers: { 
-        'Accept': 'application/json' ,
-        'Content-Type': 'application/json' 
-      },
-  };
 
   var ranonce = false;
   useEffect(() => {
@@ -50,7 +43,7 @@ function SearchInput({ searchMode }) {
         handleSubmit(); 
         ranonce = true;
       }
-    } else if (isArchive && location.pathname === '/archive' && !ranonce && archiveResults.length === 0) {
+    } else if (isArchive && location.pathname === '/archive' && !ranonce && archiveResults.data.length === 0) {
       ranonce = true;
       loadDefaultResults();
     }
@@ -80,8 +73,8 @@ function SearchInput({ searchMode }) {
 
     try {
       if (isArchive) {
-        setarchiveResults([]);
-        setFilteredResults([]);
+        setarchiveResults({ total: 0, page: 1, page_size: 25, data: [] });
+        setFilteredResults({ total: 0, page: 1, page_size: 25, data: [] });
 
         const results = await searchArchive({ query: query.trim() });
         
@@ -104,10 +97,11 @@ function SearchInput({ searchMode }) {
           throw new Error(response.error);
         }
 
-        const { googleResults, baiduResults, translation, searchId } = response;
-        setSearchId(searchId);
-        setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
-        setTranslation(translation || '');
+        navigate('/archive');
+        // const { googleResults, baiduResults, translation, searchId } = response;
+        // setSearchId(searchId);
+        // setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
+        // setTranslation(translation || '');
       }
     } catch (e) {
       console.error('Search error:', e);
@@ -115,14 +109,34 @@ function SearchInput({ searchMode }) {
         setResults({ googleResults: [], baiduResults: [] });
         setTranslation(e.message || String(e));
       } else {
-        setarchiveResults([]);
-        setFilteredResults([]);
+        setarchiveResults({ total: 0, page: 1, page_size: 25, data: [] });
+        setFilteredResults({ total: 0, page: 1, page_size: 25, data: [] });
         setTranslation(e.message || 'Failed to search archives');
       }
     } finally {
       setLoading(false);
     }
   }
+
+  const handlePageChange = async (newPage) => {
+    setLoading(true);
+    try {
+      const filterOptions = { 
+        page: newPage, 
+        page_size: archiveResults.page_size,
+        ...(query ? { query: query.trim() } : {})
+      };
+      
+      const results = await searchArchive(filterOptions);
+      results.page = newPage;
+      setarchiveResults(results);
+      setFilteredResults(results);
+    } catch (error) {
+      console.error('Error changing page:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const applyFilters = (filterOptions, shouldClose = true) => {
     setCurrentFilters(filterOptions);
@@ -134,11 +148,12 @@ function SearchInput({ searchMode }) {
       setFilterOpen(false);
     }
     
-    let filtered = [...archiveResults];
+    let filtered = { ...archiveResults };
+    filtered.data = [...archiveResults.data];
 
     // Filter by years
     if (filterOptions.years.length > 0) {
-      filtered = filtered.filter(item => {
+      filtered.data = filtered.data.filter(item => {
         const itemYear = new Date(parseInt(item.search_timestamp)).getFullYear().toString();
         return filterOptions.years.includes(itemYear);
       });
@@ -146,14 +161,14 @@ function SearchInput({ searchMode }) {
 
     // Filter by cities
     if (filterOptions.cities.length > 0) {
-      filtered = filtered.filter(item => 
+      filtered.data = filtered.data.filter(item => 
         filterOptions.cities.includes(item.search_location)
       );
     }
 
     // Filter by votes
     if (filterOptions.vote_ids.length > 0) {
-      filtered = filtered.filter(item => {
+      filtered.data = filtered.data.filter(item => {
         // Check if any of the item's votes match the filter vote IDs
         return filterOptions.vote_ids.some(voteId => 
           item.votes && item.votes.includes(parseInt(voteId))
@@ -161,6 +176,7 @@ function SearchInput({ searchMode }) {
       });
     }
 
+    filtered.total = filtered.data.length;
     setFilteredResults(filtered);
   };
 
@@ -177,96 +193,101 @@ function SearchInput({ searchMode }) {
     <>
       <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
         <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
-          <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-b-red-600 max-md:max-w-full">
+          <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-red-600 max-md:max-w-full">
             <div className="flex items-center self-stretch my-auto min-w-[240px]">
-            <div className={`${!isArchive ? 'bg-slate-100' : 'bg-white'} flex flex-col justify-center items-center px-9 py-2 my-auto rounded border-t border-l border-solid border-l-red-600 border-t-red-600 cursor-pointer`}>
-              <div onClick={() => setIsArchive(false)} className="flex gap-2 items-start">
-                <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
-                  <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
-                </div>
-                <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
-                  <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
+              <div 
+                onClick={() => setIsArchive(false)} 
+                className={`${!isArchive ? 'bg-slate-100' : 'bg-white'} flex flex-col justify-center items-center px-9 py-2 my-auto rounded-t border-t border-l border-r border-solid border-red-600 cursor-pointer`}
+              >
+                <div className="flex gap-2 items-start">
+                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
+                    <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
+                  </div>
+                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
+                    <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
+                  </div>
                 </div>
               </div>
+              <div
+                onClick={() => navigate('/archive')}
+                className={`${isArchive ? 'bg-slate-100' : 'bg-white'} px-8 py-2 my-auto text-2xl font-medium text-red-600 rounded-t border-t border-l border-r border-solid border-red-600 cursor-pointer`}
+              >
+                Archive
+              </div>
             </div>
-            <div
-              onClick={() => setIsArchive(true)}
-              className={`${isArchive ? 'bg-slate-100' : 'bg-white'} px-8 py-2 my-auto text-2xl font-medium text-red-600 rounded border-x border-t border-red-600 border-red-600 border-solid cursor-pointer`}
-            >
-              Archive
-            </div>
+            <img
+              src={Question}
+              alt="Question mark red"
+              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+              data-tooltip-id="tooltip"
+              data-tooltip-content={displayTooltipContent}
+              data-tooltip-place="top" />
+            <Tooltip id="tooltip" />
+            <span className="font-bold">Username:</span> {username}
           </div>
-          <img
-            src={Question}
-            alt="Question mark red"
-            className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
-            data-tooltip-id="tooltip"
-            data-tooltip-content={displayTooltipContent}
-            data-tooltip-place="top" />
-          <Tooltip id="tooltip" />
-          <span className="font-bold">Username:</span> {username}
-        </div>
-        <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
-          <div className="flex overflow-hidden flex-wrap w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px] max-md:max-w-full">
-            <input
-              placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
-              value={query}
-              type="text"
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              disabled={!!isLoading}
-              className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" aria-label="Search query" />
-            <div className="flex overflow-hidden gap-1 justify-center items-center py-4 pr-4 h-full">
-              <button onClick={handleSubmit} disabled={!!isLoading}>
-                <img src={isLoading ? Spinner : displaySearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+          <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
+            <div className="flex overflow-hidden flex-wrap w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px] max-md:max-w-full">
+              <input
+                placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
+                value={query}
+                type="text"
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={!!isLoading}
+                className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" aria-label="Search query" />
+              <div className="flex overflow-hidden gap-1 justify-center items-center py-4 pr-4 h-full">
+                <button onClick={handleSubmit} disabled={!!isLoading}>
+                  <img src={isLoading ? Spinner : displaySearchIcon} alt="Search icon" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                </button>
+              </div>
+            </div>
+            {isArchive && (
+              <button
+                onClick={() => setFilterOpen(!filterOpen)}
+                className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 ${filterOpen ? 'bg-red-50' : ''}`}
+              >
+                <div>filters</div>
+                <img
+                  src={FilterIcon}
+                  alt="Filter"
+                  className={`ml-2 w-5 h-5 transition-transform duration-200 ${filterOpen ? 'rotate-180' : ''}`} />
               </button>
-            </div>
+            )}
           </div>
-          {isArchive && (
-            <button
-              onClick={() => setFilterOpen(!filterOpen)}
-              className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 ${filterOpen ? 'bg-red-50' : ''}`}
-            >
-              <div>filters</div>
-              <img
-                src={FilterIcon}
-                alt="Filter"
-                className={`ml-2 w-5 h-5 transition-transform duration-200 ${filterOpen ? 'rotate-180' : ''}`} />
-            </button>
-          )}
+          <span className={`mt-4 p-1 leading-8 text-medium bg-slate-50 border border-black rounded ${translation ? '' : 'hidden'}`}>
+            <span className="font-bold">Translation:</span> {translation}
+          </span>
         </div>
-        <span className={`mt-4 p-1 leading-8 text-medium bg-slate-50 border border-black rounded ${translation ? '' : 'hidden'}`}>
-          <span className="font-bold">Translation:</span> {translation}
-        </span>
+        {isArchive && <FilterControls onUpdate={applyFilters} isOpen={filterOpen} />}
+        {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && (
+          <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
+        )}
+        {(currentSearchId && isArchive && (currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0)) && (
+          <>
+            <h2 className="text-xl font-bold mb-2">Current Filters</h2>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {currentFilters.years.length > 0 && (
+                <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                  Years: {currentFilters.years.join(', ')}
+                </span>
+              )}
+              {currentFilters.cities.length > 0 && (
+                <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                  Cities: {currentFilters.cities.join(', ')}
+                </span>
+              )}
+              {currentFilters.vote_ids.length > 0 && (
+                <span className="px-2 py-1 bg-gray-100 rounded text-sm">
+                  Votes: {currentFilters.vote_ids.length} selected
+                </span>
+              )}
+            </div>
+          </>
+        )}
       </div>
-      {isArchive && <FilterControls onUpdate={applyFilters} isOpen={filterOpen} />}
-      {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && (
-        <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
+      {currentSearchId && isArchive && (
+        <QueryList results={filteredResults} onPageChange={handlePageChange} />
       )}
-      {(currentSearchId && isArchive && (currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0)) && (
-        <>
-          <h2 className="text-xl font-bold mb-2">Current Filters</h2>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {currentFilters.years.length > 0 && (
-              <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                Years: {currentFilters.years.join(', ')}
-              </span>
-            )}
-            {currentFilters.cities.length > 0 && (
-              <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                Cities: {currentFilters.cities.join(', ')}
-              </span>
-            )}
-            {currentFilters.vote_ids.length > 0 && (
-              <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                Votes: {currentFilters.vote_ids.length} selected
-              </span>
-            )}
-          </div>
-        </>
-      )}
-    </div>
-      <QueryList results={filteredResults} />
     </>
   );
 }
