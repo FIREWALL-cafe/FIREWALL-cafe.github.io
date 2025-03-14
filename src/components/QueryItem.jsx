@@ -4,15 +4,14 @@ import VoteIcon from '../assets/icons/how_to_vote.svg';
 
 const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, isFirst }) => {
   const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
-  const humanize = str => str.split('_').map(capitalize).join(' ');
   const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
 
   const [dropdown, setDropdown] = useState(!isFirst);
   const [imageResults, setImageResults] = useState({});
   
   useEffect(() => {
+    console.log('locations:', locationMapping, search_location);
     if (isFirst && !imageResults.googleResults) {
-      console.log('locations:', locationMapping, search_location);
       loadGallery();
     }
   }, []);
@@ -29,7 +28,8 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
     'asheville': 'Asheville',
     'oslo': 'Oslo',
     'pdx': 'Portland',
-    'ann_arbor': 'Ann Arbor'
+    'ann_arbor': 'Ann Arbor',
+    'Automated Scraper': 'Censored Terms Bot'
   };
 
   const toggleDropdown = () => {

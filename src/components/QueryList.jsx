@@ -20,7 +20,7 @@ const QueryList = ({ results, onPageChange }) => {
           <div className="flex flex-col w-full divide-y divide-gray-100">
             <div className="max-h-[800px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
               {data && data.map((item, index) => (
-                <QueryItem key={item.search_id} {...item} isFirst={index === 0} />
+                <QueryItem key={item.search_id} {...item} isFirst={index === 0 && page === 1} />
               ))}
             </div>
           </div>
