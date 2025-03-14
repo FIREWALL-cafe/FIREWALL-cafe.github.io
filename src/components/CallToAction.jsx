@@ -4,24 +4,27 @@ import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function CallToAction() {
   return (
-    <section className="flex flex-col items-center py-16 w-full text-xl bg-rose-100 max-md:py-24 max-md:max-w-full">
-      <div className="chinese flex flex-col items-center max-w-full">
-        <div className="flex flex-wrap gap-5 items-center max-md:max-w-full">
-          <h2 className="flex flex-col items-center mt-6 text-5xl font-medium leading-none max-md:max-w-full max-md:text-4xl">
+    <section className="flex flex-col items-center w-full bg-rose-100 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+        <div className="chinese text-center">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight">
             Become a FIREWALL Cafe supporter
           </h2>
+          <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight text-red-600 tracking-[2.16px]">
+            成为赞助商
+          </div>
         </div>
-        <div className="mt-2 text-7xl font-medium leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
-          成为赞助商
-        </div>
+        <p className="mt-6 text-lg lg:text-xl text-center max-w-2xl">
+          Learn how you can support FIREWALL Cafe and fight for the freedom of information in China and worldwide.
+        </p>
+        <Link 
+          to="/support" 
+          className="flex gap-2 items-center px-6 py-3 mt-6 text-center text-black rounded border border-black border-solid hover:bg-black hover:text-white transition-colors"
+        >
+          <span>Learn more</span>
+          <img src={ArrowRight} alt="" className="w-6 h-6" />
+        </Link>
       </div>
-      <p className="mt-6 leading-8 text-center text-black w-[590px] max-md:max-w-full">
-        Learn how you can support FIREWALL Cafe and fight for the freedom of information in China and worldwide.
-      </p>
-      <Link to="/support" className="flex gap-1 justify-center items-center px-4 mt-6 text-center text-black rounded border border-black border-solid min-h-[56px]">
-        <span className="self-stretch my-auto">Learn more</span>
-        <img src={ArrowRight} alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
-      </Link>
     </section>
   );
 }

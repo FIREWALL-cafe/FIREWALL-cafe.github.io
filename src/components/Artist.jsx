@@ -4,37 +4,37 @@ import ArtistHeadshot from '../assets/images/joyce-BW-450x450.jpg';
 
 function Artist() {
   return (
-    <section className="flex overflow-hidden flex-col px-32 py-16 w-full bg-white max-md:py-24 max-md:max-w-full">
-      <div className="flex flex-col px-8 max-md:px-5 max-md:max-w-full">
-        <div className="chinese flex flex-col max-w-full">
-          <h2 className="text-6xl font-medium leading-[56px] max-md:text-4xl max-md:leading-10">
+    <section className="flex overflow-hidden flex-col w-full bg-white py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="chinese flex flex-col">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight">
             About Joyce
           </h2>
-          <div className="mt-2 text-7xl font-medium leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+          <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight text-red-600 tracking-[2.16px]">
             关于乔伊斯
           </div>
-          <p className="mt-2 text-2xl text-zinc-400">Artist</p>
+          <p className="mt-2 text-xl sm:text-2xl text-zinc-400">Artist</p>
         </div>
-        <div className="flex gap-10 items-start mt-10 text-xl leading-8 text-black max-md:max-w-full">
-          <div className="w-3/4">
-            <p className="text-xl max-md:max-w-full mb-4">
+        <div className="flex flex-wrap gap-10 mt-10">
+          <div className="flex-1 basis-[300px] max-w-2xl">
+            <p className="text-lg lg:text-xl mb-4">
               Motivated by a desire to challenge both state and corporate censorship, NYC-based artist Joyce Yu-Jean Lee founded the FIREWALL Cafe in 2013. This digital art project uses a participatory approach to examine internet visual culture, encouraging users to actively engage and see for themselves how censorship shapes their understanding of the world.
             </p>
-            <p className="text-xl max-md:max-w-full mb-4">
-              Lee’s journey into this project was catalyzed by her experience abroad in 2011, when she coordinated an artist residency program in CaoChangDi, Beijing, China.
-              There, she helped a dozen North American artists navigate the complexities of Chinese internet access, providing VPN software and advice on circumventing the “Great Firewall.”
+            <p className="text-lg lg:text-xl mb-4">
+              Lee's journey into this project was catalyzed by her experience abroad in 2011, when she coordinated an artist residency program in CaoChangDi, Beijing, China.
+              There, she helped a dozen North American artists navigate the complexities of Chinese internet access, providing VPN software and advice on circumventing the "Great Firewall."
               This experience inspired her to creatively show online audiences how the internet manifests differently across various parts of the world demonstrate to netizens the varied appearances of the internet across different global regions.
               Through FIREWALL Internet Cafe, Lee aims to make these disparities visible and provoke thoughtful discussion on Internet freedom and censorship.
             </p>
-            <p className="text-xl max-md:max-w-full mb-4">
-              Lee’s art practice spans video, glass, installation, and performance.
-              She creates tech-based artwork that scrutinizes how visual culture and mass media influence our understanding of truth and shape perceptions of the “other.”
+            <p className="text-lg lg:text-xl mb-4">
+              Lee's art practice spans video, glass, installation, and performance.
+              She creates tech-based artwork that scrutinizes how visual culture and mass media influence our understanding of truth and shape perceptions of the "other."
               Her work has been showcased in the United States and internationally, and has attracted attention from major media outlets, including The New York Times, The Washington Post, Huffington Post, NPR, Hyperallergic, and ArtCritical.
             </p>
           </div>
-          <div className="w-1/4 max-md:max-w-full">
+          <div className="flex-shrink-0 w-full max-w-sm">
             <Link to="http://www.joyceyujeanlee.com/">
-              <img src={ArtistHeadshot} alt="Joyce Yu-Jean Lee" className="object-top w-[314px]" />
+              <img src={ArtistHeadshot} alt="Joyce Yu-Jean Lee" className="w-full h-auto object-cover" />
             </Link>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
 
-const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, isFirst }) => {
+const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp }) => {
   const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
   const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
 
