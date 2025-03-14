@@ -31,7 +31,7 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        fetchDashboardData();
+        // fetchDashboardData();
         fetchRecentSearches();
     }, [searchArchive]);
 

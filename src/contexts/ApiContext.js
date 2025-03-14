@@ -11,7 +11,7 @@ const defaultConfig = {
 
 const searchArchive = async (options) => {
   try {
-    const defaultQuery = { page: 1, page_size: 25 };
+    const defaultQuery = { page: 1, page_size: 10 };
     const queryParams = options.query ? 
       { ...defaultQuery, query: encodeURIComponent(options.query.trim()) } : 
       { ...defaultQuery, ...options };

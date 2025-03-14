@@ -64,8 +64,8 @@ function FilterControls({ onUpdate, isOpen }) {
     // Reset the flag after a short delay to allow for future resets
     setTimeout(() => {
       setShouldResetVotes(false);
-      // Update with empty filters but don't close the panel
-      onUpdate({ vote_ids: [], years: [], cities: [] }, false);
+      // Pass an additional parameter to indicate this is a reset operation
+      onUpdate({ vote_ids: [], years: [], cities: [] }, false, true);
     }, 100);
   };
 
@@ -112,35 +112,20 @@ function FilterControls({ onUpdate, isOpen }) {
             </div>
           </div>
 
-          {/* Vote Results Section */}
-          <div className="border-t border-gray-200 pt-3">
-            <label htmlFor="vote" className="text-lg font-black block mb-3">Vote Result</label>
-            <div className="flex gap-2 flex-wrap mb-4">
-              {vote_categories.map((category, index) => (
-                <VoteButton 
-                  key={index} 
-                  voteCategory={category} 
-                  voteHandler={voteHandler} 
-                  isDisabled={false} 
-                  setDisabled={() => {}} 
-                  shouldReset={shouldResetVotes}
-                />
-              ))}
-            </div>
-            <div className="flex justify-end gap-4 pt-3 border-t border-gray-200">
-              <button 
-                type="button"
-                onClick={handleReset}
-                className="px-3 py-1.5 text-sm text-black bg-white border border-black hover:bg-gray-50">
-                Clear all
-              </button>
-              <button
-                type="button"
-                onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] }, true)}
-                className="px-3 py-1.5 text-sm text-white bg-black hover:bg-gray-800">
-                Close
-              </button>
-            </div>
+          {/* Close/Clear buttons */}
+          <div className="flex justify-end gap-4 pt-3 border-t border-gray-200">
+            <button 
+              type="button"
+              onClick={handleReset}
+              className="px-3 py-1.5 text-sm text-black bg-white border border-black hover:bg-gray-50">
+              Clear all
+            </button>
+            <button
+              type="button"
+              onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] }, true)}
+              className="px-3 py-1.5 text-sm text-white bg-black hover:bg-gray-800">
+              Close
+            </button>
           </div>
         </form>
       </div>

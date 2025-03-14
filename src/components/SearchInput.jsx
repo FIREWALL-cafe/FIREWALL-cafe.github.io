@@ -19,8 +19,8 @@ function SearchInput({ searchMode }) {
   const { searchImages, searchArchive } = useContext(ApiContext);
   const [isLoading, setLoading] = useState(false);
   const [imageResults, setImageResults] = useState({});
-  const [archiveResults, setarchiveResults] = useState({ total: 0, page: 1, page_size: 25, data: [] });
-  const [filteredResults, setFilteredResults] = useState({ total: 0, page: 1, page_size: 25, data: [] });
+  const [archiveResults, setarchiveResults] = useState({ total: 0, page: 1, page_size: 10, data: [] });
+  const [filteredResults, setFilteredResults] = useState({ total: 0, page: 1, page_size: 10, data: [] });
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
   const [translation, setTranslation] = useState('');
@@ -51,7 +51,7 @@ function SearchInput({ searchMode }) {
 
   const loadDefaultResults = async () => {
     console.log('fetching default archive results');
-    const filterOptions = { page: 1, page_size: 25 }
+    const filterOptions = { page: 1, page_size: 10 }
     const results = await searchArchive({ ...filterOptions });
     setSearchId("archived searches");
     setarchiveResults(results);
@@ -73,8 +73,8 @@ function SearchInput({ searchMode }) {
 
     try {
       if (isArchive) {
-        setarchiveResults({ total: 0, page: 1, page_size: 25, data: [] });
-        setFilteredResults({ total: 0, page: 1, page_size: 25, data: [] });
+        setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
+        setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
 
         const results = await searchArchive({ query: query.trim() });
         
@@ -109,8 +109,8 @@ function SearchInput({ searchMode }) {
         setResults({ googleResults: [], baiduResults: [] });
         setTranslation(e.message || String(e));
       } else {
-        setarchiveResults({ total: 0, page: 1, page_size: 25, data: [] });
-        setFilteredResults({ total: 0, page: 1, page_size: 25, data: [] });
+        setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
+        setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
         setTranslation(e.message || 'Failed to search archives');
       }
     } finally {
@@ -138,14 +138,34 @@ function SearchInput({ searchMode }) {
     }
   };
 
-  const applyFilters = (filterOptions, shouldClose = true) => {
+  const locationMapping = {
+    'st_polten': 'St. Polten',
+    'vienna': 'Vienna',
+    'hong_kong': 'Hong Kong',
+    'poughkeepsie': 'Poughkeepsie',
+    'New York City': 'New York City',
+    'nyc3': 'New York City',
+    'new_york_city': 'New York City',
+    'asheville': 'Asheville',
+    'oslo': 'Oslo',
+    'pdx': 'Portland',
+    'ann_arbor': 'Ann Arbor',
+    'Automated Scraper': 'Censored Terms Bot'
+  };
+
+  const applyFilters = (filterOptions, shouldClose = true, isReset = false) => {
     setCurrentFilters(filterOptions);
-    
     // Only close the filter panel if shouldClose is true
     if (shouldClose && filterOptions.years.length === 0 && 
         filterOptions.cities.length === 0 && 
         filterOptions.vote_ids.length === 0) {
       setFilterOpen(false);
+    }
+    
+    // If this is a reset operation, restore the original archive results
+    if (isReset) {
+      setFilteredResults(archiveResults);
+      return;
     }
     
     let filtered = { ...archiveResults };
@@ -162,7 +182,7 @@ function SearchInput({ searchMode }) {
     // Filter by cities
     if (filterOptions.cities.length > 0) {
       filtered.data = filtered.data.filter(item => 
-        filterOptions.cities.includes(item.search_location)
+        filterOptions.cities.includes(locationMapping[item.search_location])
       );
     }
 
