@@ -18,7 +18,6 @@ const searchArchive = async (options) => {
     
     const url = `/searches?${querystring.stringify(queryParams)}`;
     console.log('searchArchive request URL:', url);
-    console.log('searchArchive request config:', defaultConfig);
     
     const response = await fetch(url, defaultConfig);
     console.log('searchArchive response status:', response.status);
@@ -47,9 +46,45 @@ const searchImages = async (options) => {
   }
 }
 
+const getDashboard = async () => {
+  try {
+    const response = await fetch('/dashboardData');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching dashboard data:', error);
+    throw error;
+  }
+}
+
 const ApiContext = createContext({
   searchImages,
   searchArchive,
+  getDashboard,
 });
 
 export default ApiContext;
+
+export const ApiProvider = ({ children }) => {
+    // ... existing provider code ...
+
+    const getDashboard = async () => {
+        try {
+            const response = await fetch('/dashboardData');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching dashboard data:', error);
+            throw error;
+        }
+    };
+
+    return (
+        <ApiContext.Provider value={{
+            // ... existing context values ...
+            getDashboard,
+        }}>
+            {children}
+        </ApiContext.Provider>
+    );
+};

@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const { getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
+const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
 const postmark = require('postmark');
 
 const serverConfig = require('./server/config');
@@ -19,10 +19,13 @@ app.use((err, req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "build")));
 
-// app.get('/events*', (req, res) => {
-//   var indexHtml = path.join(__dirname, "public/index.html");
-//   res.sendFile(indexHtml);
-// });
+app.get('/dashboardData', async (req, res) => {
+  console.log('Received dashboardData request');
+  const data = await getDashboardData();
+  console.log('dashboardData:', data);
+  res.json(data);
+});
+
 
 app.get('/proxy-image', async (req, res) => {
   console.log('Received proxy-image request:', req.query);
@@ -91,13 +94,7 @@ app.get('/proxy-image', async (req, res) => {
   }
 });
 
-// app.get("/*", (req, res) => {
-//   // res.set('Cache-Control', 'no-store')
-//   res.sendFile(path.join(__dirname, "public/index.html"));
-// });
-
 app.get("*", (req, res) => {
-  console.log('FALL THRU: *')
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
@@ -162,10 +159,7 @@ app.post('/images', async (req, res) => {
 
 app.post('/searches', async (req, res) => {
   try {
-    console.log('Received /searches request');
-    console.log('Query params:', req.query);
-    console.log('Request body:', req.body);
-    console.log('Request headers:', req.headers);
+    console.log('/searches query params:', req.query);
 
     const { query, page, page_size, ...otherFilters } = req.query;
 
