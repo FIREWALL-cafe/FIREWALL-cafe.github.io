@@ -19,6 +19,12 @@ const fetchResponseText = async (url, config = {}) => {
   return body;
 }
 
+const getDashboardData = async () => {
+  const url = `${serverConfig.apiUrl}dashboard`;
+  const { data } = await axios.get(url);
+  return data;
+}
+
 const getGoogleImageSrcs = (results) => {
   // const html = cheerio.load(results);
   // const imgs = html('.DS1iW').toArray().slice(0, 9);
@@ -293,6 +299,7 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, search_clien
 }
 
 module.exports = {
+  getDashboardData,
   getGoogleImages,
   getBaiduImages,
   getDetectedLanguage,
