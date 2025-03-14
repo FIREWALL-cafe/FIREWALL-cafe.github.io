@@ -5,6 +5,27 @@ const QueryList = ({ results, onPageChange, isLoading }) => {
   const { total, page, page_size, data } = results;
   const totalPages = Math.ceil(total / page_size);
 
+  if (!isLoading && (!data || data.length === 0)) {
+    return (
+      <section className="flex overflow-hidden flex-col pb-8 w-full bg-white max-md:pb-12">
+        <div className="flex flex-col items-center px-4 md:px-8 w-full">
+          <div className="flex flex-col w-full max-w-screen-xl">
+            <div className="flex flex-wrap gap-4 py-1 w-full text-sm text-black border-b border-solid border-b-neutral-300 min-h-[32px] pr-4">
+              <div className="w-16 whitespace-nowrap max-sm:w-12">Votes</div>
+              <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:w-full">Query EN</div>
+              <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:hidden">搜索结果 中文</div>
+              <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden">Location</div>
+              <div className="w-24 text-right max-sm:w-auto">Date</div>
+            </div>
+            <div className="flex justify-center items-center py-8 text-gray-500">
+              No results found with the current filters
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="flex overflow-hidden flex-col pb-8 w-full bg-white max-md:pb-12">
       <div className="flex flex-col items-center px-4 md:px-8 w-full">
