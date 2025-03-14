@@ -118,25 +118,55 @@ function SearchInput({ searchMode }) {
     }
   }
 
-  const handlePageChange = async (newPage) => {
+  const applyFilters = async (filterOptions, shouldClose = true, isReset = false) => {
     setLoading(true);
+    setCurrentFilters(filterOptions);
+    
+    if (shouldClose) {
+      setFilterOpen(false);
+    }
+    
     try {
-      const filterOptions = { 
-        page: newPage, 
-        page_size: archiveResults.page_size,
-        ...(query ? { query: query.trim() } : {})
+      // If this is a reset operation, fetch fresh results
+      if (isReset) {
+        const results = await searchArchive({
+          ...(query ? { query: query.trim() } : {}),
+          page: 1,
+          page_size: archiveResults.page_size
+        });
+        setarchiveResults(results);
+        setFilteredResults(results);
+        return;
+      }
+
+      // Fetch new results with filters applied
+      const searchParams = {
+        ...(query ? { query: query.trim() } : {}),
+        page: filterOptions.page || 1,
+        page_size: filterOptions.page_size || archiveResults.page_size,
+        years: filterOptions.years,
+        cities: filterOptions.cities,
+        vote_ids: filterOptions.vote_ids
       };
-      console.log('handlePageChange filterOptions:', filterOptions);
-      
-      const results = await searchArchive(filterOptions);
-      results.page = newPage;
+
+      const results = await searchArchive(searchParams);
       setarchiveResults(results);
       setFilteredResults(results);
     } catch (error) {
-      console.error('Error changing page:', error);
+      console.error('Error applying filters:', error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handlePageChange = async (newPage) => {
+    // Include current filters when changing pages
+    await applyFilters({
+      ...currentFilters,
+      page: newPage,
+      page_size: archiveResults.page_size,
+      ...(query ? { query: query.trim() } : {})
+    }, false);
   };
 
   const locationMapping = {
@@ -152,53 +182,6 @@ function SearchInput({ searchMode }) {
     'pdx': 'Portland',
     'ann_arbor': 'Ann Arbor',
     'Automated Scraper': 'Censored Terms Bot'
-  };
-
-  const applyFilters = (filterOptions, shouldClose = true, isReset = false) => {
-    setCurrentFilters(filterOptions);
-    // Only close the filter panel if shouldClose is true
-    if (shouldClose && filterOptions.years.length === 0 && 
-        filterOptions.cities.length === 0 && 
-        filterOptions.vote_ids.length === 0) {
-      setFilterOpen(false);
-    }
-    
-    // If this is a reset operation, restore the original archive results
-    if (isReset) {
-      setFilteredResults(archiveResults);
-      return;
-    }
-    
-    let filtered = { ...archiveResults };
-    filtered.data = [...archiveResults.data];
-
-    // Filter by years
-    if (filterOptions.years.length > 0) {
-      filtered.data = filtered.data.filter(item => {
-        const itemYear = new Date(parseInt(item.search_timestamp)).getFullYear().toString();
-        return filterOptions.years.includes(itemYear);
-      });
-    }
-
-    // Filter by cities
-    if (filterOptions.cities.length > 0) {
-      filtered.data = filtered.data.filter(item => 
-        filterOptions.cities.includes(locationMapping[item.search_location])
-      );
-    }
-
-    // Filter by votes
-    if (filterOptions.vote_ids.length > 0) {
-      filtered.data = filtered.data.filter(item => {
-        // Check if any of the item's votes match the filter vote IDs
-        return filterOptions.vote_ids.some(voteId => 
-          item.votes && item.votes.includes(parseInt(voteId))
-        );
-      });
-    }
-
-    filtered.total = filtered.data.length;
-    setFilteredResults(filtered);
   };
 
   const handleKeyDown = (e) => {
@@ -217,7 +200,7 @@ function SearchInput({ searchMode }) {
           <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-red-600 max-md:max-w-full">
             <div className="flex items-center self-stretch my-auto min-w-[240px]">
               <div 
-                onClick={() => setIsArchive(false)} 
+                onClick={() => navigate('/search')} 
                 className={`${!isArchive ? 'bg-slate-100' : 'bg-white'} flex flex-col justify-center items-center px-9 py-2 my-auto rounded-t border-t border-l border-r border-solid border-red-600 cursor-pointer`}
               >
                 <div className="flex gap-2 items-start">
@@ -246,7 +229,7 @@ function SearchInput({ searchMode }) {
             <Tooltip id="tooltip" />
           </div>
           <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
-            <div className="flex overflow-hidden flex-wrap w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px] max-md:max-w-full">
+            <div className="flex w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px]">
               <input
                 placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
                 value={query}
@@ -254,19 +237,19 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 shrink px-4 my-auto text-xl min-h-[40px] min-w-[240px] max-md:max-w-full focus:ring-0 focus:outline-none" 
+                className="flex-1 px-4 my-auto text-xl min-h-[40px] focus:ring-0 focus:outline-none" 
                 aria-label="Search query" 
               />
-              <div className="flex overflow-hidden gap-1 justify-center items-center py-2 pr-2 md:py-4 md:pr-4">
+              <div className="flex items-center py-4 pr-4">
                 <button 
                   onClick={handleSubmit} 
                   disabled={!!isLoading}
-                  className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10"
+                  className="flex items-center justify-center w-10 h-10"
                 >
                   <img 
                     src={isLoading ? Spinner : displaySearchIcon} 
                     alt="Search icon" 
-                    className="w-5 h-5 md:w-6 md:h-6 object-contain" 
+                    className="w-6 h-6 object-contain" 
                   />
                 </button>
               </div>
@@ -288,7 +271,11 @@ function SearchInput({ searchMode }) {
             <span className="font-bold">Translation:</span> {translation}
           </span>
         </div>
-        {isArchive && <FilterControls onUpdate={applyFilters} isOpen={filterOpen} />}
+        {isArchive && <FilterControls 
+          onUpdate={applyFilters} 
+          isOpen={filterOpen}
+          isLoading={isLoading} 
+        />}
         {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && (
           <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
         )}
@@ -315,8 +302,28 @@ function SearchInput({ searchMode }) {
           </>
         )}
       </div>
-      {currentSearchId && isArchive && (
-        <QueryList results={filteredResults} onPageChange={handlePageChange} />
+      {currentSearchId && isArchive ? (
+        <QueryList 
+          results={filteredResults} 
+          onPageChange={handlePageChange}
+          isLoading={isLoading}
+        />
+      ) : (
+        <div className="flex flex-col items-center justify-center p-12 text-center">
+          <img 
+            src={isArchive ? ArchiveIcon : SearchIcon} 
+            alt="Search" 
+            className="w-16 h-16 mb-4 opacity-50"
+          />
+          <h2 className="text-xl font-medium text-gray-600 mb-2">
+            {isArchive ? 'Search the Archive' : 'Search Google & Baidu'}
+          </h2>
+          <p className="text-gray-500 max-w-md">
+            {isArchive 
+              ? 'Enter a query to search through past results and see how they\'ve changed over time.'
+              : 'Enter your search query to see results from both Google and Baidu simultaneously.'}
+          </p>
+        </div>
       )}
     </>
   );

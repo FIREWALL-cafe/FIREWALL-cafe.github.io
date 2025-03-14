@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
 import VoteButton from './VoteButton';
 
-function FilterControls({ onUpdate, isOpen }) {
+function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
   const years = [2025, 2024, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
-  const cities = [
-    "Miami", "New York City", "Oslo", "St. Polten", 
-    "Hong Kong", "Ann Arbor", "Vienna", "Asheville", "Poughkeepsie"
-  ];
+  
+  const locationMapping = {
+    'st_polten': 'St. Polten',
+    'vienna': 'Vienna',
+    'hong_kong': 'Hong Kong',
+    'poughkeepsie': 'Poughkeepsie',
+    'New York City': 'New York City',
+    'nyc3': 'New York City',
+    'new_york_city': 'New York City',
+    'asheville': 'Asheville',
+    'oslo': 'Oslo',
+    'pdx': 'Portland',
+    'ann_arbor': 'Ann Arbor',
+    'Automated Scraper': 'Censored Terms Bot'
+  };
+
+  // Get unique city keys and sort them by their display names
+  const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
+    .filter(key => locationMapping[key] !== 'Censored Terms Bot')
+    .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
@@ -31,7 +47,13 @@ function FilterControls({ onUpdate, isOpen }) {
   const handleFilterChange = () => {
     const form = document.getElementById('filter-options-form');
     const formData = new FormData(form);
-    const filterOptions = { vote_ids: [], years: [], cities: [] };
+    const filterOptions = { 
+      vote_ids: [], 
+      years: [], 
+      cities: [],
+      page: 1,
+      page_size: 10
+    };
     
     // Get selected years
     const yearsSelect = form.querySelector('select[name="years"]');
@@ -52,8 +74,8 @@ function FilterControls({ onUpdate, isOpen }) {
       }
     }
     
-    console.log('Filter options being sent:', filterOptions);
-    onUpdate(filterOptions);
+    // Pass false as second argument to prevent closing
+    onUpdate(filterOptions, false);
   };
 
   const handleReset = () => {
@@ -61,14 +83,19 @@ function FilterControls({ onUpdate, isOpen }) {
     form.reset();
 
     setShouldResetVotes(true);
-    // Reset the flag after a short delay to allow for future resets
     setTimeout(() => {
       setShouldResetVotes(false);
-      // Pass an additional parameter to indicate this is a reset operation
-      onUpdate({ vote_ids: [], years: [], cities: [] }, false, true);
+      // Pass false as second argument to prevent closing
+      onUpdate({ 
+        vote_ids: [], 
+        years: [], 
+        cities: [],
+        page: 1,
+        page_size: 10
+      }, false, true);
     }, 100);
   };
-
+  
   return (
     <div className={`
       mx-auto w-full max-w-[720px] bg-white border border-red-600 rounded-md overflow-hidden transition-all duration-300 ease-in-out
@@ -94,21 +121,39 @@ function FilterControls({ onUpdate, isOpen }) {
               </select>
             </div>
 
-            {/* Cities Section */}
+            {/* Updated Cities Section */}
             <div className="flex flex-col">
               <label htmlFor="cities" className="text-lg font-black mb-2">Location</label>
               <select
                 name="cities"
                 className="w-full border border-zinc-400 rounded p-2"
                 onChange={handleFilterChange}
+                disabled={isLoading}
               >
                 <option value="">All Locations</option>
-                {cities.map((city) => (
-                  <option key={city} value={city}>
-                    {city}
+                {uniqueCityKeys.map((cityKey) => (
+                  <option key={cityKey} value={cityKey}>
+                    {locationMapping[cityKey]}
                   </option>
                 ))}
               </select>
+            </div>
+
+            {/* Vote Results Section */}
+            <div className="border-t border-gray-200 pt-3 hidden">
+              <label htmlFor="vote" className="text-lg font-black block mb-3">Vote Result</label>
+              <div className="flex gap-2 flex-wrap mb-4">
+                {vote_categories.map((category, index) => (
+                  <VoteButton 
+                    key={index} 
+                    voteCategory={category} 
+                    voteHandler={voteHandler} 
+                    isDisabled={false} 
+                    setDisabled={() => {}} 
+                    shouldReset={shouldResetVotes}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -122,7 +167,7 @@ function FilterControls({ onUpdate, isOpen }) {
             </button>
             <button
               type="button"
-              onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] }, true)}
+              onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] }, true, true)}
               className="px-3 py-1.5 text-sm text-white bg-black hover:bg-gray-800">
               Close
             </button>

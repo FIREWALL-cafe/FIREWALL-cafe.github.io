@@ -1,7 +1,7 @@
 import React from 'react';
 import QueryItem from './QueryItem';
 
-const QueryList = ({ results, onPageChange }) => {
+const QueryList = ({ results, onPageChange, isLoading }) => {
   const { total, page, page_size, data } = results;
   const totalPages = Math.ceil(total / page_size);
 
@@ -20,7 +20,7 @@ const QueryList = ({ results, onPageChange }) => {
           <div className="flex flex-col w-full divide-y divide-gray-100">
             <div className="max-h-[800px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
               {data && data.map((item, index) => (
-                <QueryItem key={item.search_id} {...item} isFirst={index === 0 && page === 1} />
+                <QueryItem key={item.search_id} {...item} />
               ))}
             </div>
           </div>
@@ -33,28 +33,28 @@ const QueryList = ({ results, onPageChange }) => {
             <div className="flex gap-2 items-center">
               <button
                 onClick={() => onPageChange(page - 1)}
-                disabled={page === 1}
+                disabled={isLoading || page === 1}
                 className={`px-3 py-1 rounded border ${
-                  page === 1
+                  isLoading || page === 1
                     ? 'bg-gray-100 text-gray-400 border-gray-300'
                     : 'bg-white text-black border-black hover:bg-gray-50'
                 }`}
               >
-                Previous
+                {isLoading ? 'Loading...' : 'Previous'}
               </button>
               <span className="text-sm">
                 Page {page} of {totalPages}
               </span>
               <button
                 onClick={() => onPageChange(Number(page) + 1)}
-                disabled={page === totalPages}
+                disabled={isLoading || page === totalPages}
                 className={`px-3 py-1 rounded border ${
-                  page === totalPages
+                  isLoading || page === totalPages
                     ? 'bg-gray-100 text-gray-400 border-gray-300'
                     : 'bg-white text-black border-black hover:bg-gray-50'
                 }`}
               >
-                Next
+                {isLoading ? 'Loading...' : 'Next'}
               </button>
               <span className="text-sm">Total Results: {total}</span>
             </div>
