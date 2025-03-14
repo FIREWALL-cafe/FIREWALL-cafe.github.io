@@ -4,6 +4,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/icons/logo_name.svg";
+import mobileLogo from "../assets/icons/logo_only.svg";
 import Facebook from "../assets/icons/Facebook_Logo.png";
 import Youtube from "../assets/icons/youtube_social_circle_red.png";
 import Instagram from "../assets/icons/Instagram_Logo.png";
@@ -13,7 +14,10 @@ function Footer() {
     <footer className="flex overflow-hidden justify-between items-start px-5 py-16 w-full bg-white max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-start w-1/2 basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex gap-3 items-center">
-          <Link to="/"><img src={logo} alt="Logo" className="object-contain self-stretch my-auto" /></Link>
+          <Link to="/">
+            <img src={logo} alt="Logo" className="hidden md:block object-contain self-stretch my-auto" />
+            <img src={mobileLogo} alt="Logo" className="block md:hidden object-contain self-stretch my-auto" />
+          </Link>
         </div>
         <div className="flex gap-10 items-center">
           <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">

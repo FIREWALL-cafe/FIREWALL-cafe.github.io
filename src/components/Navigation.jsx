@@ -5,6 +5,7 @@ import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 import logo from "../assets/icons/logo_name.svg";
+import logoMobile from "../assets/icons/logo_only.svg";
 import NavMenu from "../assets/icons/nav-menu.svg";
 import Close from "../assets/icons/close_large.svg";
   
@@ -40,7 +41,8 @@ function Navigation() {
     <div className="flex flex-1 shrink gap-10 justify-between items-center self-stretch my-auto w-full basis-0 max-md:max-w-full">
       <div className="flex gap-3 p-4">
         <Link to="/">
-          <img src={logo} alt="Logo" className="object-contain self-stretch my-auto" />
+          <img src={logo} alt="Logo" className="hidden md:block object-contain self-stretch my-auto" />
+          <img src={logoMobile} alt="Logo" className="block md:hidden object-contain self-stretch my-auto" />
         </Link>
       </div>
       <div className="flex gap-3 relative">
