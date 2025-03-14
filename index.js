@@ -163,6 +163,10 @@ app.post('/searches', async (req, res) => {
 
     const { query, page, page_size, ...otherFilters } = req.query;
 
+    if (req.query.cities) {
+      otherFilters.search_locations = req.query.cities;
+    }
+
     // Ensure pagination parameters are numbers
     const paginationParams = {
       page: parseInt(page) || 1,

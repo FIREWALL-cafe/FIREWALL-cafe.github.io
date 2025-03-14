@@ -31,17 +31,19 @@ const features = [
   
 function Search() {
   return (
-    <main>
-      <section className="flex overflow-hidden flex-col justify-center py-16 w-full bg-white max-md:py-24 max-md:max-w-full">
-        <div className="flex flex-col justify-center w-full text-center max-md:max-w-full">
-          <div className="chinese flex flex-col w-full text-7xl font-medium leading-tight tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
-            <div className="flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
-              <img src={SearchIcon} alt="" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" />
-              <div className="self-stretch my-auto border-black max-md:max-w-full max-md:text-4xl">
-                Search Session
-              </div>
+    <main className="min-h-screen">
+      <section className="flex flex-col justify-center w-full px-4 py-8 md:py-16 bg-white">
+        <div className="flex flex-col justify-center w-full max-w-screen-xl mx-auto text-center">
+          <div className="chinese flex flex-col gap-2 items-center text-4xl md:text-7xl font-medium leading-tight tracking-[2.16px]">
+            <div className="flex items-center gap-4">
+              <img 
+                src={SearchIcon} 
+                alt="" 
+                className="w-8 h-8 md:w-[52px] md:h-[52px] object-contain" 
+              />
+              <div className="text-black">Search Session</div>
             </div>
-            <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">搜索结果</div>
+            <div className="text-red-600 border-red-600">搜索结果</div>
           </div>
         </div>
         <SearchInput searchMode='live' />

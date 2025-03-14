@@ -54,4 +54,8 @@ handlers:
   upload: build/index.html
   secure: always
   redirect_http_response_code: 301
+  http_headers:
+    Cache-Control: "no-cache, no-store, must-revalidate"
+    Pragma: "no-cache"
+    Expires: "0"
 

@@ -31,7 +31,7 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        // fetchDashboardData();
+        fetchDashboardData();
         fetchRecentSearches();
     }, [searchArchive]);
 
@@ -69,7 +69,8 @@ const Dashboard = () => {
                                 <th className="text-left">Username</th>
                                 <th className="text-left">Term</th>
                                 <th className="text-left">Translation</th>
-                                <th className="text-left">Time</th>
+                                <th className="text-left">Created At</th>
+                                <th className="text-left">Location</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +82,7 @@ const Dashboard = () => {
                                     <td className="py-2">
                                         {new Date(parseInt(search.search_timestamp)).toLocaleString()}
                                     </td>
+                                    <td className="py-2">{search.search_location}</td>
                                 </tr>
                             ))}
                         </tbody>

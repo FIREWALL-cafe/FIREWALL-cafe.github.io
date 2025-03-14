@@ -6,14 +6,9 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
   const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
   const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
 
-  const [dropdown, setDropdown] = useState(!isFirst);
+  const [dropdown, setDropdown] = useState(false);
   const [imageResults, setImageResults] = useState({});
   
-  useEffect(() => {
-    if (isFirst && !imageResults.googleResults) {
-      loadGallery();
-    }
-  }, []);
 
   // Map search locations to display names
   const locationMapping = {
@@ -33,7 +28,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
 
   const toggleDropdown = () => {
     setDropdown(!dropdown);
-    if (dropdown && !imageResults.googleResults) {
+    if (!dropdown && !imageResults.googleResults) {
       console.log('loading gallery:', search_id);
       loadGallery();
     }
@@ -75,7 +70,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
           {formatDate(search_timestamp)}
         </div>
       </div>
-      <div className={dropdown ? 'hidden' : 'w-full'}>
+      <div className={dropdown ? 'w-full' : 'hidden'}>
         {imageResults && imageResults.googleResults && <SearchCompare images={imageResults} searchId={search_id} />}
       </div>
     </div>
