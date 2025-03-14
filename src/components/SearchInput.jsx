@@ -126,6 +126,7 @@ function SearchInput({ searchMode }) {
         page_size: archiveResults.page_size,
         ...(query ? { query: query.trim() } : {})
       };
+      console.log('handlePageChange filterOptions:', filterOptions);
       
       const results = await searchArchive(filterOptions);
       results.page = newPage;

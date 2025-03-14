@@ -10,7 +10,6 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
   const [imageResults, setImageResults] = useState({});
   
   useEffect(() => {
-    console.log('locations:', locationMapping, search_location);
     if (isFirst && !imageResults.googleResults) {
       loadGallery();
     }
