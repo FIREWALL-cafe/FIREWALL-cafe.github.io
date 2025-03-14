@@ -4,11 +4,12 @@ import VoteButton from './VoteButton';
 function FilterControls({ onUpdate, isOpen }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
-  const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025];
+  const years = [2025, 2024, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
   const cities = [
     "Miami", "New York City", "Oslo", "St. Polten", 
     "Hong Kong", "Ann Arbor", "Vienna", "Asheville", "Poughkeepsie"
   ];
+
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
   const metaKeyToId = {

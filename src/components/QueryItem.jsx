@@ -12,9 +12,25 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
   
   useEffect(() => {
     if (isFirst && !imageResults.googleResults) {
+      console.log('locations:', locationMapping, search_location);
       loadGallery();
     }
   }, []);
+
+  // Map search locations to display names
+  const locationMapping = {
+    'st_polten': 'St. Polten',
+    'vienna': 'Vienna',
+    'hong_kong': 'Hong Kong',
+    'poughkeepsie': 'Poughkeepsie',
+    'New York City': 'New York City',
+    'nyc3': 'New York City',
+    'new_york_city': 'New York City',
+    'asheville': 'Asheville',
+    'oslo': 'Oslo',
+    'pdx': 'Portland',
+    'ann_arbor': 'Ann Arbor'
+  };
 
   const toggleDropdown = () => {
     setDropdown(!dropdown);
@@ -54,7 +70,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
           {search_term_translation}
         </div>
         <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden truncate">
-          {search_location && humanize(search_location)}
+          {search_location && locationMapping[search_location]}
         </div>
         <div className="w-24 text-right max-sm:w-auto">
           {formatDate(search_timestamp)}
