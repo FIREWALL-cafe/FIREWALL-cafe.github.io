@@ -39,7 +39,12 @@ const QueryList = ({ results, onPageChange, isLoading }) => {
           </div>
 
           <div className="flex flex-col w-full divide-y divide-gray-100">
-            <div className="max-h-[800px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+            <div className="max-h-[800px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 relative">
+              {isLoading && (
+                <div className="absolute inset-0 bg-white/60 z-10 flex items-center justify-center">
+                  <div className="text-gray-600">Loading...</div>
+                </div>
+              )}
               {data && data.map((item, index) => (
                 <QueryItem key={item.search_id} {...item} />
               ))}
