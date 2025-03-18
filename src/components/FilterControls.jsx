@@ -161,7 +161,6 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                     data-tooltip-content="Potentially sensitive queries tracked by the Firewall Cafe Query Bot"
                     data-tooltip-place="top"
                   />
-                  <Tooltip id="tooltip" />
                 </label>
               </div>
             </div>
