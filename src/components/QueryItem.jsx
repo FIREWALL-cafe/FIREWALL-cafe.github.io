@@ -1,35 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
+import { locationMapping } from '../constants/locations';
 
-const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp }) => {
-  const capitalize = str => `${str[0].toUpperCase()}${str.slice(1)}`;
+const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, filterOptions }) => {
   const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
 
   const [dropdown, setDropdown] = useState(false);
   const [imageResults, setImageResults] = useState({});
   
 
-  // Map search locations to display names
-  const locationMapping = {
-    'st_polten': 'St. Polten',
-    'vienna': 'Vienna',
-    'hong_kong': 'Hong Kong',
-    'poughkeepsie': 'Poughkeepsie',
-    'New York City': 'New York City',
-    'nyc3': 'New York City',
-    'new_york_city': 'New York City',
-    'asheville': 'Asheville',
-    'oslo': 'Oslo',
-    'pdx': 'Portland',
-    'ann_arbor': 'Ann Arbor',
-    'Automated Scraper': 'Censored Terms Bot'
-  };
-
   const toggleDropdown = () => {
     setDropdown(!dropdown);
     if (!dropdown && !imageResults.googleResults) {
-      console.log('loading gallery:', search_id);
       loadGallery();
     }
   };
@@ -38,7 +21,6 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
   const loadGallery = async () => {
     const url = `/searches/${search_id}/images`;
 
-    console.log('loadGallery:', url);
     const response = await fetch(url, { method: 'post' });
     const results = await response.json();
     const [googleResults, baiduResults] = [
@@ -46,9 +28,13 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
       results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9)
     ];
     
-    console.log('gallery results', results);
     setImageResults({ googleResults: googleResults, baiduResults: baiduResults });
   };
+
+  // Get location from either search_location or filter city
+  const locationLabel = locationMapping[search_location] || 
+                       (filterOptions?.cities?.length === 1 && locationMapping[filterOptions.cities[0]]) || 
+                       search_location;
 
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
@@ -64,7 +50,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
           {search_term_translation}
         </div>
         <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden truncate">
-          {search_location && locationMapping[search_location]}
+          {locationLabel}
         </div>
         <div className="w-24 text-right max-sm:w-auto">
           {formatDate(search_timestamp)}
