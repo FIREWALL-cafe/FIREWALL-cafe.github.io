@@ -2,28 +2,16 @@ import React, { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import VoteButton from './VoteButton';
 import Question from '../assets/icons/question_red.svg';
+import { locationMapping } from '../constants/locations';
+
 function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
   const years = [2025, 2024, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
   
-  const locationMapping = {
-    'st_polten': 'St. Polten',
-    'vienna': 'Vienna',
-    'hong_kong': 'Hong Kong',
-    'poughkeepsie': 'Poughkeepsie',
-    'new_york_city': 'New York City',
-    'asheville': 'Asheville',
-    'oslo': 'Oslo',
-    'ann_arbor': 'Ann Arbor',
-    'taiwan': 'Taiwan',
-    'miami_beach': 'Miami Beach',
-    'new_jersey': 'New Jersey',
-  };
-
   // Get unique city keys and sort them by their display names
   const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
-    .filter(key => locationMapping[key] !== 'Censored Terms Bot')
+    .filter(key => locationMapping[key] !== 'Query Bot')
     .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];

@@ -1,7 +1,7 @@
 import React from 'react';
 import QueryItem from './QueryItem';
 
-const QueryList = ({ results, onPageChange, isLoading }) => {
+const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
   const { total, page, page_size, data } = results;
   const totalPages = Math.ceil(total / page_size);
 
@@ -46,7 +46,11 @@ const QueryList = ({ results, onPageChange, isLoading }) => {
                 </div>
               )}
               {data && data.map((item, index) => (
-                <QueryItem key={item.search_id} {...item} />
+                <QueryItem 
+                  key={item.search_id} 
+                  {...item} 
+                  filterOptions={filterOptions}
+                />
               ))}
             </div>
           </div>

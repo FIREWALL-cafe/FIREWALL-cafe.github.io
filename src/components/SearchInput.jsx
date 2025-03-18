@@ -169,21 +169,6 @@ function SearchInput({ searchMode }) {
     }, false);
   };
 
-  const locationMapping = {
-    'st_polten': 'St. Polten',
-    'vienna': 'Vienna',
-    'hong_kong': 'Hong Kong',
-    'poughkeepsie': 'Poughkeepsie',
-    'New York City': 'New York City',
-    'nyc3': 'New York City',
-    'new_york_city': 'New York City',
-    'asheville': 'Asheville',
-    'oslo': 'Oslo',
-    'pdx': 'Portland',
-    'ann_arbor': 'Ann Arbor',
-    'Automated Scraper': 'Censored Terms Bot'
-  };
-
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) handleSubmit();
   }
@@ -307,6 +292,7 @@ function SearchInput({ searchMode }) {
           results={filteredResults} 
           onPageChange={handlePageChange}
           isLoading={isLoading}
+          filterOptions={currentFilters}
         />
       ) : (
         <div className="flex flex-col items-center justify-center p-12 text-center">
