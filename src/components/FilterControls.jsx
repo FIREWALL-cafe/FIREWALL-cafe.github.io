@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Tooltip } from 'react-tooltip';
 import VoteButton from './VoteButton';
-
+import Question from '../assets/icons/question_red.svg';
 function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
@@ -11,14 +12,13 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     'vienna': 'Vienna',
     'hong_kong': 'Hong Kong',
     'poughkeepsie': 'Poughkeepsie',
-    'New York City': 'New York City',
-    'nyc3': 'New York City',
     'new_york_city': 'New York City',
     'asheville': 'Asheville',
     'oslo': 'Oslo',
-    'pdx': 'Portland',
     'ann_arbor': 'Ann Arbor',
-    'Automated Scraper': 'Censored Terms Bot'
+    'taiwan': 'Taiwan',
+    'miami_beach': 'Miami Beach',
+    'new_jersey': 'New Jersey',
   };
 
   // Get unique city keys and sort them by their display names
@@ -61,10 +61,15 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       filterOptions.years = [yearsSelect.value];
     }
 
-    // Get selected cities
+    // Get selected cities and query_bot
     const citiesSelect = form.querySelector('select[name="cities"]');
+    const queryBotCheckbox = form.querySelector('input[name="query_bot"]');
+    
     if (citiesSelect.value) {
       filterOptions.cities = [citiesSelect.value];
+    }
+    if (queryBotCheckbox.checked) {
+      filterOptions.cities.push('automated_scraper');
     }
 
     // Get vote values
@@ -126,7 +131,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
               <label htmlFor="cities" className="text-lg font-black mb-2">Location</label>
               <select
                 name="cities"
-                className="w-full border border-zinc-400 rounded p-2"
+                className="w-full border border-zinc-400 rounded p-2 mb-2"
                 onChange={handleFilterChange}
                 disabled={isLoading}
               >
@@ -137,8 +142,30 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                   </option>
                 ))}
               </select>
+              <div className="flex items-center">
+                <input 
+                  type="checkbox" 
+                  id="query_bot"
+                  name="query_bot" 
+                  value="automated_scraper"
+                  onChange={handleFilterChange}
+                  className="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                />
+                <label htmlFor="query_bot" className="ml-2 text-sm text-gray-700 flex items-center">
+                  Query Bot
+                  <img 
+                    src={Question} 
+                    alt="Question mark red"
+                    className="ml-1 w-6 h-6 object-contain"
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content="Potentially sensitive queries tracked by the Firewall Cafe Query Bot"
+                    data-tooltip-place="top"
+                  />
+                  <Tooltip id="tooltip" />
+                </label>
+              </div>
             </div>
-
+            
             {/* Vote Results Section */}
             <div className="border-t border-gray-200 pt-3 hidden">
               <label htmlFor="vote" className="text-lg font-black block mb-3">Vote Result</label>
