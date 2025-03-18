@@ -42,6 +42,41 @@ import Eventt from '../assets/images/events/event-t-default.jpg';
 import EventtHover from '../assets/images/events/event-t-hover.jpg';
 
 const pastEvents = [
+  // 2022 events
+  {
+    image: Eventi,
+    imageHover: EventiHover,
+    title: "Oslo Freedom Forum 2022 Taiwan Interactive Expo",
+    date: "Nov. 3, 2022",
+    location: "Grand Hyatt Taipei No.2, Songshou Rd, Xinyi District, Taipei City, Taiwan 110",
+    link: "/events/oslo-freedom-forum-2022-taiwan-interactive-expo"
+  },
+  {
+    image: Eventj,
+    imageHover: EventjHover,
+    title: "FIREWALL Pop-up Group Show in RVCC",
+    date: "Aug. 31 - Sep. 30, 2022",
+    location: "RVCC Art Gallery 118 Lamington Road, Branchburg, NJ 08876",
+    link: "/events/firewall-pop-up-group-show-in-rvcc"
+  },
+  // 2021 events
+  {
+    image: Eventk,
+    imageHover: EventkHover,
+    title: "Oslo Freedom Forum 2021 Miami Interactive Expo",
+    date: "Oct. 4–5, 2021",
+    location: "500 17th St, Miami Beach, FL 33139",
+    link: "/events/oslo-freedom-forum-2021-miami-interactive-expo"
+  },
+  // 2020 events
+  {
+    image: Eventl,
+    imageHover: EventlHover,
+    title: "Tiger Strikes Asteroid presents \"REDIRECT\"",
+    date: "Jan. 24 - Feb. 24, 2020",
+    location: "RAMP Gallery, 821 Riverside Drive, Asheville, NC",
+    link: "/events/redirect-at-ramp-gallery-asheville-nc"
+  },
   {
     image: Eventa,
     imageHover: EventaHover,
@@ -52,20 +87,12 @@ const pastEvents = [
     link: "/events/firewall-pop-up-with-inside-chinas-surveillance-state-a-lecture-by-megha-rajagopalan"
   },
   {
-    image: Evente,
-    imageHover: EventeHover,
-    title: "Marymount Manhattan \"Digital Media & Society\" Class Field Trip",
-    date: "Feb. 29, 2016, 8-9:30 PM",
-    location: "Chinatown Soup, 16B Orchard Street, NYC, 10002",
-    link: "/events/marymount-manhattan-digital-media-society-class-field-trip"
-  },
-  {
-    image: Eventi,
-    imageHover: EventiHover,
-    title: "Oslo Freedom Forum 2022 Taiwan Interactive Expo",
-    date: "Nov. 3, 2022",
-    location: "Grand Hyatt Taipei No.2, Songshou Rd, Xinyi District, Taipei City, Taiwan 110",
-    link: "/events/oslo-freedom-forum-2022-taiwan-interactive-expo"
+    image: Eventm,
+    imageHover: EventmHover,
+    title: "\"Search for Feminism\" at VBKÖ, Vienna, Austria",
+    date: "Jan. 10 - Feb. 1, 2020",
+    location: "VBKÖ – (Austrian Association of Women Artists) Maysedergasse 2, 1010 Vienna",
+    link: "/events/search-for-feminism-at-vbko-vienna-austria"
   },
   {
     image: Eventb,
@@ -75,76 +102,13 @@ const pastEvents = [
     location: "VBKÖ – Maysedergasse 2 (4th floor), 1010 Vienna",
     link: "/events/reactions-to-the-great-chinese-firewall"
   },
+  // 2019 events
   {
     image: Eventc,
     imageHover: EventcHover,
     title: "FIREWALL Featured on BBC \"The Real Story\"",
     date: "Nov. 1, 2019",
     link: "/events/firewall-featured-on-bbc-the-real-story"
-  },
-  {
-    image: Eventd,
-    imageHover: EventdHover,
-    title: "Apex for Youth After-School Field Trip",
-    date: "Feb. 25 & Mar. 3, 2016, 4-6 PM",
-    location: "Chinatown Soup, 16B Orchard Street, NYC, 10002",
-    link: "/events/apex-for-youth-after-school-field-trip"
-  },
-  {
-    image: Eventf,
-    imageHover: EventfHover,
-    title: "Creative Hacktivism Roundtable",
-    date: "Feb. 26, 2016, 7:30 PM",
-    location: "Orbital, 155 Rivington Street, NYC 10002",
-    link: "/events/creative-hacktivism-roundtable"
-  },
-  {
-    image: Eventg,
-    imageHover: EventgHover,
-    title: "Proxy Pals: Trial by FIREwall",
-    date: "Feb. 25, 2016, 8 PM",
-    location: "Chinatown Soup, 16B Orchard Street, NYC, 10002",
-    link: "/events/proxy-pals-trial-by-firewall"
-  },
-  {
-    image: Eventh,
-    imageHover: EventhHover,
-    title: "Networked Feminism in China",
-    date: "Feb. 19, 2016, 7:30 PM",
-    location: "Orbital, 155 Rivington Street, NYC 10002",
-    link: "/events/networked-feminism-in-china"
-  },
-  {
-    image: Eventj,
-    imageHover: EventjHover,
-    title: "FIREWALL Pop-up Group Show in RVCC",
-    date: "Aug. 31 - Sep. 30, 2022",
-    location: "RVCC Art Gallery 118 Lamington Road, Branchburg, NJ 08876",
-    link: "/events/firewall-pop-up-group-show-in-rvcc"
-  },
-  {
-    image: Eventk,
-    imageHover: EventkHover,
-    title: "Oslo Freedom Forum 2021 Miami Interactive Expo",
-    date: "Oct. 4–5, 2021",
-    location: "500 17th St, Miami Beach, FL 33139",
-    link: "/events/oslo-freedom-forum-2021-miami-interactive-expo"
-  },
-  {
-    image: Eventl,
-    imageHover: EventlHover,
-    title: "Tiger Strikes Asteroid presents \"REDIRECT\"",
-    date: "Jan. 24 - Feb. 24, 2020",
-    location: "RAMP Gallery, 821 Riverside Drive, Asheville, NC",
-    link: "/events/redirect-at-ramp-gallery-asheville-nc"
-  },
-  {
-    image: Eventm,
-    imageHover: EventmHover,
-    title: "\"Search for Feminism\" at VBKÖ, Vienna, Austria",
-    date: "Jan. 10 - Feb. 1, 2020",
-    location: "VBKÖ – (Austrian Association of Women Artists) Maysedergasse 2, 1010 Vienna",
-    link: "/events/search-for-feminism-at-vbko-vienna-austria"
   },
   {
     image: Eventn,
@@ -162,6 +126,7 @@ const pastEvents = [
     location: "Green Wave Art 404 Shanghai Street, Yau Ma Tei, Kowloon Two",
     link: "/events/hknotfound"
   },
+  // 2018 events
   {
     image: Eventp,
     imageHover: EventpHover,
@@ -170,6 +135,7 @@ const pastEvents = [
     location: "Sentralen, Oslo, Norway",
     link: "/events/off-2018"
   },
+  // 2017 events
   {
     image: Eventq,
     imageHover: EventqHover,
@@ -186,6 +152,7 @@ const pastEvents = [
     location: "Spikersuppa Square, Oslo, Norway",
     link: "/events/off2017"
   },
+  // 2016 events
   {
     image: Events,
     imageHover: EventsHover,
@@ -193,6 +160,46 @@ const pastEvents = [
     date: "Dec. 3-31, 2016",
     location: "REDpoint, WeinerStr. 1300  St. Pölten, Austria",
     link: "/events/search-for-serendipity-in-austria"
+  },
+  {
+    image: Evente,
+    imageHover: EventeHover,
+    title: "Marymount Manhattan \"Digital Media & Society\" Class Field Trip",
+    date: "Feb. 29, 2016, 8-9:30 PM",
+    location: "Chinatown Soup, 16B Orchard Street, NYC, 10002",
+    link: "/events/marymount-manhattan-digital-media-society-class-field-trip"
+  },
+  {
+    image: Eventf,
+    imageHover: EventfHover,
+    title: "Creative Hacktivism Roundtable",
+    date: "Feb. 26, 2016, 7:30 PM",
+    location: "Orbital, 155 Rivington Street, NYC 10002",
+    link: "/events/creative-hacktivism-roundtable"
+  },
+  {
+    image: Eventd,
+    imageHover: EventdHover,
+    title: "Apex for Youth After-School Field Trip",
+    date: "Feb. 25 & Mar. 3, 2016, 4-6 PM",
+    location: "Chinatown Soup, 16B Orchard Street, NYC, 10002",
+    link: "/events/apex-for-youth-after-school-field-trip"
+  },
+  {
+    image: Eventg,
+    imageHover: EventgHover,
+    title: "Proxy Pals: Trial by FIREwall",
+    date: "Feb. 25, 2016, 8 PM",
+    location: "Chinatown Soup, 16B Orchard Street, NYC, 10002",
+    link: "/events/proxy-pals-trial-by-firewall"
+  },
+  {
+    image: Eventh,
+    imageHover: EventhHover,
+    title: "Networked Feminism in China",
+    date: "Feb. 19, 2016, 7:30 PM",
+    location: "Orbital, 155 Rivington Street, NYC 10002",
+    link: "/events/networked-feminism-in-china"
   },
   {
     image: Eventt,
@@ -213,7 +220,7 @@ function PastEvents() {
         </h2>
         <div className="flex flex-wrap gap-5 justify-center items-center mt-12 w-full max-md:mt-10 max-md:max-w-full">
           {pastEvents.map((event, index) => (
-            <EventCard key={1} {...event} />
+            <EventCard key={index} {...event} />
           ))}
         </div>
       </div>
