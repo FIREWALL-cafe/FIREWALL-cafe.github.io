@@ -56,21 +56,21 @@ function Footer() {
                 <img
                   src={Facebook}
                   alt="Facebook logo"
-                  className="object-contain shrink-0 self-stretch my-auto w-6 md:w-6 w-9 aspect-square"
+                  className="object-contain shrink-0 self-stretch my-auto md:w-6 w-9 aspect-square"
                 />
               </Link>
               <Link to="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA" aria-label="Youtube">
                 <img
                   src={Youtube}
                   alt="Youtube logo"
-                  className="object-contain shrink-0 self-stretch my-auto w-6 md:w-6 w-9 aspect-square"
+                  className="object-contain shrink-0 self-stretch my-auto md:w-6 w-9 aspect-square"
                 />
               </Link>
               <Link to="http://instagram.com/firewallcafe" aria-label="Instagram">
                 <img
                   src={Instagram}
                   alt="Instagram logo"
-                  className="object-contain shrink-0 self-stretch my-auto w-6 md:w-6 w-9 aspect-square"
+                  className="object-contain shrink-0 self-stretch my-auto md:w-6 w-9 aspect-square"
                 />
               </Link>
             </div>

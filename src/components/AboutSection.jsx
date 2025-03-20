@@ -15,7 +15,7 @@ function AboutSection() {
       max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-col lg:flex-row gap-10 justify-center items-center max-w-full w-[1080px]">
         <div className="flex flex-col self-stretch my-auto w-full lg:min-w-[240px] max-md:max-w-full">
-          <div className="chinese flex flex-col w-full text-3xl md:text-4xl lg:text-5xl font-medium leading-tight 
+          <div className="chinese flex flex-col w-full text-3xl md:text-4xl lg:text-[48px] font-medium leading-tight 
             lg:leading-[58px]">
             <h2 className="text-black border-black">
               <Link to="/about">What does internet censorship look like?</Link>
