@@ -287,29 +287,13 @@ function SearchInput({ searchMode }) {
           </>
         )}
       </div>
-      {currentSearchId && isArchive ? (
+      {currentSearchId && isArchive && (
         <QueryList 
           results={filteredResults} 
           onPageChange={handlePageChange}
           isLoading={isLoading}
           filterOptions={currentFilters}
         />
-      ) : (
-        <div className="flex flex-col items-center justify-center p-12 text-center">
-          <img 
-            src={isArchive ? ArchiveIcon : SearchIcon} 
-            alt="Search" 
-            className="w-16 h-16 mb-4 opacity-50"
-          />
-          <h2 className="text-xl font-medium text-gray-600 mb-2">
-            {isArchive ? 'Search the Archive' : 'Search Google & Baidu'}
-          </h2>
-          <p className="text-gray-500 max-w-md">
-            {isArchive 
-              ? 'Enter a query to search through past results and see how they\'ve changed over time.'
-              : 'Enter your search query to see results from both Google and Baidu simultaneously.'}
-          </p>
-        </div>
       )}
     </>
   );
