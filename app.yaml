@@ -24,6 +24,10 @@ handlers:
   script: auto
   secure: always
 
+- url: /events.*
+  script: auto
+  secure: always
+
 - url: /searches.*
   script: auto
   secure: always
@@ -47,6 +51,10 @@ handlers:
   static_files: build/\1
   upload: build/.*\.(json|ico|png|txt|css|js)$
   secure: always
+  http_headers:
+    Cache-Control: "no-cache, no-store, must-revalidate"
+    Pragma: "no-cache"
+    Expires: "0"
 
 # Serve index.html for all other routes (for client-side routing)
 - url: /.*

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Artist from './Artist';
 import Supporters from './Supporters';
 import CallToAction from './CallToAction';

@@ -87,15 +87,6 @@ code {
   height: 100vh;
 }
 
-.junkStyles {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-  pointer-events: none;
-  z-index: -1;
-}
-
 #mc_embed_signup { clear:left; font:16px Helvetica,Arial,sans-serif; width: px; }
                       /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
                         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
