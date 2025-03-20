@@ -50,7 +50,6 @@ function SearchInput({ searchMode }) {
   }, [searchParams]);
 
   const loadDefaultResults = async () => {
-    console.log('fetching default archive results');
     const filterOptions = { page: 1, page_size: 10 }
     const results = await searchArchive({ ...filterOptions });
     setSearchId("archived searches");
@@ -66,7 +65,6 @@ function SearchInput({ searchMode }) {
 
     setLoading(true);
     if (location.pathname === '/') {
-      console.log('navigating to search');
       navigate('/search?q=' + query);
       return;
     }
@@ -234,7 +232,7 @@ function SearchInput({ searchMode }) {
                   <img 
                     src={isLoading ? Spinner : displaySearchIcon} 
                     alt="Search icon" 
-                    className="w-6 h-6 object-contain" 
+                    className="w-6 h-6 object-contain aspect-square min-w-[28px] min-h-[28px]" 
                   />
                 </button>
               </div>
