@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+import ArrowRight from "../assets/icons/ArrowRight";
 import censoreda from "../assets/images/homepage-section_1-image_a-default.jpg";
 import censoredb from "../assets/images/homepage-section_1-image_b-default.jpg";
 import censoredc from "../assets/images/homepage-section_1-image_c-default.jpg";
@@ -33,7 +33,10 @@ function AboutSection() {
           <Link to="/about">
             <button className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-lg leading-snug text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[56px]">
               <span className="self-stretch my-auto">About</span>
-              <img src={ArrowRight} alt="Arrow right" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+              <ArrowRight 
+                fill="#DC2626" 
+                className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" 
+              />
             </button>
           </Link>
         </div>
