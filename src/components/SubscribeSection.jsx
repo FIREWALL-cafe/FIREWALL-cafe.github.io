@@ -3,7 +3,7 @@ import SubscribeMailchimp from "../assets/images/subscribe_mailchimp.jpg";
 
 function SubscribeSection() {
   return (
-    <div className="flex flex-col w-full md:w-1/2 p-4 md:p-8 lg:p-12">
+    <div className="flex flex-col w-full p-4 md:p-8 lg:p-12">
       <div className="flex flex-col max-w-full">
         <div className="flex flex-col w-full">
           <div className="flex flex-col mt-3 md:mt-5 w-full text-base md:text-xl text-white">

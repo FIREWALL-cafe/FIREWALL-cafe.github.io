@@ -8,7 +8,7 @@ import NewsletterSection from "./NewsletterSection";
 import UsHeadlines from "../assets/images/subscribe-d-desktop.jpg";
 
 function Home() {
-  const image = <img src={UsHeadlines} />
+  const image = <img src={UsHeadlines} alt="US Headlines" className="w-full h-full object-cover" />
   return (
     <main>
       <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:max-w-full"></section>
