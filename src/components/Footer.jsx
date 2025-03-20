@@ -5,9 +5,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/icons/logo_name.svg";
 import mobileLogo from "../assets/icons/logo_only.svg";
-import Facebook from "../assets/icons/Facebook_Logo.png";
-import Youtube from "../assets/icons/youtube_social_circle_red.png";
-import Instagram from "../assets/icons/Instagram_Logo.png";
+import Facebook from "../assets/icons/facebook_red.svg";
+import Youtube from "../assets/icons/youtube_red.svg";
+import Instagram from "../assets/icons/instagram_red.svg";
 
 function Footer() {
   return (
