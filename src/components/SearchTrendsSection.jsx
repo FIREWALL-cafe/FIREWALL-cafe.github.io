@@ -13,15 +13,8 @@ function SearchTrendsSection() {
 
   return (
     <section className="flex flex-col justify-center items-center pb-16 w-full max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-col gap-10 justify-center items-center max-w-full w-[1080px]">
-        <div className="w-full md:w-2/3">
-          <img
-            src={imageCollage}
-            alt="Search trends visualization"
-            className="object-contain w-full aspect-[1.15]"
-          />
-        </div>
-        <div className="flex flex-col p-8 w-full min-w-[240px] max-md:max-w-full">
+      <div className="flex flex-wrap gap-10 justify-center items-center max-w-full w-[1080px]">
+        <div className="flex flex-col p-8 flex-1 min-w-[240px] max-md:max-w-full order-2 md:order-1">
           <div className="chinese flex flex-col justify-center w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
             <h2 className="text-black border-black leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
               What are others seeking over the wall?
@@ -40,10 +33,17 @@ function SearchTrendsSection() {
                     : "border-red-600 text-red-600 text-lg"
                 }`}
               >
-                <Link to={`/archive?q=${search.text}`}>{search.text}</Link>
+                <Link to={`/archive?q=${encodeURIComponent(search.text)}`}>{search.text}</Link>
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex flex-col w-full md:w-1/2 justify-center self-stretch py-4 my-auto min-w-[240px] order-1 md:order-2">
+          <img
+            src={imageCollage}
+            alt="Search trends visualization"
+            className="object-contain w-full aspect-[1.15]"
+          />
         </div>
       </div>
     </section>
