@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Tooltip } from 'react-tooltip';
 import VoteButton from './VoteButton';
-import Question from '../assets/icons/question_red.svg';
 import { locationMapping } from '../constants/locations';
 
 function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
 
-  const years = [2025, 2024, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
+  const regions = {
+    'United States': ['ann_arbor', 'st_polten', 'poughkeepsie', 'new_york_city', 'asheville', 'miami_beach', 'new_jersey'],
+    'Europe': ['vienna', 'oslo'],
+    'Asia': ['hong_kong', 'taiwan']
+  };
   
   // Get unique city keys and sort them by their display names
   const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
-    .filter(key => locationMapping[key] !== 'Query Bot')
     .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
@@ -32,7 +33,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     handleFilterChange();
   }
 
-  const handleFilterChange = () => {
+  const handleFilterChange = (event) => {
     const form = document.getElementById('filter-options-form');
     const formData = new FormData(form);
     const filterOptions = { 
@@ -43,21 +44,20 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       page_size: 10
     };
     
-    // Get selected years
-    const yearsSelect = form.querySelector('select[name="years"]');
-    if (yearsSelect.value) {
-      filterOptions.years = [yearsSelect.value];
-    }
-
-    // Get selected cities and query_bot
+    // Reset other dropdown based on which one changed
+    const regionsSelect = form.querySelector('select[name="regions"]');
     const citiesSelect = form.querySelector('select[name="cities"]');
-    const queryBotCheckbox = form.querySelector('input[name="query_bot"]');
     
-    if (citiesSelect.value) {
-      filterOptions.cities = [citiesSelect.value];
-    }
-    if (queryBotCheckbox.checked) {
-      filterOptions.cities.push('automated_scraper');
+    if (event.target.name === 'regions') {
+      citiesSelect.value = ''; // Reset Source dropdown
+      if (regionsSelect.value) {
+        filterOptions.cities = regions[regionsSelect.value];
+      }
+    } else if (event.target.name === 'cities') {
+      regionsSelect.value = ''; // Reset Region dropdown
+      if (citiesSelect.value) {
+        filterOptions.cities = [citiesSelect.value];
+      }
     }
 
     // Get vote values
@@ -97,60 +97,39 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       <div className="p-4">
         <form id="filter-options-form" className="grow flex flex-col text-black">
           <div className="grid grid-cols-2 gap-6 mb-4">
-            {/* Years Section */}
+            {/* Regions Section */}
             <div className="flex flex-col">
-              <label htmlFor="years" className="text-lg font-black mb-2">Year</label>
+              <label htmlFor="regions" className="text-lg font-black mb-2">Region</label>
               <select 
-                name="years"
+                name="regions"
                 className="w-full border border-zinc-400 rounded p-2"
-                onChange={handleFilterChange}
+                onChange={(e) => handleFilterChange(e)}
               >
-                <option value="">All Years</option>
-                {years.map((year) => (
-                  <option key={year} value={year}>
-                    {year}
+                <option value="">All Regions</option>
+                {Object.keys(regions).map((region) => (
+                  <option key={region} value={region}>
+                    {region}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* Updated Cities Section */}
+            {/* Sources Section */}
             <div className="flex flex-col">
-              <label htmlFor="cities" className="text-lg font-black mb-2">Location</label>
+              <label htmlFor="cities" className="text-lg font-black mb-2">Search Source</label>
               <select
                 name="cities"
-                className="w-full border border-zinc-400 rounded p-2 mb-2"
-                onChange={handleFilterChange}
+                className="w-full border border-zinc-400 rounded p-2"
+                onChange={(e) => handleFilterChange(e)}
                 disabled={isLoading}
               >
-                <option value="">All Locations</option>
+                <option value="">All Sources</option>
                 {uniqueCityKeys.map((cityKey) => (
                   <option key={cityKey} value={cityKey}>
                     {locationMapping[cityKey]}
                   </option>
                 ))}
               </select>
-              <div className="flex items-center">
-                <input 
-                  type="checkbox" 
-                  id="query_bot"
-                  name="query_bot" 
-                  value="automated_scraper"
-                  onChange={handleFilterChange}
-                  className="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
-                />
-                <label htmlFor="query_bot" className="ml-2 text-sm text-gray-700 flex items-center">
-                  Query Bot
-                  <img 
-                    src={Question} 
-                    alt="Question mark red"
-                    className="ml-1 w-6 h-6 object-contain"
-                    data-tooltip-id="tooltip"
-                    data-tooltip-content="Potentially sensitive queries tracked by the Firewall Cafe Query Bot"
-                    data-tooltip-place="top"
-                  />
-                </label>
-              </div>
             </div>
             
             {/* Vote Results Section */}

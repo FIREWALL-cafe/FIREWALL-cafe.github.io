@@ -10,6 +10,5 @@ export const locationMapping = {
   'taiwan': 'Taiwan',
   'miami_beach': 'Miami Beach',
   'new_jersey': 'New Jersey',
-  'local': 'Local',
-  'automated_scraper': 'Query Bot'
+  'automated_scraper': 'Search Bot'
 }; 
