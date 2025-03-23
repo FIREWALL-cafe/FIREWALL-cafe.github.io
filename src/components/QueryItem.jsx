@@ -2,9 +2,21 @@ import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
 import { locationMapping } from '../constants/locations';
+import ExpandIcon from './icons/ExpandIcon';
 
 const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, filterOptions }) => {
-  const formatDate = timestamp => new Date(parseInt(timestamp)).toLocaleDateString();
+  const formatDate = timestamp => {
+    const date = new Date(parseInt(timestamp));
+    return window.innerWidth > 640 
+      ? date.toLocaleString(undefined, { 
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      : date.toLocaleDateString();
+  };
 
   const [dropdown, setDropdown] = useState(false);
   const [imageResults, setImageResults] = useState({});
@@ -38,7 +50,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
 
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
-      <div className="flex flex-wrap gap-4 py-1 w-full text-sm text-black min-h-[32px] cursor-pointer" onClick={toggleDropdown}>
+      <div className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" onClick={toggleDropdown}>
         <div className="w-16 flex items-center max-sm:w-12">
           <img src={VoteIcon} alt="Votes" className="w-4 h-4 mr-1" />
           <span>{total_votes}</span>
@@ -52,8 +64,11 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
         <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden truncate">
           {locationLabel}
         </div>
-        <div className="w-24 text-right max-sm:w-auto">
+        <div className="w-56 text-right max-sm:w-auto">
           {formatDate(search_timestamp)}
+        </div>
+        <div className="w-8 flex justify-center">
+          <ExpandIcon isExpanded={dropdown} />
         </div>
       </div>
       <div className={dropdown ? 'w-full' : 'hidden'}>

@@ -2,6 +2,7 @@ import HeroArchive from './HeroArchive';
 import FeatureCards from './FeatureCards';
 
 import Commentary from '../assets/icons/expert-commentary_grayscale.png';
+import Search from '../assets/icons/search-color.png';
 
 const features = [
   {
@@ -9,7 +10,7 @@ const features = [
     url: "/search",
     chineseTitle: { text: "专家点评", color: "border-red-600" },
     description: "Search Google and Baidu and compare the results.",
-    iconSrc: Commentary,
+    iconSrc: Search,
     bgColor: "bg-red-600",
     textColor: "text-white",
     borderColor: "border-red-600"
