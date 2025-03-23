@@ -6,8 +6,8 @@ function SearchTrendsSection() {
   const trendingSearches = [
     { id: 1, text: "tank man", isEnglish: true },
     { id: 2, text: "june 4", isEnglish: true },
-    { id: 3, text: "tiananmen square", isEnglish: false },
-    { id: 4, text: "winnie the pooh xi", isEnglish: false },
+    { id: 3, text: "天安门广场", isEnglish: false },
+    { id: 4, text: "小熊维尼 xi", isEnglish: false },
     { id: 5, text: "uyghur", isEnglish: true },
   ];
 

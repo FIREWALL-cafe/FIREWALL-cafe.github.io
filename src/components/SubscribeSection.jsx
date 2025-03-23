@@ -19,7 +19,7 @@ function SubscribeSection() {
                     target="_self"
                   >
                     <div id="mc_embed_signup_scroll" className="relative">
-                      <h2 className="text-xl md:text-2xl lg:text-3xl mb-4">Subscribe 订阅</h2>
+                      <h2 className="text-3xl md:text-4xl lg:text-[48px] mb-4">Subscribe 订阅</h2>
                       <div className="indicates-required text-sm md:text-base mb-2">
                         <span className="asterisk">*</span> indicates required
                       </div>
