@@ -6,14 +6,14 @@ import TermsAndConditions from "../components/TermsAndConditions";
 
 function Layout() {
   return (
-    <div className="flex flex-col items-end w-full px:4">
-      <div className="flex flex-col w-full max-md:max-w-full">
-        <Header />
-        <Navigation />
+    <div className="flex flex-col min-h-screen w-full">
+      <Header />
+      <Navigation />
+      <main className="flex-grow">
         <Outlet />
-        <Footer />
-        <TermsAndConditions />
-      </div>
+      </main>
+      <Footer />
+      <TermsAndConditions />
     </div>
   );
 }
