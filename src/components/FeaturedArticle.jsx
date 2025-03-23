@@ -11,7 +11,7 @@ function FeaturedArticle() {
           <div className="flex flex-col w-full max-w-[516px] max-md:max-w-full">
             <div className="text-zinc-400">Featured</div>
             <div className="chinese flex flex-col mt-10 w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
-              <h2 className="text-black leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+              <h2 className="text-3xl md:text-4xl lg:text-[48px] leading-[58px] max-md:max-w-full max-md:leading-[54px]">
                 How a New York art show about Chinese online censorship found itself censored
               </h2>
               <div className="leading-tight text-red-600 max-md:max-w-full max-md:text-4xl">
