@@ -13,8 +13,8 @@ const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
             <div className="flex flex-wrap gap-4 py-1 w-full text-[20px] text-black border-b border-solid border-b-neutral-300 min-h-[32px] pr-4">
               <div className="w-16 whitespace-nowrap max-sm:w-12">Votes</div>
               <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:w-full">Query EN</div>
-              <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:hidden">搜索结果 中文</div>
-              <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden">Location</div>
+              <div className="flex-1 min-w-[180px] max-md:min-w-0 max-md:hidden">搜索结果 中文</div>
+              <div className="flex-1 min-w-[120px] max-md:min-w-0 max-md:hidden">Location</div>
               <div className="w-56 text-right max-sm:w-auto">Date</div>
               <div className="w-8 flex justify-center"></div>
             </div>
@@ -34,8 +34,8 @@ const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
           <div className="flex flex-wrap gap-4 py-1 w-full text-[20px] text-black border-b border-solid border-b-neutral-300 min-h-[32px] pr-4">
             <div className="w-16 whitespace-nowrap max-sm:w-12">Votes</div>
             <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:w-full">Query EN</div>
-            <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:hidden">搜索结果 中文</div>
-            <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden">Location</div>
+            <div className="flex-1 min-w-[180px] max-sm:min-w-0 max-md:hidden">搜索结果 中文</div>
+            <div className="flex-1 min-w-[120px] max-sm:min-w-0 max-md:hidden">Location</div>
             <div className="w-56 text-right max-sm:w-auto">Date</div>
             <div className="w-8 flex justify-center"></div>
           </div>
