@@ -2,6 +2,7 @@ import React from 'react';
 import Artist from './Artist';
 import Supporters from './Supporters';
 import CallToAction from './CallToAction';
+import Contributors from './Contributors';
 import AboutHero from '../assets/images/about-hero.jpg';
 
 function About() {
@@ -42,6 +43,7 @@ function About() {
               </div>
             </div>
             <Artist />
+            <Contributors />
             <Supporters />
           </div>
         </div>

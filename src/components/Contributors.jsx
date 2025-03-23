@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Joyce from '../assets/images/HorizontalHairUpCityRetouch1024SquareBW-450x450.jpg';
 import Dan from '../assets/images/dphiffer_bw-300x300.jpg';
 import Rowan from '../assets/images/2020-January-06_croppedBW-1-450x384.jpg';
 import Silas from '../assets/images/silas-450x450.jpg';
@@ -8,13 +7,6 @@ import Rachel from '../assets/images/Rachel1024-450x450.jpg';
 
 function Contributors() {
   const contributors = [
-    {
-      name: "Joyce Yu-Jean Lee",
-      role: "Artist",
-      url: "http://www.joyceyujeanlee.com/",
-      image: Joyce,
-      bio: "Joyce Yu-Jean Lee is a NYC-based artist working with video, installation, and performance. She creates tech-based art that examines how visual culture and mass media shape notions of truth and perception of the \"other.\" Lee has exhibited widely domestically and internationally and her work has been written about in The New York Times, The Washington Post, Huffington Post, NPR, Hyperallergic, and ArtCritical. She teaches as an Assistant Professor of Art & Digital Media at Marist College."
-    },
     {
       name: "Dan Phiffer",
       role: "Lead Developer",
@@ -49,9 +41,14 @@ function Contributors() {
     <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-w-4xl max-md:max-w-full">
-          <h1 className="mt-10 text-5xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
-            Contributors
-          </h1>
+          <div className="chinese font-medium flex flex-col items-center text-center">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-[2.16px]">
+              Contributors
+            </h2>
+            <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl leading-tight text-red-600 tracking-[2.16px]">
+              贡献者
+            </div>
+          </div>
           
           <div className="mt-12 flex flex-col gap-8">
             {contributors.map((contributor, index) => (
