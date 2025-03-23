@@ -174,7 +174,7 @@ function SearchInput({ searchMode }) {
 
   const displaySearchIcon = !isArchive ? SearchIcon : ArchiveIcon;
   const displayTooltipContent = !isArchive
-    ? 'Your query will be translated into Chinese and sent to Google and Baidu simultaneously.'
+    ? 'Your query will automatically translate into the other language. English queries will be searched in <b>Google</b>. Chinese queries will be searched in <b>Baidu</b>.'
     : "Explore the archive to view past results from other users and see how they've changed over time.";
   
   return (
@@ -220,9 +220,10 @@ function SearchInput({ searchMode }) {
               alt="Question mark red"
               className="object-contain shrink-0 self-stretch mx-4 my-auto w-6 aspect-square"
               data-tooltip-id="tooltip"
-              data-tooltip-content={displayTooltipContent}
-              data-tooltip-place="top" />
-            <Tooltip id="tooltip" />
+              data-tooltip-html={displayTooltipContent}
+              data-tooltip-place="right"
+              noArrow={true} />
+            <Tooltip id="tooltip" noArrow={true} />
           </div>
           <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 max-md:max-w-full">
             <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px]">
