@@ -7,6 +7,7 @@ import FilterControls from './FilterControls';
 import ApiContext from '../contexts/ApiContext';
 
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
+import GoogleLogoRed from '../assets/icons/google-logo_red.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import Question from '../assets/icons/question_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
@@ -180,15 +181,21 @@ function SearchInput({ searchMode }) {
     <>
       <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
         <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
-          <div className="flex flex-wrap gap-4 items-center w-full border-b border-solid border-red-600 max-md:max-w-full">
-            <div className="flex items-center self-stretch my-auto min-w-[240px]">
+          <div className="flex flex-wrap items-center w-full border-b border-solid border-red-600 max-md:max-w-full">
+            <div className="flex items-center self-stretch my-auto min-w-[240px] relative">
               <div 
                 onClick={() => navigate('/search')} 
-                className={`${!isArchive ? 'bg-slate-100' : 'bg-white'} flex flex-col justify-center items-center px-9 py-2 my-auto rounded-t border-t border-l border-r border-solid border-red-600 cursor-pointer`}
+                className={`
+                  relative z-10
+                  flex flex-col justify-center items-center px-9 py-3
+                  rounded-t border-t border-l border-r border-solid border-red-600 
+                  cursor-pointer
+                  ${!isArchive ? 'bg-slate-100 border-b-0 border-r-0 mb-[-2px]' : 'bg-white border-r-0'}
+                `}
               >
                 <div className="flex gap-2 items-start">
                   <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
-                    <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
+                    <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
                   </div>
                   <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
                     <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
@@ -197,7 +204,13 @@ function SearchInput({ searchMode }) {
               </div>
               <div
                 onClick={() => navigate('/archive')}
-                className={`${isArchive ? 'bg-slate-100' : 'bg-white'} px-8 py-2 my-auto text-2xl font-medium text-red-600 rounded-t border-t border-l border-r border-solid border-red-600 cursor-pointer`}
+                className={`
+                  relative z-10
+                  px-8 py-3 text-2xl font-medium 
+                  rounded-t border-t border-l border-r border-solid border-red-600 
+                  cursor-pointer
+                  ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
+                `}
               >
                 Archive
               </div>
@@ -205,13 +218,13 @@ function SearchInput({ searchMode }) {
             <img
               src={Question}
               alt="Question mark red"
-              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+              className="object-contain shrink-0 self-stretch mx-4 my-auto w-6 aspect-square"
               data-tooltip-id="tooltip"
               data-tooltip-content={displayTooltipContent}
               data-tooltip-place="top" />
             <Tooltip id="tooltip" />
           </div>
-          <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
+          <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 max-md:max-w-full">
             <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px]">
               <input
                 placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
