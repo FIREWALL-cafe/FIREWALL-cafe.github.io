@@ -17,14 +17,11 @@ default_expiration: "5s"
 
 env_variables:
   NODE_ENV: "production"
+  PUBLIC_URL: "https://firewallcafe.com"
 
 handlers:
 # Serve API endpoints
 - url: /proxy-image.*
-  script: auto
-  secure: always
-
-- url: /events.*
   script: auto
   secure: always
 

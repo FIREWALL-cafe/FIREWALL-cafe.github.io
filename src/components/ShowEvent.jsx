@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ArrowLeft from '../assets/icons/arrow_left_alt.svg';
 
 import Megha from './events/Megha';
 import Marymount from './events/Marymount';
@@ -47,12 +48,11 @@ const EventUrls = {
 }
 function ShowEvent() {
   const { eventId } = useParams();
-  console.log('eventData:', eventId)
   return (
     <div>
       {EventUrls[eventId] ? (
         <>
-          <div className="flex px-32"><Link to="/events"><img src={`${process.env.PUBLIC_URL}/icons/arrow_left_alt.svg`} alt="Back to Events" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square inline" /> Back to Events</Link></div>
+          <div className="flex px-32"><Link to="/events"><img src={ArrowLeft} alt="Back to Events" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square inline" /> Back to Events</Link></div>
           {EventUrls[eventId]}
         </>
       ) : (
