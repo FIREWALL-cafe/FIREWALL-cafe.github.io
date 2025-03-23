@@ -11,68 +11,46 @@ import Instagram from "../assets/icons/instagram_red.svg";
 
 function Footer() {
   return (
-    <footer className="flex overflow-hidden justify-between items-start px-5 py-16 w-full bg-white max-md:px-5 max-md:py-24 max-md:max-w-full">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-between items-start w-1/2 basis-0 min-w-[240px] max-md:max-w-full">
-        <div className="flex gap-3 items-center">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="hidden md:block object-contain self-stretch my-auto" />
-            <img src={mobileLogo} alt="Logo" className="block md:hidden object-contain self-stretch my-auto" />
-          </Link>
-        </div>
-        <div className="flex gap-10 items-center">
-          <div className="flex overflow-hidden flex-col items-start text-xl text-center text-red-600 rounded-lg">
-            <Link to="/about" className="gap-1 self-stretch">
-              About
-            </Link>
-            <Link to="/press" className="mt-3.5">
-              Press
-            </Link>
-            <Link to="/events" className="mt-3.5">
-              Events
+    <footer className="w-full bg-white pt-[120px] pb-[180px]">
+      <div className="max-w-[1280px] mx-auto px-8 w-full">
+        <div className="flex justify-between items-start gap-20 md:flex-row flex-col">
+          <div className="flex-shrink-0">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="hidden md:block" />
+              <img src={mobileLogo} alt="Logo" className="block md:hidden" />
             </Link>
           </div>
-          <div className="flex overflow-hidden flex-col items-start text-xl text-red-600 rounded-lg">
-            <Link to="/search" className="gap-1 self-stretch">
-              Search
-            </Link>
-            <Link to="/archive" className="mt-4 gap-1 self-stretch">
-              Search Archive
-            </Link>
-            <Link to="/editorial" className="mt-4 text-xl text-center text-red-600">
-              Editorial
-            </Link>
-          </div>
-          <div className="flex overflow-hidden flex-col justify-between items-start self-stretch px-4 rounded-lg">
-            <div className="flex flex-col gap-2">
-              <Link to="/support" className="text-xl text-red-600">
-                Partner with us
-              </Link>
-              <Link to="/contact" className="mt-2 text-xl text-red-600">
-                Contact
-              </Link>
+          
+          <div className="flex gap-20 flex-grow justify-end md:flex-row flex-col">
+            <div className="flex flex-col gap-3.5 text-xl text-red-600">
+              <Link to="/about">About</Link>
+              <Link to="/press">Press</Link>
+              <Link to="/events">Events</Link>
             </div>
-            <div className="flex gap-2 mt-2 items-center">
-              <Link to="https://www.facebook.com/firewallcafe" aria-label="Facebook">
-                <img
-                  src={Facebook}
-                  alt="Facebook logo"
-                  className="object-contain shrink-0 self-stretch my-auto md:w-6 w-9 aspect-square"
-                />
-              </Link>
-              <Link to="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA" aria-label="Youtube">
-                <img
-                  src={Youtube}
-                  alt="Youtube logo"
-                  className="object-contain shrink-0 self-stretch my-auto md:w-6 w-9 aspect-square"
-                />
-              </Link>
-              <Link to="http://instagram.com/firewallcafe" aria-label="Instagram">
-                <img
-                  src={Instagram}
-                  alt="Instagram logo"
-                  className="object-contain shrink-0 self-stretch my-auto md:w-6 w-9 aspect-square"
-                />
-              </Link>
+            
+            <div className="flex flex-col gap-4 text-xl text-red-600">
+              <Link to="/search">Search</Link>
+              <Link to="/archive">Search Archive</Link>
+              <Link to="/editorial">Editorial</Link>
+            </div>
+            
+            <div className="flex flex-col justify-between">
+              <div className="flex flex-col gap-2 text-xl text-red-600">
+                <Link to="/support">Partner with us</Link>
+                <Link to="/contact">Contact</Link>
+              </div>
+              
+              <div className="flex gap-4 mt-8">
+                <Link to="https://www.facebook.com/firewallcafe" aria-label="Facebook">
+                  <img src={Facebook} alt="Facebook logo" className="w-6" />
+                </Link>
+                <Link to="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA" aria-label="Youtube">
+                  <img src={Youtube} alt="Youtube logo" className="w-6" />
+                </Link>
+                <Link to="http://instagram.com/firewallcafe" aria-label="Instagram">
+                  <img src={Instagram} alt="Instagram logo" className="w-6" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
