@@ -5,9 +5,20 @@ import { locationMapping } from '../constants/locations';
 import ExpandIcon from './icons/ExpandIcon';
 
 const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, filterOptions }) => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const formatDate = timestamp => {
     const date = new Date(parseInt(timestamp));
-    return window.innerWidth > 640 
+    return isDesktop
       ? date.toLocaleString(undefined, { 
           year: 'numeric',
           month: 'numeric',
@@ -58,10 +69,10 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
         <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:w-full truncate">
           {search_term_initial}
         </div>
-        <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:hidden text-zinc-400 truncate">
+        <div className="flex-1 min-w-[180px] max-md:min-w-0 max-md:hidden text-zinc-400 truncate">
           {search_term_translation}
         </div>
-        <div className="flex-1 min-w-[120px] max-md:min-w-[100px] max-sm:min-w-0 max-sm:hidden truncate">
+        <div className="flex-1 min-w-[120px] max-md:min-w-0 max-md:hidden truncate">
           {locationLabel}
         </div>
         <div className="w-56 text-right max-sm:w-auto">

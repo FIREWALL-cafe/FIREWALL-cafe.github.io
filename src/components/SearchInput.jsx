@@ -11,7 +11,7 @@ import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import Question from '../assets/icons/question_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
 import ArchiveIcon from '../assets/icons/folder_open_search.svg';
-import FilterIcon from '../assets/icons/tune.svg';
+import FilterIcon from './FilterIcon';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
 
@@ -240,13 +240,12 @@ function SearchInput({ searchMode }) {
             {isArchive && (
               <button
                 onClick={() => setFilterOpen(!filterOpen)}
-                className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 ${filterOpen ? 'bg-red-50' : ''}`}
+                className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''}`}
               >
                 <div>filters</div>
-                <img
-                  src={FilterIcon}
-                  alt="Filter"
-                  className={`ml-2 w-5 h-5 transition-transform duration-200 ${filterOpen ? 'rotate-180' : ''}`} />
+                <FilterIcon
+                  className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''}`}
+                />
               </button>
             )}
           </div>
