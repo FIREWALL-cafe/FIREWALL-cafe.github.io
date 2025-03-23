@@ -212,7 +212,7 @@ function SearchInput({ searchMode }) {
             <Tooltip id="tooltip" />
           </div>
           <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-b-red-600 border-x-red-600 max-md:max-w-full">
-            <div className="flex w-full bg-white rounded border border-solid border-neutral-300 min-h-[56px]">
+            <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px]">
               <input
                 placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
                 value={query}
@@ -220,7 +220,7 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 px-4 my-auto text-xl min-h-[40px] focus:ring-0 focus:outline-none" 
+                className="flex-1 px-4 text-xl h-[56px] focus:ring-0 focus:outline-none" 
                 aria-label="Search query" 
               />
               <div className="flex items-center py-4 pr-4">
@@ -286,12 +286,14 @@ function SearchInput({ searchMode }) {
         )}
       </div>
       {currentSearchId && isArchive && (
-        <QueryList 
-          results={filteredResults} 
-          onPageChange={handlePageChange}
-          isLoading={isLoading}
-          filterOptions={currentFilters}
-        />
+        <div className="mt-[120px] min-h-[70px]">
+          <QueryList 
+            results={filteredResults} 
+            onPageChange={handlePageChange}
+            isLoading={isLoading}
+            filterOptions={currentFilters}
+          />
+        </div>
       )}
     </>
   );
