@@ -3,7 +3,9 @@ import Timeline from './Timeline';
 import FeatureCards from './FeatureCards';
 import TimelineIcon from '../assets/icons/Timeline.png'
 import Commentary from '../assets/icons/expert-commentary_grayscale.png'
+import CommentaryHover from '../assets/icons/expert-commentary.png'
 import Archive from '../assets/icons/Archive_grayscale.png'
+import ArchiveHover from '../assets/icons/Archive.png'
 
 const features = [
     {
@@ -11,6 +13,7 @@ const features = [
       chineseTitle: { text: "档案", color: "text-black border-black" },
       description: "Explore what other users have searched and vote on results.",
       iconSrc: Archive,
+      iconSrcHover: ArchiveHover,
       bgColor: "bg-red-600",
       textColor: "text-white",
       borderColor: "border-red-600"
@@ -20,6 +23,7 @@ const features = [
       chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
       description: "Read and listen to in-depth commentary from experts.",
       iconSrc: Commentary,
+      iconSrcHover: CommentaryHover,
       bgColor: "bg-white",
       textColor: "text-black",
       borderColor: "border-red-600"

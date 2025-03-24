@@ -2,6 +2,7 @@ import HeroArchive from './HeroArchive';
 import FeatureCards from './FeatureCards';
 
 import Commentary from '../assets/icons/expert-commentary_grayscale.png';
+import CommentaryHover from '../assets/icons/expert-commentary.png';
 import Search from '../assets/icons/search-color.png';
 
 const features = [
@@ -21,6 +22,7 @@ const features = [
     chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
     description: "Read and listen to in-depth commentary from experts.",
     iconSrc: Commentary,
+    iconSrcHover: CommentaryHover,
     bgColor: "bg-white",
     textColor: "text-black",
     borderColor: "border-red-600"
