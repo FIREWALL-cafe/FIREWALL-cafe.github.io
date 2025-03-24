@@ -10,7 +10,7 @@ function Header() {
       <div className="max-w-[1280px] mx-auto px-8 w-full">
         <div className="flex justify-between items-center py-4">
           <TimeDisplay />
-          <div className="text-white">
+          <div className="hidden md:block text-white">
             <span className="font-bold">Username:</span> {username || 'anonymous'}
           </div>
         </div>

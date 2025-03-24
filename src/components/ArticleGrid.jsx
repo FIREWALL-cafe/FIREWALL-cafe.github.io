@@ -78,7 +78,7 @@ const articles = [
   {
     image: PressHKFP,
     imageHover: PressHKFPHover,
-    title: "Google vs. Baidu – Artist Joyce Yu-Jean Lee examines cultural and political bias online… and in ourselves",
+    title: "Google vs. Baidu – Artist Joyce Yu-Jean Lee examines cultural and political bias online…",
     url: "https://www.hongkongfp.com/2019/02/24/video-google-vs-baidu-artist-joyce-yu-jean-lee-examines-cultural-political-bias-online/",
     date: "February 24, 2019"
   },

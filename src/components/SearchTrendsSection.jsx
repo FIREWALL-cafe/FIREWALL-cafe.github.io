@@ -12,37 +12,38 @@ function SearchTrendsSection() {
   ];
 
   return (
-    <section className="flex flex-col justify-center items-center pb-16 w-full max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap gap-10 justify-center items-center max-w-full">
-        <div className="flex flex-col p-8 flex-1 min-w-[240px] max-md:max-w-full order-2 md:order-1">
-          <div className="chinese flex flex-col justify-center w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
-            <h2 className="text-black border-black leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+    <section className="w-full flex flex-col py-16">
+      <div className="flex flex-col md:flex-row gap-10 justify-between items-center">
+        <div className="w-full md:w-1/2 order-2 md:order-1">
+          <div className="chinese">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-2">
               What are others seeking over the wall?
             </h2>
-            <div className="leading-tight text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">
+            <div className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight text-red-600">
               人们翻墙时在寻找什么?
             </div>
           </div>
-          <div className="flex flex-wrap gap-4 items-center mt-10 w-full text-base text-center text-black max-md:max-w-full">
+          <div className="flex flex-wrap gap-4 mt-8">
             {trendingSearches.map((search) => (
-              <div
+              <Link 
                 key={search.id}
-                className={`gap-1 self-stretch px-4 py-2.5 my-auto bg-white border border-solid min-h-[40px] rounded-[10000px] ${
+                to={`/archive?q=${encodeURIComponent(search.text)}`}
+                className={`px-4 py-2.5 rounded-full border ${
                   search.isEnglish
                     ? "border-black text-black"
                     : "border-red-600 text-red-600 text-lg"
-                }`}
+                } hover:bg-gray-50 transition-colors`}
               >
-                <Link to={`/archive?q=${encodeURIComponent(search.text)}`}>{search.text}</Link>
-              </div>
+                {search.text}
+              </Link>
             ))}
           </div>
         </div>
-        <div className="flex flex-col w-full md:w-1/2 justify-center self-stretch py-4 my-auto min-w-[240px] order-1 md:order-2">
+        <div className="w-full md:w-1/2 order-1 md:order-2">
           <img
             src={imageCollage}
             alt="Search trends visualization"
-            className="object-contain w-full aspect-[1.15]"
+            className="w-full object-contain aspect-[1.15]"
           />
         </div>
       </div>

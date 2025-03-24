@@ -10,16 +10,13 @@ import UsHeadlines from "../assets/images/subscribe-d-desktop.jpg";
 function Home() {
   const image = <img src={UsHeadlines} alt="US Headlines" className="w-full h-full object-cover" />
   return (
-    <main>
-      <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:max-w-full"></section>
-        <div className="flex flex-col items-end px-20 max-md:px-5">
-          <div className="flex flex-col w-full max-md:max-w-full">
-            <HeroSection />
-            <AboutSection />
-            <InfoSection />
-            <SearchTrendsSection />
-          </div>
-        </div>
+    <main className="w-full">
+      <div className="max-w-[1080px] mx-auto px-4 md:px-6">
+        <HeroSection />
+        <AboutSection />
+        <InfoSection />
+        <SearchTrendsSection />
+      </div>
       <NewsletterSection image={image} />
     </main>
   );
