@@ -50,8 +50,9 @@ function ImageCarousel({ images }) {
               data-tooltip-id="tooltip-google"
               data-tooltip-content='Results from US based Google images.'
               data-tooltip-place="top"
+              noArrow={true}
             />
-            <Tooltip id="tooltip-google" />
+            <Tooltip id="tooltip-google" noArrow={true} />
           </div>
           <div className="relative flex justify-center items-center h-[320px] px-4">
             <img
@@ -80,8 +81,9 @@ function ImageCarousel({ images }) {
               data-tooltip-id="tooltip-baidu"
               data-tooltip-content='Results from China based Baidu images.'
               data-tooltip-place="top"
+              noArrow={true}
             />
-            <Tooltip id="tooltip-baidu" />
+            <Tooltip id="tooltip-baidu" noArrow={true} />
           </div>
           <div className="relative flex justify-center items-center h-[320px] px-4">
             <img
