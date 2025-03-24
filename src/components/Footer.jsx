@@ -19,14 +19,14 @@ function Footer() {
             </Link>
           </div>
           
-          <div className="flex gap-20 flex-grow justify-end md:flex-row flex-col">
-            <div className="flex flex-col gap-3.5 text-xl text-red-600">
+          <div className="flex gap-8 sm:gap-10 md:gap-20 justify-end">
+            <div className="flex flex-col gap-2 md:gap-4 text-xl text-red-600">
               <Link to="/about">About</Link>
               <Link to="/press">Press</Link>
               <Link to="/events">Events</Link>
             </div>
             
-            <div className="flex flex-col gap-4 text-xl text-red-600">
+            <div className="flex flex-col gap-2 md:gap-4 text-xl text-red-600">
               <Link to="/search">Search</Link>
               <Link to="/archive">Search Archive</Link>
               <Link to="/editorial">Editorial</Link>
@@ -38,7 +38,7 @@ function Footer() {
                 <Link to="/contact">Contact</Link>
               </div>
               
-              <div className="flex gap-4 mt-8">
+              <div className="flex gap-2 md:gap-4 mt-8">
                 <Link to="https://www.facebook.com/firewallcafe" aria-label="Facebook">
                   <img src={Facebook} alt="Facebook logo" className="w-6" />
                 </Link>
