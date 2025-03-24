@@ -41,7 +41,7 @@ const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
           </div>
 
           <div className="flex flex-col w-full divide-y divide-gray-100 mt-6">
-            <div className="max-h-[800px] relative mb-6">
+            <div className="relative mb-6">
               {isLoading && (
                 <div className="absolute inset-0 bg-white/60 z-10 flex items-center justify-center">
                   <div className="text-gray-600">Loading...</div>
