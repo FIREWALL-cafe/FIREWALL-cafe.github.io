@@ -4,7 +4,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/icons/logo_name.svg";
-import mobileLogo from "../assets/icons/logo_only.svg";
 import Facebook from "../assets/icons/facebook_red.svg";
 import Youtube from "../assets/icons/youtube_red.svg";
 import Instagram from "../assets/icons/instagram_red.svg";
@@ -16,8 +15,7 @@ function Footer() {
         <div className="flex justify-between items-start gap-20 md:flex-row flex-col">
           <div className="flex-shrink-0">
             <Link to="/">
-              <img src={logo} alt="Logo" className="hidden md:block" />
-              <img src={mobileLogo} alt="Logo" className="block md:hidden" />
+              <img src={logo} alt="Logo" />
             </Link>
           </div>
           
