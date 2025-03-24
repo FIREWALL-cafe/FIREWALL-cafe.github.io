@@ -49,11 +49,18 @@ const EventUrls = {
 function ShowEvent() {
   const { eventId } = useParams();
   return (
-    <div>
+    <div className="w-full">
       {EventUrls[eventId] ? (
         <>
-          <div className="flex px-32"><Link to="/events"><img src={ArrowLeft} alt="Back to Events" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square inline" /> Back to Events</Link></div>
-          {EventUrls[eventId]}
+          <div className="max-w-[1280px] mx-auto px-14 pt-14 max-md:px-5">
+            <Link to="/events">
+              <img src={ArrowLeft} alt="Back to Events" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square inline" /> 
+              Back to Events
+            </Link>
+          </div>
+          <div className="max-w-[1280px] mx-auto">
+            {EventUrls[eventId]}
+          </div>
         </>
       ) : (
         <p>No event data available.</p>

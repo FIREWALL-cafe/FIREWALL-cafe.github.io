@@ -11,60 +11,63 @@ import hoverc from "../assets/images/homepage-section_1-image_c-hover.jpg";
 
 function AboutSection() {
   return (
-    <section className="flex flex-col justify-center items-center pb-16 w-full max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap gap-10 justify-center items-start max-w-[1080px]">
-        <div className="flex flex-col w-[55%] min-w-[240px] order-2 md:order-1">
-          <div className="chinese flex flex-col w-full text-3xl md:text-4xl lg:text-[48px] font-medium leading-tight 
-            lg:leading-[58px]">
-            <h2 className="text-black border-black">
-              <Link to="/about">What does internet censorship look like?</Link>
+    <section className="w-full flex flex-col py-16">
+      <div className="flex flex-col md:flex-row gap-10 justify-between">
+        <div className="w-full md:w-[55%] order-2 md:order-1">
+          <div className="chinese">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-2">
+              <Link to="/about" className="hover:text-gray-800">What does internet censorship look like?</Link>
             </h2>
-            <div className="text-red-600 border-red-600">
+            <div className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight text-red-600">
               你知道什么时候会看到审查制度吗?
             </div>
           </div>
-          <p className="mt-6 md:mt-10 text-xl md:text-2xl leading-normal md:leading-9 text-black">
-            "Just Google it." That phrase has become almost a knee-jerk response whenever we're stumped. But does the internet truly have all the answers?
-          </p>
-          <p className="mt-6 md:mt-10 text-xl md:text-2xl leading-normal md:leading-9 text-black">
-            FIREWALL Cafe is an art project launched in 2016 to shine a light on Google's search engine monopoly and China's suppression of free speech through Baidu, the primary Chinese search engine.
-          </p>
-          <Link to="/about">
-            <button className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-lg leading-snug text-center text-red-600 whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[56px]">
-              <span className="self-stretch my-auto">About</span>
-              <ArrowRight 
-                fill="#DC2626" 
-                className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" 
-              />
-            </button>
+          <div className="mt-8 space-y-6 text-lg md:text-xl lg:text-2xl">
+            <p>
+              "Just Google it." That phrase has become almost a knee-jerk response whenever we're stumped. But does the internet truly have all the answers?
+            </p>
+            <p>
+              FIREWALL Cafe is an art project launched in 2016 to shine a light on Google's search engine monopoly and China's suppression of free speech through Baidu, the primary Chinese search engine.
+            </p>
+          </div>
+          <Link 
+            to="/about"
+            className="mt-8 inline-flex items-center px-6 py-3 text-lg text-red-600 border border-red-600 rounded hover:bg-red-50 transition-colors"
+          >
+            About
+            <ArrowRight 
+              fill="#DC2626" 
+              className="ml-2 w-6 h-6" 
+            />
           </Link>
         </div>
-        <div className="flex flex-col w-[40%] min-w-[240px] order-1 md:order-2 pl-4">
-          <div className="flex overflow-hidden flex-col justify-center w-full bg-white">
+        
+        <div className="w-full md:w-[40%] space-y-4 order-1 md:order-2">
+          <div className="w-full overflow-hidden">
             <img
               src={censoreda}
               onMouseOver={e => (e.currentTarget.src = hovera)}
               onMouseOut={e => (e.currentTarget.src = censoreda)}
               alt="Illustration 1"
-              className="object-contain w-full bg-blend-multiply aspect-[2]"
+              className="w-full object-cover aspect-[2]"
             />
           </div>
-          <div className="flex overflow-hidden flex-col justify-center mt-3.5 w-full bg-neutral-300">
+          <div className="w-full overflow-hidden">
             <img
               src={censoredb}
               onMouseOver={e => (e.currentTarget.src = hoverb)}
               onMouseOut={e => (e.currentTarget.src = censoredb)}
               alt="Illustration 2"
-              className="object-contain w-full aspect-[1.99]"
+              className="w-full object-cover aspect-[2]"
             />
           </div>
-          <div className="flex overflow-hidden flex-col justify-end mt-3.5 w-full bg-zinc-400">
+          <div className="w-full overflow-hidden">
             <img
               src={censoredc}
               onMouseOver={e => (e.currentTarget.src = hoverc)}
               onMouseOut={e => (e.currentTarget.src = censoredc)}
               alt="Illustration 3"
-              className="object-contain w-full aspect-[2]"
+              className="w-full object-cover aspect-[2]"
             />
           </div>
         </div>
