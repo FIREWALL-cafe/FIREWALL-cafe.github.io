@@ -11,10 +11,9 @@ import hoverc from "../assets/images/homepage-section_1-image_c-hover.jpg";
 
 function AboutSection() {
   return (
-    <section className="flex overflow-hidden flex-col items-center px-4 md:px-8 lg:px-32 pb-16 w-full bg-white 
-      max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-col lg:flex-row gap-10 justify-center items-center max-w-full w-[1080px]">
-        <div className="flex flex-col self-stretch my-auto w-full lg:min-w-[240px] max-md:max-w-full">
+    <section className="flex flex-col justify-center items-center pb-16 w-full max-md:pb-24 max-md:max-w-full">
+      <div className="flex flex-wrap gap-10 justify-center items-start max-w-[1080px]">
+        <div className="flex flex-col w-[55%] min-w-[240px] order-2 md:order-1">
           <div className="chinese flex flex-col w-full text-3xl md:text-4xl lg:text-[48px] font-medium leading-tight 
             lg:leading-[58px]">
             <h2 className="text-black border-black">
@@ -40,8 +39,8 @@ function AboutSection() {
             </button>
           </Link>
         </div>
-        <div className="flex flex-col self-stretch w-full lg:w-[350px] lg:min-w-[240px]">
-          <div className="flex overflow-hidden flex-col justify-center w-full lg:w-[350px] bg-white">
+        <div className="flex flex-col w-[40%] min-w-[240px] order-1 md:order-2 pl-4">
+          <div className="flex overflow-hidden flex-col justify-center w-full bg-white">
             <img
               src={censoreda}
               onMouseOver={e => (e.currentTarget.src = hovera)}
@@ -50,7 +49,7 @@ function AboutSection() {
               className="object-contain w-full bg-blend-multiply aspect-[2]"
             />
           </div>
-          <div className="flex overflow-hidden flex-col justify-center mt-3.5 w-full lg:w-[350px] bg-neutral-300">
+          <div className="flex overflow-hidden flex-col justify-center mt-3.5 w-full bg-neutral-300">
             <img
               src={censoredb}
               onMouseOver={e => (e.currentTarget.src = hoverb)}
@@ -59,7 +58,7 @@ function AboutSection() {
               className="object-contain w-full aspect-[1.99]"
             />
           </div>
-          <div className="flex overflow-hidden flex-col justify-end mt-3.5 w-full lg:w-[350px] bg-zinc-400">
+          <div className="flex overflow-hidden flex-col justify-end mt-3.5 w-full bg-zinc-400">
             <img
               src={censoredc}
               onMouseOver={e => (e.currentTarget.src = hoverc)}
