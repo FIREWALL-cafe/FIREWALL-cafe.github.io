@@ -117,3 +117,18 @@ code {
     padding: 6px 10px !important;
   }
 }
+
+/* img.newsletter-home {
+  display: block;
+  width: 100%;
+  
+  content: url(/static/media/subscribe-d-desktop.jpg)
+}
+
+
+
+@media only screen and (max-width: 1080px) {
+  img.newsletter-home{
+    content: url(/static/media/subscribe-d-mobile.jpg)
+  }
+} */
