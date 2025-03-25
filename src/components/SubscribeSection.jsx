@@ -6,37 +6,41 @@ function SubscribeSection() {
     <div className="flex flex-col w-full p-4 md:p-8 lg:p-12">
       <div className="flex flex-col max-w-full">
         <div className="flex flex-col w-full">
-          <div className="flex flex-col mt-3 md:mt-5 w-full text-base md:text-xl text-white">
+          <div className="flex flex-col mt-3 md:mt-24 w-full text-base md:text-xl text-white">
             <div>
               <div id="mc_embed_shell">
-                <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
                 <div id="mc_embed_signup">
                   <form action="https://joyceyujeanlee.us12.list-manage.com/subscribe/post?u=9a0599467edb506239b6ed989&amp;id=a007452c99&amp;f_id=0037bce2f0" 
                     method="post" 
-                    id="mc-embedded-subscribe-form" 
-                    name="mc-embedded-subscribe-form" 
+                    id="mc-embedded-subscribe-form"
+                    name="mc-embedded-subscribe-form"
                     className="validate bg-black p-2 md:p-4" 
                     target="_self"
                   >
                     <div id="mc_embed_signup_scroll" className="relative">
-                      <h2 className="text-3xl md:text-4xl lg:text-[48px] mb-4">Subscribe 订阅</h2>
-                      <div className="indicates-required text-sm md:text-base mb-2">
-                        <span className="asterisk">*</span> indicates required
-                      </div>
+                      <h2 className="text-3xl md:text-6xl lg:text-5xl mb-4 chinese">Stay connected</h2>
+                      <div className="text-3xl md:text-4xl lg:text-5xl text-red-600 chinese">订阅</div>
                       <div className="mc-field-group space-y-2">
-                        <label htmlFor="mce-EMAIL" className="block text-sm md:text-base">
-                          Email Address <span className="asterisk">*</span>
-                        </label>
-                        <input 
-                          type="email" 
-                          name="EMAIL" 
-                          data-lpignore='true' 
-                          className="required email w-full p-2 rounded" 
-                          id="mce-EMAIL" 
-                        />
                         <span id="mce-EMAIL-HELPERTEXT" className="block mt-2 text-xs md:text-sm">
                           Get newsletter updates about upcoming events and information
                         </span>
+                        <div className="flex flex-col md:flex-row items-center gap-0">
+                          <input 
+                            type="email" 
+                            name="EMAIL" 
+                            data-lpignore='true' 
+                            className="required email w-full text-black p-2 border-r border-red-600" 
+                            id="mce-EMAIL"
+                            placeholder="Email 电邮"
+                        />
+                        <input 
+                          type="submit" 
+                            name="subscribe" 
+                            id="mc-embedded-subscribe" 
+                            className="button justify-center text-red-600 bg-white p-2" 
+                            value="Submit" 
+                          />
+                        </div>
                       </div>
                       <div hidden="">
                         <input type="hidden" name="tags" value="12678301" />
@@ -51,13 +55,6 @@ function SubscribeSection() {
                       </div>
                       <div className="optionalParent mt-4">
                         <div className="clear foot flex flex-col md:flex-row items-center gap-4">
-                          <input 
-                            type="submit" 
-                            name="subscribe" 
-                            id="mc-embedded-subscribe" 
-                            className="button w-full md:w-auto px-6 py-2 rounded" 
-                            value="Subscribe" 
-                          />
                           <p className="my-2 md:my-auto">
                             <a href="http://eepurl.com/i3XcbM" 
                               title="Mailchimp - email marketing made easy and fun"

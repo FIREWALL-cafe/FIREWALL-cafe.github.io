@@ -87,7 +87,7 @@ code {
   height: 100vh;
 }
 
-#mc_embed_signup { clear:left; font:16px Helvetica,Arial,sans-serif; width: px; }
+#mc_embed_signup { clear:left; font:16px Helvetica,Arial,sans-serif; }
                       /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
                         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 
