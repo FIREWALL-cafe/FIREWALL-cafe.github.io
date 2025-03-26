@@ -24,20 +24,20 @@ function SubscribeSection() {
                         <span id="mce-EMAIL-HELPERTEXT" className="block mt-2 text-xs md:text-sm">
                           Get newsletter updates about upcoming events and information
                         </span>
-                        <div className="flex flex-col md:flex-row items-center gap-0">
+                        <div className="flex items-center w-full">
                           <input 
                             type="email" 
                             name="EMAIL" 
                             data-lpignore='true' 
-                            className="required email w-full text-black p-2 border-r border-red-600" 
+                            className="required email flex-1 text-black p-2 border-r border-red-600" 
                             id="mce-EMAIL"
                             placeholder="Email 电邮"
-                        />
-                        <input 
-                          type="submit" 
+                          />
+                          <input 
+                            type="submit" 
                             name="subscribe" 
                             id="mc-embedded-subscribe" 
-                            className="button justify-center text-red-600 bg-white p-2" 
+                            className="button whitespace-nowrap justify-center text-red-600 bg-white p-2" 
                             value="Submit" 
                           />
                         </div>
