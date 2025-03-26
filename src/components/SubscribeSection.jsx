@@ -29,7 +29,7 @@ function SubscribeSection() {
                             type="email" 
                             name="EMAIL" 
                             data-lpignore='true' 
-                            className="required email flex-1 text-black p-2 border-r border-red-600" 
+                            className="required email flex-1 text-black p-2 min-h-[40px] border-r border-red-600" 
                             id="mce-EMAIL"
                             placeholder="Email 电邮"
                           />
@@ -37,7 +37,7 @@ function SubscribeSection() {
                             type="submit" 
                             name="subscribe" 
                             id="mc-embedded-subscribe" 
-                            className="button whitespace-nowrap justify-center text-red-600 bg-white p-2" 
+                            className="button whitespace-nowrap justify-center min-h-[40px] text-red-600 bg-white p-2" 
                             value="Submit" 
                           />
                         </div>
