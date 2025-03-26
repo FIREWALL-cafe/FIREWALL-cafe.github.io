@@ -3,7 +3,8 @@ import FeatureCards from './FeatureCards';
 
 import Commentary from '../assets/icons/expert-commentary_grayscale.png';
 import CommentaryHover from '../assets/icons/expert-commentary.png';
-import Search from '../assets/icons/search-color.png';
+import Search from '../assets/icons/search-grayscale.png';
+import SearchHover from '../assets/icons/search-color.png';
 
 const features = [
   {
@@ -12,6 +13,7 @@ const features = [
     chineseTitle: { text: "专家点评", color: "border-red-600" },
     description: "Search Google and Baidu and compare the results.",
     iconSrc: Search,
+    iconSrcHover: SearchHover,
     bgColor: "bg-red-600",
     textColor: "text-white",
     borderColor: "border-red-600"
