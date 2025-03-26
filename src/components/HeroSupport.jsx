@@ -5,7 +5,7 @@ function HeroSupport() {
   return (
     <section className="flex flex-col items-center w-full py-8 md:py-16">
       <div className="chinese flex flex-col items-center w-full px-4">
-        <h1 className="text-3xl md:text-5xl font-medium text-center">
+        <h1 className="text-3xl md:text-[56px] font-medium text-center">
           Support the frontline of internet freedom advocates
         </h1>
         <div className="mt-2 text-3xl md:text-5xl font-medium leading-tight text-red-600 tracking-[2.16px] text-center">
