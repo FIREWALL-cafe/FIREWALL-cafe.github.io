@@ -1,6 +1,5 @@
 import React from 'react';
 import ArticleCard from './ArticleCard';
-import PressRussia from '../assets/images/press-russia.jpg.webp';
 import PressHKFP from '../assets/images/press/press-hkfp-default.jpg';
 import PressHKFPHover from '../assets/images/press/press-hkfp-hover.jpg';
 import PressBurnway from '../assets/images/press/Press-Burnway-default.jpg';

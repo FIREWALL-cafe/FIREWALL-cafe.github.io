@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function FeatureCard({ title, chineseTitle, description, iconSrc, iconSrcHover, bgColor, textColor, borderColor, url }) {
+function FeatureCard({ title, chineseTitle, description, iconSrc, iconSrcHover, bgColor, hoverBgColor, textColor, borderColor, url }) {
   return (
     <Link 
       to={url || '/'} 
-      className={`block h-full ${bgColor} rounded-lg border ${borderColor} transition-transform hover:scale-[1.02]`}
+      className={`block h-full ${bgColor} rounded-lg border ${borderColor} transition-all duration-500 ${hoverBgColor || 'hover:brightness-90'} group`}
     >
       <div className="flex flex-col p-6 h-[400px]">
         <div className="flex items-start justify-between mb-4">
@@ -18,21 +18,13 @@ function FeatureCard({ title, chineseTitle, description, iconSrc, iconSrcHover, 
             </div>
           </div>
           <div className="flex-shrink-0 w-[52px] h-[52px]">
-            {iconSrcHover ? (
-              <img
-                onMouseOver={e => (e.currentTarget.src = iconSrcHover)}
-                onMouseOut={e => (e.currentTarget.src = iconSrc)}
-                src={iconSrc}
-                className="w-full h-full object-contain"
-                alt={`${title} icon`}
-              />
-            ) : (
-              <img
-                src={iconSrc}
-                className="w-full h-full object-contain"
-                alt={`${title} icon`}
-              />
-            )}
+            <img
+              src={iconSrc}
+              alt={`${title} icon`}
+              data-hover-src={iconSrcHover}
+              className="w-full h-full object-contain transition-all duration-500 group-hover:[content:var(--hover-src)]"
+              style={{ '--hover-src': `url(${iconSrcHover})` }}
+            />
           </div>
         </div>
         <p className={`mt-auto text-lg md:text-xl leading-relaxed ${textColor}`}>
