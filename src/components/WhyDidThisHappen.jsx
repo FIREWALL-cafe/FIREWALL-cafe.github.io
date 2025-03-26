@@ -37,7 +37,7 @@ function WhyDidThisHappen() {
         <div className="flex flex-col justify-center w-full max-md:max-w-full max-md:text-4xl">
           <div className="chinese flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
             <img loading="lazy" src={TimelineIcon} className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" alt="" />
-            <h1 className="self-stretch my-auto border-black max-md:max-w-full max-md:text-4xl">
+            <h1 className="self-stretch my-auto text-[56px] font-medium border-black max-md:text-4xl">
               How has internet censorship evolved?
             </h1>
           </div>

@@ -15,7 +15,7 @@ function Experts() {
           <div className="chinese flex flex-col max-w-full text-6xl font-medium text-center leading-tight tracking-[2.16px] w-[664px] max-md:text-4xl">
             <div className="flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
               <img src={Commentary} alt="" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" />
-              <h1 className="self-stretch my-auto max-md:max-w-full max-md:text-4xl">
+              <h1 className="self-stretch my-auto text-[56px] font-medium max-md:text-4xl">
                 Expert editorial
               </h1>
             </div>
@@ -24,7 +24,7 @@ function Experts() {
             </div>
           </div>
           <p className="mt-5 text-2xl leading-9 text-neutral-600 max-md:max-w-full">
-            We’ve invited journalists, scholars, and social activists from around the world to provide insights on local news censorship, internet censorship practices, and related legislation, exploring how these issues shape cultural phenomena worldwide.
+            We've invited journalists, scholars, and social activists from around the world to provide insights on local news censorship, internet censorship practices, and related legislation, exploring how these issues shape cultural phenomena worldwide.
           </p>
         </div>
       </section>
