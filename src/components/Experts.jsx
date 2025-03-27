@@ -15,12 +15,12 @@ function Experts() {
           <div className="chinese flex flex-col max-w-full text-6xl font-medium text-center leading-tight tracking-[2.16px] w-[664px] max-md:text-4xl">
             <div className="flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
               <img src={Commentary} alt="" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" />
-              <h1 className="self-stretch my-auto text-[56px] font-medium max-md:text-4xl">
+              <h1 className="self-stretch my-auto md:text-[56px] text-3xl font-medium">
                 Expert editorial
               </h1>
-            </div>
-            <div className="text-red-600 max-md:max-w-full max-md:text-4xl">
-              专家点评
+              <div className="text-red-600 max-md:max-w-full text-3xl md:text-[56px]">
+                专家点评
+              </div>
             </div>
           </div>
           <p className="mt-5 text-2xl leading-9 text-neutral-600 max-md:max-w-full">

@@ -13,10 +13,10 @@ function About() {
           <div className="flex flex-col w-full">
             <div className="flex flex-col items-center">
               <div className="chinese font-medium flex flex-col items-center text-center">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-[2.16px]">
+                <h1 className="text-3xl md:text-[56px] leading-tight tracking-[2.16px]">
                   What do we lose in the dark?
-                </h2>
-                <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl leading-tight text-red-600 tracking-[2.16px]">
+                </h1>
+                <div className="mt-2 text-3xl md:text-[56px] leading-tight text-red-600 tracking-[2.16px]">
                   我们在黑暗中失去了什么?
                 </div>
               </div>

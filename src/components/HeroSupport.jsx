@@ -8,7 +8,7 @@ function HeroSupport() {
         <h1 className="text-3xl md:text-[56px] font-medium text-center">
           Support the frontline of internet freedom advocates
         </h1>
-        <div className="mt-2 text-3xl md:text-5xl font-medium leading-tight text-red-600 tracking-[2.16px] text-center">
+        <div className="mt-2 text-3xl md:text-[56px] font-medium leading-tight text-red-600 tracking-[2.16px] text-center">
           支持互联网自由战士的前线。
         </div>
       </div>
