@@ -62,20 +62,20 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
       <div className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" onClick={toggleDropdown}>
-        <div className="w-16 flex items-center max-sm:w-12">
+        <div className="w-16 flex items-center iphone:w-12">
           <img src={VoteIcon} alt="Votes" className="w-4 h-4 mr-1" />
           <span>{total_votes}</span>
         </div>
-        <div className="flex-1 min-w-[180px] max-md:min-w-[140px] max-sm:min-w-0 max-sm:w-full truncate">
+        <div className="flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate">
           {search_term_initial}
         </div>
-        <div className="flex-1 min-w-[180px] max-md:min-w-0 max-md:hidden text-zinc-400 truncate">
+        <div className="flex-1 min-w-[180px] ipad-portrait:min-w-0 iphone:hidden text-zinc-400 truncate">
           {search_term_translation}
         </div>
-        <div className="flex-1 min-w-[120px] max-md:min-w-0 max-md:hidden truncate">
+        <div className="flex-1 min-w-[120px] ipad-portrait:min-w-0 iphone:hidden truncate">
           {locationLabel}
         </div>
-        <div className="w-56 text-right max-sm:w-auto">
+        <div className="w-56 text-right iphone:w-auto">
           {formatDate(search_timestamp)}
         </div>
         <div className="w-8 flex justify-center">
