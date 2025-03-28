@@ -69,13 +69,13 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
         <div className="flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate">
           {search_term_initial}
         </div>
-        <div className="flex-1 min-w-[180px] ipad-portrait:min-w-0 iphone:hidden text-zinc-400 truncate">
+        <div className="hidden ipad-landscape:flex flex-1 min-w-[180px] text-zinc-400 truncate">
           {search_term_translation}
         </div>
-        <div className="flex-1 min-w-[120px] ipad-portrait:min-w-0 iphone:hidden truncate">
+        <div className="hidden ipad-landscape:flex flex-1 min-w-[120px] truncate">
           {locationLabel}
         </div>
-        <div className="w-56 text-right iphone:w-auto">
+        <div className="hidden ipad-landscape:flex w-56 text-right">
           {formatDate(search_timestamp)}
         </div>
         <div className="w-8 flex justify-center">

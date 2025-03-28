@@ -179,10 +179,10 @@ function SearchInput({ searchMode }) {
   
   return (
     <>
-      <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] max-md:mt-10 max-md:max-w-full">
-        <div className="flex flex-wrap self-center max-w-[720px] w-[720px] max-md:max-w-full">
-          <div className="flex flex-wrap items-center w-full border-b border-solid border-red-600 max-md:max-w-full">
-            <div className="flex items-center self-stretch my-auto min-w-[240px] relative">
+      <div className="flex overflow-hidden flex-col self-center mt-20 min-h-[200px] iphone:mt-10 iphone:max-w-full">
+        <div className="flex flex-wrap self-center max-w-[720px] w-[720px] iphone:max-w-full">
+          <div className="flex flex-wrap items-center w-full border-b border-solid border-red-600 iphone:max-w-full">
+            <div className="flex items-center self-stretch my-auto min-w-[240px] relative iphone:min-w-[200px]">
               <div 
                 onClick={() => navigate('/search')} 
                 className={`
@@ -191,13 +191,14 @@ function SearchInput({ searchMode }) {
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${!isArchive ? 'bg-slate-100 border-b-0 border-r-0 mb-[-2px]' : 'bg-white border-r-0'}
+                  iphone:px-4
                 `}
               >
                 <div className="flex gap-2 items-start">
-                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
+                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px] iphone:w-6">
                     <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
                   </div>
-                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px]">
+                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px] iphone:w-6">
                     <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
                   </div>
                 </div>
@@ -210,6 +211,7 @@ function SearchInput({ searchMode }) {
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
+                  iphone:px-4 iphone:text-xl
                 `}
               >
                 Archive
@@ -218,15 +220,15 @@ function SearchInput({ searchMode }) {
             <img
               src={Question}
               alt="Question mark red"
-              className="object-contain shrink-0 self-stretch mx-4 my-auto w-6 aspect-square"
+              className="object-contain shrink-0 self-stretch mx-4 my-auto w-6 aspect-square iphone:mx-2"
               data-tooltip-id="tooltip"
               data-tooltip-html={displayTooltipContent}
               data-tooltip-place="right"
               noArrow={true} />
             <Tooltip id="tooltip" noArrow={true} />
           </div>
-          <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 max-md:max-w-full">
-            <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px]">
+          <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full iphone:px-3 iphone:py-3">
+            <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px] iphone:flex-1">
               <input
                 placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
                 value={query}
@@ -234,19 +236,19 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 px-4 text-xl h-[56px] focus:ring-0 focus:outline-none" 
+                className="flex-1 px-4 text-xl h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
                 aria-label="Search query" 
               />
               <div className="flex items-center py-4 pr-4">
                 <button 
                   onClick={handleSubmit} 
                   disabled={!!isLoading}
-                  className="flex items-center justify-center w-10 h-10"
+                  className="flex items-center justify-center w-10 h-10 iphone:w-8 iphone:h-8"
                 >
                   <img 
                     src={isLoading ? Spinner : displaySearchIcon} 
                     alt="Search icon" 
-                    className="w-6 h-6 object-contain aspect-square min-w-[28px] min-h-[28px]" 
+                    className="w-6 h-6 object-contain aspect-square min-w-[28px] min-h-[28px] iphone:w-5 iphone:h-5" 
                   />
                 </button>
               </div>
@@ -254,11 +256,11 @@ function SearchInput({ searchMode }) {
             {isArchive && (
               <button
                 onClick={() => setFilterOpen(!filterOpen)}
-                className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''}`}
+                className={`flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''} iphone:px-3 iphone:py-1.5 iphone:text-sm`}
               >
                 <div>filters</div>
                 <FilterIcon
-                  className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''}`}
+                  className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''} iphone:w-4 iphone:h-4`}
                 />
               </button>
             )}
