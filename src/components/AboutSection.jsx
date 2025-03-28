@@ -14,15 +14,15 @@ function AboutSection() {
     <section className="w-full flex flex-col py-16">
       <div className="flex flex-col md:flex-row gap-10 justify-between">
         <div className="w-full md:w-[55%] order-2 md:order-1">
-          <div className="chinese">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-2">
-              <Link to="/about" className="hover:text-gray-800">What does internet censorship look like?</Link>
+          <div className="font-bitmap-song">
+            <h2 className="font-header-02 mb-2">
+              <Link to="/about" className="hover:text-neutral-800">What does internet censorship look like?</Link>
             </h2>
-            <div className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight text-red-600">
+            <div className="font-header-02 text-red-600">
               你知道什么时候会看到审查制度吗?
             </div>
           </div>
-          <div className="mt-8 space-y-6 text-lg md:text-xl lg:text-2xl">
+          <div className="mt-8 space-y-6 font-body-02">
             <p>
               "Just Google it." That phrase has become almost a knee-jerk response whenever we're stumped. But does the internet truly have all the answers?
             </p>
@@ -32,7 +32,7 @@ function AboutSection() {
           </div>
           <Link 
             to="/about"
-            className="mt-8 inline-flex items-center px-6 py-3 text-lg text-red-600 border border-red-600 rounded hover:bg-red-50 transition-colors"
+            className="mt-8 inline-flex items-center px-6 py-3 font-body-03-medium text-red-600 border border-red-600 rounded hover:bg-red-50 transition-colors"
           >
             About
             <ArrowRight 

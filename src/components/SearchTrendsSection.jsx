@@ -15,11 +15,11 @@ function SearchTrendsSection() {
     <section className="w-full flex flex-col py-16">
       <div className="flex flex-col md:flex-row gap-10 justify-between items-center">
         <div className="w-full md:w-1/2 order-2 md:order-1">
-          <div className="chinese">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-2">
+          <div className="font-bitmap-song">
+            <h2 className="font-header-02 mb-2">
               What are others seeking over the wall?
             </h2>
-            <div className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight text-red-600">
+            <div className="font-header-02 text-red-600">
               人们翻墙时在寻找什么?
             </div>
           </div>
@@ -28,11 +28,11 @@ function SearchTrendsSection() {
               <Link 
                 key={search.id}
                 to={`/archive?q=${encodeURIComponent(search.text)}`}
-                className={`px-4 py-2.5 rounded-full border ${
+                className={`px-4 py-2.5 rounded-full border font-body-03 ${
                   search.isEnglish
-                    ? "border-black text-black"
-                    : "border-red-600 text-red-600 text-lg"
-                } hover:bg-gray-50 transition-colors`}
+                    ? "border-neutral-900 text-neutral-900"
+                    : "border-red-600 text-red-600"
+                } hover:bg-neutral-50 transition-colors`}
               >
                 {search.text}
               </Link>
