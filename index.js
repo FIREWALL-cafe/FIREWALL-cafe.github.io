@@ -188,7 +188,7 @@ app.post('/searches', async (req, res) => {
       total: data.total,
       page: data.page,
       page_size: data.page_size,
-      data_length: data.data?.length
+      results: data.data?.length
     });
     
     res.json(data);
