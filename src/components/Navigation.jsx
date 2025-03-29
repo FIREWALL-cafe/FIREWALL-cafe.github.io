@@ -35,16 +35,16 @@ function Navigation() {
     height: '100vh'
   }
   return (
-    <div className="w-full px-8">
-      <div className="flex justify-between items-center max-w-[1280px] mx-auto w-full">
+    <div id="navigation" className="w-full">
+      <div className="flex justify-between items-center max-w-[1280px] mx-auto px-4 w-full">
         <div className="flex gap-3">
           <Link to="/">
             <img src={logo} alt="Logo" className="hidden md:block" />
             <img src={logoMobile} alt="Logo" className="block md:hidden" />
           </Link>
         </div>
-        <div className="flex gap-3 relative">
-          <button onClick={toggleDrawer} className="flex items-center justify-end w-full h-16 px-4 py-2 bg-white">
+        <div className="flex relative">
+          <button onClick={toggleDrawer} className="flex items-center justify-end w-full h-16 py-2 bg-white">
             <img src={NavMenu} alt="Menu" className="object-contain self-stretch my-auto" />
           </button>
           <Drawer
