@@ -7,10 +7,10 @@ function InfoSection() {
     <section className="w-full flex flex-col py-16">
       <div className="flex flex-col items-center">
         <div className="chinese text-center">
-          <h2 className="text-3xl md:font-display-04 font-medium leading-tight mb-2">
+          <h2 className="font-display-04 font-medium leading-tight mb-2">
             <Link to="/search" className="hover:text-gray-800">Peer over the wall. Decide for yourself.</Link>
           </h2>
-          <div className="text-3xl md:font-display-04 font-medium leading-tight text-red-600">
+          <div className="font-display-04 font-medium leading-tight text-red-600">
             越过墙往外看。自己决定。
           </div>
         </div>
