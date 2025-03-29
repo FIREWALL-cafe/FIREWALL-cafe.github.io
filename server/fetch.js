@@ -184,7 +184,7 @@ const getSearchImages = async (search_id) => {
 }
 
 const getSearchesByTerm = async (query, options = {}) => {
-  console.log('searches by term: starting: ', query);
+  console.log('FETCH.js: searches by term: starting: ', query);
   
   // Ensure pagination parameters are present
   const page = parseInt(options.page) || 1;
@@ -199,25 +199,11 @@ const getSearchesByTerm = async (query, options = {}) => {
   };
   
   const url = `${serverConfig.apiUrl}searches/terms?${querystring.stringify(queryParams)}`;
-  const { data } = await axios.get(url);
+  const response = await axios.get(url);
 
-  console.log('searches by term: data count:', Array.isArray(data) ? data.length : 'paginated');
+  console.log('FETCH.js: searches by term: data count:', Array.isArray(response) ? response.length : 'paginated');
 
-  // If the API doesn't return paginated data, we'll handle pagination here
-  if (!data.total && Array.isArray(data)) {
-    const total = data.length;
-    const start = (page - 1) * page_size;
-    const end = start + page_size;
-    
-    return {
-      total,
-      page,
-      page_size,
-      data: data.slice(start, end)
-    };
-  }
-
-  return data;
+  return response;
 }
 
 const getSearchesFilter = async (filterOptions) => {

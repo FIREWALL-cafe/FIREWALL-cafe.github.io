@@ -236,7 +236,7 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 px-4 text-xl border-left border-y border-solid border-neutral-300 h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
+                className="flex-1 px-4 font-body-02 border-left border-y border-solid border-neutral-300 h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
                 aria-label="Search query" 
               />
               <div className="flex items-center py-4 pr-4">
@@ -256,9 +256,9 @@ function SearchInput({ searchMode }) {
             {isArchive && (
               <button
                 onClick={() => setFilterOpen(!filterOpen)}
-                className={`hidden md:flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''} iphone:px-3 iphone:py-1.5 iphone:text-sm`}
+                className={`hidden md:flex cursor-pointer justify-center items-center px-4 py-2 text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''} iphone:px-3 iphone:py-1.5 iphone:text-sm`}
               >
-                <div>filters</div>
+                <div className="font-body-02">filters</div>
                 <FilterIcon
                   className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''} iphone:w-4 iphone:h-4`}
                 />
@@ -272,9 +272,9 @@ function SearchInput({ searchMode }) {
             {isArchive && (
               <button
                 onClick={() => setFilterOpen(!filterOpen)}
-                className={`md:hidden flex cursor-pointer justify-center items-center px-4 py-2 text-md text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''} iphone:px-3 iphone:py-1.5 iphone:text-sm`}
+                className={`md:hidden flex cursor-pointer justify-center items-center px-4 py-2 text-red-600 bg-white border border-red-600 hover:bg-red-50 transition-colors duration-200 rounded ${filterOpen ? 'bg-red-50' : ''} iphone:px-3 iphone:py-1.5 iphone:text-sm`}
               >
-                <div>filters</div>
+                <div className="font-body-02">filters</div>
                 <FilterIcon
                   className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''} iphone:w-4 iphone:h-4`}
                 />
