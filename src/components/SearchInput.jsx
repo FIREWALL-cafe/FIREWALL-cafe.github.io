@@ -236,7 +236,7 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 px-4 text-xl h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
+                className="flex-1 px-4 text-xl border-left border-y border-solid border-neutral-300 h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
                 aria-label="Search query" 
               />
               <div className="flex items-center py-4 pr-4">
