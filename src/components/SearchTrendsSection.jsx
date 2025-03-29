@@ -16,10 +16,10 @@ function SearchTrendsSection() {
       <div className="flex flex-col md:flex-row gap-10 justify-between items-center">
         <div className="w-full md:w-1/2 order-2 md:order-1">
           <div className="font-bitmap-song">
-            <h2 className="text-3xl md:font-display-04 mb-2">
+            <h2 className="font-display-04 mb-2">
               What are others seeking over the wall?
             </h2>
-            <div className="text-3xl md:font-display-04 text-red-600">
+            <div className="font-display-04 text-red-600">
               人们翻墙时在寻找什么?
             </div>
           </div>
