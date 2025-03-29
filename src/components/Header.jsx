@@ -6,11 +6,11 @@ function Header() {
   const [username] = useCookie("username");
 
   return (
-    <header className="w-full bg-red-600 min-h-[40px]">
+    <header className="w-full bg-red-600 min-h-[56px]">
       <div className="max-w-[1280px] mx-auto px-8 w-full">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center font-body-03-medium">
           <TimeDisplay />
-          <div className="hidden md:block text-white">
+          <div className="hidden md:flex text-white items-center">
             <span className="font-bold">Username:</span> {username || 'anonymous'}
           </div>
         </div>

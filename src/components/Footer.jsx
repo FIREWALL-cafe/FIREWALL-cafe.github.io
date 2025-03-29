@@ -19,21 +19,21 @@ function Footer() {
             </Link>
           </div>
           
-          <div className="flex gap-8 sm:gap-10 md:gap-20 justify-end">
-            <div className="flex flex-col gap-2 md:gap-4 text-xl text-red-600">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-10 justify-end font-body-02">
+            <div className="flex flex-col gap-2 md:gap-4 text-red-600 w-[130px]">
               <Link to="/about">About</Link>
               <Link to="/press">Press</Link>
               <Link to="/events">Events</Link>
             </div>
             
-            <div className="flex flex-col gap-2 md:gap-4 text-xl text-red-600">
+            <div className="flex flex-col gap-2 md:gap-4 text-red-600 w-[130px]">
               <Link to="/search">Search</Link>
               <Link to="/archive">Search Archive</Link>
-              <Link to="/editorial">Editorial</Link>
+              <Link to="/editorial">Expert Commentary</Link>
             </div>
             
-            <div className="flex flex-col justify-between">
-              <div className="flex flex-col gap-2 text-xl text-red-600">
+            <div className="flex flex-col gap-2 md:gap-4 text-red-600 w-[130px]">
+              <div className="flex flex-col gap-2 text-red-600">
                 <Link to="/support">Partner with us</Link>
                 <Link to="/contact">Contact</Link>
               </div>

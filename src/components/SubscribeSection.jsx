@@ -18,8 +18,8 @@ function SubscribeSection() {
                     target="_self"
                   >
                     <div id="mc_embed_signup_scroll" className="relative">
-                      <h2 className="text-3xl md:text-6xl lg:text-5xl mb-4 chinese">Stay connected</h2>
-                      <div className="text-3xl md:text-4xl lg:text-5xl text-red-600 chinese">订阅</div>
+                      <h2 className="text-3xl md:font-display-04 mb-4 chinese">Stay connected</h2>
+                      <div className="text-3xl md:md:font-display-04 text-red-600 chinese">保持联系</div>
                       <div className="mc-field-group space-y-2">
                         <span id="mce-EMAIL-HELPERTEXT" className="block mt-2 text-xs md:text-sm">
                           Get newsletter updates about upcoming events and information
