@@ -15,14 +15,14 @@ function AboutSection() {
       <div className="flex flex-col md:flex-row gap-10 justify-between">
         <div className="w-full md:w-[55%] order-2 md:order-1">
           <div className="font-bitmap-song">
-            <h2 className="font-header-02 mb-2">
+            <h2 className="font-display-04 mb-2">
               <Link to="/about" className="hover:text-neutral-800">What does internet censorship look like?</Link>
             </h2>
-            <div className="font-header-02 text-red-600">
+            <div className="font-display-04 text-red-600">
               你知道什么时候会看到审查制度吗?
             </div>
           </div>
-          <div className="mt-8 space-y-6 font-body-02">
+          <div className="mt-8 space-y-6 font-body-01">
             <p>
               "Just Google it." That phrase has become almost a knee-jerk response whenever we're stumped. But does the internet truly have all the answers?
             </p>

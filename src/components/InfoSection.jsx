@@ -7,14 +7,14 @@ function InfoSection() {
     <section className="w-full flex flex-col py-16">
       <div className="flex flex-col items-center">
         <div className="chinese text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-2">
+          <h2 className="text-3xl md:font-display-04 font-medium leading-tight mb-2">
             <Link to="/search" className="hover:text-gray-800">Peer over the wall. Decide for yourself.</Link>
           </h2>
-          <div className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight text-red-600">
+          <div className="text-3xl md:font-display-04 font-medium leading-tight text-red-600">
             越过墙往外看。自己决定。
           </div>
         </div>
-        <div className="mt-8 space-y-6 text-lg md:text-xl lg:text-2xl">
+        <div className="mt-8 space-y-6 font-body-01">
           <p>
             The FIREWALL dual-search engine will automatically translate your query, and provide image results from both Google and Baidu. Compare the image results side by side, and vote on whether you believe the results are being censored, manipulated, or lost in translation!
           </p>
