@@ -79,8 +79,8 @@ const QueryItem = ({
                        search_location;
 
   const isEnglish = search_term_initial_language_code === 'en';
-  const primaryTerm = isEnglish ? search_term_initial : search_term_translation;
-  const secondaryTerm = isEnglish ? search_term_translation : search_term_initial;
+  const englishLang = isEnglish ? search_term_initial : search_term_translation;
+  const chineseLang = isEnglish ? search_term_translation : search_term_initial;
 
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
@@ -94,11 +94,11 @@ const QueryItem = ({
         </div>
         
         <div className={`flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate ${isEnglish ? '' : 'text-zinc-400'}`}>
-          {primaryTerm}
+          {englishLang}
         </div>
         
-        <div className={`hidden ipad-landscape:flex flex-1 min-w-[180px] ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
-          {secondaryTerm}
+        <div className={`hidden ipad-landscape:flex flex-1 min-w-[180px] font-sc-sans ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
+          {chineseLang}
         </div>
         
         <div className="hidden ipad-landscape:flex flex-1 min-w-[120px] truncate">
