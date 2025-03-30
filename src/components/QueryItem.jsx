@@ -20,12 +20,13 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_in
     const date = new Date(parseInt(timestamp));
     return isDesktop
       ? date.toLocaleString(undefined, { 
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric',
+          day: '2-digit',
+          month: '2-digit',
+          year: '2-digit',
           hour: '2-digit',
-          minute: '2-digit'
-        })
+          minute: '2-digit',
+          hour12: false
+        }).replace(',', '')
       : date.toLocaleDateString();
   };
 
@@ -64,7 +65,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_in
     <div id={search_id} className="hover:bg-gray-100 w-full">
       <div className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" onClick={toggleDropdown}>
         <div className="w-16 flex items-center iphone:w-12">
-          <img src={VoteIcon} alt="Votes" className="w-4 h-4 mr-1" />
+          <img src={VoteIcon} alt="Votes" className="w-6 h-6 mr-1" />
           <span>{total_votes}</span>
         </div>
         <div className={`flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate ${isEnglish ? '' : 'text-zinc-400'}`}>
