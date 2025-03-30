@@ -37,7 +37,7 @@ function ImageCarousel({ images }) {
 
   return (
     <div className="w-full max-w-screen-xl mx-auto">
-      <div className="flex flex-col md:flex-row mx-4 mb-4">
+      <div className="flex flex-col md:flex-row mb-4">
         {/* Google Section */}
         <div className="w-full md:w-1/2 pb-5 md:border-r border-red-300">
           <div className="flex justify-between items-center px-8 pb-8">
@@ -52,19 +52,21 @@ function ImageCarousel({ images }) {
             />
             <Tooltip id="tooltip-google" noArrow={true} />
           </div>
-          <div className="relative flex justify-center items-center h-[320px] px-4">
+          <div className="relative flex justify-center items-center h-[320px]">
+            <div className="absolute left-0 h-full w-[60px] flex justify-center items-center">
+              <button
+                onClick={goToPrevious}
+                className="h-full w-full flex justify-center items-center"
+                aria-label="Previous image"
+              >
+                <img src={CarouselLeft} alt="Previous" className="w-12 h-12" />
+              </button>
+            </div>
             <img
               src={`/proxy-image?url=${encodeURIComponent(images.googleResults[currentIndex])}`}
               className="object-contain max-h-full max-w-full rounded-lg"
               onError={handleOnError}
             />
-            <button
-              onClick={goToPrevious}
-              className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white/90 transition-colors"
-              aria-label="Previous image"
-            >
-              <img src={CarouselLeft} alt="Previous" className="w-6 h-6" />
-            </button>
           </div>
         </div>
 
@@ -82,19 +84,21 @@ function ImageCarousel({ images }) {
             />
             <Tooltip id="tooltip-baidu" noArrow={true} />
           </div>
-          <div className="relative flex justify-center items-center h-[320px] px-4">
+          <div className="relative flex justify-center items-center h-[320px]">
             <img
               src={baiduImage(images.baiduResults[currentIndex])}
               className="object-contain max-h-full max-w-full rounded-lg"
               onError={(e) => handleOnError(e, true)}
             />
-            <button
-              onClick={goToNext}
-              className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white/90 transition-colors"
-              aria-label="Next image"
-            >
-              <img src={CarouselRight} alt="Next" className="w-6 h-6" />
-            </button>
+            <div className="absolute right-0 h-full w-[60px] flex justify-center items-center">
+              <button
+                onClick={goToNext}
+                className="h-full w-full flex justify-center items-center"
+                aria-label="Next image"
+              >
+                <img src={CarouselRight} alt="Next" className="w-12 h-12" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
