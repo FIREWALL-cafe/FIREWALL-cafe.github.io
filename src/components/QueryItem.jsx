@@ -4,7 +4,7 @@ import VoteIcon from '../assets/icons/how_to_vote.svg';
 import { locationMapping } from '../constants/locations';
 import ExpandIcon from './icons/ExpandIcon';
 
-const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_translation, search_location, search_timestamp, filterOptions }) => {
+const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_initial_language_code, search_term_translation, search_location, search_timestamp, filterOptions }) => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
 
   useEffect(() => {
@@ -59,6 +59,7 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
                        (filterOptions?.cities?.length === 1 && locationMapping[filterOptions.cities[0]]) || 
                        search_location;
 
+  const isEnglish = search_term_initial_language_code === 'en';
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
       <div className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" onClick={toggleDropdown}>
@@ -66,11 +67,11 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_tr
           <img src={VoteIcon} alt="Votes" className="w-4 h-4 mr-1" />
           <span>{total_votes}</span>
         </div>
-        <div className="flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate">
-          {search_term_initial}
+        <div className={`flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate ${isEnglish ? '' : 'text-zinc-400'}`}>
+          {isEnglish ? search_term_initial : search_term_translation}
         </div>
-        <div className="hidden ipad-landscape:flex flex-1 min-w-[180px] text-zinc-400 truncate">
-          {search_term_translation}
+        <div className={`hidden ipad-landscape:flex flex-1 min-w-[180px] ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
+          {isEnglish ? search_term_translation : search_term_initial}
         </div>
         <div className="hidden ipad-landscape:flex flex-1 min-w-[120px] truncate">
           {locationLabel}

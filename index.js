@@ -111,7 +111,7 @@ app.post("/searches/:search_id/images", async (req, res) => {
 app.post('/images', async (req, res) => {
   const data = {};
   let langTo;
-  const { query, search_client_name } = req.body;
+  const { query, search_client_name } = req.body; 
   console.log('query', query)
 
   try {
@@ -121,7 +121,7 @@ app.post('/images', async (req, res) => {
 
     const { language: langFrom } = await getDetectedLanguage(encodeURIComponent(query));
     console.log('langFrom', langFrom);
-    langTo = 'zh-CN';
+    langTo = langFrom === 'en' ? 'zh-CN' : 'en';
     
     const translatedQuery = await getTranslation(encodeURIComponent(query), langFrom, langTo);
     const enQuery = langFrom === 'en' ? query : translatedQuery;
@@ -177,7 +177,6 @@ app.post('/searches', async (req, res) => {
     if (query) {
       console.log('Processing search by term:', query);
       const decodedQuery = decodeURIComponent(query);
-      console.log('Decoded query:', decodedQuery);
       data = await getSearchesByTerm(decodedQuery, paginationParams);
     } else {
       console.log('Processing filter options:', { ...otherFilters, ...paginationParams });
