@@ -5,11 +5,11 @@ import QueryList from './QueryList';
 import useCookie from '../useCookie';
 import FilterControls from './FilterControls';
 import ApiContext from '../contexts/ApiContext';
+import QuestionIcon from './icons/QuestionIcon';
 
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
 import GoogleLogoRed from '../assets/icons/google-logo_red.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
-import Question from '../assets/icons/question_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
 import ArchiveIcon from '../assets/icons/folder_open_search.svg';
 import FilterIcon from './FilterIcon';
@@ -207,7 +207,7 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/archive')}
                 className={`
                   relative z-10
-                  px-8 py-3 md:py-3 py-2 font-body-02
+                  px-8 md:py-3 py-2 font-body-02
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
@@ -217,14 +217,14 @@ function SearchInput({ searchMode }) {
                 Archive
               </div>
             </div>
-            <img
-              src={Question}
-              alt="Question mark red"
-              className="object-contain shrink-0 self-stretch mx-4 my-auto w-6 aspect-square iphone:mx-2"
+            <QuestionIcon
+              fill="#ef4444"
+              className="w-6 h-6"
               data-tooltip-id="tooltip"
-              data-tooltip-html={displayTooltipContent}
+              data-tooltip-content={displayTooltipContent}
               data-tooltip-place="right"
-              noArrow={true} />
+              noArrow={true}
+            />
             <Tooltip id="tooltip" noArrow={true} />
           </div>
           <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">

@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import VoteButton from './VoteButton';
 import useCookie from '../useCookie';
+import QuestionIcon from './icons/QuestionIcon';
 
 import Archive from '../assets/icons/Archive_grayscale.png';
-import Question from '../assets/icons/question.svg';
 import ExpandDown from '../assets/icons/expand_circle_down.svg';
 import ExpandUp from '../assets/icons/expand_circle_up.png';
 
@@ -43,10 +43,9 @@ function VotingSection({ query, searchId }) {
             <div className="flex gap-2.5 items-start w-full text-2xl text-black min-h-[61px] max-md:max-w-full">
               <div className="flex flex-wrap flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px] max-md:max-w-full">
                 <div className="self-stretch my-auto max-md:max-w-full">What do you think about these search results?</div>
-                <img
-                  src={Question}
-                  className="object-contain shrink-0 self-stretch my-auto w-6 text-sm aspect-square"
-                  alt="Tooltip"
+                <QuestionIcon
+                  fill="#000000"
+                  className="w-6 h-6"
                   data-tooltip-id="tooltip"
                   data-tooltip-content='Vote on if you think these results are censored or not, or if the search was mistranslated.'
                   data-tooltip-place="top"
@@ -64,10 +63,9 @@ function VotingSection({ query, searchId }) {
               <div className="flex gap-2.5 items-start w-full text-2xl min-h-[61px] text-zinc-400">
                 <div className="flex flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px]">
                   <div className="self-stretch my-auto">How is this translation?</div>
-                  <img
-                    src={Question}
-                    className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
-                    alt=""
+                  <QuestionIcon
+                    fill="#000000"
+                    className="w-6 h-6"
                     data-tooltip-id="tooltip"
                     data-tooltip-content='Bilingual users are invited to vote on the quality of the translation.'
                     data-tooltip-place="top"

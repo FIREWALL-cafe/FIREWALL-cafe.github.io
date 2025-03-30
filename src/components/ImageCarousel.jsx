@@ -5,8 +5,7 @@ import googleLogo from '../assets/icons/Google-logo_long.svg';
 import baiduLogo from '../assets/icons/baidu_logo_long.svg';
 import CarouselLeft from "../assets/icons/carousel-left.svg";
 import CarouselRight from "../assets/icons/carousel-right.svg";
-import QuestionBaidu from '../assets/icons/question_red.svg';
-import QuestionGoogle from '../assets/icons/question.svg';
+import QuestionIcon from './icons/QuestionIcon';
 import NoImageAvailable from '../assets/icons/no-image-available.svg';
 import CensoredBrokenImage from '../assets/icons/censored-broken-image.png';
 
@@ -41,11 +40,10 @@ function ImageCarousel({ images }) {
       <div className="flex flex-col md:flex-row mx-4 mb-4">
         {/* Google Section */}
         <div className="w-full md:w-1/2 pb-5 md:border-r border-red-300">
-          <div className="flex justify-between items-center px-4 mb-4">
-            <img src={googleLogo} alt="Google" className="h-8 object-contain" />
-            <img
-              src={QuestionGoogle}
-              alt="Google results"
+          <div className="flex justify-between items-center px-8 pb-8">
+            <img src={googleLogo} alt="Google" className="w-28" />
+            <QuestionIcon
+              fill="#2563eb"
               className="w-6 h-6"
               data-tooltip-id="tooltip-google"
               data-tooltip-content='Results from US based Google images.'
@@ -71,12 +69,11 @@ function ImageCarousel({ images }) {
         </div>
 
         {/* Baidu Section */}
-        <div className="w-full md:w-1/2 pb-5 bg-sky-50">
-          <div className="flex justify-between items-center px-4 mb-4">
-            <img src={baiduLogo} alt="Baidu" className="h-8 object-contain pt-1" />
-            <img
-              src={QuestionBaidu}
-              alt="Baidu results"
+        <div className="w-full md:w-1/2 pb-5 bg-neutral-100">
+          <div className="flex justify-between items-center px-8 pb-8">
+            <img src={baiduLogo} alt="Baidu" className="w-28 pt-1" />
+            <QuestionIcon
+              fill="#ef4444"
               className="w-6 h-6"
               data-tooltip-id="tooltip-baidu"
               data-tooltip-content='Results from China based Baidu images.'
