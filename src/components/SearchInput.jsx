@@ -187,7 +187,7 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/search')} 
                 className={`
                   relative z-10
-                  flex flex-col justify-center items-center px-9 py-3
+                  flex flex-col justify-center items-center px-8 py-3
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${!isArchive ? 'bg-slate-100 border-b-0 border-r-0 mb-[-2px]' : 'bg-white border-r-0'}
@@ -195,10 +195,10 @@ function SearchInput({ searchMode }) {
                 `}
               >
                 <div className="flex gap-2 items-start">
-                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px] iphone:w-6">
-                    <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto aspect-square" />
+                  <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? 'w-6' : 'w-8 h-8'}`}>
+                    <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-6 aspect-square" />
                   </div>
-                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[32px] iphone:w-6">
+                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6">
                     <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
                   </div>
                 </div>
@@ -207,11 +207,11 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/archive')}
                 className={`
                   relative z-10
-                  px-8 py-3 text-2xl font-medium 
+                  px-8 py-3 font-body-02
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
-                  iphone:px-4 iphone:text-xl
+                  iphone:px-4
                 `}
               >
                 Archive
