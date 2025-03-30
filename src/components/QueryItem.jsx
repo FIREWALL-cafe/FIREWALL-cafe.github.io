@@ -4,19 +4,9 @@ import VoteIcon from '../assets/icons/how_to_vote.svg';
 import { locationMapping } from '../constants/locations';
 import ExpandIcon from './icons/ExpandIcon';
 
-const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_initial_language_code, search_term_translation, search_location, search_timestamp, filterOptions }) => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth > 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const formatDate = timestamp => {
+// Separate the date formatting logic into a custom hook
+const useDateFormat = (isDesktop) => {
+  return (timestamp) => {
     const date = new Date(parseInt(timestamp));
     return isDesktop
       ? date.toLocaleString(undefined, { 
@@ -29,10 +19,53 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_in
         }).replace(',', '')
       : date.toLocaleDateString();
   };
+};
 
-  const [dropdown, setDropdown] = useState(false);
+// Separate the image loading logic into a custom hook
+const useImageGallery = (searchId) => {
   const [imageResults, setImageResults] = useState({});
-  
+
+  const loadGallery = async () => {
+    const url = `/searches/${searchId}/images`;
+    const response = await fetch(url, { method: 'post' });
+    const results = await response.json();
+    
+    const googleResults = results
+      .filter(result => result.image_search_engine === 'google')
+      .map(result => result.image_href)
+      .slice(0, 9);
+      
+    const baiduResults = results
+      .filter(result => result.image_search_engine === 'baidu')
+      .map(result => result.image_href)
+      .slice(0, 9);
+    
+    setImageResults({ googleResults, baiduResults });
+  };
+
+  return { imageResults, loadGallery };
+};
+
+const QueryItem = ({ 
+  total_votes, 
+  search_id, 
+  search_term_initial, 
+  search_term_initial_language_code, 
+  search_term_translation, 
+  search_location, 
+  search_timestamp, 
+  filterOptions 
+}) => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+  const [dropdown, setDropdown] = useState(false);
+  const formatDate = useDateFormat(isDesktop);
+  const { imageResults, loadGallery } = useImageGallery(search_id);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth > 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleDropdown = () => {
     setDropdown(!dropdown);
@@ -41,51 +74,53 @@ const QueryItem = ({ total_votes, search_id, search_term_initial, search_term_in
     }
   };
 
-  // Load images for search id
-  const loadGallery = async () => {
-    const url = `/searches/${search_id}/images`;
-
-    const response = await fetch(url, { method: 'post' });
-    const results = await response.json();
-    const [googleResults, baiduResults] = [
-      results.filter(result => result.image_search_engine === 'google').map(result => result.image_href).slice(0, 9),
-      results.filter(result => result.image_search_engine === 'baidu').map(result => result.image_href).slice(0, 9)
-    ];
-    
-    setImageResults({ googleResults: googleResults, baiduResults: baiduResults });
-  };
-
-  // Get location from either search_location or filter city
   const locationLabel = locationMapping[search_location] || 
                        (filterOptions?.cities?.length === 1 && locationMapping[filterOptions.cities[0]]) || 
                        search_location;
 
   const isEnglish = search_term_initial_language_code === 'en';
+  const primaryTerm = isEnglish ? search_term_initial : search_term_translation;
+  const secondaryTerm = isEnglish ? search_term_translation : search_term_initial;
+
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
-      <div className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" onClick={toggleDropdown}>
+      <div 
+        className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" 
+        onClick={toggleDropdown}
+      >
         <div className="w-16 flex items-center iphone:w-12">
           <img src={VoteIcon} alt="Votes" className="w-6 h-6 mr-1" />
           <span>{total_votes}</span>
         </div>
+        
         <div className={`flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate ${isEnglish ? '' : 'text-zinc-400'}`}>
-          {isEnglish ? search_term_initial : search_term_translation}
+          {primaryTerm}
         </div>
+        
         <div className={`hidden ipad-landscape:flex flex-1 min-w-[180px] ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
-          {isEnglish ? search_term_translation : search_term_initial}
+          {secondaryTerm}
         </div>
+        
         <div className="hidden ipad-landscape:flex flex-1 min-w-[120px] truncate">
           {locationLabel}
         </div>
+        
         <div className="hidden ipad-landscape:flex w-56 text-right">
           {formatDate(search_timestamp)}
         </div>
+        
         <div className="w-8 flex justify-center">
           <ExpandIcon isExpanded={dropdown} />
         </div>
       </div>
+
       <div className={dropdown ? 'w-full' : 'hidden'}>
-        {imageResults && imageResults.googleResults && <SearchCompare images={imageResults} searchId={search_id} />}
+        {imageResults?.googleResults && (
+          <SearchCompare 
+            images={imageResults} 
+            searchId={search_id} 
+          />
+        )}
       </div>
     </div>
   );
