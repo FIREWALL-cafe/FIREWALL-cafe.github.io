@@ -21,7 +21,7 @@ const features = [
       borderColor: "border-red-600"
     },
     {
-      title: "Expert editorial",
+      title: "Expert commentary",
       url: "/editorial",
       chineseTitle: { text: "专家点评", color: "text-red-600 border-red-600" },
       description: "Read and listen to in-depth commentary from experts.",
