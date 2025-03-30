@@ -6,11 +6,11 @@ function Artist() {
   return (
     <section className="flex overflow-hidden flex-col w-full bg-white py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="chinese flex flex-col">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight">
+        <div className="font-display-01 ipad-portrait:font-display-03 flex flex-col">
+          <h2 className="leading-tight">
             About Joyce
           </h2>
-          <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight text-red-600 tracking-[2.16px]">
+          <div className="mt-2 leading-tight text-red-600 tracking-[2.16px]">
             关于乔伊斯
           </div>
           <p className="mt-2 text-xl sm:text-2xl text-zinc-400">Artist</p>

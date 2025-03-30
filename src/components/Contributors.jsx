@@ -12,7 +12,7 @@ function Contributors() {
       role: "Lead Developer",
       url: "https://phiffer.org/",
       image: Dan,
-      bio: "Dan Phiffer is an artist, programmer, and researcher working on projects that use computer networks as a raw material. His projects have been exhibited at the Museum of Modern Art, MoMA PS1, SFMOMA, Ars Electronica, and Transmediale and was a 2015-2017 resident at Eyebeam Art + Tech. Dan develops software at the American Civil Liberties Union and lives in Troy, NY."
+      bio: "Dan Phiffer is an artist, programmer, and researcher working on projects that use computer networks as a raw material. His projects have been exhibited at the Museum of Modern Art, MoMA PS1, SFMOMA, Ars Electronica, and Transmediale and was a 2015-2017 resident at Eyebeam Art + Tech."
     },
     {
       name: "Rowan Copley",
@@ -41,18 +41,18 @@ function Contributors() {
     <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-w-4xl max-md:max-w-full">
-          <div className="chinese font-medium flex flex-col items-center text-center">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-[2.16px]">
+          <div className="font-display-01 ipad-portrait:font-display-03 flex flex-col items-center text-center">
+            <h2 className="leading-tight tracking-[2.16px]">
               Contributors
             </h2>
-            <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl leading-tight text-red-600 tracking-[2.16px]">
+            <div className="mt-2 leading-tight text-red-600 tracking-[2.16px]">
               贡献者
             </div>
           </div>
           
-          <div className="mt-12 flex flex-col gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
             {contributors.map((contributor, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-6 p-6 bg-gray-50 rounded-lg">
+              <div key={index} className="flex flex-col gap-6 p-6 bg-gray-50 rounded-lg">
                 <a 
                   href={contributor.url}
                   target="_blank"
@@ -62,7 +62,7 @@ function Contributors() {
                   <img 
                     src={contributor.image} 
                     alt={contributor.name}
-                    className="w-48 h-48 object-cover rounded-lg"
+                    className="w-full h-48 object-cover rounded-lg"
                   />
                 </a>
                 <div className="flex flex-col flex-grow">
