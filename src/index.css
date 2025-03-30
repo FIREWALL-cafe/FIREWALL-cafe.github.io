@@ -18,7 +18,7 @@ body {
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'WenQuanYi Bitmap Song 13px'
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'WenQuanYi Bitmap Song 13px, Noto Sans SC'
     sans-serif;
   /* TODO: add Souce Sans Pro to fonts library https: //firewallcafe.com/wp-content/themes/fwc/fonts/source-sans-pro.css */
   /* font: 16px/24px 'Source Sans Pro', sans-serif; */
@@ -47,6 +47,11 @@ header{width:100%;}
 @font-face {
   font-family: WenQuanYi;
   src: url('./fonts/WenQuanYi Bitmap Song 13px.ttf');
+}
+
+@font-face {
+  font-family: Noto Sans SC;
+  src: url('./fonts/NotoSansSC-Regular.ttf');
 }
 
 code {

@@ -6,7 +6,7 @@ const QueryListHeader = () => (
   <div className="flex flex-wrap gap-4 py-1 w-full text-[20px] text-black border-b border-solid border-b-neutral-300 min-h-[32px] pr-4">
     <div className="w-16 whitespace-nowrap iphone:w-12">Votes</div>
     <div className="flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full">Query EN</div>
-    <div className="hidden ipad-landscape:flex flex-1 min-w-[180px]">搜索结果 中文</div>
+    <div className="hidden ipad-landscape:flex flex-1 min-w-[180px] font-sc-sans">搜索结果 中文</div>
     <div className="hidden ipad-landscape:flex flex-1 min-w-[120px]">Search Source</div>
     <div className="hidden ipad-landscape:flex w-56 text-right justify-center">Date</div>
     <div className="flex justify-center"></div>
