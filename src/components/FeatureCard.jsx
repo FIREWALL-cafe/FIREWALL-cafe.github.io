@@ -7,7 +7,7 @@ function FeatureCard({ title, chineseTitle, description, iconSrc, iconSrcHover, 
       to={url || '/'} 
       className={`block h-full ${bgColor} rounded-lg border ${borderColor} transition-all duration-500 ${hoverBgColor || 'hover:brightness-90'} group`}
     >
-      <div className="flex flex-col p-6 h-[400px]">
+      <div className="flex flex-col p-6 h-[320px] ipad-landscape:h-[400px]">
         <div className="flex items-start justify-between mb-4">
           <div className="flex flex-col gap-2">
             <h2 className={`chinese text-2xl md:text-4xl font-medium ${textColor}`}>
