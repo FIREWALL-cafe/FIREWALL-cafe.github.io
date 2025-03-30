@@ -8,7 +8,7 @@ const QueryListHeader = () => (
     <div className="flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full">Query EN</div>
     <div className="hidden ipad-landscape:flex flex-1 min-w-[180px] font-sc-sans">搜索结果 中文</div>
     <div className="hidden ipad-landscape:flex flex-1 min-w-[120px]">Search Source</div>
-    <div className="hidden ipad-landscape:flex w-56 text-right justify-center">Date</div>
+    <div className="ipad-landscape:flex w-56 text-right mr-4">Date</div>
     <div className="flex justify-center"></div>
   </div>
 );
