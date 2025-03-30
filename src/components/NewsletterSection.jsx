@@ -6,15 +6,15 @@ import UsHeadlinesMobile from "../assets/images/subscribe-d-mobile.jpg";
 
 function NewsletterSection({image}) {
   return (
-    <section className="flex overflow-hidden relative flex-col md:flex-row justify-center items-start w-full 
+    <section className="flex overflow-hidden relative flex-col md:flex-row justify-center items-start w-full min-h-[600px]
       bg-black border-0 max-md:max-w-full">
-      <div className="mx-auto w-full flex flex-col md:flex-row">
-        <div className="h-full w-full order-1 md:order-2">
-          <picture>
+      <div className="mx-auto w-full h-full flex flex-col md:flex-row">
+        <div className="h-full w-full order-1 md:order-2 relative min-h-[600px]">
+          <picture className="absolute inset-0">
             <source media="(max-width: 1079x)" srcSet={UsHeadlinesMobile} />
             <source media="(min-width: 1080px)" srcSet={UsHeadlines} />
             {React.cloneElement(image, {
-              className: `w-full h-full object-cover`
+              className: `w-full h-full object-cover object-center`
             })}
           </picture>
         </div>
