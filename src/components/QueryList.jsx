@@ -14,7 +14,7 @@ const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
               <div className="w-16 whitespace-nowrap iphone:w-12">Votes</div>
               <div className="flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full">Query EN</div>
               <div className="flex-1 min-w-[180px] ipad-portrait:min-w-0 iphone:hidden">搜索结果 中文</div>
-              <div className="flex-1 min-w-[120px] ipad-portrait:min-w-0 iphone:hidden">Location</div>
+              <div className="flex-1 min-w-[120px] ipad-portrait:min-w-0 iphone:hidden">Search Source</div>
               <div className="w-56 text-right iphone:w-auto">Date</div>
               <div className="w-8 flex justify-center"></div>
             </div>

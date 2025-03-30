@@ -187,7 +187,7 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/search')} 
                 className={`
                   relative z-10
-                  flex flex-col justify-center items-center px-8 py-3
+                  flex flex-col justify-center items-center px-8 py-3 md:py-3 py-2
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${!isArchive ? 'bg-slate-100 border-b-0 border-r-0 mb-[-2px]' : 'bg-white border-r-0'}
@@ -207,7 +207,7 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/archive')}
                 className={`
                   relative z-10
-                  px-8 py-3 font-body-02
+                  px-8 py-3 md:py-3 py-2 font-body-02
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
@@ -227,7 +227,7 @@ function SearchInput({ searchMode }) {
               noArrow={true} />
             <Tooltip id="tooltip" noArrow={true} />
           </div>
-          <div className="flex justify-center p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full iphone:px-3 iphone:py-3">
+          <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">
             <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px] iphone:flex-1">
               <input
                 placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
