@@ -10,7 +10,7 @@ module.exports = {
         'macbook': '1280px',    // MacBook Air 3
         'ipad-landscape': '1133px', // iPad Mini 8.3 landscape
         'ipad-portrait': '744px',   // iPad Mini portrait
-        'iphone': '390px',      // iPhone 14
+        'iphone': '320px',      // iPhone 14
       },
       colors: {
         // Neutral colors
