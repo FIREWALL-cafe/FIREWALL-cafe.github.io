@@ -9,14 +9,18 @@ const useDateFormat = (isDesktop) => {
   return (timestamp) => {
     const date = new Date(parseInt(timestamp));
     return isDesktop
-      ? date.toLocaleString(undefined, { 
-          day: '2-digit',
-          month: '2-digit',
-          year: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        }).replace(',', '')
+      ? {
+          date: date.toLocaleDateString(undefined, {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit'
+          }),
+          time: date.toLocaleTimeString(undefined, {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          })
+        }
       : date.toLocaleDateString();
   };
 };
@@ -56,13 +60,13 @@ const QueryItem = ({
   search_timestamp, 
   filterOptions 
 }) => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 744);
   const [dropdown, setDropdown] = useState(false);
   const formatDate = useDateFormat(isDesktop);
   const { imageResults, loadGallery } = useImageGallery(search_id);
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth > 768);
+    const handleResize = () => setIsDesktop(window.innerWidth > 744);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -105,8 +109,16 @@ const QueryItem = ({
           {locationLabel}
         </div>
         
-        <div className="hidden ipad-landscape:flex w-56 text-right">
-          {formatDate(search_timestamp)}
+        <div className="flex-1 w-56 text-right">
+          {isDesktop ? (
+            <span>
+              {formatDate(search_timestamp).date}
+              <span className="mx-4"></span>
+              {formatDate(search_timestamp).time}
+            </span>
+          ) : (
+            formatDate(search_timestamp)
+          )}
         </div>
         
         <div className="w-8 flex justify-center">
