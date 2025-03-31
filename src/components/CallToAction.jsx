@@ -4,17 +4,17 @@ import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function CallToAction() {
   return (
-    <section className="flex flex-col items-center w-full bg-rose-100 py-16">
+    <section className="flex flex-col overflow-hidden items-center w-full bg-rose-100 py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-        <div className="chinese text-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight">
+        <div className="font-bitmap-song text-center">
+          <h2 className="font-display-02 leading-tight">
             Become a FIREWALL Cafe supporter
           </h2>
-          <div className="mt-2 text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight text-red-600 tracking-[2.16px]">
+          <div className="mt-2 font-display-02 leading-tight text-red-600 tracking-[2.16px]">
             成为赞助商
           </div>
         </div>
-        <p className="mt-6 text-lg lg:text-xl text-center max-w-2xl">
+        <p className="mt-6 font-body-02 text-center">
           Learn how you can support FIREWALL Cafe and fight for the freedom of information in China and worldwide.
         </p>
         <Link 

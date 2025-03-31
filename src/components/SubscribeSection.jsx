@@ -1,5 +1,4 @@
 import React from "react";
-import SubscribeMailchimp from "../assets/images/subscribe_mailchimp.jpg";
 
 function SubscribeSection() {
   return (
