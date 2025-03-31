@@ -31,7 +31,7 @@ function HeroSection() {
     <section className="w-full flex flex-col items-center py-16">
       <h1 
         aria-live="polite" 
-        className="font-bitmap-song font-display-01 text-center min-h-[72px] md:min-h-[120px] lg:min-h-[144px]"
+        className="font-bitmap-song font-display-01 text-center h-[72px] md:h-[120px] lg:h-[144px]"
       >
         <span ref={el} />
       </h1>

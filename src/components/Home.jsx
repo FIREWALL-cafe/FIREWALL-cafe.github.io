@@ -5,11 +5,8 @@ import InfoSection from "./InfoSection";
 import SearchTrendsSection from "./SearchTrendsSection";
 import NewsletterSection from "./NewsletterSection";
 
-import UsHeadlines from "../assets/images/subscribe-d-desktop.jpg";
-import UsHeadlinesMobile from "../assets/images/subscribe-d-mobile.jpg";
-
 function Home() {
-  const image = <img src={UsHeadlines} alt="US Headlines" className="w-full h-full object-cover" />
+  const image = 'usHeadlines'
   return (
     <main className="w-full bg-neutral-50">
       <div className="max-w-[1080px] mx-auto px-4 md:px-6">

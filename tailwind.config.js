@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'newsletter': "url('assets/images/subscribe-text_background.jpg')", // Path relative to tailwind.config.js
+      },
       screens: {
         'macbook': '1280px',    // MacBook Air 3
         'ipad-landscape': '962px', // iPad Mini 8.3 landscape
