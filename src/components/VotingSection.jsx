@@ -46,10 +46,11 @@ function VotingSection({ query, searchId }) {
                 <QuestionIcon
                   fill="#000000"
                   className="w-6 h-6"
-                  data-tooltip-id="tooltip"
+                  data-tooltip-id="tooltip-think"
                   data-tooltip-content='Vote on if you think these results are censored or not, or if the search was mistranslated.'
                   data-tooltip-place="top"
                 />
+                <Tooltip id="tooltip-think" noArrow={true} />
               </div>
             </div>
             <div className="flex gap-4 items-stretch mt-8 w-full rounded-md max-md:max-w-full">
@@ -66,11 +67,11 @@ function VotingSection({ query, searchId }) {
                   <QuestionIcon
                     fill="#000000"
                     className="w-6 h-6"
-                    data-tooltip-id="tooltip"
+                    data-tooltip-id="tooltip-how"
                     data-tooltip-content='Bilingual users are invited to vote on the quality of the translation.'
                     data-tooltip-place="top"
                   />
-                  <Tooltip id="tooltip" />
+                  <Tooltip id="tooltip-how" noArrow={true} />
                 </div>
               </div>
               <div className="flex gap-4 items-start mt-8 w-full rounded-md">
