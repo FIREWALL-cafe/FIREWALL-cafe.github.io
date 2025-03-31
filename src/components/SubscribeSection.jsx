@@ -5,7 +5,7 @@ function SubscribeSection() {
     <div className="flex flex-col w-full p-4 md:p-8 lg:p-12 bg-newsletter">
       <div className="flex flex-col max-w-full">
         <div className="flex flex-col w-full">
-          <div className="flex flex-col mt-3 md:mt-24 w-full text-base md:text-xl text-white">
+          <div className="flex flex-col mt-3 md:mt-24 w-full md:text-xl text-white">
             <div>
               <div id="mc_embed_shell">
                 <div id="mc_embed_signup">
@@ -17,8 +17,8 @@ function SubscribeSection() {
                     target="_self"
                   >
                     <div id="mc_embed_signup_scroll" className="relative">
-                      <h2 className="text-3xl md:font-display-04 mb-4 chinese">Stay connected</h2>
-                      <div className="text-3xl md:md:font-display-04 text-red-600 chinese">保持联系</div>
+                      <h2 className="font-display-04 mb-4 font-bitmap-song">Stay connected</h2>
+                      <div className="font-display-04 text-red-600 font-bitmap-song">保持联系</div>
                       <div className="mc-field-group space-y-2">
                         <span id="mce-EMAIL-HELPERTEXT" className="block mt-2 text-xs md:text-sm">
                           Get newsletter updates about upcoming events and information
