@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       screens: {
         'macbook': '1280px',    // MacBook Air 3
-        'ipad-landscape': '1133px', // iPad Mini 8.3 landscape
+        'ipad-landscape': '962px', // iPad Mini 8.3 landscape
         'ipad-portrait': '744px',   // iPad Mini portrait
         'iphone': '320px',      // iPhone 14
       },

@@ -37,13 +37,41 @@ function ImageCarousel({ images }) {
 
   return (
     <div className="w-full max-w-screen-xl mx-auto">
-      <div className="flex flex-col md:flex-row mb-4">
+      <div className="flex flex-col md:flex-row">
+        {/* Headers */}
+        <div className="flex flex-row w-full md:hidden">
+          <div id="google-header" className="flex items-center px-8 pb-4 w-1/2">
+            <img src={googleLogo} alt="Google" className="w-16 pt-4" />
+            <QuestionIcon
+              fill="#77B5F0"
+              className="w-8 h-8 pt-4"
+              data-tooltip-id="tooltip-google"
+              data-tooltip-content='Results from US based Google images.'
+              data-tooltip-place="top"
+              noArrow={true}
+            />
+            <Tooltip id="tooltip-google" noArrow={true} />
+          </div>
+          <div id="baidu-header" className="flex items-center px-8 pb-4 w-1/2">
+            <img src={baiduLogo} alt="Baidu" className="w-16 pt-4" />
+            <QuestionIcon
+              fill="#ef4444"
+              className="w-8 h-8 pt-4"
+              data-tooltip-id="tooltip-baidu"
+              data-tooltip-content='Results from China based Baidu images.'
+              data-tooltip-place="top"
+              noArrow={true}
+            />
+            <Tooltip id="tooltip-baidu" noArrow={true} />
+          </div>
+        </div>
+
         {/* Google Section */}
-        <div className="w-full md:w-1/2 pb-5 md:border-r border-red-300">
-          <div className="flex justify-between items-center px-8 pb-8">
+        <div className="w-full md:w-1/2 ipad-portrait:pb-5 md:border-r border-red-300">
+          <div id="google-header-md" className="hidden md:flex justify-between items-center px-8 pb-8">
             <img src={googleLogo} alt="Google" className="w-28" />
             <QuestionIcon
-              fill="#2563eb"
+              fill="#77B5F0"
               className="w-6 h-6"
               data-tooltip-id="tooltip-google"
               data-tooltip-content='Results from US based Google images.'
@@ -52,7 +80,7 @@ function ImageCarousel({ images }) {
             />
             <Tooltip id="tooltip-google" noArrow={true} />
           </div>
-          <div className="relative flex justify-center items-center h-[320px]">
+          <div id="google-carousel" className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex">
             <div className="absolute left-0 h-full w-[60px] flex justify-center items-center">
               <button
                 onClick={goToPrevious}
@@ -64,15 +92,15 @@ function ImageCarousel({ images }) {
             </div>
             <img
               src={`/proxy-image?url=${encodeURIComponent(images.googleResults[currentIndex])}`}
-              className="object-contain max-h-full max-w-full rounded-lg"
+              className="object-contain max-h-full max-w-full rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
               onError={handleOnError}
             />
           </div>
         </div>
 
         {/* Baidu Section */}
-        <div className="w-full md:w-1/2 pb-5 bg-neutral-100">
-          <div className="flex justify-between items-center px-8 pb-8">
+        <div className="w-full md:w-1/2 ipad-portrait:pb-5 bg-neutral-100">
+          <div id="baidu-header-md" className="hidden md:flex justify-between items-center px-8 pb-8">
             <img src={baiduLogo} alt="Baidu" className="w-28 pt-1" />
             <QuestionIcon
               fill="#ef4444"
@@ -84,10 +112,10 @@ function ImageCarousel({ images }) {
             />
             <Tooltip id="tooltip-baidu" noArrow={true} />
           </div>
-          <div className="relative flex justify-center items-center h-[320px]">
+          <div id="baidu-carousel" className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex">
             <img
               src={baiduImage(images.baiduResults[currentIndex])}
-              className="object-contain max-h-full max-w-full rounded-lg"
+              className="object-contain max-h-full max-w-full rounded-lg  shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
               onError={(e) => handleOnError(e, true)}
             />
             <div className="absolute right-0 h-full w-[60px] flex justify-center items-center">
@@ -104,8 +132,8 @@ function ImageCarousel({ images }) {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex flex-col md:flex-row border-t border-red-300">
-        <div className="w-full md:w-1/2 grid grid-cols-3 gap-2 p-4 md:border-r border-red-300">
+      <div className="flex flex-row">
+        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4 border-r border-red-300">
           {images.googleResults.map((image, index) => (
             <button 
               key={index} 
@@ -120,7 +148,7 @@ function ImageCarousel({ images }) {
             </button>
           ))}
         </div>
-        <div className="w-full md:w-1/2 grid grid-cols-3 gap-2 p-4 bg-sky-50">
+        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4 bg-sky-50">
           {images.baiduResults.map((image, index) => (
             <button 
               key={index} 
