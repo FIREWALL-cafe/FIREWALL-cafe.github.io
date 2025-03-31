@@ -96,11 +96,10 @@ function SearchInput({ searchMode }) {
           throw new Error(response.error);
         }
 
-        navigate('/archive');
-        // const { googleResults, baiduResults, translation, searchId } = response;
-        // setSearchId(searchId);
-        // setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
-        // setTranslation(translation || '');
+        const { googleResults, baiduResults, translation, searchId } = response;
+        setSearchId(searchId);
+        setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
+        setTranslation(translation || '');
       }
     } catch (e) {
       console.error('Search error:', e);
@@ -187,7 +186,7 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/search')} 
                 className={`
                   relative z-10
-                  flex flex-col justify-center items-center px-8 py-3 md:py-3 py-2
+                  flex flex-col justify-center items-center px-8 md:py-3 py-2
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
                   ${!isArchive ? 'bg-slate-100 border-b-0 border-r-0 mb-[-2px]' : 'bg-white border-r-0'}
@@ -223,7 +222,6 @@ function SearchInput({ searchMode }) {
               data-tooltip-id="tooltip"
               data-tooltip-content={displayTooltipContent}
               data-tooltip-place="right"
-              noArrow={true}
             />
             <Tooltip id="tooltip" noArrow={true} />
           </div>
