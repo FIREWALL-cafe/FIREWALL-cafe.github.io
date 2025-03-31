@@ -2,7 +2,7 @@ import React from "react";
 
 function SubscribeSection() {
   return (
-    <div className="flex flex-col w-full p-4 md:p-8 lg:p-12">
+    <div className="flex flex-col w-full p-4 md:p-8 lg:p-12 bg-newsletter">
       <div className="flex flex-col max-w-full">
         <div className="flex flex-col w-full">
           <div className="flex flex-col mt-3 md:mt-24 w-full text-base md:text-xl text-white">
@@ -13,7 +13,7 @@ function SubscribeSection() {
                     method="post" 
                     id="mc-embedded-subscribe-form"
                     name="mc-embedded-subscribe-form"
-                    className="validate bg-black p-2 md:p-4" 
+                    className="validate bg-newsletter p-2 md:p-4" 
                     target="_self"
                   >
                     <div id="mc_embed_signup_scroll" className="relative">
