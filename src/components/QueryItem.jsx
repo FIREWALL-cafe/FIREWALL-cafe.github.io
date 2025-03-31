@@ -82,7 +82,10 @@ const QueryItem = ({
                        (filterOptions?.cities?.length === 1 && locationMapping[filterOptions.cities[0]]) || 
                        search_location;
 
-  const isEnglish = search_term_initial_language_code === 'en';
+  var isEnglish = true;
+  if (search_term_initial_language_code === 'zh-CN') {
+    isEnglish = false;
+  }
   const englishLang = isEnglish ? search_term_initial : search_term_translation;
   const chineseLang = isEnglish ? search_term_translation : search_term_initial;
 
