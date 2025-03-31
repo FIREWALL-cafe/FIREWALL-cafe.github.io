@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import googleLogo from '../assets/icons/Google-logo_long.svg';
 import baiduLogo from '../assets/icons/baidu_logo_long.svg';
@@ -11,6 +15,7 @@ import CensoredBrokenImage from '../assets/icons/censored-broken-image.png';
 
 function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const handleOnError = (e, isBaidu = false) => {
     console.log("Baidu, images.baiduResults.length", isBaidu, images.baiduResults.length);
@@ -34,6 +39,18 @@ function ImageCarousel({ images }) {
       prevIndex === 0 ? 8 : prevIndex - 1
     );
   };
+
+  const handleThumbnailClick = (index) => {
+    setCurrentIndex(index);
+    setIsLightboxOpen(true);
+  };
+
+  // Create slides array for the lightbox with pairs of images
+  const slides = images.googleResults.map((googleImage, index) => ({
+    google: `/proxy-image?url=${encodeURIComponent(googleImage)}`,
+    baidu: baiduImage(images.baiduResults[index]),
+    alt: `Image Pair ${index + 1}`
+  }));
 
   return (
     <div className="w-full max-w-screen-xl mx-auto">
@@ -137,7 +154,7 @@ function ImageCarousel({ images }) {
           {images.googleResults.map((image, index) => (
             <button 
               key={index} 
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => handleThumbnailClick(index)}
               className={`aspect-square rounded-lg overflow-hidden ${currentIndex === index ? 'ring-2 ring-blue-400' : ''}`}
             >
               <img
@@ -152,7 +169,7 @@ function ImageCarousel({ images }) {
           {images.baiduResults.map((image, index) => (
             <button 
               key={index} 
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => handleThumbnailClick(index)}
               className={`aspect-square rounded-lg overflow-hidden ${currentIndex === index ? 'ring-2 ring-red-400' : ''}`}
             >
               <img
@@ -164,6 +181,81 @@ function ImageCarousel({ images }) {
           ))}
         </div>
       </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        open={isLightboxOpen}
+        close={() => setIsLightboxOpen(false)}
+        index={currentIndex}
+        slides={slides}
+        carousel={{ imageFit: "cover" }}
+        render={{
+          slide: ({ slide }) => (
+            <div className="flex flex-row w-full">
+              {/* Google Section */}
+              <div className="w-1/2 relative flex flex-col items-center justify-center bg-white">
+                <div className="flex flex-col items-center justify-center aspect-square overflow-hidden">
+                  <img
+                    src={slide.google}
+                    className="w-full h-full p-2 object-cover rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+                    onError={handleOnError}
+                  />
+                </div>
+                <div className="flex justify-between w-full pl-2 mt-4">
+                  <img src={googleLogo} alt="Google" className="w-12" />
+                  <QuestionIcon
+                    fill="#77B5F0"
+                    className="w-4 h-4 mr-2"
+                    data-tooltip-id="tooltip-google"
+                    data-tooltip-content='Results from US based Google images.'
+                    data-tooltip-place="top"
+                    noArrow={true}
+                  />
+                  <Tooltip id="tooltip-google" noArrow={true} />
+                </div>
+              </div>
+
+              {/* Baidu Section */}
+              <div className="w-1/2 relative flex flex-col items-center justify-center bg-neutral-100 border-l border-red-300">
+                <div className="flex flex-col items-center justify-center aspect-square overflow-hidden">
+                  <img
+                    src={slide.baidu}
+                    className="w-full h-full p-2 object-cover rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+                    onError={(e) => handleOnError(e, true)}
+                  />
+                </div>
+                <div className="flex justify-between w-full pl-2 mt-4">
+                  <img src={baiduLogo} alt="Baidu" className="w-12 pt-1" />
+                  <QuestionIcon
+                    fill="#ef4444"
+                    className="w-4 h-4 mr-4"
+                    data-tooltip-id="tooltip-baidu"
+                    data-tooltip-content='Results from China based Baidu images.'
+                    data-tooltip-place="left"
+                    noArrow={true}
+                  />
+                  <Tooltip id="tooltip-baidu" noArrow={true} />
+                </div>
+              </div>
+            </div>
+          )
+        }}
+        styles={{
+          container: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
+          root: { 
+            "--yarl__color_backdrop": "rgba(0, 0, 0, 0.9)",
+            "--yarl__slide_width": "100%",
+            "--yarl__slide_height": "100%",
+            "--yarl__slide_padding": "0"
+          },
+          thumbnails: { "--yarl__thumbnails_thumbnail_border_radius": "0.5rem" },
+          thumbnail: { "--yarl__thumbnail_border_radius": "0.5rem" },
+          slide: { padding: "0", width: "100%", height: "100%" },
+          slide_container: { padding: "0", width: "100%", height: "100%" },
+          slide_image: { padding: "0", width: "100%", height: "100%" },
+          slide_image_container: { padding: "0", width: "100%", height: "100%" }
+        }}
+      />
     </div>
   );
 }
