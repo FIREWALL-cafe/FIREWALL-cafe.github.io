@@ -11,7 +11,7 @@ function Header() {
         <div className="flex justify-between items-center font-body-03-medium">
           <TimeDisplay />
           <div className="hidden md:flex text-white items-center">
-            <span className="font-bold">Username:</span> {username || 'anonymous'}
+            <span className="font-bold mr-1">Username:</span> {username}
           </div>
         </div>
       </div>
