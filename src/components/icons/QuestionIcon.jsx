@@ -9,7 +9,6 @@ const QuestionIcon = ({
   'data-tooltip-content': tooltipContent,
   'data-tooltip-html': tooltipHtml,
   'data-tooltip-place': tooltipPlace,
-  noArrow,
   ...props 
 }) => {
   return (
@@ -24,7 +23,6 @@ const QuestionIcon = ({
       data-tooltip-content={tooltipContent}
       data-tooltip-html={tooltipHtml}
       data-tooltip-place={tooltipPlace}
-      noArrow={noArrow}
       {...props}
     >
       <mask id="mask0_2699_197780" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
