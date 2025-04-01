@@ -53,7 +53,7 @@ function Inaugural() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full max-w-[1080px]">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
           <div className="flex flex-col w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
               INAUGURAL New York 2016 Pop-up!
             </h1>
             
@@ -63,7 +63,7 @@ function Inaugural() {
                   <ClockIcon className="w-5 h-5" />
                   <div>
                     <p className="text-xl">Exhibition: Feb. 8 - Mar. 6, 2016</p>
-                    <p className="text-gray-600 pl-7">Artist Reception: Feb. 21, 2016, 6–9 PM</p>
+                    <p className="text-gray-600">Artist Reception: Feb. 21, 2016, 6–9 PM</p>
                   </div>
                 </div>
               </div>

@@ -27,53 +27,26 @@ function OsloMiami() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black max-md:leading-[54px]">
-              Oslo Freedom Forum 2021 Miami Interactive Expo
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+              2021 Oslo Freedom Forum Miami
             </h1>
             
             <div className="mt-8 space-y-6">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
-                <span className="text-xl">Oct. 4–5, 2021</span>
+                <span className="font-body-01">Oct. 4, 2021</span>
               </div>
 
               <div className="flex gap-2">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
-                  <a 
-                    href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
-                    className="text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    New World Center, Miami, Florida
-                  </a>
-                  <br />
-                  500 17th St
-                  <br />
-                  Miami Beach, FL 33139
+                  <p className="font-body-01 text-gray-600">
+                    Miami, FL
+                  </p>
                 </div>
               </div>
 
-              <p className="text-gray-700">
-                A two-day pop-up at an interactive expo focusing on fake news, censorship and encryption. 
-                The event was part of the Oslo Freedom Forum 2021, Miami.
-              </p>
-
-              <p>
-                Click{' '}
-                <a 
-                  href="https://oslofreedomforum.com/off21/#2021interactive"
-                  className="text-blue-600 hover:text-blue-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here
-                </a>
-                {' '}to learn more!
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 {images.map((image, index) => (
                   <div key={index} className="flex flex-col">
                     <img 
@@ -81,7 +54,7 @@ function OsloMiami() {
                       alt={image.description}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600">{image.description}</p>
+                    <p className="mt-2 text-sm text-gray-600 italic">{image.description}</p>
                   </div>
                 ))}
               </div>
