@@ -105,7 +105,7 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVot
     >
       <div id={`${voteMeta[voteCategory].name}-vote-icon`} className="w-full flex justify-between items-start">
         <img src={imgSrc} className="w-9 h-9" />
-        {totalVotes && (
+        {totalVotes > 0 && (
           <div className="flex items-center gap-1">
             <span className="font-body-02-bold-sm">{totalVotes}</span>
             <img src={VoteIcon} className="w-6 h-6" />
