@@ -107,6 +107,7 @@ module.exports = {
         'body-01': ['24px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '400' }],
         'body-02': ['20px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '400' }],
         'body-02-bold': ['20px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '600' }],
+        'body-02-bold-sm': ['20px', { lineHeight: '120%', letterSpacing: '0%', fontWeight: '600' }],
         'body-03': ['17px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '400' }],
         'body-03-medium': ['17px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '500' }],
         'body-03-bold': ['17px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '600' }],
