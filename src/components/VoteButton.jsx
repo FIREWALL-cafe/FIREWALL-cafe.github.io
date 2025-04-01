@@ -18,7 +18,7 @@ security: 83376c1e81
 */
 
 
-function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, total_votes }) {
+function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVotes }) {
   const [isSelected, setSelected] = useState(false);
   const [isDisabled, setDisabled] = useState(disabled);
 
@@ -87,11 +87,8 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, total_vo
     setSelected(true);
     setDisabled(true);
     voteHandler(voteCategory);
-    if (voteCategory === 'votes_lost_in_translation') {
-      console.log('votes_lost_in_translation');
-    }
   }
-  total_votes = 10;
+
   return (
     <button
       className={`
@@ -108,9 +105,9 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, total_vo
     >
       <div id={`${voteMeta[voteCategory].name}-vote-icon`} className="w-full flex justify-between items-start">
         <img src={imgSrc} className="w-9 h-9" />
-        {total_votes && (
+        {totalVotes && (
           <div className="flex items-center gap-1">
-            <span className="font-body-02-bold-sm">{total_votes}</span>
+            <span className="font-body-02-bold-sm">{totalVotes}</span>
             <img src={VoteIcon} className="w-6 h-6" />
           </div>
         )}

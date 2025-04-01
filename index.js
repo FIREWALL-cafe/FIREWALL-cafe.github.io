@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages } = require('./server/fetch');
+const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages, getSearchVoteCounts } = require('./server/fetch');
 const postmark = require('postmark');
 
 const serverConfig = require('./server/config');
@@ -183,7 +183,7 @@ app.post('/searches', async (req, res) => {
       data = await getSearchesFilter({ ...otherFilters, ...paginationParams });
     }
 
-    console.log('Search results:', data);
+    console.log('Search results:', data.data.length);
     
     res.json(data);
   } catch (error) {
@@ -198,17 +198,28 @@ app.post('/searches', async (req, res) => {
 });
 
 app.post('/vote', async (req, res) => {
-  let totalVotes = 0;
   console.log('/vote:', req.body);
   
   try {
     req.body.vote_ip_address = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    totalVotes = await postVote({ ...req.body });
+    const data = await postVote({ ...req.body });
+    res.json(data);
   } catch (e) {
     console.error(e);
   }
+});
 
-  res.json({ meta_key: req.body.meta_key, totalVotes });
+app.post('/searches/votes/counts/:search_id', async (req, res) => {
+  try {
+    console.log('Getting vote counts for search:', req.params.search_id);
+    const data = await getSearchVoteCounts(req.params.search_id);
+    res.json(data);
+  } catch (error) {
+    console.error('Error getting vote counts:', error);
+    res.status(500).json({ 
+      error: error.message || 'Failed to get vote counts'
+    });
+  }
 });
 
 app.post('/send-email', async (req, res) => {

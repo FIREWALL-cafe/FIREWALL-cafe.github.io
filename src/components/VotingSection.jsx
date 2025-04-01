@@ -15,9 +15,10 @@ function VotingSection({ query, searchId }) {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername, deleteUsername] = useCookie("username");
 
+  const [voteCounts, setVoteCounts] = useState({ 'votes_censored': 0, 'votes_uncensored': 0, 'votes_lost_in_translation': 0, 'votes_bad_translation': 0, 'votes_good_translation': 0 });
   const handleVote = async(voteCategory) => {
     try {
-      const { data } = await fetch('/vote', {
+      const voteResponse = await fetch('/vote', {
         method: 'POST',
         headers: { 
           'Accept': 'application/json',
@@ -25,14 +26,19 @@ function VotingSection({ query, searchId }) {
         },
         body: JSON.stringify({ meta_key: voteCategory, search_id: searchId, vote_client_name: username }),
       });
-      console.log('handleVote:', data);
+      const voteData = await voteResponse.json();
+      console.log('handleVote:', voteData);
+      setVoteCounts(prevCounts => ({
+        ...prevCounts,
+        [voteCategory]: voteData.vote_count
+      }));
     } catch (e) {
-      console.log(e)
+      console.error('Error in handleVote:', e);
     }
   }
 
   return (
-    <div className="flex overflow-hidden flex-col w-full bg-gray-50 border border-red-600 max-md:max-w-full">
+    <div className="flex overflow-hidden flex-col w-full bg-gray-50 border-t border-red-600 max-md:max-w-full">
       <div className={`${isOpen ? 'visible' : 'hidden' }`}>
         <div className="flex overflow-hidden flex-wrap gap-10 justify-center p-12 w-full max-md:px-5 max-md:max-w-full">
           <div className="flex flex-col my-auto min-w-[240px] max-md:max-w-full">
@@ -50,9 +56,9 @@ function VotingSection({ query, searchId }) {
               </div>
             </div>
             <div className="flex gap-4 items-stretch w-full rounded-md max-md:max-w-full">
-              <VoteButton voteCategory="votes_censored" voteHandler={handleVote} disabled={false} />
-              <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} disabled={false} />
-              <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} disabled={false} />
+              <VoteButton voteCategory="votes_censored" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_censored} />
+              <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_uncensored} />
+              <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_lost_in_translation} />
             </div>
           </div>
           <div className="flex overflow-hidden justify-center items-start h-full min-w-[240px]">
@@ -71,8 +77,8 @@ function VotingSection({ query, searchId }) {
                 </div>
               </div>
               <div className="flex gap-4 items-start w-full rounded-md">
-                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} disabled={false} />
-                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} disabled={false} />
+                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_bad_translation} />
+                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_good_translation} />
               </div>
             </div>
           </div>
