@@ -107,7 +107,7 @@ function ImageCarousel({ images }) {
             </div>
             <img
               src={`/proxy-image?url=${encodeURIComponent(images.googleResults[currentIndex])}`}
-              className="object-contain max-h-full max-w-full rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+              className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
               onError={handleOnError}
             />
           </div>
@@ -129,7 +129,7 @@ function ImageCarousel({ images }) {
           <div id="baidu-carousel" className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex">
             <img
               src={baiduImage(images.baiduResults[currentIndex])}
-              className="object-contain max-h-full max-w-full rounded-lg  shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+              className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
               onError={(e) => handleOnError(e, true)}
             />
             <div className="absolute right-0 h-full w-[60px] flex justify-center items-center">
@@ -152,7 +152,7 @@ function ImageCarousel({ images }) {
             <button 
               key={index} 
               onClick={() => handleThumbnailClick(index)}
-              className={`aspect-square rounded-lg overflow-hidden ${currentIndex === index ? 'ring-2 ring-blue-400' : ''}`}
+              className={`aspect-square overflow-hidden ${currentIndex === index ? 'focus-visible:ring-4 focus-visible:ring-blue-400 ring-4 ring-blue-400' : 'opacity-60'}`}
             >
               <img
                 src={`/proxy-image?url=${encodeURIComponent(image)}`}
@@ -162,12 +162,12 @@ function ImageCarousel({ images }) {
             </button>
           ))}
         </div>
-        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4 bg-sky-50">
+        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4 bg-neutral-100">
           {images.baiduResults.map((image, index) => (
             <button 
               key={index} 
               onClick={() => handleThumbnailClick(index)}
-              className={`aspect-square rounded-lg overflow-hidden ${currentIndex === index ? 'ring-2 ring-red-400' : ''}`}
+              className={`aspect-square overflow-hidden ${currentIndex === index ? 'ring-4 ring-red-600 focus-visible:ring-4 focus-visible:ring-red-600' : 'opacity-60'}`}
             >
               <img
                 src={`/proxy-image?url=${encodeURIComponent(image)}`}
@@ -194,7 +194,7 @@ function ImageCarousel({ images }) {
                 <div className="flex flex-col items-center justify-center aspect-square overflow-hidden">
                   <img
                     src={slide.google}
-                    className="w-full h-full p-2 object-cover rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+                    className="w-full h-full p-2 object-cover shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
                     onError={handleOnError}
                   />
                 </div>
@@ -216,7 +216,7 @@ function ImageCarousel({ images }) {
                 <div className="flex flex-col items-center justify-center aspect-square overflow-hidden">
                   <img
                     src={slide.baidu}
-                    className="w-full h-full p-2 object-cover rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+                    className="w-full h-full p-2 object-cover shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
                     onError={(e) => handleOnError(e, true)}
                   />
                 </div>

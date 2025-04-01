@@ -12,7 +12,7 @@ import ExpandUp from '../assets/icons/expand_circle_up.png';
 function VotingSection({ query, searchId }) {
   const location = useLocation();
   const notArchive = location.pathname !== '/archive';
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(notArchive);
   const [username, setUsername, deleteUsername] = useCookie("username");
 
   const [voteCounts, setVoteCounts] = useState({ 'votes_censored': 0, 'votes_uncensored': 0, 'votes_lost_in_translation': 0, 'votes_bad_translation': 0, 'votes_good_translation': 0 });
@@ -85,7 +85,7 @@ function VotingSection({ query, searchId }) {
         </div>
         <div className="flex gap-10 justify-end items-center w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
           <div className="flex gap-6 items-center self-stretch my-auto text-xl min-w-[240px] max-md:max-w-full">
-            {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full pr-8">
+            {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full p-8">
               <div className="self-stretch my-auto font-body-03 text-right">See past results for this query in the</div>
               <div className="flex gap-2 items-center self-stretch my-auto text-red-600">
                 <img src={Archive} className="object-contain shrink-0 self-stretch my-auto w-8 aspect-square" alt="Archive" />
@@ -100,10 +100,10 @@ function VotingSection({ query, searchId }) {
           </div>
         </div>
       </div>
-      <div onClick={() => setIsOpen(!isOpen)} className="flex flex-wrap justify-between text-red-600 items-center px-8 py-5 bg-gray-50 max-md:px-5 max-md:max-w-full cursor-pointer">
-        <div>{isOpen ? 'Hide voting' : 'Cast your vote'}</div>
+      {!notArchive && <div onClick={() => setIsOpen(!isOpen)} className="flex flex-wrap justify-between text-red-600 items-center px-8 py-5 bg-gray-50 max-md:px-5 max-md:max-w-full cursor-pointer">
+        <div className="font-body-02">{isOpen ? 'Hide voting' : 'Cast your vote'}</div>
         <div><img src={isOpen ? ExpandUp : ExpandDown} /></div>
-      </div>
+      </div>}
     </div>
   );
 }

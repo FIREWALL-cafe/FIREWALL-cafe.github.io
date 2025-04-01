@@ -201,6 +201,13 @@ module.exports = {
           fontWeight: '600',
           fontFamily: 'Inter, system-ui, sans-serif'
         },
+        '.font-body-02-bold-sm': {
+          fontSize: '20px',
+          lineHeight: '120%',
+          letterSpacing: '0%',
+          fontWeight: '600',
+          fontFamily: 'Inter, system-ui, sans-serif'
+        },
         '.font-body-03': {
           fontSize: '17px',
           lineHeight: '150%',
