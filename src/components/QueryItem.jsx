@@ -92,27 +92,27 @@ const QueryItem = ({
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
       <div 
-        className="flex flex-wrap gap-4 py-3 w-full text-[20px] text-black h-12 cursor-pointer items-center" 
+        className="grid grid-cols-[minmax(80px,_80px)_minmax(140px,_1fr)_minmax(160px,_1fr)_minmax(120px,_1fr)_minmax(100px,_160px)_minmax(40px,_40px)] gap-1 py-3 w-full text-[20px] h-12 cursor-pointer items-center" 
         onClick={toggleDropdown}
       >
-        <div className="w-16 flex items-center iphone:w-12">
+        <div className="flex items-center whitespace-nowrap">
           <img src={VoteIcon} alt="Votes" className="w-6 h-6 mr-1" />
           <span>{total_votes}</span>
         </div>
         
-        <div className={`flex-1 min-w-[180px] ipad-portrait:min-w-[140px] iphone:min-w-0 iphone:w-full truncate ${isEnglish ? '' : 'text-zinc-400'}`}>
+        <div className={`truncate whitespace-nowrap ${isEnglish ? '' : 'text-zinc-400'}`}>
           {englishLang}
         </div>
         
-        <div className={`hidden ipad-landscape:flex flex-1 min-w-[180px] font-sc-sans ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
+        <div className={`hidden ipad-landscape:block font-sc-sans whitespace-nowrap ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
           {chineseLang}
         </div>
         
-        <div className="hidden ipad-landscape:flex flex-1 min-w-[120px] truncate">
+        <div className="hidden ipad-landscape:block truncate whitespace-nowrap">
           {locationLabel}
         </div>
         
-        <div className="flex-1 w-56 text-right">
+        <div className="text-right whitespace-nowrap">
           {isDesktop ? (
             <span>
               {formatDate(search_timestamp).date}
@@ -124,7 +124,7 @@ const QueryItem = ({
           )}
         </div>
         
-        <div className="w-8 flex justify-center">
+        <div className="flex justify-center">
           <ExpandIcon isExpanded={dropdown} />
         </div>
       </div>
