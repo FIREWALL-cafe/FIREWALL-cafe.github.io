@@ -44,7 +44,7 @@ function VotingSection({ query, searchId }) {
           <div className="flex flex-col my-auto min-w-[240px] max-md:max-w-full">
             <div className="flex gap-2.5 items-start w-full min-h-[61px] max-md:max-w-full">
               <div className="flex flex-wrap flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px] max-md:max-w-full">
-                <div className="self-stretch my-auto max-md:max-w-full font-body-01">What do you think about these search results?</div>
+                <div className="self-stretch my-auto max-md:max-w-full font-body-01">Vote on these search results.</div>
                 <QuestionIcon
                   fill="#000000"
                   className="w-6 h-6"
@@ -65,7 +65,7 @@ function VotingSection({ query, searchId }) {
             <div className="flex flex-col min-w-[240px]">
               <div className="flex gap-2.5 items-start w-full font-body-01 min-h-[61px]">
                 <div className="flex flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px]">
-                  <div className="self-stretch my-auto">How is this translation?</div>
+                  <div className="self-stretch my-auto">Review this translation.</div>
                   <QuestionIcon
                     fill="#000000"
                     className="w-6 h-6"
@@ -83,10 +83,10 @@ function VotingSection({ query, searchId }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-10 items-center w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
+        <div className="flex gap-10 justify-end items-center w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
           <div className="flex gap-6 items-center self-stretch my-auto text-xl min-w-[240px] max-md:max-w-full">
-            {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full">
-              <div className="self-stretch my-auto text-black">See past results for this query in the</div>
+            {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full pr-8">
+              <div className="self-stretch my-auto font-body-03 text-right">See past results for this query in the</div>
               <div className="flex gap-2 items-center self-stretch my-auto text-red-600">
                 <img src={Archive} className="object-contain shrink-0 self-stretch my-auto w-8 aspect-square" alt="Archive" />
                 <Link to={`/archive?q=${query}`}>
