@@ -35,7 +35,7 @@ app.get('/proxy-image', async (req, res) => {
     
     if (!imageUrl || imageUrl === 'undefined' || imageUrl === 'null') {
       console.error('No valid image URL provided');
-      return res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+      return res.sendFile(path.join(__dirname, 'src/assets/icons/broken-image-placeholder.svg'));
     }
 
     // Basic URL validation
@@ -43,7 +43,7 @@ app.get('/proxy-image', async (req, res) => {
       new URL(imageUrl);
     } catch (e) {
       console.error('Invalid URL format:', imageUrl);
-      return res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+      return res.sendFile(path.join(__dirname, 'src/assets/icons/broken-image-placeholder.svg'));
     }
 
     console.log('Fetching image from:', imageUrl);
@@ -62,7 +62,7 @@ app.get('/proxy-image', async (req, res) => {
     const contentType = response.headers['content-type'];
     if (!contentType || !contentType.startsWith('image/')) {
       console.error('Invalid content type:', contentType);
-      return res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+      return res.sendFile(path.join(__dirname, 'src/assets/icons/broken-image-placeholder.svg'));
     }
 
     console.log('Image fetch successful, content-type:', contentType);
@@ -81,7 +81,7 @@ app.get('/proxy-image', async (req, res) => {
     response.data.on('error', (error) => {
       console.error('Error in image stream:', error);
       if (!res.headersSent) {
-        res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+        res.sendFile(path.join(__dirname, 'src/assets/icons/broken-image-placeholder.svg'));
       }
     });
   } catch (error) {
@@ -89,7 +89,7 @@ app.get('/proxy-image', async (req, res) => {
     console.error('Error details:', error);
     
     if (!res.headersSent) {
-      res.sendFile(path.join(__dirname, 'src/assets/icons/no-image-available.svg'));
+      res.sendFile(path.join(__dirname, 'src/assets/icons/broken-image-placeholder.svg'));
     }
   }
 });
@@ -183,12 +183,7 @@ app.post('/searches', async (req, res) => {
       data = await getSearchesFilter({ ...otherFilters, ...paginationParams });
     }
 
-    console.log('Search results:', {
-      total: data.total,
-      page: data.page,
-      page_size: data.page_size,
-      results: data.data?.length
-    });
+    console.log('Search results:', data);
     
     res.json(data);
   } catch (error) {

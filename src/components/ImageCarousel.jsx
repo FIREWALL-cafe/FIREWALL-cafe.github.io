@@ -10,8 +10,8 @@ import baiduLogo from '../assets/icons/baidu_logo_long.svg';
 import CarouselLeft from "../assets/icons/carousel-left.svg";
 import CarouselRight from "../assets/icons/carousel-right.svg";
 import QuestionIcon from './icons/QuestionIcon';
-import NoImageAvailable from '../assets/icons/no-image-available.svg';
-import CensoredBrokenImage from '../assets/icons/censored-broken-image.png';
+import BrokenImagePlaceholder from '../assets/icons/broken-image-placeholder.svg';
+import CensoredBrokenImage from '../assets/icons/censored-image-placeholder_padding.svg';
 
 function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,7 +22,7 @@ function ImageCarousel({ images }) {
     if (isBaidu && images.baiduResults.length === 0) {
       e.target.src = CensoredBrokenImage;
     } else {
-      e.target.src = NoImageAvailable;
+      e.target.src = BrokenImagePlaceholder;
     }
   };
 
@@ -65,7 +65,6 @@ function ImageCarousel({ images }) {
               data-tooltip-id="tooltip-google"
               data-tooltip-content='Results from US based Google images.'
               data-tooltip-place="top"
-              noArrow={true}
             />
             <Tooltip id="tooltip-google" noArrow={true} />
           </div>
@@ -77,7 +76,6 @@ function ImageCarousel({ images }) {
               data-tooltip-id="tooltip-baidu"
               data-tooltip-content='Results from China based Baidu images.'
               data-tooltip-place="top"
-              noArrow={true}
             />
             <Tooltip id="tooltip-baidu" noArrow={true} />
           </div>
@@ -93,7 +91,6 @@ function ImageCarousel({ images }) {
               data-tooltip-id="tooltip-google"
               data-tooltip-content='Results from US based Google images.'
               data-tooltip-place="top"
-              noArrow={true}
             />
             <Tooltip id="tooltip-google" noArrow={true} />
           </div>
@@ -125,7 +122,6 @@ function ImageCarousel({ images }) {
               data-tooltip-id="tooltip-baidu"
               data-tooltip-content='Results from China based Baidu images.'
               data-tooltip-place="top"
-              noArrow={true}
             />
             <Tooltip id="tooltip-baidu" noArrow={true} />
           </div>
@@ -209,7 +205,6 @@ function ImageCarousel({ images }) {
                     data-tooltip-id="tooltip-google"
                     data-tooltip-content='Results from US based Google images.'
                     data-tooltip-place="top"
-                    noArrow={true}
                   />
                   <Tooltip id="tooltip-google" noArrow={true} />
                 </div>
@@ -232,7 +227,6 @@ function ImageCarousel({ images }) {
                     data-tooltip-id="tooltip-baidu"
                     data-tooltip-content='Results from China based Baidu images.'
                     data-tooltip-place="left"
-                    noArrow={true}
                   />
                   <Tooltip id="tooltip-baidu" noArrow={true} />
                 </div>
