@@ -7,11 +7,7 @@ function HeroSection() {
   const typed = useRef(null);
   
   const titles = [
-    'What terms are banned on Baidu?',
-    'What are sensitive political events in China?',
-    'Do censorship levels vary?',
-    'Does Google reveal banned truths?',
-    'Does Google show the full truth?',
+    '墙后面是什么',
     "What's behind the wall?",
   ];
 
