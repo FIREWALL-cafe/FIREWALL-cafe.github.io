@@ -142,50 +142,43 @@ module.exports = {
           fontSize: '72px',
           lineHeight: '120%',
           letterSpacing: '3%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-display-02': {
           fontSize: '64px',
           lineHeight: '110%',
           letterSpacing: '0%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-display-03': {
           fontSize: '56px',
           lineHeight: '100%',
           letterSpacing: '0%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-display-04': {
           fontSize: '48px',
           lineHeight: '120%',
           letterSpacing: '0%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-header-01': {
           fontSize: '40px',
           lineHeight: '110%',
           letterSpacing: '0%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-header-02': {
           fontSize: '36px',
           lineHeight: '150%',
           letterSpacing: '0%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-header-03': {
           fontSize: '28px',
           lineHeight: '150%',
           letterSpacing: '0%',
-          fontWeight: '500',
-          fontFamily: 'WenQuanYi, system-ui, sans-serif'
+          fontWeight: '500'
         },
         '.font-body-01': {
           fontSize: '24px',
