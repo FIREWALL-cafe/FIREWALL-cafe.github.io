@@ -36,9 +36,9 @@ function VotingSection({ query, searchId }) {
   }
 
   return (
-    <div className="flex overflow-hidden flex-col w-full bg-gray-50 border border-red-600 border-solid max-md:max-w-full">
+    <div className="flex overflow-hidden flex-col w-full bg-gray-50 border border-red-600 max-md:max-w-full">
       <div className={`${isOpen ? 'visible' : 'hidden' }`}>
-        <div className="flex overflow-hidden flex-wrap gap-10 justify-center p-12 w-full border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
+        <div className="flex overflow-hidden flex-wrap gap-10 justify-center p-12 w-full max-md:px-5 max-md:max-w-full">
           <div className="flex flex-col my-auto min-w-[240px] w-[601px] max-md:max-w-full">
             <div className="flex gap-2.5 items-start w-full text-2xl text-black min-h-[61px] max-md:max-w-full">
               <div className="flex flex-wrap flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px] max-md:max-w-full">
@@ -82,9 +82,6 @@ function VotingSection({ query, searchId }) {
           </div>
         </div>
         <div className="flex flex-wrap gap-10 items-center px-8 py-5 w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
-          <button disabled={true} className="gap-1 px-4 my-auto text-lg rounded border border-solid bg-slate-200 border-zinc-400 min-h-[56px]">
-            Submit
-          </button>
           <div className="flex gap-6 items-center self-stretch my-auto text-xl min-w-[240px] max-md:max-w-full">
             {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full">
               <div className="self-stretch my-auto text-black">See past results for this query in the</div>
@@ -101,7 +98,7 @@ function VotingSection({ query, searchId }) {
           </div>
         </div>
       </div>
-      <div onClick={() => setIsOpen(!isOpen)} className="flex flex-wrap justify-between text-red-600 justify-between items-center px-8 py-5 bg-gray-50 max-md:px-5 max-md:max-w-full cursor-pointer">
+      <div onClick={() => setIsOpen(!isOpen)} className="flex flex-wrap justify-between text-red-600 items-center px-8 py-5 bg-gray-50 max-md:px-5 max-md:max-w-full cursor-pointer">
         <div>{isOpen ? 'Hide voting' : 'Cast your vote'}</div>
         <div><img src={isOpen ? ExpandUp : ExpandDown} /></div>
       </div>
