@@ -14,7 +14,6 @@ function VotingSection({ query, searchId }) {
   const notArchive = location.pathname !== '/archive';
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername, deleteUsername] = useCookie("username");
-  const [translationDisabled, setTranslationDisabled] = useState(true);
 
   const handleVote = async(voteCategory) => {
     try {
@@ -26,9 +25,6 @@ function VotingSection({ query, searchId }) {
         },
         body: JSON.stringify({ meta_key: voteCategory, search_id: searchId, vote_client_name: username }),
       });
-      if (voteCategory === 'votes_lost_in_translation') {
-        setTranslationDisabled(false);
-      }
       console.log('handleVote:', data);
     } catch (e) {
       console.log(e)
@@ -39,10 +35,10 @@ function VotingSection({ query, searchId }) {
     <div className="flex overflow-hidden flex-col w-full bg-gray-50 border border-red-600 max-md:max-w-full">
       <div className={`${isOpen ? 'visible' : 'hidden' }`}>
         <div className="flex overflow-hidden flex-wrap gap-10 justify-center p-12 w-full max-md:px-5 max-md:max-w-full">
-          <div className="flex flex-col my-auto min-w-[240px] w-[601px] max-md:max-w-full">
-            <div className="flex gap-2.5 items-start w-full text-2xl text-black min-h-[61px] max-md:max-w-full">
+          <div className="flex flex-col my-auto min-w-[240px] max-md:max-w-full">
+            <div className="flex gap-2.5 items-start w-full min-h-[61px] max-md:max-w-full">
               <div className="flex flex-wrap flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px] max-md:max-w-full">
-                <div className="self-stretch my-auto max-md:max-w-full">What do you think about these search results?</div>
+                <div className="self-stretch my-auto max-md:max-w-full font-body-01">What do you think about these search results?</div>
                 <QuestionIcon
                   fill="#000000"
                   className="w-6 h-6"
@@ -53,15 +49,15 @@ function VotingSection({ query, searchId }) {
                 <Tooltip id="tooltip-think" noArrow={true} />
               </div>
             </div>
-            <div className="flex gap-4 items-stretch mt-8 w-full rounded-md max-md:max-w-full">
+            <div className="flex gap-4 items-stretch w-full rounded-md max-md:max-w-full">
               <VoteButton voteCategory="votes_censored" voteHandler={handleVote} disabled={false} />
               <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} disabled={false} />
               <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} disabled={false} />
             </div>
           </div>
-          <div className="flex overflow-hidden justify-center items-start h-full min-w-[240px] w-[395px]">
-            <div className="flex flex-col min-w-[240px] w-[395px]">
-              <div className="flex gap-2.5 items-start w-full text-2xl min-h-[61px] text-zinc-400">
+          <div className="flex overflow-hidden justify-center items-start h-full min-w-[240px]">
+            <div className="flex flex-col min-w-[240px]">
+              <div className="flex gap-2.5 items-start w-full font-body-01 min-h-[61px]">
                 <div className="flex flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px]">
                   <div className="self-stretch my-auto">How is this translation?</div>
                   <QuestionIcon
@@ -74,14 +70,14 @@ function VotingSection({ query, searchId }) {
                   <Tooltip id="tooltip-how" noArrow={true} />
                 </div>
               </div>
-              <div className="flex gap-4 items-start mt-8 w-full rounded-md">
-                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} disabled={translationDisabled} />
-                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} disabled={translationDisabled} />
+              <div className="flex gap-4 items-start w-full rounded-md">
+                <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} disabled={false} />
+                <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} disabled={false} />
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-10 items-center px-8 py-5 w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
+        <div className="flex flex-wrap gap-10 items-center w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
           <div className="flex gap-6 items-center self-stretch my-auto text-xl min-w-[240px] max-md:max-w-full">
             {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full">
               <div className="self-stretch my-auto text-black">See past results for this query in the</div>

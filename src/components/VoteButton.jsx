@@ -5,6 +5,7 @@ import Visibility from '../assets/icons/visibility.svg';
 import ThumbDown from '../assets/icons/thumb_down.svg';
 import ThumbUp from '../assets/icons/thumb_up.svg';
 import LostInTranslation from '../assets/icons/lost_in_translation.svg';
+import VoteIcon from '../assets/icons/how_to_vote.svg';
 
 /**
  * Wordpress vote endpoint
@@ -17,7 +18,7 @@ security: 83376c1e81
 */
 
 
-function VoteButton({ voteCategory, voteHandler, disabled, shouldReset }) {
+function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, total_votes }) {
   const [isSelected, setSelected] = useState(false);
   const [isDisabled, setDisabled] = useState(disabled);
 
@@ -90,16 +91,32 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset }) {
       console.log('votes_lost_in_translation');
     }
   }
-
+  total_votes = 10;
   return (
     <button
-      className={`flex items-center px-2 py-1 rounded border border-solid text-sm ${isDisabled ? 'cursor-not-allowed opacity-50' : 'hover:bg-red-50'} ${isSelected ? 'bg-red-50' : ''}`}
+      className={`
+        flex flex-col items-start
+        min-w-[190px]
+        p-3
+        rounded-lg
+        border border-solid border-neutral-500
+        ${isDisabled ? 'cursor-not-allowed opacity-50' : 'hover:bg-neutral-200'}
+        ${isSelected ? 'bg-neutral-200' : ''}
+      `}
       onClick={vote}
       disabled={isDisabled}
     >
-      <img src={imgSrc} className="w-4 h-4 mr-1" />
+      <div id={`${voteMeta[voteCategory].name}-vote-icon`} className="w-full flex justify-between items-start">
+        <img src={imgSrc} className="w-9 h-9" />
+        {total_votes && (
+          <div className="flex items-center gap-1">
+            <span className="font-body-02-bold-sm">{total_votes}</span>
+            <img src={VoteIcon} className="w-6 h-6" />
+          </div>
+        )}
+      </div>
       <input type="hidden" id={voteCategory} name={voteCategory} />
-      <div className="text-sm font-medium text-gray-700">
+      <div className="font-body-02-bold-sm mt-6">
         {voteMeta[voteCategory].name}
       </div>
     </button>
