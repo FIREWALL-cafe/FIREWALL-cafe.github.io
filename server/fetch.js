@@ -121,7 +121,7 @@ const getTranslation = async (query, langFrom, langTo) => {
   return translated;
 }
 
-const postVote = async ({ meta_key, post_id, search_id, vote_client_name, vote_ip_address }) => {
+const postVote = async ({ meta_key, search_id, vote_client_name, vote_ip_address }) => {
   const url = `${serverConfig.apiUrl}vote`;
   const metaKeyToId = {
     votes_censored: 1,
@@ -133,6 +133,8 @@ const postVote = async ({ meta_key, post_id, search_id, vote_client_name, vote_i
     votes_nsfw: 7,
   }
 
+  // const idToMetaKey = Object.fromEntries(Object.entries(metaKeyToId).map(([key, value]) => [value, key]));
+
   const voteData = {
     vote_id: metaKeyToId[meta_key],
     search_id,
@@ -143,18 +145,8 @@ const postVote = async ({ meta_key, post_id, search_id, vote_client_name, vote_i
   }
 
   console.log('vote data', voteData);
-
   const { data } = await axios.post(url, voteData);
-
-  // const { data: wpData } = await axios.post(
-  //   'https://firewallcafe.com/wp-admin/admin-ajax.php',
-  //   querystring.stringify({
-  //     action: 'fwc_post_vote',
-  //     meta_key,
-  //     post_id: `${post_id}`,
-  //     security: '83376c1e81'
-  //   })
-  // );
+  // data.meta_key = idToMetaKey[data.vote_id];
 
   console.log('vote successful', data);
 
@@ -284,6 +276,13 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, search_clien
   return data;
 }
 
+const getSearchVoteCounts = async (search_id) => {
+  console.log('fetching vote counts for search_id:', search_id);
+  const url = `${serverConfig.apiUrl}searches/votes/counts/${search_id}`;
+  const { data } = await axios.get(url);
+  return data;
+}
+
 module.exports = {
   getDashboardData,
   getGoogleImages,
@@ -295,4 +294,5 @@ module.exports = {
   getTranslation,
   postVote,
   saveImages,
+  getSearchVoteCounts,
 };

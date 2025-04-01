@@ -11,6 +11,7 @@ import CarouselLeft from "../assets/icons/carousel-left.svg";
 import CarouselRight from "../assets/icons/carousel-right.svg";
 import QuestionIcon from './icons/QuestionIcon';
 import BrokenImagePlaceholder from '../assets/icons/broken-image-placeholder.svg';
+import BrokenImagePadding from '../assets/icons/broken-image-placeholder_padding.svg';
 import CensoredBrokenImage from '../assets/icons/censored-image-placeholder_padding.svg';
 
 function ImageCarousel({ images }) {
@@ -22,7 +23,7 @@ function ImageCarousel({ images }) {
     if (isBaidu && images.baiduResults.length === 0) {
       e.target.src = CensoredBrokenImage;
     } else {
-      e.target.src = BrokenImagePlaceholder;
+      e.target.src = BrokenImagePadding;
     }
   };
 
