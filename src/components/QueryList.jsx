@@ -3,13 +3,13 @@ import QueryItem from './QueryItem';
 
 // Separate the header component for better organization
 const QueryListHeader = () => (
-  <div className="flex flex-nowrap gap-4 py-1 w-full text-[20px] text-black border-b border-solid border-b-neutral-300 min-h-[32px] pr-4">
-    <div className="shrink-0 w-16 whitespace-nowrap iphone:w-12">Votes</div>
-    <div className="w-[240px]">Query EN</div>
-    <div className="hidden ipad-landscape:flex w-[240px] font-sc-sans">搜索结果 中文</div>
-    <div className="hidden ipad-landscape:flex w-[240px]">Search Source</div>
-    <div className="w-[240px] text-right">Date</div>
-    <div className="w-8 flex justify-center"></div>
+  <div className="grid grid-cols-[minmax(80px,_80px)_minmax(140px,_1fr)_minmax(160px,_1fr)_minmax(120px,_1fr)_minmax(100px,_160px)_minmax(40px,_40px)] gap-1 py-1 w-full text-[20px] border-b border-solid border-b-neutral-300 min-h-[32px] pr-4">
+    <div className="whitespace-nowrap">Votes</div>
+    <div className="whitespace-nowrap">Query EN</div>
+    <div className="hidden ipad-landscape:block font-sc-sans whitespace-nowrap">搜索结果 中文</div>
+    <div className="hidden ipad-landscape:block whitespace-nowrap">Search Source</div>
+    <div className="text-right whitespace-nowrap">Date</div>
+    <div></div>
   </div>
 );
 
