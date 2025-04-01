@@ -55,8 +55,8 @@ function RampGallery() {
                   <ClockIcon className="w-5 h-5" />
                   <div>
                     <p className="text-xl">Exhibition: Jan. 24 - Feb. 24, 2020</p>
-                    <p className="text-gray-600 pl-7">Opening Reception: Jan. 24, 2020, 6-8 PM</p>
-                    <p className="text-gray-600 pl-7">Gallery Hours: Mon 2-5 PM, Tues 3-7 PM</p>
+                    <p className="text-gray-600">Opening Reception: Jan. 24, 2020, 6-8 PM</p>
+                    <p className="text-gray-600">Gallery Hours: Mon 2-5 PM, Tues 3-7 PM</p>
                   </div>
                 </div>
               </div>

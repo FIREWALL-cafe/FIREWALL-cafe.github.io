@@ -27,20 +27,20 @@ function OffNyc() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black max-md:leading-[54px]">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
               2017 Oslo Freedom Forum New York Interactive Expo
             </h1>
             
             <div className="mt-8 space-y-6">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
-                <span className="text-xl">Sep. 19, 2017, 9 AM-5 PM</span>
+                <span className="font-body-01">Sep. 19, 2017, 9 AM-5 PM</span>
               </div>
 
               <div className="flex gap-2">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-600">
+                  <p className="font-body-01 text-gray-600">
                     Alice Tully Hall
                     <br />
                     Lincoln Center
@@ -50,7 +50,7 @@ function OffNyc() {
                 </div>
               </div>
 
-              <p className="text-gray-700">
+              <p className="mb-4">
                 A one-day "Search Session" at an Interactive Expo focusing on the 
                 intersection of human rights with technology, media and politics. 
                 Event held concurrent with the UN General Assembly in NYC.
@@ -64,9 +64,7 @@ function OffNyc() {
                       alt={image.description}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600 italic">
-                      {image.description}
-                    </p>
+                    <p className="mt-2 text-sm text-gray-600 italic">{image.description}</p>
                   </div>
                 ))}
               </div>

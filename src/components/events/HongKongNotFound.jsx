@@ -19,61 +19,51 @@ function HongKongNotFound() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-4 md:px-8 pb-16 w-full bg-white max-md:pb-24">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full max-w-[1080px]">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
-          <div className="flex flex-col w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black">
-              "NOT FOUND" in Hong Kong
+    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
+      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
+          <div className="flex flex-col w-full max-md:max-w-full">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+              Hong Kong "Not Found" Exhibition
             </h1>
             
             <div className="mt-8 space-y-6">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <ClockIcon className="w-5 h-5" />
-                  <div>
-                    <p className="text-xl">Exhibition: Jan. 12-23, 2019</p>
-                    <p className="text-gray-600 pl-7">Opening Reception: Jan. 12, 2019, 1-8 PM</p>
-                    <p className="text-gray-600 pl-7">Gallery Hours: Tues-Sun, 1-8 PM</p>
-                    <p className="text-gray-600 pl-7">Ying Ting Performances: Jan. 12 & 13, 3 PM & 7 PM</p>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2 text-gray-600">
+                <ClockIcon className="w-5 h-5" />
+                <span className="font-body-01">Dec. 12-13, 2015</span>
               </div>
 
               <div className="flex gap-2">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
-                  <a 
-                    href="https://www.facebook.com/greenwaveart/photos/a.934648293318071/1977824189000471/?type=3&theater"
-                    className="text-blue-600 hover:text-blue-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Center for Community Cultural Development – Green Wave Art
-                  </a>
-                  <br />
-                  404 Shanghai Street
-                  <br />
-                  Yau Ma Tei, Kowloon
+                  <p className="font-body-01 text-gray-600">
+                    Connecting Space
+                    <br />
+                    G/F, 18-20 Fort Street
+                    <br />
+                    North Point, Hong Kong
+                  </p>
                 </div>
               </div>
 
-              <p className="text-gray-700">
-                Two-person exhibition with artist, Ying Ting; curated by Iago
+              <p className="mb-4">
+                FIREWALL Internet Cafe was invited to participate in "Not Found", a performance art exhibition 
+                curated by Ying Ting at Connecting Space in Hong Kong. The exhibition explored the theme of 
+                censorship and freedom of expression in Hong Kong and China.
               </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {images.map((image, index) => (
-                <div key={index} className="flex flex-col">
-                  <img 
-                    src={image.src} 
-                    alt={image.description}
-                    className="w-full h-auto rounded-lg"
-                  />
-                  <p className="mt-2 text-sm text-gray-600">{image.description}</p>
-                </div>
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                {images.map((image, index) => (
+                  <div key={index} className="flex flex-col">
+                    <img 
+                      src={image.src} 
+                      alt={image.description}
+                      className="w-full h-auto rounded-lg"
+                    />
+                    <p className="mt-2 text-sm text-gray-600 italic">{image.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

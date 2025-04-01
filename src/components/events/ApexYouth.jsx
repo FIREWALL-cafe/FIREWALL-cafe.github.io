@@ -27,24 +27,24 @@ function ApexYouth() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-4 md:px-8 pb-16 w-full bg-white max-md:pb-24">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full max-w-[1080px]">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
-          <div className="flex flex-col w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black max-md:text-4xl max-md:leading-[54px]">
+    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
+      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
+          <div className="flex flex-col w-full max-md:max-w-full">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
               Apex for Youth After-School Field Trip
             </h1>
-
+            
             <div className="mt-8 space-y-6">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
-                <span className="text-xl">Feb. 25 & Mar. 3, 2016, 4-6 PM</span>
+                <span className="font-body-01">Feb. 25 & Mar. 3, 2016, 4-6 PM</span>
               </div>
 
               <div className="flex gap-2">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-600">
+                  <p className="font-body-01 text-gray-600">
                     Chinatown Soup
                     <br />
                     16B Orchard Street, NYC, 10002
@@ -52,7 +52,7 @@ function ApexYouth() {
                 </div>
               </div>
 
-              <p className="text-gray-700">
+              <p className="mb-4">
                 60 local middle schoolers from the{' '}
                 <a 
                   href="http://www.apexforyouth.org/"

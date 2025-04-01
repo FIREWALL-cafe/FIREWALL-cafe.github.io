@@ -49,8 +49,8 @@ function VbkoVienna() {
                   <ClockIcon className="w-5 h-5" />
                   <div>
                     <p className="text-xl">Exhibition: Jan. 10 - Feb. 1, 2020</p>
-                    <p className="text-gray-600 pl-7">Opening Reception: Jan. 10, 2020, 7 PM</p>
-                    <p className="text-gray-600 pl-7">Gallery Hours: Fri 2-6 PM, Sat 11 AM-4 PM</p>
+                    <p className="text-gray-600">Opening Reception: Jan. 10, 2020, 7 PM</p>
+                    <p className="text-gray-600">Gallery Hours: Fri 2-6 PM, Sat 11 AM-4 PM</p>
                   </div>
                 </div>
               </div>

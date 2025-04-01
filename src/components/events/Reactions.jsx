@@ -42,18 +42,18 @@ function Reactions() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-4 md:px-8 pb-16 w-full bg-white max-md:pb-24">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full max-w-[1080px]">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
-          <div className="flex flex-col w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black max-md:leading-[54px]">
+    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
+      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
+          <div className="flex flex-col w-full max-md:max-w-full">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
               Re(actions) to the Great Chinese Firewall
             </h1>
 
             <div className="mt-8 space-y-6">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
-                <span className="text-xl">Jan. 16, 2020, 6:00 PM</span>
+                <span className="font-body-01">Jan. 16, 2020, 6:00 PM</span>
               </div>
 
               <div className="flex gap-2">
@@ -61,13 +61,13 @@ function Reactions() {
                 <div>
                   <a 
                     href="https://www.vbkoe.org/"
-                    className="text-blue-600 hover:text-blue-800 text-xl"
+                    className="text-blue-600 hover:text-blue-800"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     VBKÖ – Vereinigung bildender Künstlerinnen Österreichs
                   </a>
-                  <p className="text-gray-600">
+                  <p className="font-body-01 text-gray-600">
                     (Austrian Association of Women Artists)
                     <br />
                     Maysedergasse 2 (4th floor)

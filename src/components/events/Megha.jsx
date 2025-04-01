@@ -51,7 +51,7 @@ function Megha() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
               FIREWALL Pop-up with "Inside China's Surveillance State", a Lecture by Megha Rajagopalan!
             </h1>
             
@@ -59,10 +59,10 @@ function Megha() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-gray-600">
                   <ClockIcon className="w-5 h-5" />
-                  <span className="text-xl">Exhibition: Feb. 26, 2020, 5:00 PM - 10:00 PM</span>
+                  <span className="font-body-01">Exhibition: Feb. 26, 2020, 5:00 PM - 10:00 PM</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600 pl-7">
-                  <span className="text-xl">Lecture: Feb. 26, 2020, 6:30 PM - 8:00 PM</span>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <span className="font-body-01">Lecture: Feb. 26, 2020, 6:30 PM - 8:00 PM</span>
                 </div>
               </div>
 

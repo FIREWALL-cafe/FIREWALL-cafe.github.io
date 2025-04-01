@@ -58,20 +58,20 @@ function BorderControl() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black max-md:leading-[54px]">
+            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
               New Media Caucus "Border Control" Symposium
             </h1>
 
             <div className="mt-8 space-y-6">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
-                <span className="text-xl">Sep. 21, 2019, 10:45 AM to 12:15 PM</span>
+                <span className="font-body-01">Sep. 21, 2019, 10:45 AM to 12:15 PM</span>
               </div>
 
               <div className="flex gap-2">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-600">
+                  <p className="font-body-01 text-gray-600">
                     Univ. of Michigan Penny Stamps Gallery
                     <br />
                     Penny W. Stamps School Of Art & Design
@@ -81,7 +81,7 @@ function BorderControl() {
                 </div>
               </div>
 
-              <p className="italic">
+              <p className="mb-4 italic">
                 Please join Nadav Assor, Patricia Villalobos Echeverría, and Maria del Carmen Montoya, 
                 in a panel discussion with Joyce Yu-Jean Lee, creator of FIREWALL Internet Cafe, 
                 as she discusses FIREWALL, internet censorship, and virtual borders.
