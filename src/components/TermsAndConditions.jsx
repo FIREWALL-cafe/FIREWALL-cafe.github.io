@@ -91,11 +91,10 @@ export default function TermsAndConditions() {
       allowOutsideClick={false}
       showCloseButton={false}
     >
-      <div className="mt-16 p-4">
+      <div className="p-2">
         {hasRejected && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-            <p className="font-bold">You must accept the terms to continue</p>
-            <p className="text-sm">Access to FIREWALL requires acceptance of the Terms & Conditions.</p>
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded my-4">
+            <p className="font-bold">In order to access FIREWALL CAFE, you must accept the terms to continue.</p>
           </div>
         )}
         <div className="prose">
@@ -118,10 +117,10 @@ export default function TermsAndConditions() {
             </div>
           ) : (
             <>
-              <p className="text-sm mb-4"><span className="font-bold">Your participation in FIREWALL provides your consent.</span>
+              <p className="text-sm mb-4"><span className="font-bold">Your participation in FIREWALL provides your consent.</span> 
                  Please review the following terms and conditions, before your FIREWALL Search Session.</p>
 
-              <p className="text-sm mb-4"><span className="font-bold">FIREWALL does not monitor or review the content of your Search Session.</span>
+              <p className="text-sm mb-4"><span className="font-bold">FIREWALL does not monitor or review the content of your Search Session.</span> 
                 Opinions expressed or material appearing on your searches are not necessarily shared or endorsed by FIREWALL, and we should not be regarded as the publisher of such opinions or material.
                 Please be aware that we are not responsible for the privacy practices, or content, of these sites.
               </p>

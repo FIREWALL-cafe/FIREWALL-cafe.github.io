@@ -20,12 +20,12 @@ export default function Modal({
       <div
         onClick={(e) => e.stopPropagation()}
         className={`
-          bg-white rounded shadow p-2 transition-all w-1/2 max-h-[90vh] relative overflow-hidden
+          bg-white rounded shadow p-2 transition-all mx-4 w-full ipad-portrait:mx-24 max-h-[90vh] relative flex flex-col
           ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
         `}
       >
-        <h3 className="absolute top-0 left-0 p-4 flex font-black bg-white justify-between border-b border-b-black w-full text-lg text-gray-800">
-          <div>
+        <h3 className="px-4 pt-4 flex font-black bg-white justify-between w-full">
+          <div className="font-bitmap-song font-header-02">
             {title}
           </div>
           {showCloseButton && (
@@ -34,10 +34,10 @@ export default function Modal({
             </div>
           )}
         </h3>
-        <div className="overflow-y-auto max-h-lvh pb-24">
+        <div className="flex-1 overflow-y-auto">
           {children}
         </div>
-        <div className="absolute bottom-0 left-0 bg-white flex flex-wrap gap-10 justify-between items-center p-4 w-full text-lg text-center border-t border-solid border-t-black max-md:max-w-full">
+        <div className="bg-white flex flex-wrap gap-10 justify-between items-center p-4 w-full text-lg text-center max-md:max-w-full mt-auto">
           <button 
             onClick={() => onClose(false)}
             className="gap-1 self-stretch px-4 py-2 my-auto text-black bg-white border-black border border-solid min-h-[40px]">
