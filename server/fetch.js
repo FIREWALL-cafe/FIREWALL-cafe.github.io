@@ -133,8 +133,6 @@ const postVote = async ({ meta_key, search_id, vote_client_name, vote_ip_address
     votes_nsfw: 7,
   }
 
-  // const idToMetaKey = Object.fromEntries(Object.entries(metaKeyToId).map(([key, value]) => [value, key]));
-
   const voteData = {
     vote_id: metaKeyToId[meta_key],
     search_id,
@@ -146,7 +144,6 @@ const postVote = async ({ meta_key, search_id, vote_client_name, vote_ip_address
 
   console.log('vote data', voteData);
   const { data } = await axios.post(url, voteData);
-  // data.meta_key = idToMetaKey[data.vote_id];
 
   console.log('vote successful', data);
 
@@ -176,20 +173,24 @@ const getSearchImages = async (search_id) => {
 }
 
 const getSearchesByTerm = async (query, options = {}) => {
-  console.log('FETCH.js: searches by term: starting: ', query);
-  
   // Ensure pagination parameters are present
   const page = parseInt(options.page) || 1;
   const page_size = parseInt(options.page_size) || 25;
   
-  // Add pagination and query to parameters
+  const { language } = await getDetectedLanguage(query);
+  // we only support zh-CN and en right now
+  const lang = language === 'zh-CN' ? 'zh-CN' : 'en';
+  
+  // Add pagination, query, and language to parameters
   const queryParams = {
     term: query,
     page,
     page_size,
+    lang,
     ...options
   };
   
+  console.log('FETCH.js: searches by term: starting: ', queryParams);
   const url = `${serverConfig.apiUrl}searches/terms?${querystring.stringify(queryParams)}`;
   const response = await axios.get(url);
 
