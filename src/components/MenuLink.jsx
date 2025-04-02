@@ -11,21 +11,15 @@ function MenuLink({ link, toggleDrawer }) {
   }
   
   return (
-    <section className="flex flex-col py-3 px-5 w-full max-md:max-w-full">
-      {/* <div className="flex gap-10 justify-between items-center w-full text-4xl whitespace-nowrap max-md:max-w-full max-md:text-4xl">
-        <h3 className="self-stretch my-auto max-md:text-4xl">{title}</h3>
-        {iconSrc && (
-          <img
-            src={iconSrc}
-            alt=""
-            className="object-contain shrink-0 self-stretch my-auto w-10 aspect-square"
-          />
-        )}
-      </div> */}
-      <div className="mt-2">
-        <Link to={link.to} onClick={handleClick} className="text-medium">{link.title}</Link>
-      </div>
-    </section>
+    <div className="py-4 border-b border-black">
+      <Link 
+        to={link.to} 
+        onClick={handleClick} 
+        className="font-header-04 text-gray-900 hover:text-gray-600 transition-colors block w-full"
+      >
+        {link.title}
+      </Link>
+    </div>
   );
 }
 

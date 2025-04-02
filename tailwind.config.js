@@ -103,6 +103,7 @@ module.exports = {
         'header-01': ['40px', { lineHeight: '110%', letterSpacing: '0%', fontWeight: '500' }],
         'header-02': ['36px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '500' }],
         'header-03': ['28px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '500' }],
+        'header-04': ['36px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '400' }],
         // Body
         'body-01': ['24px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '400' }],
         'body-02': ['20px', { lineHeight: '150%', letterSpacing: '0%', fontWeight: '400' }],
@@ -179,6 +180,12 @@ module.exports = {
           lineHeight: '150%',
           letterSpacing: '0%',
           fontWeight: '500'
+        },
+        '.font-header-04': {
+          fontSize: '36px',
+          lineHeight: '150%',
+          letterSpacing: '0%',
+          fontWeight: '400'
         },
         '.font-body-01': {
           fontSize: '24px',
