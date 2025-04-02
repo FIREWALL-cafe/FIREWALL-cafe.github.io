@@ -8,7 +8,7 @@ import NewsletterSection from "./NewsletterSection";
 function Home() {
   const image = 'usHeadlines'
   return (
-    <main className="w-full bg-neutral-50">
+    <main className="w-full">
       <div className="max-w-[1080px] mx-auto px-4 md:px-6">
         <HeroSection />
         <AboutSection />

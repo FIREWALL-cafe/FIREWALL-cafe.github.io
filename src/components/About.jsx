@@ -12,7 +12,7 @@ function About() {
         <div className="flex flex-col items-end container mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col w-full">
             <div className="flex flex-col items-center">
-              <div className="font-display-01 ipad-portrait:font-display-03 flex flex-col items-center text-center">
+              <div className="font-display-01 font-bitmap-song ipad-portrait:font-display-03 flex flex-col items-center text-center">
                 <h1 className="leading-tight tracking-[2.16px]">
                   What do we lose in the dark?
                 </h1>

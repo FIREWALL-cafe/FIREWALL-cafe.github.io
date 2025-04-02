@@ -7,7 +7,7 @@ function HeroSection() {
   const typed = useRef(null);
   
   const titles = [
-    '墙后面是什么',
+    '墙后面是什么?',
     "What's behind the wall?",
   ];
 
