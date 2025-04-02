@@ -23,19 +23,20 @@ const images = {
 
 function NewsletterSection({image}) {
   return (
-    <section className="flex overflow-hidden relative flex-col md:flex-row justify-center items-start w-full min-h-[600px]
-      bg-newsletter border-0 max-md:max-w-full">
-      <div className="mx-auto w-full h-full flex flex-col md:flex-row">
-        <div className="h-full w-full order-1 md:order-2 relative min-h-[600px]">
-          <picture className="absolute inset-0">
-            <source media="(max-width: 1079px)" srcSet={images[image].mobile} />
-            <source media="(min-width: 1080px)" srcSet={images[image].desktop} />
-            <img src={images[image].desktop} alt="US Headlines" className="w-full h-full object-cover object-center" />
-          </picture>
-        </div>
-        <div className="order-2 md:order-1 w-full md:w-1/2">
-          <SubscribeSection />
-        </div>
+    <section className="flex flex-col md:flex-row w-full min-h-[600px] overflow-hidden">
+      <div className="flex w-full md:w-1/2 order-2 md:order-1 bg-newsletter">
+        <SubscribeSection />
+      </div>
+      <div className="flex w-full md:w-1/2 h-[300px] md:h-auto order-1 md:order-2">
+        <picture className="w-full h-full">
+          <source media="(max-width: 1079px)" srcSet={images[image].mobile} />
+          <source media="(min-width: 1080px)" srcSet={images[image].desktop} />
+          <img 
+            src={images[image].desktop} 
+            alt="US Headlines" 
+            className="w-full h-full object-cover object-center"
+          />
+        </picture>
       </div>
     </section>
   );

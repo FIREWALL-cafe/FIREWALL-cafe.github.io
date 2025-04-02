@@ -88,7 +88,7 @@ function SearchInput({ searchMode }) {
         const response = await searchImages({ 
           body: JSON.stringify({ 
             query: query.trim(), 
-            search_client_name: username || 'anonymous' 
+            search_client_name: username 
           })
         });
 
