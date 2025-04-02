@@ -27,11 +27,11 @@ function HeroSection() {
     <section className="w-full flex flex-col items-center py-16">
       <h1 
         aria-live="polite" 
-        className="font-bitmap-song font-display-01 text-center h-[72px] md:h-[120px] lg:h-[144px]"
+        className="font-bitmap-song font-display-01 text-center h-[72px] md:h-[120px] lg:h-[144px] mb-24 ipad-portrait:mb-0"
       >
         <span ref={el} />
       </h1>
-      <div className="w-full max-w-[720px] mx-auto">
+      <div className="w-full max-w-[720px] mx-auto mt-16 ipad-portrait:mt-0">
         <SearchInput searchMode="live" />
       </div>
     </section>
