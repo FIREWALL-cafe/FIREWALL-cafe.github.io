@@ -46,8 +46,8 @@ function VotingSection({ query, searchId }) {
               <div className="flex flex-wrap flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px] max-md:max-w-full">
                 <div className="self-stretch my-auto max-md:max-w-full font-body-01">Vote on these search results.</div>
                 <QuestionIcon
-                  fill="#000000"
-                  className="w-6 h-6"
+                  fill="#b9c0c7"
+                  className="w-6 h-6 text-neutral-500"
                   data-tooltip-id="tooltip-think"
                   data-tooltip-content='Vote on if you think these results are censored or not, or if the search was mistranslated.'
                   data-tooltip-place="top"
@@ -67,8 +67,8 @@ function VotingSection({ query, searchId }) {
                 <div className="flex flex-1 shrink gap-2.5 items-center w-full basis-0 min-w-[240px]">
                   <div className="self-stretch my-auto">Review this translation.</div>
                   <QuestionIcon
-                    fill="#000000"
-                    className="w-6 h-6"
+                    fill="#b9c0c7"
+                    className="w-6 h-6 text-neutral-500"
                     data-tooltip-id="tooltip-how"
                     data-tooltip-content='Bilingual users are invited to vote on the quality of the translation.'
                     data-tooltip-place="top"
