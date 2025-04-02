@@ -52,7 +52,7 @@ function Navigation() {
                 right: '0px',
                 transform: 'translate3d(100%, 0px, 0px)',
                 height: '100vh',
-                width: isIphone ? '100%' : '25%'
+                width: isIphone ? '100%' : '50%'
               }}
           >
             <nav className="flex flex-col h-full w-full bg-white">
