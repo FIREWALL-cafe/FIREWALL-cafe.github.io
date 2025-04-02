@@ -88,7 +88,7 @@ function ImageCarousel({ images }) {
 
         {/* Google Section */}
         <div className="w-full md:w-1/2 ipad-portrait:pb-5 md:border-r border-red-300">
-          <div id="google-header-md" className="hidden md:flex justify-between items-center px-8 pb-8">
+          <div id="google-header-md" className="hidden md:flex justify-between items-center px-8 pb-8 pt-4">
             <img src={googleLogo} alt="Google" className="w-28" />
             <QuestionIcon
               fill="#77B5F0"
@@ -119,8 +119,8 @@ function ImageCarousel({ images }) {
 
         {/* Baidu Section */}
         <div className="w-full md:w-1/2 ipad-portrait:pb-5 bg-neutral-100">
-          <div id="baidu-header-md" className="hidden md:flex justify-between items-center px-8 pb-8">
-            <img src={baiduLogo} alt="Baidu" className="w-28 pt-1" />
+          <div id="baidu-header-md" className="hidden md:flex justify-between items-center px-8 pb-8 pt-4">
+            <img src={baiduLogo} alt="Baidu" className="w-28" />
             <QuestionIcon
               fill="#ef4444"
               className="w-6 h-6"
