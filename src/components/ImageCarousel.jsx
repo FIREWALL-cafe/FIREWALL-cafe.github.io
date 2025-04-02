@@ -43,7 +43,11 @@ function ImageCarousel({ images }) {
 
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
-    setIsLightboxOpen(true);
+    // Only open lightbox on iPhone screens
+    const isIphoneScreen = window.innerWidth <= 420;
+    if (isIphoneScreen) {
+      setIsLightboxOpen(true);
+    }
   };
 
   // Create slides array for the lightbox with pairs of images
@@ -179,13 +183,13 @@ function ImageCarousel({ images }) {
         </div>
       </div>
 
-      {/* Lightbox */}
       <Lightbox
         open={isLightboxOpen}
         close={() => setIsLightboxOpen(false)}
         index={currentIndex}
         slides={slides}
         carousel={{ imageFit: "cover" }}
+        className="iphone:block hidden"
         render={{
           slide: ({ slide }) => (
             <div className="flex flex-row w-full">
