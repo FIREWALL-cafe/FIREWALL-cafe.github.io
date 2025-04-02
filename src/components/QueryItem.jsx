@@ -92,7 +92,7 @@ const QueryItem = ({
   return (
     <div id={search_id} className="hover:bg-gray-100 w-full">
       <div 
-        className="grid grid-cols-[minmax(80px,_80px)_minmax(140px,_1fr)_minmax(160px,_1fr)_minmax(120px,_1fr)_minmax(100px,_160px)_minmax(40px,_40px)] gap-1 py-3 w-full text-[20px] h-12 cursor-pointer items-center" 
+        className="grid grid-cols-[80px_1fr_1fr_1fr_160px_40px] gap-1 py-3 w-full text-[20px] h-12 cursor-pointer items-center" 
         onClick={toggleDropdown}
       >
         <div className="flex items-center whitespace-nowrap">
