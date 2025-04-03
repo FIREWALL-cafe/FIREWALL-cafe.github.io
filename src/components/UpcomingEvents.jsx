@@ -7,13 +7,13 @@ function UpcomingEvents() {
     <section className="flex flex-col justify-center items-center px-14 py-32 w-full max-md:px-5 max-md:py-24 is-large-width-content">
       <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full items-center">
         <div className="chinese flex flex-col items-center max-w-full w-[588px]">
-          <div className="flex flex-wrap gap-5 items-center w-full max-md:max-w-full">
-            <img src={Events} alt="" className="object-contain self-stretch my-auto w-[51px]" />
-            <h2 className="self-stretch my-auto text-6xl font-medium leading-tight text-black tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+          <div className="flex flex-row items-center gap-4">
+            <img src={Events} alt="" className="object-contain w-[51px]" />
+            <h2 className="self-stretch my-auto md:font-display-01 font-display-03 leading-tight text-black">
               Upcoming events
             </h2>
           </div>
-          <div className="mt-2 text-6xl font-medium leading-tight text-red-600 tracking-[2.16px] max-md:max-w-full max-md:text-4xl">
+          <div className="mt-2 md:font-display-01 font-display-03 leading-tight text-red-600">
             即将举行的活动
           </div>
         </div>
