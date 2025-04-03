@@ -195,10 +195,10 @@ function SearchInput({ searchMode }) {
               >
                 <div className="flex gap-2 items-start">
                   <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? 'w-6' : 'w-8 h-8'}`}>
-                    <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-6 aspect-square" />
+                    <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
                   <div className="flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6">
-                    <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-6 aspect-square" />
+                    <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
                 </div>
               </div>
@@ -206,9 +206,8 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/archive')}
                 className={`
                   relative z-10
-                  px-8 md:py-3 py-2 font-body-02
+                  px-8 md:py-2 py-1 font-body-01 !font-bitmap-song
                   rounded-t border-t border-l border-r border-solid border-red-600 
-                  cursor-pointer
                   ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
                   iphone:px-4
                 `}
