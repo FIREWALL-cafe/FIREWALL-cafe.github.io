@@ -235,13 +235,13 @@ const articles = [
 
 function ArticleGrid() {
   return (
-    <section className="flex flex-col items-center px-14 pt-16 pb-16 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full">
+    <section className="flex flex-col items-center px-14 pt-16 pb-16 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 is-full-width-content">
+      <div className="flex flex-col w-full max-w-[1080px]">
         <div className="flex gap-8 mb-12">
           <a href="#English" className="text-lg font-medium text-gray-700 hover:text-black">English</a>
           <a href="#Chinese" className="text-lg font-medium text-gray-700 hover:text-black">中文</a>
         </div>
-        <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
+        <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10">
           {articles.map((article, index) => (
             <ArticleCard key={index} {...article} />
           ))}

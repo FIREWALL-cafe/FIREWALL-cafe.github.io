@@ -5,12 +5,12 @@ import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function FeaturedArticle() {
   return (
-    <section className="flex overflow-hidden justify-center items-start pb-16 w-full bg-white max-md:pb-24 is-large-width-content">
+    <section className="flex overflow-hidden justify-center items-start pb-16 w-full bg-white max-md:pb-24 is-medium-width-content">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px]">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
           <div className="flex flex-col w-full">
             <div className="font-body-01 text-neutral-600">Featured</div>
-            <div className="font-bitmap-song font-display-04 md:font-display-01 flex flex-col mt-10 w-full ">
+            <div className="font-bitmap-song font-display-04 md:font-display-04 flex flex-col mt-10 w-full ">
               <h2 className="">
                 How a New York art show about Chinese online censorship found itself censored
               </h2>
