@@ -4,7 +4,7 @@ import Events from '../assets/icons/events.png';
 
 function UpcomingEvents() {
   return (
-    <section className="flex flex-col justify-center items-center px-14 py-32 w-full max-md:px-5 max-md:py-24 max-md:max-w-full">
+    <section className="flex flex-col justify-center items-center px-14 py-32 w-full max-md:px-5 max-md:py-24 is-large-width-content">
       <div className="flex flex-col w-full max-w-[1080px] max-md:max-w-full items-center">
         <div className="chinese flex flex-col items-center max-w-full w-[588px]">
           <div className="flex flex-wrap gap-5 items-center w-full max-md:max-w-full">

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+import Logo from "../assets/icons/logo_name.svg";
 
 function CallToAction() {
   return (
-    <section className="flex flex-col overflow-hidden items-center w-full bg-rose-100 py-16">
+    <section className="flex flex-col overflow-hidden items-center w-full bg-rose-100 py-36 is-full-width-content">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <div className="font-bitmap-song text-center">
+          <div className="max-w-[600px] mx-auto">
+            <img src={Logo} alt="FIREWALL Cafe Logo" className="w-full h-[65px] mb-4" />
+          </div>
           <h2 className="font-display-02 leading-tight">
             Become a FIREWALL Cafe supporter
           </h2>
@@ -14,7 +18,7 @@ function CallToAction() {
             成为赞助商
           </div>
         </div>
-        <p className="mt-6 font-body-02 text-center">
+        <p className="mt-6 font-body-02 text-center max-w-[600px]">
           Learn how you can support FIREWALL Cafe and fight for the freedom of information in China and worldwide.
         </p>
         <Link 

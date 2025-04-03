@@ -23,7 +23,7 @@ const images = {
 
 function NewsletterSection({image}) {
   return (
-    <section className="flex flex-col md:flex-row w-full min-h-[600px] overflow-hidden">
+    <section className="flex flex-col md:flex-row w-full overflow-hidden is-full-width-content">
       <div className="flex w-full md:w-1/2 order-2 md:order-1 bg-newsletter">
         <SubscribeSection />
       </div>

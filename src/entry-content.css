@@ -1,0 +1,20 @@
+.entry-content > * {
+  --width--max: var(--width--content);
+
+  margin-inline: auto;
+  /* max-inline-size: var(--width--max); */
+  max-inline-size: min(100% - var(--width--site-gutter) * 2, var(--width--max));
+}
+
+.entry-content > .is-medium-width-content {
+  --width--max: var(--width--content--medium);
+}
+
+.entry-content > .is-large-width-content {
+  --width--max: var(--width--content--large);
+  max-inline-size: min(100% - var(--width--site-gutter) * 2, var(--width--max));
+}
+
+.entry-content > .is-full-width-content {
+  max-inline-size: none
+}

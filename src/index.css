@@ -1,3 +1,5 @@
+@import url('./entry-content.css');
+
 html {
   box-sizing: border-box;
 }
@@ -142,4 +144,21 @@ input {
   line-height: 1.45;
   outline: none;
   padding: 0.6em 1.45em 0.7em;
+}
+
+.main-inline-auto {
+  max-inline-size: var(--width--content);
+  margin-inline: auto;
+}
+
+:root {
+  --space-m: clamp(1.5rem, 1.4348rem + 0.3261vw, 1.6875rem);
+  /* --space-l: clamp(1.5rem, 1.4348rem + 0.3261vw, 1.6875rem); */
+  
+/* Layout */
+  --width--content: 1080px;
+  --width--content--medium: 1080px;
+  --width--content--large: 1280px;
+
+  --width--site-gutter: var(--space-m);
 }
