@@ -29,8 +29,8 @@ function Navigation() {
   }
 
   return (
-    <div id="navigation" className="w-full">
-      <div className="flex justify-between items-center max-w-[1280px] mx-auto px-4 w-full">
+    <div id="navigation" className="w-full is-large-width-content">
+      <div className="flex justify-between items-center mx-auto w-full">
         <div className="flex gap-3">
           <Link to="/">
             <img src={logo} alt="Logo" className="hidden md:block" />

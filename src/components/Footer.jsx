@@ -10,8 +10,8 @@ import Instagram from "../assets/icons/instagram_red.svg";
 
 function Footer() {
   return (
-    <footer className="w-full bg-white pt-[120px] pb-[180px]">
-      <div className="max-w-[1280px] mx-auto px-8 w-full">
+    <footer className="w-full bg-white pt-[120px] pb-[180px] is-large-width-content">
+      <div className="mx-auto px-8 w-full">
         <div className="flex justify-between items-start gap-20 md:flex-row flex-col">
           <div className="flex-shrink-0">
             <Link to="/">

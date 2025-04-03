@@ -38,10 +38,10 @@ function Contributors() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
+    <section className="flex overflow-hidden justify-center items-start max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-w-4xl max-md:max-w-full">
-          <div className="font-display-01 ipad-portrait:font-display-03 flex flex-col items-center text-center">
+        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
+          <div className="font-display-01 font-bitmap-song ipad-portrait:font-display-03 flex flex-col items-center text-center">
             <h2 className="leading-tight tracking-[2.16px]">
               Contributors
             </h2>
@@ -50,9 +50,9 @@ function Contributors() {
             </div>
           </div>
           
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             {contributors.map((contributor, index) => (
-              <div key={index} className="flex flex-col gap-6 p-6 bg-gray-50 rounded-lg">
+              <div key={index} className="flex flex-col gap-1 border border-black">
                 <a 
                   href={contributor.url}
                   target="_blank"
@@ -62,22 +62,21 @@ function Contributors() {
                   <img 
                     src={contributor.image} 
                     alt={contributor.name}
-                    className="w-full h-48 object-cover rounded-lg"
+                    className="w-full h-[300px] object-cover"
                   />
                 </a>
-                <div className="flex flex-col flex-grow">
-                  <h3 className="text-2xl font-medium mb-1">
+                <div className="flex flex-col flex-grow p-4">
+                  <h3 className="font-body-01 mb-1">
                     <a 
                       href={contributor.url}
-                      className="text-blue-600 hover:text-blue-800"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {contributor.name}
                     </a>
                   </h3>
-                  <i className="text-gray-600 mb-3">{contributor.role}</i>
-                  <p className="text-base text-gray-700">
+                  <i className="font-body-03 mb-3">{contributor.role}</i>
+                  <p className="font-body-04">
                     {contributor.bio}
                   </p>
                 </div>
