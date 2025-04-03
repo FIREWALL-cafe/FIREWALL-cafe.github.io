@@ -173,8 +173,8 @@ function SearchInput({ searchMode }) {
 
   const displaySearchIcon = !isArchive ? SearchIcon : ArchiveIcon;
   const displayTooltipContent = !isArchive
-    ? 'Your query will automatically translate into the other language. English queries will be searched in <b>Google</b>. Chinese queries will be searched in <b>Baidu</b>.'
-    : "Explore the archive to view past results from other users and see how they've changed over time.";
+    ? '<span class="font-body-03">Your query will automatically translate into the other language. English queries will be searched in <b>Google</b>. Chinese queries will be searched in <b>Baidu</b>.</span>'
+    : '<span class="font-body-03">Explore the archive to view past results from other users and see how they\'ve changed over time.</span>';
   
   return (
     <>
@@ -219,7 +219,7 @@ function SearchInput({ searchMode }) {
               fill="#ef4444"
               className="w-6 h-6"
               data-tooltip-id="tooltip"
-              data-tooltip-content={displayTooltipContent}
+              data-tooltip-html={displayTooltipContent}
               data-tooltip-place="right"
             />
             <Tooltip id="tooltip" noArrow={true} />

@@ -14,7 +14,7 @@ function InfoSection() {
             越过墙往外看。自己决定。
           </div>
         </div>
-        <div className="mt-8 space-y-6 font-body-01">
+        <div className="mt-8 space-y-6 font-body-01 text-center">
           <p>
             The FIREWALL dual-search engine will automatically translate your query, and provide image results from both Google and Baidu. Compare the image results side by side, and vote on whether you believe the results are being censored, manipulated, or lost in translation!
           </p>

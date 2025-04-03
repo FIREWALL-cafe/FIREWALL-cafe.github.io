@@ -5,20 +5,20 @@ import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function FeaturedArticle() {
   return (
-    <section className="flex overflow-hidden justify-center items-start pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
-      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
-          <div className="flex flex-col w-full max-w-[516px] max-md:max-w-full">
-            <div className="text-zinc-400">Featured</div>
-            <div className="chinese flex flex-col mt-10 w-full text-5xl font-medium max-md:max-w-full max-md:text-4xl">
-              <h2 className="text-3xl md:text-4xl lg:text-[48px] leading-[58px] max-md:max-w-full max-md:leading-[54px]">
+    <section className="flex overflow-hidden justify-center items-start pb-16 w-full bg-white max-md:pb-24 is-large-width-content">
+      <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px]">
+        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
+          <div className="flex flex-col w-full">
+            <div className="font-body-01 text-neutral-600">Featured</div>
+            <div className="font-bitmap-song font-display-04 md:font-display-01 flex flex-col mt-10 w-full ">
+              <h2 className="">
                 How a New York art show about Chinese online censorship found itself censored
               </h2>
-              <div className="leading-tight text-red-600 max-md:max-w-full max-md:text-4xl">
+              <div className="leading-tight text-red-600 max-md:text-4xl">
                 图表标题
               </div>
             </div>
-            <p className="mt-10 leading-9 text-black max-md:max-w-full">
+            <p className="mt-10 leading-9 text-black">
               On the eve of the event, one of the speakers, a visiting Chinese feminist who had done significant work on gender law issues, suddenly started receiving threats.
             </p>
             <a href="https://www.washingtonpost.com/news/worldviews/wp/2016/03/11/how-a-new-york-art-show-about-chinese-online-censorship-found-itself-censored/" target="_blank" className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-xl text-center text-red-600 bg-white rounded border border-red-600 border-solid min-h-[56px]">
