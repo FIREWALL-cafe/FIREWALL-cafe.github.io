@@ -31,6 +31,7 @@ function SearchInput({ searchMode }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [isArchive, setIsArchive] = useState(searchMode === 'archive');
   const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [] });
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,7 +64,8 @@ function SearchInput({ searchMode }) {
       setTranslation('Please enter a search query');
       return;
     }
-
+    setError('');
+    
     setLoading(true);
     if (location.pathname === '/') {
       navigate('/search?q=' + query);
@@ -105,11 +107,13 @@ function SearchInput({ searchMode }) {
       console.error('Search error:', e);
       if (!isArchive) {
         setResults({ googleResults: [], baiduResults: [] });
-        setTranslation(e.message || String(e));
+        setError(e.message || String(e));
+        setTranslation('');
       } else {
         setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
         setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
-        setTranslation(e.message || 'Failed to search archives');
+        setError(e.message || 'Failed to search archives');
+        setTranslation('');
       }
     } finally {
       setLoading(false);
@@ -266,6 +270,11 @@ function SearchInput({ searchMode }) {
             <span className={`p-1 leading-8 text-medium bg-slate-50 border border-black rounded ${translation ? '' : 'hidden'}`}>
               <span className="font-bold">Translation:</span> {translation}
             </span>
+            {error && (
+              <span className="p-1 leading-8 text-medium bg-red-50 border border-red-600 rounded text-red-600">
+                <span className="font-bold">Error:</span> {error}
+              </span>
+            )}
             {isArchive && (
               <button
                 onClick={() => setFilterOpen(!filterOpen)}
