@@ -4,7 +4,7 @@ import SupportHero from '../assets/images/support-hero.png';
 function HeroSupport() {
   return (
     <section className="flex flex-col items-center w-full py-8 md:py-16">
-      <div className="font-display-01 ipad-portrait:font-display-03 flex flex-col items-center w-full px-4">
+      <div className="font-bitmap-song font-display-01 ipad-portrait:font-display-03 flex flex-col items-center w-full px-4">
         <h1 className="leading-tight text-center">
           Support the frontline of internet freedom advocates
         </h1>
