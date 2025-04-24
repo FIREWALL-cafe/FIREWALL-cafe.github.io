@@ -86,14 +86,14 @@ const getGoogleImages = async (query) => {
  * @returns array of image urls from Baidu 
  */
 const getBaiduImages = async (query) => {
-  console.log('fetching baidu images for', query);
+  // const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`;
   const json_url = `https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&word=${encodeURI(query)}&pn=0&rn=30`
-  const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`;
 
   const config = {
     cache: 'no-cache',
     mode: 'cors',
     headers: {
+      "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
       'Content-Type': 'application/json',
       'User-Agent': 'Mozilla/5.0 (Linux; Android 10; HD1913) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36 EdgA/46.1.2.5140',
       // Occasionally this Cookie needs to be set.
@@ -103,11 +103,17 @@ const getBaiduImages = async (query) => {
     },
   };
 
+  console.log('fetching baidu images for', query, json_url);
   const response = await fetch(json_url, config);
-  const json = await response.json();
-  console.log('json', json.data.map(item => item.thumbURL));
-  return json.data.map(item => item.thumbURL).slice(0, 9) || [];
-  // return getBaiduImageSrcs(body) || [];
+  try {
+    const json = await response.json();
+    console.log('json', json.data.map(item => item.thumbURL));
+    return json.data.map(item => item.thumbURL).slice(0, 9) || [];
+  } catch (error) {
+    console.log('json', json);
+    console.error('Error fetching baidu images:', error);
+    return [];
+  }
 };
 
 const getDetectedLanguage = async (query) => {
