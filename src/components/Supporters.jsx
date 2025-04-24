@@ -9,7 +9,7 @@ function Supporters() {
     <section className="flex overflow-hidden flex-col w-full bg-white pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="font-display-01 ipad-portrait:font-display-03 lg:col-span-1">
+          <div className="font-bitmap-song font-display-01 ipad-portrait:font-display-03 lg:col-span-1">
             <h2 className="leading-tight">
               Thanks to our supporters.
             </h2>

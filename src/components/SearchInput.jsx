@@ -197,7 +197,7 @@ function SearchInput({ searchMode }) {
                   <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? 'w-6' : 'w-8 h-8'}`}>
                     <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
-                  <div className="flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6">
+                  <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? '' : 'h-8'}`}>
                     <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
                 </div>

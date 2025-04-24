@@ -26,6 +26,7 @@ const getDashboardData = async () => {
 }
 
 const getGoogleImageSrcs = (results) => {
+  console.log('getGoogleImageSrcs');
   // const html = cheerio.load(results);
   // const imgs = html('.DS1iW').toArray().slice(0, 9);
   // const imgs = html('div.H8Rx8c g-img img').toArray().slice(0, 9);
@@ -34,17 +35,20 @@ const getGoogleImageSrcs = (results) => {
 };
 
 const getBaiduImageSrcs = (results) => {
-  const html = cheerio.load(results)
-  const data = html('script')
-    ?.toArray()
-    ?.filter(e => e?.attribs?.id?.startsWith('atom-data'))
-    ?.[0]
-    ?? {};
-  const inner = html(data).html();
-  const { data: { images } } = JSON.parse(inner);
-  return images
-    .slice(0, 9)
-    .map(img => img?.thumburl);
+  console.log('getBaiduImageSrcs');
+  const html = cheerio.load(results);
+  const dataScript = html('#image-search-data script[type="application/json"]').html();
+  if (!dataScript) return [];
+  
+  try {
+    const { data: { images } } = JSON.parse(dataScript);
+    return images
+      .slice(0, 9)
+      .map(img => img?.objURL || img?.thumburl);
+  } catch (error) {
+    console.error('Error parsing Baidu image data:', error);
+    return [];
+  }
 }
 
 /**
@@ -72,7 +76,6 @@ const getGoogleImages = async (query) => {
   };
 
   const results = await getJson(params);
-  // console.log(results["images_results"].slice(0, 1));
   
   return getGoogleImageSrcs(results["images_results"]) || [];
 };
@@ -84,6 +87,7 @@ const getGoogleImages = async (query) => {
  */
 const getBaiduImages = async (query) => {
   console.log('fetching baidu images for', query);
+  const json_url = `https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&word=${encodeURI(query)}&pn=0&rn=30`
   const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`;
 
   const config = {
@@ -95,12 +99,15 @@ const getBaiduImages = async (query) => {
       // Occasionally this Cookie needs to be set.
       // Regenerate a new one by making the request in Postman (don't forget to set the custom headers above).
       // Copy and paste the auto-populated Cookie value from the Headers tab here:
-      'Cookie': 'BAIDUID=C35C2D2C00FDD3927D7E2C7A4D96F247:FG=1; BAIDUID_BFESS=C35C2D2C00FDD3927D7E2C7A4D96F247:FG=1; BDRCVFR[dG2JNJb_ajR]=mk3SLVN4HKm; BIDUPSID=C35C2D2C00FDD392F2414BEE62B793C8; H_PS_PSSID=36545_38113_38057_37907_38147_37989_38175_38172_37798_37924_26350_38120_38100_38008_37881; H_WISE_SIDS=219946_229967_219942_242489_110085_244252_244955_244267_242682_245674_246583_246905_246768_245042_246308_243424_247788_245540_248674_246801_248718_249015_248019_247552_248156_249498_249812_245672_244281_249921; H_WISE_SIDS_BFESS=219946_231498_240447_229967_239102_219942_241042_242489_242754_242543_242471_110085_243841_244252_244955_244267_241737_244446_245765_246095_246325_242682_243821_245674_246583_246613_243425_246905_246768; PSINO=7; PSTM=1676564876; X-Use-Search-BFF-SF=1; delPer=0'
+      'Cookie': 'BAIDUID=DA3AF7E580B9999700832FE88F5B01DA:FG=1; BAIDUID_BFESS=DA3AF7E580B9999700832FE88F5B01DA:FG=1; H_WISE_SIDS=62325_62842_62967_62999;'
     },
   };
 
-  const body = await fetchResponseText(url, config);
-  return getBaiduImageSrcs(body) || [];
+  const response = await fetch(json_url, config);
+  const json = await response.json();
+  console.log('json', json.data.map(item => item.thumbURL));
+  return json.data.map(item => item.thumbURL).slice(0, 9) || [];
+  // return getBaiduImageSrcs(body) || [];
 };
 
 const getDetectedLanguage = async (query) => {
@@ -142,7 +149,7 @@ const postVote = async ({ meta_key, search_id, vote_client_name, vote_ip_address
     vote_ip_address: vote_ip_address,
   }
 
-  console.log('vote data', voteData);
+  console.log('vote data', url, voteData);
   const { data } = await axios.post(url, voteData);
 
   console.log('vote successful', data);

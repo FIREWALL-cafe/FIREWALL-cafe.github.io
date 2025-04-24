@@ -120,18 +120,22 @@ app.post('/images', async (req, res) => {
     }
 
     const { language: langFrom } = await getDetectedLanguage(encodeURIComponent(query));
-    console.log('langFrom', langFrom);
     langTo = langFrom === 'en' ? 'zh-CN' : 'en';
-    
+    console.log('langFrom', langFrom);
+    console.log('langTo', langTo);
+
     const translatedQuery = await getTranslation(encodeURIComponent(query), langFrom, langTo);
     const enQuery = langFrom === 'en' ? query : translatedQuery;
-    const cnQuery = langFrom !== 'en' ? translatedQuery : query;
-
+    const cnQuery = langTo === 'zh-CN' ? translatedQuery : query;
+    console.log('translatedQuery', translatedQuery);
+    console.log('enQuery', enQuery);
+    console.log('cnQuery', cnQuery);
     const results = await Promise.all([
       getGoogleImages(enQuery),
       getBaiduImages(cnQuery),
     ]);
 
+    console.log('about to save images');
     const { searchId } = await saveImages({ 
       query, 
       google: results[0].slice(0, 9), 
