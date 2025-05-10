@@ -23,6 +23,7 @@ const menuLinks = [
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const isIphone = useMediaQuery({ maxWidth: 420 });
+  const isVerySmallScreen = useMediaQuery({ maxWidth: 320 });
   
   const toggleDrawer = () => {
       setIsOpen((prevState) => !prevState)
@@ -33,8 +34,11 @@ function Navigation() {
       <div className="flex justify-between items-center mx-auto w-full">
         <div className="flex gap-3">
           <Link to="/">
-            <img src={logo} alt="Logo" className="hidden md:block" />
-            <img src={logoMobile} alt="Logo" className="block md:hidden" />
+            {isVerySmallScreen ? (
+              <img src={logoMobile} alt="Logo" />
+            ) : (
+              <img src={logo} alt="Logo" />
+            )}
           </Link>
         </div>
         <div className="flex relative">

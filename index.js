@@ -28,8 +28,6 @@ app.get('/dashboardData', async (req, res) => {
 
 
 app.get('/proxy-image', async (req, res) => {
-  console.log('Received proxy-image request:', req.query);
-  
   try {
     const imageUrl = req.query.url;
     
@@ -62,10 +60,9 @@ app.get('/proxy-image', async (req, res) => {
     const contentType = response.headers['content-type'];
     if (!contentType || !contentType.startsWith('image/')) {
       console.error('Invalid content type:', contentType);
+      console.log('placeholder for', imageUrl);
       return res.sendFile(path.join(__dirname, 'src/assets/icons/broken-image-placeholder.svg'));
     }
-
-    console.log('Image fetch successful, content-type:', contentType);
 
     // Set appropriate headers
     res.set({
@@ -128,8 +125,6 @@ app.post('/images', async (req, res) => {
     const enQuery = langFrom === 'en' ? query : translatedQuery;
     const cnQuery = langTo === 'zh-CN' ? translatedQuery : query;
     console.log('translatedQuery', translatedQuery);
-    console.log('enQuery', enQuery);
-    console.log('cnQuery', cnQuery);
     const results = await Promise.all([
       getGoogleImages(enQuery),
       getBaiduImages(cnQuery),
