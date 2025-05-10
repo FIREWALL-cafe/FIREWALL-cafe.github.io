@@ -20,7 +20,7 @@ export default function Modal({
       <div
         onClick={(e) => e.stopPropagation()}
         className={`
-          bg-white rounded shadow p-2 transition-all mx-4 w-full ipad-portrait:mx-24 max-h-[90vh] relative flex flex-col
+          bg-white rounded shadow p-2 transition-all mx-4 max-w-[720px] ipad-portrait:mx-24 max-h-[90vh] relative flex flex-col
           ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
         `}
       >
