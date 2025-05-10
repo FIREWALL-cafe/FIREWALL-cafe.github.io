@@ -93,7 +93,7 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVot
     <button
       className={`
         flex flex-col items-start
-        min-w-[190px]
+        w-[190px]
         p-3
         rounded-lg
         border border-solid border-neutral-500

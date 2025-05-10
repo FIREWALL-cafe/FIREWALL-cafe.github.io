@@ -55,7 +55,7 @@ function VotingSection({ query, searchId }) {
                 <Tooltip id="tooltip-think" noArrow={true} />
               </div>
             </div>
-            <div className="flex gap-4 items-stretch w-full rounded-md max-md:max-w-full">
+            <div className="flex flex-col md:flex-row gap-4 items-center md:items-stretch w-full rounded-md max-md:max-w-full">
               <VoteButton voteCategory="votes_censored" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_censored} />
               <VoteButton voteCategory="votes_uncensored" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_uncensored} />
               <VoteButton voteCategory="votes_lost_in_translation" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_lost_in_translation} />
@@ -76,7 +76,7 @@ function VotingSection({ query, searchId }) {
                   <Tooltip id="tooltip-how" noArrow={true} />
                 </div>
               </div>
-              <div className="flex gap-4 items-start w-full rounded-md">
+              <div className="flex flex-col md:flex-row gap-4 items-center md:items-stretch w-full rounded-md">
                 <VoteButton voteCategory="votes_bad_translation" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_bad_translation} />
                 <VoteButton voteCategory="votes_good_translation" voteHandler={handleVote} disabled={false} totalVotes={voteCounts.votes_good_translation} />
               </div>
