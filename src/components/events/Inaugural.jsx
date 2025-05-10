@@ -42,22 +42,16 @@ function Inaugural() {
     }
   ];
 
-  const supporters = [
-    "Franklin Furnace Fund",
-    "Asian Women Giving Circle",
-    "Lower Manhattan Cultural Council"
-  ];
-
   return (
     <section className="flex overflow-hidden justify-center items-start px-4 md:px-8 pb-16 w-full bg-white max-md:pb-24">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full max-w-[1080px]">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
           <div className="flex flex-col w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               INAUGURAL New York 2016 Pop-up!
             </h1>
             
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-gray-600">
                   <ClockIcon className="w-5 h-5" />
@@ -81,16 +75,11 @@ function Inaugural() {
                 </div>
               </div>
 
+              <hr className="my-6 border-gray-200" />
+
               <div>
                 <p>
-                  Please join{' '}
-                  {supporters.map((supporter, index) => (
-                    <React.Fragment key={index}>
-                      <span className="font-medium">{supporter}</span>
-                      {index < supporters.length - 1 && index === supporters.length - 2 ? ' and ' : index < supporters.length - 1 ? ', ' : ' '}
-                    </React.Fragment>
-                  ))}
-                  for the opening reception of FIREWALL Internet Cafe, created by 
+                  Please join Franklin Furnace Fund, Asian Women Giving Circle and Lower Manhattan Cultural Council for the opening reception of FIREWALL Internet Cafe, created by 
                   Joyce Yu-Jean Lee in collaboration with Dan Phiffer.
                 </p>
               </div>

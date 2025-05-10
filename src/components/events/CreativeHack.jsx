@@ -61,11 +61,11 @@ function CreativeHack() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-04 font-bitmap-song">
               Creative Hacktivism Roundtable
             </h1>
 
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">Feb. 26, 2016, 7:30 PM</span>
@@ -82,6 +82,8 @@ function CreativeHack() {
                 </div>
               </div>
 
+              <hr className="my-6 border-gray-200" />
+
               <p className="mb-4 italic">
                 Discussion about Internet censorship in China and international hacktivism in its many creative forms: 
                 constructing virtual networks; implementing collateral freedom; creating research, journalism, 
@@ -91,7 +93,7 @@ function CreativeHack() {
               <p className="mb-4">
                 <a 
                   href="https://www.youtube.com/watch?v=PMj4aQcighU"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-red-600 hover:text-red-800"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -111,7 +113,7 @@ function CreativeHack() {
                           <a 
                             key={linkIndex}
                             href={link.url}
-                            className="text-blue-600 hover:text-blue-800 mr-3"
+                            className="text-red-600 hover:text-red-800 mr-3"
                             target="_blank"
                             rel="noopener noreferrer"
                           >

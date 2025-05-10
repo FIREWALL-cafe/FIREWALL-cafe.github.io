@@ -48,7 +48,7 @@ function GroupRvcc() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:marker:text-[56px] text-3xl font-medium leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               FIREWALL Pop-up Group Show in RVCC
             </h1>
             
@@ -63,7 +63,7 @@ function GroupRvcc() {
                 <div>
                   <a 
                     href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-red-600 hover:text-red-800"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -76,7 +76,9 @@ function GroupRvcc() {
                 </div>
               </div>
 
-              <p className="text-gray-700">
+              <hr className="my-6 border-gray-200" />
+
+              <p className="text-gray-700 font-body-02">
                 FIREWALL Pops-Up in a Group exhibition, <em>The Future is</em>, curated by Lydia Grey Barnes 
                 and coordinated by Darren McManus, featuring artists:
               </p>
@@ -100,7 +102,7 @@ function GroupRvcc() {
                       alt={image.description}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600">{image.description}</p>
+                    <p className="mt-2 text-sm text-gray-600 font-body-04">{image.description}</p>
                   </div>
                 ))}
               </div>

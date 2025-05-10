@@ -42,15 +42,15 @@ function Reactions() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
+    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               Re(actions) to the Great Chinese Firewall
             </h1>
 
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">Jan. 16, 2020, 6:00 PM</span>
@@ -61,7 +61,7 @@ function Reactions() {
                 <div>
                   <a 
                     href="https://www.vbkoe.org/"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-red-600 hover:text-red-800"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -77,13 +77,15 @@ function Reactions() {
                 </div>
               </div>
 
-              <p className="text-gray-700">
+              <hr className="my-6 border-gray-200" />
+
+              <p className="text-gray-700 font-body-02">
                 Please join{' '}
                 {panelists.map((panelist, index) => (
                   <span key={index}>
                     <a 
                       href={panelist.link}
-                      className="text-blue-600 hover:text-blue-800 font-bold"
+                      className="text-red-600 hover:text-red-800 font-bold"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

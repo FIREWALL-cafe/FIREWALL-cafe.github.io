@@ -35,11 +35,11 @@ function OffEighteen() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               10th Anniversary 2018 Oslo Freedom Forum
             </h1>
             
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">May 28, 2018, 11 AM-5:30 PM</span>
@@ -56,6 +56,8 @@ function OffEighteen() {
                 </div>
               </div>
 
+              <hr className="my-6 border-gray-200" />
+
               <div className="space-y-4">
                 <p>
                   Join us Monday at the Interactive Expo where we will run a "Best Search Session" 
@@ -67,7 +69,7 @@ function OffEighteen() {
                   Tag #FIREWALLcafe on Instagram… Top votes on{' '}
                   <a 
                     href="https://www.instagram.com/firewallcafe/" 
-                    className="text-blue-600 hover:text-blue-800 underline"
+                    className="text-red-600 hover:text-red-800 underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

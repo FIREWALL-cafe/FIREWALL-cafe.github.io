@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import ArrowLeft from '../assets/icons/arrow_left_alt.svg';
+import ArrowLeft from './icons/ArrowLeft';
 
 import Megha from './events/Megha';
 import Marymount from './events/Marymount';
@@ -52,9 +52,9 @@ function ShowEvent() {
     <div className="w-full">
       {EventUrls[eventId] ? (
         <>
-          <div className="mx-auto px-14 pt-14 max-md:px-5">
-            <Link to="/events">
-              <img src={ArrowLeft} alt="Back to Events" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square inline" /> 
+          <div className="mx-auto px-14 pt-14 max-md:px-5 text-red-600">
+            <Link to="/events" className="flex items-center gap-2">
+              <ArrowLeft color="currentColor" className="object-contain shrink-0 w-6 aspect-square" /> 
               Back to Events
             </Link>
           </div>

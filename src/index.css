@@ -28,6 +28,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: #e60011;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cc000f;
+}
+
 header{width:100%;}
 
 #root {
