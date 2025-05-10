@@ -4,13 +4,13 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import { generateImageUrl } from '../utils/imageUrlGenerator';
 
 import googleLogo from '../assets/icons/Google-logo_long.svg';
 import baiduLogo from '../assets/icons/baidu_logo_long.svg';
 import CarouselLeft from "../assets/icons/carousel-left.svg";
 import CarouselRight from "../assets/icons/carousel-right.svg";
 import QuestionIcon from './icons/QuestionIcon';
-import BrokenImagePlaceholder from '../assets/icons/broken-image-placeholder.svg';
 import BrokenImagePadding from '../assets/icons/broken-image-placeholder_padding.svg';
 import CensoredBrokenImage from '../assets/icons/censored-image-placeholder_padding.svg';
 
@@ -27,7 +27,7 @@ function ImageCarousel({ images }) {
     }
   };
 
-  const baiduImage = (image) => images.baiduResults.length > 0 ? `/proxy-image?url=${encodeURIComponent(image)}` : CensoredBrokenImage;
+  const baiduImage = (image) => generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage);
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => 
@@ -52,7 +52,7 @@ function ImageCarousel({ images }) {
 
   // Create slides array for the lightbox with pairs of images
   const slides = images.googleResults.map((googleImage, index) => ({
-    google: `/proxy-image?url=${encodeURIComponent(googleImage)}`,
+    google: generateImageUrl(googleImage),
     baidu: baiduImage(images.baiduResults[index]),
     alt: `Image Pair ${index + 1}`
   }));
@@ -110,7 +110,7 @@ function ImageCarousel({ images }) {
               </button>
             </div>
             <img
-              src={`/proxy-image?url=${encodeURIComponent(images.googleResults[currentIndex])}`}
+              src={generateImageUrl(images.googleResults[currentIndex])}
               className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
               onError={handleOnError}
             />
@@ -159,7 +159,7 @@ function ImageCarousel({ images }) {
               className={`aspect-square overflow-hidden ${currentIndex === index ? 'focus-visible:ring-4 focus-visible:ring-blue-400 ring-4 ring-blue-400' : 'opacity-60'}`}
             >
               <img
-                src={`/proxy-image?url=${encodeURIComponent(image)}`}
+                src={generateImageUrl(image)}
                 className="w-full h-full object-cover"
                 onError={handleOnError}
               />
@@ -174,7 +174,7 @@ function ImageCarousel({ images }) {
               className={`aspect-square overflow-hidden ${currentIndex === index ? 'ring-4 ring-red-600 focus-visible:ring-4 focus-visible:ring-red-600' : 'opacity-60'}`}
             >
               <img
-                src={`/proxy-image?url=${encodeURIComponent(image)}`}
+                src={generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage)}
                 className="w-full h-full object-cover"
                 onError={(e) => handleOnError(e, true)}
               />

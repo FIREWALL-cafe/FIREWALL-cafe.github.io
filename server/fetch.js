@@ -87,7 +87,7 @@ const getGoogleImages = async (query) => {
  */
 const getBaiduImages = async (query) => {
   // const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURI(query)}`;
-  const json_url = `https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&word=${encodeURI(query)}&pn=0&rn=30`
+  const json_url = `https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&fp=result&word=${encodeURI(query)}&pn=0&rn=30`
 
   const config = {
     cache: 'no-cache',
@@ -110,7 +110,7 @@ const getBaiduImages = async (query) => {
     console.log('json', json.data.map(item => item.thumbURL));
     return json.data.map(item => item.thumbURL).slice(0, 9) || [];
   } catch (error) {
-    console.log('json', json);
+    console.log('response', response.data);
     console.error('Error fetching baidu images:', error);
     return [];
   }
