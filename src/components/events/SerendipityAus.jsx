@@ -38,11 +38,11 @@ function SerendipityAus() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               "Search for... Serendipity" in Austria
             </h1>
             
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">Dec. 3-31, 2016</span>
@@ -66,6 +66,8 @@ function SerendipityAus() {
                 </div>
               </div>
 
+              <hr className="my-6 border-gray-200" />
+
               <div>
                 <h3 className="text-xl font-semibold mb-4 underline">ARTISTS</h3>
                 <div className="flex flex-wrap gap-2">
@@ -83,7 +85,7 @@ function SerendipityAus() {
               <div>
                 <a 
                   href="https://juleshart.wordpress.com/2016/12/06/594/"
-                  className="text-blue-600 hover:text-blue-800 underline"
+                  className="text-red-600 hover:text-red-800"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

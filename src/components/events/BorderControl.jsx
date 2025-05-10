@@ -54,15 +54,15 @@ function BorderControl() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full bg-white max-md:pb-24 max-md:max-w-full">
+    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full  max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
-        <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
+        <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               New Media Caucus "Border Control" Symposium
             </h1>
 
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">Sep. 21, 2019, 10:45 AM to 12:15 PM</span>
@@ -81,6 +81,8 @@ function BorderControl() {
                 </div>
               </div>
 
+              <hr className="my-6 border-gray-200" />
+
               <p className="mb-4 italic">
                 Please join Nadav Assor, Patricia Villalobos Echeverría, and Maria del Carmen Montoya, 
                 in a panel discussion with Joyce Yu-Jean Lee, creator of FIREWALL Internet Cafe, 
@@ -94,7 +96,7 @@ function BorderControl() {
                     <div key={index} className="pl-4 border-l-2 border-gray-200">
                       <a 
                         href={panelist.url}
-                        className="text-blue-600 hover:text-blue-800 font-semibold"
+                        className="text-red-600 hover:text-red-800 font-semibold"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

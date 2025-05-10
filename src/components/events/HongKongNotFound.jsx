@@ -23,7 +23,7 @@ function HongKongNotFound() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-04 font-bitmap-song">
               Hong Kong "Not Found" Exhibition
             </h1>
             
@@ -33,7 +33,7 @@ function HongKongNotFound() {
                 <span className="font-body-01">Dec. 12-13, 2015</span>
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex gap-2 font-body-02">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
                   <p className="font-body-01 text-gray-600">
@@ -46,7 +46,9 @@ function HongKongNotFound() {
                 </div>
               </div>
 
-              <p className="mb-4">
+              <hr className="my-6 border-gray-200" />
+
+              <p className="mb-4 font-body-02">
                 FIREWALL Internet Cafe was invited to participate in "Not Found", a performance art exhibition 
                 curated by Ying Ting at Connecting Space in Hong Kong. The exhibition explored the theme of 
                 censorship and freedom of expression in Hong Kong and China.

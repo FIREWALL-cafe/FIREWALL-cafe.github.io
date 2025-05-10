@@ -27,11 +27,11 @@ function OffNyc() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               2017 Oslo Freedom Forum New York Interactive Expo
             </h1>
             
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">Sep. 19, 2017, 9 AM-5 PM</span>
@@ -49,6 +49,8 @@ function OffNyc() {
                   </p>
                 </div>
               </div>
+
+              <hr className="my-6 border-gray-200" />
 
               <p className="mb-4">
                 A one-day "Search Session" at an Interactive Expo focusing on the 

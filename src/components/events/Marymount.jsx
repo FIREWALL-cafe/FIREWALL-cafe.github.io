@@ -31,11 +31,11 @@ function Marymount() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               Marymount Manhattan "Digital Media & Society" Class Field Trip
             </h1>
 
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="text-xl">Feb. 29, 2016, 8-9:30 PM</span>
@@ -44,7 +44,7 @@ function Marymount() {
               <div className="flex gap-2">
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 font-body-02">
                     Chinatown Soup
                     <br />
                     16B Orchard Street
@@ -54,11 +54,13 @@ function Marymount() {
                 </div>
               </div>
 
-              <p className="text-gray-700">
+              <hr className="my-6 border-gray-200" />
+
+              <p className="text-gray-700 font-body-02">
                 16 college students from the "Digital Media & Society" communications course at{' '}
                 <a 
                   href="http://www.mmm.edu/departments/communication-arts/"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-red-600 hover:text-red-800"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

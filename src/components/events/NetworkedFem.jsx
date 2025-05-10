@@ -83,11 +83,11 @@ function NetworkedFem() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-04 leading-[58px] text-black">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               Networked Feminism in China
             </h1>
             
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="flex items-center gap-2 text-gray-600">
                 <ClockIcon className="w-5 h-5" />
                 <span className="font-body-01">Feb. 19, 2016, 7:30 PM</span>
@@ -125,6 +125,8 @@ function NetworkedFem() {
                 </div>
               </div>
 
+              <hr className="my-6 border-gray-200" />
+
               <p className="text-gray-700">
                 Please join us for a FIREWALL exhibition viewing and reception from 5-7p at Chinatown Soup, 
                 followed by a roundtable discussion about China's Young Feminist Activists, and the role of 
@@ -134,7 +136,6 @@ function NetworkedFem() {
               <p className="mb-8">
                 <a 
                   href="https://www.youtube.com/watch?v=VnEtGXp3gmA"
-                  className="text-blue-600 hover:text-blue-800"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -159,7 +160,6 @@ function NetworkedFem() {
                           <a 
                             key={linkIndex}
                             href={link.url}
-                            className="text-blue-600 hover:text-blue-800"
                             target="_blank"
                             rel="noopener noreferrer"
                           >

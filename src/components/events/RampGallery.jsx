@@ -45,11 +45,11 @@ function RampGallery() {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 md:text-[56px] text-3xl font-medium leading-[58px] text-black max-md:leading-[54px]">
+            <h1 className="mt-10 font-display-03 font-bitmap-song">
               Tiger Strikes Asteroid presents "REDIRECT"
             </h1>
             
-            <div className="mt-8 space-y-6">
+            <div className="mt-8 space-y-6 font-body-02">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-gray-600">
                   <ClockIcon className="w-5 h-5" />
@@ -62,11 +62,11 @@ function RampGallery() {
               </div>
 
               <div className="flex gap-2">
-                <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
+                <LocationIcon className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
                   <a 
                     href="http://www.revolveavl.org/calendar/2020/1/24/revolve-hosts-reception-for-redirect-tsa-at-ramp-gallery"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-red-600 hover:text-red-800"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -78,6 +78,8 @@ function RampGallery() {
                   Asheville, NC
                 </div>
               </div>
+
+              <hr className="my-6 border-gray-200" />
 
               <p className="text-gray-700">
                 FIREWALL Pops-Up in a Group exhibition curated by Suzanne Dittenber featuring artists:
