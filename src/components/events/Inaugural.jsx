@@ -92,7 +92,7 @@ function Inaugural() {
                       alt={image.description}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600 italic">
+                    <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
                       {image.description}
                     </p>
                   </div>
