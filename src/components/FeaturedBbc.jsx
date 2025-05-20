@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
+import { ReactComponent as ClockIcon } from '../assets/icons/schedule.svg';
 
-import Bbc from '../../assets/images/BBC.png';
+import Bbc from '../assets/images/BBC.png';
 function FeaturedBbc() {
   return (
     <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full max-md:pb-24 max-md:max-w-full">
