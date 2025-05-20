@@ -2,26 +2,26 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ArrowLeft from './icons/ArrowLeft';
 
-import Megha from './events/Megha';
-import Marymount from './events/Marymount';
-import OsloTaiwan from './events/OsloTaiwan';
-import Reactions from './events/Reactions';
-import FeaturedBbc from './events/FeaturedBbc';
-import ApexYouth from './events/ApexYouth';
-import CreativeHack from './events/CreativeHack';
-import ProxyPals from './events/ProxyPals';
-import NetworkedFem from './events/NetworkedFem';
-import GroupRvcc from './events/GroupRvcc';
-import OsloMiami from './events/OsloMiami';
-import RampGallery from './events/RampGallery';
-import VbkoVienna from './events/VbkoVienna';
-import BorderControl from './events/BorderControl';
-import HongKongNotFound from './events/HongKongNotFound';
-import OffEighteen from './events/OffEighteen';
-import OffNyc from './events/OffNyc';
-import OffSeventeen from './events/OffSeventeen';
-import SerendipityAus from './events/SerendipityAus';
-import Inaugural from './events/Inaugural';
+import Megha from './Megha';
+import Marymount from './Marymount';
+import OsloTaiwan from './OsloTaiwan';
+import Reactions from './Reactions';
+import FeaturedBbc from './FeaturedBbc';
+import ApexYouth from './ApexYouth';
+import CreativeHack from './CreativeHack';
+import ProxyPals from './ProxyPals';
+import NetworkedFem from './NetworkedFem';
+import GroupRvcc from './GroupRvcc';
+import OsloMiami from './OsloMiami';
+import RampGallery from './RampGallery';
+import VbkoVienna from './VbkoVienna';
+import BorderControl from './BorderControl';
+import HongKongNotFound from './HongKongNotFound';
+import OffEighteen from './OffEighteen';
+import OffNyc from './OffNyc';
+import OffSeventeen from './OffSeventeen';
+import SerendipityAus from './SerendipityAus';
+import Inaugural from './Inaugural';
 
     
 const EventUrls = {

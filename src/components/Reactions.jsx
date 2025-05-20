@@ -1,6 +1,6 @@
 import React from 'react';
-import { ReactComponent as ClockIcon } from '../../assets/icons/schedule.svg';
-import { ReactComponent as LocationIcon } from '../../assets/icons/location_on.svg';
+import { ReactComponent as ClockIcon } from '../assets/icons/schedule.svg';
+import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg';
 
 function Reactions() {
   const images = [
