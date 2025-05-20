@@ -5,40 +5,40 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function Inaugural() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_3948.jpg',
-      description: "View from main Search Station inside gallery"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3948.jpg',
+      alt: 'Inaugural Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_3814.jpg',
-      description: "Title Wall at Entrance of Exhibition"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3814.jpg',
+      alt: 'Inaugural Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_3774-1.jpg',
-      description: "Exterior View of Internet Cafe"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3774-1.jpg',
+      alt: 'Inaugural Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_3864-2.jpg',
-      description: "Search Stations"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3864-2.jpg',
+      alt: 'Inaugural Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_3960crop-1.jpeg',
-      description: "FIREWALL Cafe paraphernalia"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3960crop-1.jpeg',
+      alt: 'Inaugural Image 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_4230crop.jpeg',
-      description: "FIREWALL Cafe Special Events"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_4230crop.jpeg',
+      alt: 'Inaugural Image 6'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_4212crop.jpeg',
-      description: "Exhibition view"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_4212crop.jpeg',
+      alt: 'Inaugural Image 7'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_4248.jpg',
-      description: "FIREWALL Cafe Tea Menu"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_4248.jpg',
+      alt: 'Inaugural Image 8'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/IMG_3973.jpg',
-      description: "TenRen Tea served at FIREWALL Cafe"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3973.jpg',
+      alt: 'Inaugural Image 9'
     }
   ];
 
@@ -89,11 +89,11 @@ function Inaugural() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

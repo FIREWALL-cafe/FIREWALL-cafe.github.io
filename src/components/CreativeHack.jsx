@@ -5,20 +5,20 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function CreativeHack() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-8.jpg',
-      description: "Panelists Joyce Yu-Jean Lee, Jason Q. Ng, Sisi Wei, Dan Phiffer, and Josh B"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-8.jpg',
+      alt: 'Creative Hack Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-5.jpg',
-      description: "Jason speaks about words blocked on Weibo"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-5.jpg',
+      alt: 'Creative Hack Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-4.jpg',
-      description: "Dan discusses coding and designing FIREWALL"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-4.jpg',
+      alt: 'Creative Hack Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLCreativeHactivism2.19-2.jpg',
-      description: "Panelists engage the FIREWALL Installation"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-2.jpg',
+      alt: 'Creative Hack Image 4'
     }
   ];
 
@@ -131,12 +131,9 @@ function CreativeHack() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600 pl-4 border-l-2 border-red-600">
-                      {image.description}
-                    </p>
                   </div>
                 ))}
               </div>

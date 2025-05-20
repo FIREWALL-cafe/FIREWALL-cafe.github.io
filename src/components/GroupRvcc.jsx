@@ -5,28 +5,28 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function GroupRvcc() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-05.png',
-      description: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Lydia Grey, curator of 'The Future is'."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-05.png',
+      alt: 'RVCC Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-04.png',
-      description: "FIREWALL Pop-up at RVCC Art Gallery."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-04.png',
+      alt: 'RVCC Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-07.png',
-      description: "A group of students engaging in FIREWALL searching and discussing the results."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-07.png',
+      alt: 'RVCC Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-08.png',
-      description: "A group of students engaging in FIREWALL searching and discussing the results."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-08.png',
+      alt: 'RVCC Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-06.png',
-      description: "A visitor being surprised by the censored results on Baidu."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-06.png',
+      alt: 'RVCC Image 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_RVC-01.png',
-      description: "An artist sharing by Joyce Yu-Jean Lee about FIREWALL and internet censorship to a full room at Raritan Valley Community College."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-01.png',
+      alt: 'RVCC Image 6'
     }
   ];
 
@@ -99,10 +99,10 @@ function GroupRvcc() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600 font-body-04 pl-4 border-l-2 border-red-600">{image.description}</p>
+                    <p className="mt-2 text-sm text-gray-600 font-body-04 pl-4 border-l-2 border-red-600">{image.alt}</p>
                   </div>
                 ))}
               </div>

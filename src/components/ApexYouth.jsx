@@ -5,24 +5,24 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function ApexYouth() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-49.jpg',
-      description: "Middle schoolers from PS 184 trying out the FIREWALL plugin"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-49.jpg',
+      alt: 'Apex Youth Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-47.jpg',
-      description: "Students interacting with FIREWALL"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-47.jpg',
+      alt: 'Apex Youth Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-41.jpg',
-      description: "Roundtable conversation with students from PS 184"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-41.jpg',
+      alt: 'Apex Youth Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-25.jpg',
-      description: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-25.jpg',
+      alt: 'Apex Youth Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLApex-22.jpg',
-      description: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-22.jpg',
+      alt: 'Apex Youth Image 5'
     }
   ];
 
@@ -75,11 +75,11 @@ function ApexYouth() {
                 <div key={index} className="flex flex-col">
                   <img 
                     src={image.src} 
-                    alt={image.description}
+                    alt={image.alt}
                     className="w-full h-auto rounded-lg"
                   />
                   <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                    {image.description}
+                    {image.alt}
                   </p>
                 </div>
               ))}

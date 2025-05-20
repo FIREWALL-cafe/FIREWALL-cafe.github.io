@@ -5,44 +5,44 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function Megha() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_1.jpg',
-      description: 'Students search for "Beyonce" in the FIREWALL plugin.',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_1.jpg',
+      alt: 'Megha Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_2.jpg',
-      description: "A search term censored by Baidu displays limited image results."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_2.jpg',
+      alt: 'Megha Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_3.jpg',
-      description: "Students interact with the FIREWALL Pop-up at Marist College, Poughkeepsie, NY."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_3.jpg',
+      alt: 'Megha Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_4.jpg',
-      description: "Buzzfeed correspondent, Megha Rajagopalan delivering her lecture on China and the Rise of AI and Mass Surveillance Technology."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_4.jpg',
+      alt: 'Megha Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_5.jpg',
-      description: 'Attendees at "China and the Rise of AI and Mass Surveillance Technology", a lecture by Megha Rajagopalan at Fusco Hall, Marist College, Poughkeepsie, NY.',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_5.jpg',
+      alt: 'Megha Image 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_6.jpg',
-      description: "A student poses a question to Megha Rajagopalan after the lecture."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_6.jpg',
+      alt: 'Megha Image 6'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_7.jpg',
-      description: "A student poses a question to Megha Rajagopalan after the lecture."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_7.jpg',
+      alt: 'Megha Image 7'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_8.jpg',
-      description: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Megha Rajagopalan, Buzzfeed Correspondent, Peter Behr, Web Developer for FIREWALL."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_8.jpg',
+      alt: 'Megha Image 8'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_9.jpg',
-      description: "FIREWALL badges, stickers, and postcards."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_9.jpg',
+      alt: 'Megha Image 9'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FWC_POU_10.jpg',
-      description: "FIREWALL Pop-up stations at Marist College, Poughkeepsie, NY."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_10.jpg',
+      alt: 'Megha Image 10'
     }
   ];
 
@@ -109,10 +109,9 @@ function Megha() {
                 <div key={index} className="flex flex-col">
                   <img 
                     src={image.src} 
-                    alt={image.description}
+                    alt={image.alt}
                     className="w-full h-auto rounded-lg"
                   />
-                  <p className="mt-2 text-sm text-gray-600 pl-4 border-l-2 border-red-600">{image.description}</p>
                 </div>
               ))}
             </div>

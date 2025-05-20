@@ -5,28 +5,28 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function RampGallery() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/REDIRECT_1.jpg',
-      description: "in conversation with a FIREWALL participant"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_1.jpg',
+      alt: 'Ramp Gallery Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/REDIRECT_2.jpg',
-      description: "FIREWALL Pop-up at Ramp Gallery in Asheville, NC"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_2.jpg',
+      alt: 'Ramp Gallery Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/REDIRECT_3.jpg',
-      description: "Artist talks moderated by Lei Han with (left to right) Janna Dyk, Joyce, Victoria Bradbury and Ben Duvall"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_3.jpg',
+      alt: 'Ramp Gallery Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/REDIRECT_4.jpg',
-      description: "Artist talks moderated by Lei Han, Director of New Media program at University of North Carolina, Asheville"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_4.jpg',
+      alt: 'Ramp Gallery Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/REDIRECT_5.jpg',
-      description: "Exhibiting artists (left to right): Ben Duvall, Janna Dyk, Joyce Yu-Jean Lee, Suzanne Dittenber (curator) and Victoria Bradbury"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_5.jpg',
+      alt: 'Ramp Gallery Image 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/REDIRECT_6.jpg',
-      description: "FIREWALL Pop-up at Ramp Gallery"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_6.jpg',
+      alt: 'Ramp Gallery Image 6'
     }
   ];
 
@@ -101,10 +101,10 @@ function RampGallery() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600 pl-4 border-l-2 border-red-600">{image.description}</p>
+                    <p className="mt-2 text-sm text-gray-600 pl-4 border-l-2 border-red-600">{image.alt}</p>
                   </div>
                 ))}
               </div>

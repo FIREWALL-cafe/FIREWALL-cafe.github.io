@@ -5,20 +5,20 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function OsloMiami() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-31-copy.jpg',
-      description: "People engage with the FIREWALL search engine comparison."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-31-copy.jpg',
+      alt: 'Oslo Miami Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-31-copy-4.jpg',
-      description: "FIREWALL Pop-up at OFF MIA."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-31-copy-4.jpg',
+      alt: 'Oslo Miami Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-25-copy.jpg',
-      description: "FIREWALL installation view"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-25-copy.jpg',
+      alt: 'Oslo Miami Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2021_FIREWALL_OFF_MIA-31-copy-1.jpg',
-      description: "Gulchehra Hoja, a media personality, journalist and outspoken activist who speaks about China's violation, specifically the Uyghur culture genocide."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-31-copy-1.jpg',
+      alt: 'Oslo Miami Image 4'
     }
   ];
 
@@ -53,11 +53,11 @@ function OsloMiami() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

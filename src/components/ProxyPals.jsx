@@ -5,16 +5,16 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function ProxyPals() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLuProxy2.18-1.jpg',
-      description: "uProxy team leader explains how proxy technology works"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLuProxy2.18-1.jpg',
+      alt: 'Proxy Pals Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLuProxy2.18-2.jpg',
-      description: "Participants test out uProxy"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLuProxy2.18-2.jpg',
+      alt: 'Proxy Pals Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLuProxy2.18-3-1.jpg',
-      description: "Participants test out uProxy"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLuProxy2.18-3-1.jpg',
+      alt: 'Proxy Pals Image 3'
     }
   ];
 
@@ -66,10 +66,10 @@ function ProxyPals() {
                 <div key={index} className="flex flex-col">
                   <img 
                     src={image.src} 
-                    alt={image.description}
+                    alt={image.alt}
                     className="w-full h-auto rounded-lg"
                   />
-                  <p className="mt-2 text-sm text-gray-600">{image.description}</p>
+                  <p className="mt-2 text-sm text-gray-600">{image.alt}</p>
                 </div>
               ))}
             </div>
