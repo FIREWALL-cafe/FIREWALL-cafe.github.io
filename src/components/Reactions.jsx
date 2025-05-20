@@ -5,16 +5,16 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function Reactions() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_Panel-2-of-4.jpg',
-      description: "From left to right: Julia Hartmann, Ye Hui, Ingrid Fischer-Schreiber, Joyce Yu-Jean Lee, at the panel discussion Re(actions) to the Great Chinese Firewall. Photo by Claudia Romero."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_Panel-2-of-4.jpg',
+      alt: 'Reactions Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_Panel-4-of-4.jpg',
-      description: "From left to right: Joyce Yu-Jean Lee, Ye Hui, Julia Hartmann, Ingrid Fischer-Schreiber. In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_Panel-4-of-4.jpg',
+      alt: 'Reactions Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/A6_Flyer_SearchforFeminism_FINAL-back.jpg',
-      description: "Event flyer"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/A6_Flyer_SearchforFeminism_FINAL-back.jpg',
+      alt: 'Reactions Image 3'
     }
   ];
 
@@ -102,11 +102,11 @@ function Reactions() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

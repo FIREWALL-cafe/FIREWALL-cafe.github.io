@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'react-tooltip/dist/react-tooltip.css';
 
-import WhyDidThisHappen from './components/WhyDidThisHappen';
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";

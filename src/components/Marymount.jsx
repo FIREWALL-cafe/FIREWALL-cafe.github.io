@@ -5,24 +5,24 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function Marymount() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-4_edit.jpg',
-      description: "Students trying out FIREWALL"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-4_edit.jpg',
+      alt: 'Marymount Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-7.jpg',
-      description: "Students ask questions about how censorship works in China"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-7.jpg',
+      alt: 'Marymount Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-9.jpg',
-      description: "Student discussion about censorship in China"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-9.jpg',
+      alt: 'Marymount Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-12.jpg',
-      description: "FIREWALL founder Joyce Yu-Jean Lee with students"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-12.jpg',
+      alt: 'Marymount Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FIREWALLMarymount2.29-2_edit.jpg',
-      description: "Students engage in FIREWALL search sessions"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-2_edit.jpg',
+      alt: 'Marymount Image 5'
     }
   ];
 
@@ -77,10 +77,10 @@ function Marymount() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
-                    <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">{image.description}</p>
+                    <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">{image.alt}</p>
                   </div>
                 ))}
               </div>

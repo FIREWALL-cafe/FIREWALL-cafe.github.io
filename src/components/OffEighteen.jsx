@@ -5,28 +5,28 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function OffEighteen() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/OFF18_expo1.jpg',
-      description: "Artist Joyce Yu-Jean Lee giving participants a tour of FIREWALL"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo1.jpg',
+      alt: 'OFF18 Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF18_expo2.jpg',
-      description: "An audience member studies how the FIREWALL dual-search engine works."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo2.jpg',
+      alt: 'OFF18 Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF18_expo3.jpg',
-      description: "Co-founders of FIREWALL: Dan Phiffer, coder and Joyce Yu-Jean Lee, artist."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo3.jpg',
+      alt: 'OFF18 Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF18_expo4.jpg',
-      description: "Participants wrote their most interesting searches on a brick. Lucky winners would walk away with a raffle prize!"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo4.jpg',
+      alt: 'OFF18 Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF18_expo5.jpg',
-      description: "FIREWALL installation with raffle and bricks"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo5.jpg',
+      alt: 'OFF18 Image 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF18_expo6.jpg',
-      description: "A happy raffle winner with his prize – a book about Censorship!"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo6.jpg',
+      alt: 'OFF18 Image 6'
     }
   ];
 
@@ -84,11 +84,11 @@ function OffEighteen() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

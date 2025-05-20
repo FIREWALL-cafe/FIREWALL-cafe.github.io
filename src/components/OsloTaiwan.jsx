@@ -5,28 +5,28 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function OsloTaiwan() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-02.png',
-      description: "Taiwanese visitors keying search terms into FIREWALL dual-search browser."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-02.png',
+      alt: 'Oslo Taiwan Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-04.png',
-      description: "People searching for the China-Taiwan specific topics on the FIREWALL system."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-04.png',
+      alt: 'Oslo Taiwan Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-07.png',
-      description: "FIREWALL Pop-up at OFF TW."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-07.png',
+      alt: 'Oslo Taiwan Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-08.png',
-      description: "A group of high school students understanding the influence of censorship from China."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-08.png',
+      alt: 'Oslo Taiwan Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-05.png',
-      description: "A picture of Joyce Yu-Jean Lee with Lingwei Li, who is known as \"Queer Lawyer\", advocating for LGBTQ+ and equality Justice in Taiwan."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-05.png',
+      alt: 'Oslo Taiwan Image 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2022_FIREWALL_OFF_TW-06.jpg',
-      description: "A picture of Joyce Yu-Jean Lee with Wu'erkaixi, one of the leaders of the Tiananmen protests."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-06.jpg',
+      alt: 'Oslo Taiwan Image 6'
     }
   ];
 
@@ -88,11 +88,11 @@ function OsloTaiwan() {
                 <div key={index} className="flex flex-col">
                   <img 
                     src={image.src} 
-                    alt={image.description}
+                    alt={image.alt}
                     className="w-full h-auto rounded-lg"
                   />
                   <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                    {image.description}
+                    {image.alt}
                   </p>
                 </div>
               ))}

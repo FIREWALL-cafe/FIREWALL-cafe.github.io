@@ -5,16 +5,16 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function HongKongNotFound() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/Firewall_HK_1920.jpg',
-      description: "Participants keying search terms into FIREWALL dual-search browser"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Firewall_HK_1920.jpg',
+      alt: 'Hong Kong Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/Firewall_HK5_1920-1.jpg',
-      description: "Artist Joyce Yu-Jean Lee explains the concept of FIREWALL to participants"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Firewall_HK5_1920-1.jpg',
+      alt: 'Hong Kong Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/Firewall_HK6_1920-950x629-1.jpg',
-      description: "Discussion group after \"Not Found\", a performance by artist Ying Ting"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Firewall_HK6_1920-950x629-1.jpg',
+      alt: 'Hong Kong Image 3'
     }
   ];
 
@@ -59,11 +59,11 @@ function HongKongNotFound() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

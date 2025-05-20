@@ -5,20 +5,20 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function NetworkedFem() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/Feminism_panel_edit.jpg',
-      description: "Lu Pin, Program manager of Media Monitor for Women Network and chief editor of Feminist Voices, speaks in front of audience"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_panel_edit.jpg',
+      alt: 'Networked Feminism Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/Feminism_audience_edit.jpg',
-      description: "Audience at the panel discussion 'Networked Feminism in China', Chinatown Soup, NYC."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_audience_edit.jpg',
+      alt: 'Networked Feminism Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/Feminism_Susan_edit.jpg',
-      description: "Susan E. McGregor, panel moderator, Assistant Director of the Tow Center for Digital Journalism & Assistant Professor at Columbia Journalism School"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Susan_edit.jpg',
+      alt: 'Networked Feminism Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/Feminism_Mingming_edit.jpg',
-      description: "Shitou, queer filmmaker and activist from Beijing, China."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Mingming_edit.jpg',
+      alt: 'Networked Feminism Image 4'
     },
     {
       src: process.env.PUBLIC_URL + '/images/Feminism_Xintong_edit.jpg',

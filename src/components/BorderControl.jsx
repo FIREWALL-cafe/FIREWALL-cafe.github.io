@@ -5,24 +5,24 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function BorderControl() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/1_FWC_NMC_-7626.jpg',
-      description: "FIREWALL popup at New Media Caucus \"Border Control\" Symposium."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/1_FWC_NMC_-7626.jpg',
+      alt: 'Border Control Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/2_NMC_CoCreatingBorder-7512.jpg',
-      description: "From left to right: Nadav Assor, Patricia Villalobos Echeverría, Joyce Yu-Jean Lee, Maria del Carmen Montoya"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2_NMC_CoCreatingBorder-7512.jpg',
+      alt: 'Border Control Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/3_FWC_NMC_-7601.jpg',
-      description: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/3_FWC_NMC_-7601.jpg',
+      alt: 'Border Control Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/4_FWC_NMC_-7632.jpg',
-      description: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/4_FWC_NMC_-7632.jpg',
+      alt: 'Border Control Image 4'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/5_FWC_NMC_-7615.jpg',
-      description: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/5_FWC_NMC_-7615.jpg',
+      alt: 'Border Control Image 5'
     }
   ];
 
@@ -114,11 +114,11 @@ function BorderControl() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

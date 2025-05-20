@@ -5,20 +5,20 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function SerendipityAus() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/StPolten3.jpg',
-      description: "Pop-up exhibition at REDpoint, St. Pölten"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten3.jpg',
+      alt: 'Serendipity Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/StPolten1.jpg',
-      description: "Participants conducting \"search session\" at exhibition, St. Pölten"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten1.jpg',
+      alt: 'Serendipity Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/StPolten2.jpg',
-      description: "\"Search session\" at exhibition, St. Pölten"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten2.jpg',
+      alt: 'Serendipity Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/StPolten5.jpg',
-      description: "Exterior View of Internet Cafe pop-up in St.Pölten"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten5.jpg',
+      alt: 'Serendipity Image 4'
     }
   ];
 
@@ -98,11 +98,11 @@ function SerendipityAus() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

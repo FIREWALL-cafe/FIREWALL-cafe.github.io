@@ -5,28 +5,28 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function OffSeventeen() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo6_1920.jpg',
-      description: "LED lights released in the Spikersuppa Square foundtain outside FIREWALL"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo6_1920.jpg',
+      alt: 'Firewall OFF Oslo 6'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo3_1920.jpg',
-      description: "Free wi-fi and Starbucks inside tent"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo3_1920.jpg',
+      alt: 'Firewall OFF Oslo 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo5_1920.jpg',
-      description: "Dan Phiffer & activist Maria Toorpakai Wazir search Pakistani conspiracy theory, \"Is Donald Trump Pakistani?\""
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo5_1920.jpg',
+      alt: 'Firewall OFF Oslo 5'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo1_1920.jpg',
-      description: "Searching Chinese political dissidents with Oslo Freedom Forum founder, Thor Halvorssen"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo1_1920.jpg',
+      alt: 'Firewall OFF Oslo 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo_1920.jpg',
-      description: "Inside pop-up at Spikersuppa Square, Oslo, Norway"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo_1920.jpg',
+      alt: 'Firewall OFF Oslo'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/FirewallOFFoslo5_1920-1.jpg',
-      description: "FIREWALL pop-up in Spikersuppa Square, Oslo, Norway during Oslo Freedom Forum 2017"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo5_1920-1.jpg',
+      alt: 'Firewall OFF Oslo 5'
     }
   ];
 
@@ -79,11 +79,11 @@ function OffSeventeen() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}

@@ -5,20 +5,20 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function OffNyc() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/OFF17_1-1.jpg',
-      description: "From left to right: Teng Biao, human rights activist and lawyer, Joyce Yu-Jean Lee, founder of FIREWALL, Lu Miaoqing, human rights laywer"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_1-1.jpg',
+      alt: 'OFF17 Image 1'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF17_2-1.jpg',
-      description: "A search session for \"Xi Jinping Winnie the Pooh\""
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_2-1.jpg',
+      alt: 'OFF17 Image 2'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF17_3-1.jpg',
-      description: "Professor Joyce Yu-Jean Lee with students from New Jersey City University"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_3-1.jpg',
+      alt: 'OFF17 Image 3'
     },
     {
-      src: process.env.PUBLIC_URL + '/images/OFF17_4-1.jpg',
-      description: "A search station at Alice Tully Hall, Lincoln Center"
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_4-1.jpg',
+      alt: 'OFF17 Image 4'
     }
   ];
 
@@ -63,11 +63,11 @@ function OffNyc() {
                   <div key={index} className="flex flex-col">
                     <img 
                       src={image.src} 
-                      alt={image.description}
+                      alt={image.alt}
                       className="w-full h-auto rounded-lg"
                     />
                     <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
-                      {image.description}
+                      {image.alt}
                     </p>
                   </div>
                 ))}
