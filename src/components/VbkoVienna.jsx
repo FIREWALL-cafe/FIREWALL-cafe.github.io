@@ -5,31 +5,31 @@ import { ReactComponent as LocationIcon } from '../assets/icons/location_on.svg'
 function VbkoVienna() {
   const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_1.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_1.jpg',
       description: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_2.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_2.jpg',
       description: "FIREWALL founder Joyce Yu-Jean Lee in conversation with a participant. Photo by Claudia Romero."
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_3.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_3.jpg',
       description: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_4.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_4.jpg',
       description: "Joyce Yu Jean-Lee in conversation with participants about FIREWALL. Photo by Claudia Romero."
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_5.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_5.jpg',
       description: "Search Session Instructions from the FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_6.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_6.jpg',
       description: "Stickers inspired by \"sensitive-term\" Search Votes alongside the Search for Feminism exhibition catalogue. Photo by Claudia Romero."
     },
     {
-      src: process.env.PUBLIC_URL + '/images/VBKO_7.jpg',
+      src: 'https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_7.jpg',
       description: "Exhibition installation view"
     }
   ];
