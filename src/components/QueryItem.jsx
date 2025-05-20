@@ -90,7 +90,7 @@ const QueryItem = ({
   const chineseLang = isEnglish ? search_term_translation : search_term_initial;
 
   return (
-    <div id={search_id} className="hover:bg-gray-100 w-full">
+    <div id={`search-item-${search_id}`} className="hover:bg-gray-100 w-full">
       <div 
         className="grid grid-cols-[80px_1fr_1fr_1fr_160px_40px] gap-1 py-3 w-full text-[20px] h-12 cursor-pointer items-center" 
         onClick={toggleDropdown}

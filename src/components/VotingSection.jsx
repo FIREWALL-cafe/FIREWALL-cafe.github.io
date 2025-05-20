@@ -83,10 +83,10 @@ function VotingSection({ query, searchId }) {
             </div>
           </div>
         </div>
-        <div className="flex gap-10 justify-end items-center w-full text-center bg-gray-50 border-solid border-b-[1.28px] border-b-neutral-300 max-md:px-5 max-md:max-w-full">
-          <div className="flex gap-6 items-center self-stretch my-auto text-xl min-w-[240px] max-md:max-w-full">
-            {notArchive && <div className="flex gap-2.5 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full p-8">
-              <div className="self-stretch my-auto font-body-03 text-right">See past results for this query in the</div>
+        <div className="flex gap-10 justify-end items-center w-full text-center bg-gray-50 border-solid border-t-[1.28px] border-t-neutral-500 max-md:px-5 max-md:max-w-full">
+          <div className="flex gap-6 md:text-center text-xl min-w-[240px] max-md:max-w-full">
+            {notArchive && <div className="flex gap-2.5 md:text-center min-w-[240px] max-md:max-w-full p-8">
+              <div className="self-stretch my-auto font-body-03 md:text-center">See past results for this query in the</div>
               <div className="flex gap-2 items-center self-stretch my-auto text-red-600">
                 <img src={Archive} className="object-contain shrink-0 self-stretch my-auto w-8 aspect-square" alt="Archive" />
                 <Link to={`/archive?q=${query}`}>

@@ -109,11 +109,13 @@ function ImageCarousel({ images }) {
                 <img src={CarouselLeft} alt="Previous" className="w-12 h-12" />
               </button>
             </div>
-            <img
-              src={generateImageUrl(images.googleResults[currentIndex])}
-              className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
-              onError={handleOnError}
-            />
+            <div className="flex-1 h-full flex justify-center items-center pl-[60px]">
+              <img
+                src={generateImageUrl(images.googleResults[currentIndex])}
+                className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+                onError={handleOnError}
+              />
+            </div>
           </div>
         </div>
 
@@ -130,12 +132,14 @@ function ImageCarousel({ images }) {
             />
             <Tooltip id="tooltip-baidu" noArrow={true} />
           </div>
-          <div id="baidu-carousel" className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex">
-            <img
-              src={baiduImage(images.baiduResults[currentIndex])}
-              className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
-              onError={(e) => handleOnError(e, true)}
-            />
+          <div id="baidu-carousel" className="relative justify-center items-center pl-8 h-[320px] hidden ipad-portrait:flex">
+            <div className="flex-1 h-full flex justify-center items-center pr-[60px]">
+              <img
+                src={baiduImage(images.baiduResults[currentIndex])}
+                className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
+                onError={(e) => handleOnError(e, true)}
+              />
+            </div>
             <div className="absolute right-0 h-full w-[60px] flex justify-center items-center">
               <button
                 onClick={goToNext}
@@ -151,33 +155,43 @@ function ImageCarousel({ images }) {
 
       {/* Thumbnails */}
       <div className="flex flex-row">
-        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4 border-r border-red-300">
+        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 border-r border-red-300">
           {images.googleResults.map((image, index) => (
             <button 
               key={index} 
               onClick={() => handleThumbnailClick(index)}
-              className={`aspect-square overflow-hidden ${currentIndex === index ? 'focus-visible:ring-4 focus-visible:ring-blue-400 ring-4 ring-blue-400' : 'opacity-60'}`}
+              className={`relative aspect-square overflow-visible ${currentIndex === index ? 'opacity-60 bg-[#0084CC]' : 'opacity-100'}`}
             >
-              <img
-                src={generateImageUrl(image)}
-                className="w-full h-full object-cover"
-                onError={handleOnError}
-              />
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src={generateImageUrl(image)}
+                  className="w-full h-full object-cover"
+                  onError={handleOnError}
+                />
+              </div>
+              {currentIndex === index && (
+                <div className="absolute inset-[-4px] border border-blue-600 rounded-[6px] bg-blue-300/30 pointer-events-none" />
+              )}
             </button>
           ))}
         </div>
-        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4 bg-neutral-100">
+        <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 bg-neutral-100">
           {images.baiduResults.map((image, index) => (
             <button 
               key={index} 
               onClick={() => handleThumbnailClick(index)}
-              className={`aspect-square overflow-hidden ${currentIndex === index ? 'ring-4 ring-red-600 focus-visible:ring-4 focus-visible:ring-red-600' : 'opacity-60'}`}
+              className={`relative aspect-square overflow-visible ${currentIndex === index ? 'opacity-60 bg-red-900' : 'opacity-100'}`}
             >
-              <img
-                src={generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage)}
-                className="w-full h-full object-cover"
-                onError={(e) => handleOnError(e, true)}
-              />
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src={generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage)}
+                  className="w-full h-full object-cover"
+                  onError={(e) => handleOnError(e, true)}
+                />
+              </div>
+              {currentIndex === index && (
+                <div className="absolute inset-[-4px] border border-red-600 rounded-[6px] bg-red-300/30 pointer-events-none" />
+              )}
             </button>
           ))}
         </div>

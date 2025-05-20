@@ -22,7 +22,7 @@ function SearchInput({ searchMode }) {
   const [imageResults, setImageResults] = useState({});
   const [archiveResults, setarchiveResults] = useState({ total: 0, page: 1, page_size: 10, data: [] });
   const [filteredResults, setFilteredResults] = useState({ total: 0, page: 1, page_size: 10, data: [] });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
   const [translation, setTranslation] = useState('');
   const [currentSearchId, setSearchId] = useState(null);
@@ -293,7 +293,7 @@ function SearchInput({ searchMode }) {
           isOpen={filterOpen}
           isLoading={isLoading} 
         />}
-        {(currentSearchId && !isArchive && imageResults.googleResults && imageResults.googleResults.length > 0) && (
+        {(currentSearchId && !isArchive && imageResults?.googleResults.length > 0) && (
           <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
         )}
         {(currentSearchId && isArchive && (currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0)) && (
@@ -319,15 +319,14 @@ function SearchInput({ searchMode }) {
           </>
         )}
       </div>
+      {/* Default most recent archive results */}
       {currentSearchId && isArchive && (
-        <div className="mt-[120px] min-h-[70px]">
-          <QueryList 
-            results={filteredResults} 
-            onPageChange={handlePageChange}
-            isLoading={isLoading}
-            filterOptions={currentFilters}
-          />
-        </div>
+        <QueryList 
+          results={filteredResults} 
+          onPageChange={handlePageChange}
+          isLoading={isLoading}
+          filterOptions={currentFilters}
+        />
       )}
     </>
   );

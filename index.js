@@ -157,21 +157,21 @@ app.post('/images', async (req, res) => {
 });
 
 app.post('/searches', async (req, res) => {
+  console.log('/searches query params:', req.query);
+
+  const { query, page, page_size, ...otherFilters } = req.query;
+
+  if (req.query.cities) {
+    otherFilters.search_locations = req.query.cities;
+  }
+
+  // Ensure pagination parameters are numbers
+  const paginationParams = {
+    page: parseInt(page) || 1,
+    page_size: parseInt(page_size) || 25
+  };
+
   try {
-    console.log('/searches query params:', req.query);
-
-    const { query, page, page_size, ...otherFilters } = req.query;
-
-    if (req.query.cities) {
-      otherFilters.search_locations = req.query.cities;
-    }
-
-    // Ensure pagination parameters are numbers
-    const paginationParams = {
-      page: parseInt(page) || 1,
-      page_size: parseInt(page_size) || 25
-    };
-
     let data;
     if (query) {
       console.log('Processing search by term:', query);

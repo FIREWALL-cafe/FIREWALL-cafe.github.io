@@ -33,8 +33,8 @@ const features = [
 
 const SearchArchive = () => {
   return (
-    <main>
-      <section className="flex overflow-hidden flex-col justify-center w-full px-5 bg-white max-md:max-w-full">
+    <main id="search-archive" className="is-large-width-content max-w-[1280px]">
+      <section className="flex overflow-hidden flex-col justify-center w-full bg-white max-md:max-w-full">
         <HeroArchive />
         <FeatureCards features={features} />
       </section>

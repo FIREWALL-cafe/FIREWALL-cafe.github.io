@@ -165,17 +165,6 @@ const postVote = async ({ meta_key, search_id, vote_client_name, vote_ip_address
 
 const transformImgData = imgArray => JSON.stringify(imgArray.map(img => ({ href: img, src: img })));
 
-const submitImagesToWordpress = async (data) => {
-  const { data: responseData, response } = await axios.post(
-    serverConfig.wordpressURL,
-    { ...data, secret: serverConfig.wordpressSecret }
-  );
-
-  console.log('responseData', responseData, 'response', response);
-
-  return { data: responseData, response };
-}
-
 const getSearchImages = async (search_id) => {
   console.log('search images for', search_id);
 
@@ -273,8 +262,6 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, search_clien
     google_images: google, // transform array of url strings to objects
     baidu_images: baidu,
   };
-
-  // submitImagesToWordpress(imageData);
 
   const { data } = await axios.post(
     url,
