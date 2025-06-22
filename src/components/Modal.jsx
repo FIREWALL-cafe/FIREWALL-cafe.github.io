@@ -30,7 +30,7 @@ export default function Modal({
           </div>
           {showCloseButton && (
             <div>
-              <img src={Close} onClick={() => onClose(false)} className="cursor-pointer w-6 aspect-square inline-block" />
+              <img src={Close} onClick={() => onClose(false)} className="cursor-pointer w-6 aspect-square inline-block" alt="Close modal" />
             </div>
           )}
         </h3>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import ApiContext from '../contexts/ApiContext';
 
 const Dashboard = () => {
@@ -11,16 +11,16 @@ const Dashboard = () => {
     });
     const { searchArchive, getDashboard } = useContext(ApiContext);
 
-    const fetchDashboardData = async () => {
+    const fetchDashboardData = useCallback(async () => {
         try {
             const data = await getDashboard();
             setStats(data);
         } catch (error) {
             console.error('Error fetching dashboard stats:', error);
         }
-    };
+    }, [getDashboard]);
 
-    const fetchRecentSearches = async () => {
+    const fetchRecentSearches = useCallback(async () => {
         try {
             const filterOptions = { page: 1, page_size: 10 }
             const data = await searchArchive({ ...filterOptions });
@@ -28,12 +28,12 @@ const Dashboard = () => {
         } catch (error) {
             console.error('Error fetching recent searches:', error);
         }
-    };
+    }, [searchArchive]);
 
     useEffect(() => {
         fetchDashboardData();
         fetchRecentSearches();
-    }, [searchArchive]);
+    }, [fetchDashboardData, fetchRecentSearches]);
 
     return (
         <div className="container mx-auto px-4 py-8">

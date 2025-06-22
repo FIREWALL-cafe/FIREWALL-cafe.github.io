@@ -78,7 +78,7 @@ function TimelineDisplay({ index }) {
       images: [],
     },
     {
-      title: "The Anti-espionage Law was enacted in mainland China. The law broadens the definition of “espionage”, granting authorities greater power to punish perceived threats to national security. Its vague terms, including “relying on espionage organizations” and unauthorized access to \“documents, data, and materials,\” create a chilling effect on Chinese citizens who engage with foreigners or foreign organizations.",
+      title: "The Anti-espionage Law was enacted in mainland China. The law broadens the definition of “espionage”, granting authorities greater power to punish perceived threats to national security. Its vague terms, including “relying on espionage organizations” and unauthorized access to “documents, data, and materials,” create a chilling effect on Chinese citizens who engage with foreigners or foreign organizations.",
       description: null,
       images: [],
     },

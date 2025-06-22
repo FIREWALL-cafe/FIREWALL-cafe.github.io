@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const COOKIE_UPDATE_EVENT = 'cookieUpdate';
 
 const useCookie = (cookieName) => {
   const [cookieValue, setCookieValue] = useState("");
 
-  const getCookieValue = () => {
+  const getCookieValue = useCallback(() => {
     const cookie = document.cookie
       .split("; ")
       .find((row) => row.startsWith(`${cookieName}=`));
     return cookie ? cookie.split("=")[1] : "";
-  };
+  }, [cookieName]);
 
   useEffect(() => {
     setCookieValue(getCookieValue());
@@ -23,7 +23,7 @@ const useCookie = (cookieName) => {
 
     window.addEventListener(COOKIE_UPDATE_EVENT, handleCookieUpdate);
     return () => window.removeEventListener(COOKIE_UPDATE_EVENT, handleCookieUpdate);
-  }, [cookieName]);
+  }, [cookieName, getCookieValue]);
 
   const setCookie = (value, expirationDate) => {
     document.cookie = `${cookieName}=${value}; expires=${expirationDate.toUTCString()}; path=/`;
