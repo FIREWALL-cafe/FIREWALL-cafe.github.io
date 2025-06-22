@@ -32,7 +32,7 @@ function HeroSection() {
         <span ref={el} />
       </h1>
       <div className="w-full max-w-[720px] mx-auto mt-16 ipad-portrait:mt-0">
-        <SearchInput searchMode="live" />
+        <SearchInput searchMode="compare" />
       </div>
     </section>
   );

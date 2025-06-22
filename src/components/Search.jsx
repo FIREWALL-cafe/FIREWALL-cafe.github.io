@@ -50,7 +50,7 @@ function Search() {
             <div className="text-red-600 border-red-600">搜索结果</div>
           </div>
         </div>
-        <SearchInput searchMode='live' />
+        <SearchInput searchMode='compare' />
         <FeatureCards features={features} />
       </section>
     </main>
