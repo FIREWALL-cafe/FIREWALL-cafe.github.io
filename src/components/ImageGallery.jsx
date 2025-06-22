@@ -27,7 +27,7 @@ function ImageGallery() {
                   loading="lazy" 
                   src={image.src} 
                   className="w-full h-full object-cover" 
-                  alt={`Gallery image ${index + 1}`} 
+                  alt={`Gallery photo ${index + 1}`} 
                 />
               </div>
               <div className="flex justify-between items-center mt-2">

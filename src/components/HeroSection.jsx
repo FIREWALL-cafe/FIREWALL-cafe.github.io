@@ -6,12 +6,12 @@ function HeroSection() {
   const el = useRef(null);
   const typed = useRef(null);
   
-  const titles = [
-    '墙后面是什么?',
-    "What's behind the wall?",
-  ];
-
   useEffect(() => {
+    const titles = [
+      '墙后面是什么?',
+      "What's behind the wall?",
+    ];
+    
     const options = {
       strings: titles,
       typeSpeed: 75,

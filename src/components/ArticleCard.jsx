@@ -10,6 +10,7 @@ function ArticleCard({ image, imageHover, title, date, tag, url }) {
           onMouseOver={e => (imageHover ? e.currentTarget.src = imageHover : null)}
           onMouseOut={e => (imageHover ? e.currentTarget.src = image : null)}
           className="object-contain flex-1 w-full mt-4 aspect-[1.78]"
+          alt={title}
         />
       </Link>
       <div className="flex flex-col justify-between px-5 py-6 w-full bg-white min-h-[220px]">
