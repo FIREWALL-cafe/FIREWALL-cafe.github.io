@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 const axios = require('axios');
 const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages, getSearchVoteCounts } = require('./server/fetch');
 const postmark = require('postmark');
@@ -9,7 +8,7 @@ const serverConfig = require('./server/config');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use((err, req, res, next) => {
   console.error(err.stack)
