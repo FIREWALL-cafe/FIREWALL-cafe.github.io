@@ -112,7 +112,7 @@ This document tracks the incremental changes being made to the existing SearchIn
 - Proper navigation between modes via both tab and side link
 
 **MILESTONE**: Archive mode design complete ✅  
-**Commit**: [pending]
+**Commit**: edb157c
 
 ## Design Goals
 - Maintain existing functionality while improving visual hierarchy
