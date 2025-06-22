@@ -13,6 +13,7 @@ import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
 import ArchiveIcon from '../assets/icons/folder_open_search.svg';
 import ArchiveGrayscale from '../assets/icons/Archive_grayscale.png';
+import Archive from '../assets/icons/Archive.png';
 import FilterIcon from './FilterIcon';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
@@ -189,25 +190,32 @@ function SearchInput({ searchMode }) {
           <div className="flex flex-wrap items-center w-full border-b border-solid border-red-600 iphone:max-w-full">
             <div className="flex items-center self-stretch my-auto min-w-[240px] relative iphone:min-w-[200px]">
               <div 
-                onClick={() => navigate('/search')} 
+                onClick={() => navigate(isArchive ? '/archive' : '/search')} 
                 className={`
                   relative z-10
                   flex items-center gap-2 px-8 md:py-3 py-2
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
-                  ${!isArchive ? 'bg-slate-100 border-b-0 mb-[-2px]' : 'bg-white'}
+                  bg-slate-100 border-b-0 mb-[-2px]
                   iphone:px-4
                 `}
               >
                 <div className="flex gap-1 items-center">
-                  <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? 'w-6' : 'w-8 h-8'}`}>
-                    <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
-                  </div>
-                  <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? '' : 'h-8'}`}>
-                    <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
-                  </div>
-                  {!isArchive && (
-                    <span className="font-semibold text-red-600 ml-2">Compare</span>
+                  {isArchive ? (
+                    <>
+                      <img src={Archive} alt="Archive" className="w-6 h-6" />
+                      <span className="font-semibold text-red-600 ml-2">Archive</span>
+                    </>
+                  ) : (
+                    <>
+                      <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 w-8 h-8`}>
+                        <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
+                      </div>
+                      <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 h-8`}>
+                        <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
+                      </div>
+                      <span className="font-semibold text-red-600 ml-2">Compare</span>
+                    </>
                   )}
                 </div>
                 <QuestionIcon
@@ -219,11 +227,23 @@ function SearchInput({ searchMode }) {
                 />
               </div>
               <div
-                onClick={() => navigate('/archive')}
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors cursor-pointer text-sm"
+                onClick={() => navigate(isArchive ? '/search' : '/archive')}
+                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-red-600 transition-colors cursor-pointer text-sm"
               >
-                <img src={ArchiveGrayscale} alt="Archive" className="w-4 h-4" />
-                <span>search archive</span>
+                {isArchive ? (
+                  <>
+                    <div className="flex gap-0.5 items-center">
+                      <img src={GoogleLogoBlue} alt="Google" className="w-4 h-4 grayscale opacity-60" />
+                      <img src={BaiduLogoRed} alt="Baidu" className="w-4 h-4 grayscale opacity-60" />
+                    </div>
+                    <span>Compare</span>
+                  </>
+                ) : (
+                  <>
+                    <img src={ArchiveGrayscale} alt="Archive" className="w-4 h-4" />
+                    <span>search archive</span>
+                  </>
+                )}
               </div>
             </div>
             <Tooltip id="tooltip" noArrow={true} />
@@ -231,7 +251,7 @@ function SearchInput({ searchMode }) {
           <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">
             <div className="flex w-full bg-white rounded border border-solid border-gray-400 h-[56px] iphone:flex-1 overflow-hidden">
               <input
-                placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
+                placeholder={isArchive ? 'Search the query archive' : 'Search Google & Baidu'}
                 value={query}
                 type="text"
                 onChange={(e) => setQuery(e.target.value)}

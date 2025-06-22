@@ -80,13 +80,39 @@ This document tracks the incremental changes being made to the existing SearchIn
 - Logos positioned closer together for better visual grouping
 - Text hierarchy: Logos → "Compare" → Question mark
 
-**MILESTONE**: Compare mode design complete ✅
+**MILESTONE**: Compare mode design complete ✅  
+**Commit**: f59ed4b
 
-### 🔄 Step 4: [Next Changes]
-**Status**: Pending
+### ✅ Step 4: Archive Mode Implementation
+**Completed**: 2025-06-22
 
-**Planned Changes:**
-- [To be defined based on next iteration feedback]
+**Changes Made:**
+12. Tab content for archive mode: Archive icon + "Archive" text (red) + Question mark ✅
+13. Navigation link: Google/Baidu logos (grayscale/muted) + "Compare" text → Links to /search ✅
+14. Input placeholder: "Search the query archive" ✅
+15. Move logos closer together in archive mode navigation ✅
+16. Add red hover state to navigation links in both modes ✅
+
+**Implementation Details:**
+- Added conditional rendering for tab content based on `isArchive` state
+- Archive mode tab: `<img src={Archive} alt="Archive" className="w-6 h-6" />` + red "Archive" text
+- Compare mode tab: Google + Baidu logos + red "Compare" text (unchanged)
+- Navigation link now conditional: archive mode shows muted logos, compare mode shows archive icon
+- Applied `grayscale opacity-60` classes to logos for muted effect in archive mode
+- Wrapped navigation logos in `<div className="flex gap-0.5 items-center">` for tighter spacing
+- Changed hover state from `hover:text-gray-800` to `hover:text-red-600` for clearer link indication
+- Updated placeholder text: `isArchive ? 'Search the query archive' : 'Search Google & Baidu'`
+- Simplified tab styling to always show active state (`bg-slate-100 border-b-0 mb-[-2px]`)
+- Updated onClick handlers to be mode-aware
+
+**Visual Result:**
+- Archive mode: Archive icon → "Archive" → Question mark | Muted Google/Baidu logos → "Compare"
+- Compare mode: Google logo → Baidu logo → "Compare" → Question mark | Archive icon → "search archive"
+- Clear visual distinction between modes while maintaining unified styling
+- Proper navigation between modes via both tab and side link
+
+**MILESTONE**: Archive mode design complete ✅  
+**Commit**: [pending]
 
 ## Design Goals
 - Maintain existing functionality while improving visual hierarchy
