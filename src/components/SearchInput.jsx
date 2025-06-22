@@ -199,13 +199,16 @@ function SearchInput({ searchMode }) {
                   iphone:px-4
                 `}
               >
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-1 items-center">
                   <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? 'w-6' : 'w-8 h-8'}`}>
                     <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
                   <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? '' : 'h-8'}`}>
                     <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
+                  {!isArchive && (
+                    <span className="font-semibold text-red-600 ml-2">Compare</span>
+                  )}
                 </div>
                 <QuestionIcon
                   fill="#ef4444"
@@ -226,7 +229,7 @@ function SearchInput({ searchMode }) {
             <Tooltip id="tooltip" noArrow={true} />
           </div>
           <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">
-            <div className="flex w-full bg-white rounded border border-solid border-neutral-300 h-[56px] iphone:flex-1">
+            <div className="flex w-full bg-white rounded border border-solid border-gray-400 h-[56px] iphone:flex-1 overflow-hidden">
               <input
                 placeholder={isArchive ? 'Search' : 'Search Google & Baidu'}
                 value={query}
@@ -234,14 +237,14 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 px-4 font-body-02 border-left border-y border-solid border-neutral-300 h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
+                className="flex-1 px-4 font-body-02 border-none h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
                 aria-label="Search query" 
               />
-              <div className="flex items-center py-4 pr-4">
+              <div className="flex items-center bg-white">
                 <button 
                   onClick={handleSubmit} 
                   disabled={!!isLoading}
-                  className="flex items-center justify-center w-10 h-10 iphone:w-8 iphone:h-8"
+                  className="flex items-center justify-center w-14 h-[56px] bg-white hover:bg-gray-50 transition-colors iphone:w-12"
                 >
                   <img 
                     src={isLoading ? Spinner : displaySearchIcon} 
