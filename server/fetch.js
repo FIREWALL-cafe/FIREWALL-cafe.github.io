@@ -26,12 +26,18 @@ const getDashboardData = async () => {
 }
 
 const getGoogleImageSrcs = (results) => {
-  console.log('getGoogleImageSrcs');
+  console.log('getGoogleImageSrcs (SerpAPI)');
   // const html = cheerio.load(results);
   // const imgs = html('.DS1iW').toArray().slice(0, 9);
   // const imgs = html('div.H8Rx8c g-img img').toArray().slice(0, 9);
   // const imgs = html('div[jscontroller] a[jsname] img').toArray().slice(0, 9);
   return results.slice(0, 9).map((result) => result.original)
+};
+
+const getSerperImageSrcs = (results) => {
+  console.log('getSerperImageSrcs (Serper.dev)');
+  if (!results) return [];
+  return results.slice(0, 9).map((result) => result.imageUrl);
 };
 
 const getBaiduImageSrcs = (results) => {
@@ -58,16 +64,61 @@ const getBaiduImageSrcs = (results) => {
  */
 const getGoogleImages = async (query) => {
   console.log('fetching google images for', query);
-  // const url = `https://www.google.com/search?q=${encodeURI(query)}&imgsz=qsvga&as_st=y&udm=2`;
+  console.log('using provider:', serverConfig.imageSearchProvider);
   
-  // const config = {
-  //   cache: 'no-cache',
-  //   headers: {
-  //     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
-  //   }
-  // };
-  // const response = await axios.get(url, config)
+  // Use new provider system with fallback
+  try {
+    if (serverConfig.imageSearchProvider === 'serper') {
+      return await getGoogleImagesSerper(query);
+    } else {
+      return await getGoogleImagesSerpApi(query);
+    }
+  } catch (error) {
+    console.error('Primary image provider failed, trying fallback:', error);
+    
+    // Fallback to SerpAPI if Serper fails
+    if (serverConfig.imageSearchProvider === 'serper') {
+      console.log('Falling back to SerpAPI...');
+      return await getGoogleImagesSerpApi(query);
+    } else {
+      // If SerpAPI was primary and failed, try Serper as fallback
+      console.log('Falling back to Serper...');
+      return await getGoogleImagesSerper(query);
+    }
+  }
+};
 
+/**
+ * Fetches images using Serper.dev API
+ * @param {string} query 
+ * @returns array of image urls from Serper
+ */
+const getGoogleImagesSerper = async (query) => {
+  console.log('fetching images via Serper.dev for', query);
+  
+  const response = await axios.post('https://google.serper.dev/images', {
+    q: query,
+    num: 10,
+    gl: 'us',
+    hl: 'en'
+  }, {
+    headers: {
+      'X-API-KEY': serverConfig.serperApiKey,
+      'Content-Type': 'application/json'
+    }
+  });
+  
+  return getSerperImageSrcs(response.data.images) || [];
+};
+
+/**
+ * Fetches images using SerpAPI (original implementation)
+ * @param {string} query 
+ * @returns array of image urls from SerpAPI
+ */
+const getGoogleImagesSerpApi = async (query) => {
+  console.log('fetching images via SerpAPI for', query);
+  
   const params = {
     q: query,
     engine: "google_images",
@@ -76,7 +127,6 @@ const getGoogleImages = async (query) => {
   };
 
   const results = await getJson(params);
-  
   return getGoogleImageSrcs(results["images_results"]) || [];
 };
 
