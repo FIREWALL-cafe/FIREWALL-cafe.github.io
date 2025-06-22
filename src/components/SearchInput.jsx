@@ -37,20 +37,6 @@ function SearchInput({ searchMode }) {
   const location = useLocation();
 
   const ranonce = useRef(false);
-  useEffect(() => {
-    // Update the input field when query params change
-    if (searchParams.get('q')) {
-      setQuery(searchParams.get('q'));
-      if (!ranonce.current) {
-        handleSubmit(); 
-        ranonce.current = true;
-      }
-    } else if (isArchive && location.pathname === '/archive' && !ranonce.current && archiveResults.data.length === 0) {
-      ranonce.current = true;
-      loadDefaultResults();
-    }
-    // eslint-disable-next-line
-  }, [searchParams, handleSubmit, isArchive, location.pathname, archiveResults.data.length, loadDefaultResults]);
 
   const loadDefaultResults = useCallback(async () => {
     const filterOptions = { page: 1, page_size: 10 }
@@ -120,6 +106,20 @@ function SearchInput({ searchMode }) {
       setLoading(false);
     }
   }, [query, location.pathname, navigate, isArchive, searchArchive, username, searchImages, setResults]);
+
+  useEffect(() => {
+    // Update the input field when query params change
+    if (searchParams.get('q')) {
+      setQuery(searchParams.get('q'));
+      if (!ranonce.current) {
+        handleSubmit(); 
+        ranonce.current = true;
+      }
+    } else if (isArchive && location.pathname === '/archive' && !ranonce.current && archiveResults.data.length === 0) {
+      ranonce.current = true;
+      loadDefaultResults();
+    }
+  }, [searchParams, handleSubmit, isArchive, location.pathname, archiveResults.data.length, loadDefaultResults]);
 
   const applyFilters = async (filterOptions, shouldClose = true, isReset = false) => {
     setLoading(true);
