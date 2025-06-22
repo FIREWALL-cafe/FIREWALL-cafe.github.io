@@ -8,7 +8,7 @@ export default function TermsAndConditions() {
   const [showUsernameInput, setShowUsernameInput] = useState(false);
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
-  const [setUsernameCookie] = useCookie("username");
+  const [_usernameCookie, setUsernameCookie] = useCookie("username");
 
   useEffect(() => {
     // Check if user has seen the terms before
