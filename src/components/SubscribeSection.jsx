@@ -49,7 +49,7 @@ function SubscribeSection() {
                         <div className="response hidden" id="mce-success-response"></div>
                       </div>
                       <div aria-hidden="true"  className="absolute left-[5000px]">
-                          /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                          {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
                           <input type="text" name="b_9a0599467edb506239b6ed989_a007452c99" tabIndex="-1" />
                       </div>
                       <div className="hidden optionalParent mt-4">
