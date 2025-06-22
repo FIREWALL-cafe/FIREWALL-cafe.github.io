@@ -12,6 +12,7 @@ import GoogleLogoRed from '../assets/icons/google-logo_red.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
 import ArchiveIcon from '../assets/icons/folder_open_search.svg';
+import ArchiveGrayscale from '../assets/icons/Archive_grayscale.png';
 import FilterIcon from './FilterIcon';
 import SearchCompare from './SearchCompare';
 import Spinner from '../assets/spinner.svg';
@@ -191,14 +192,14 @@ function SearchInput({ searchMode }) {
                 onClick={() => navigate('/search')} 
                 className={`
                   relative z-10
-                  flex flex-col justify-center items-center px-8 md:py-3 py-2
+                  flex items-center gap-2 px-8 md:py-3 py-2
                   rounded-t border-t border-l border-r border-solid border-red-600 
                   cursor-pointer
-                  ${!isArchive ? 'bg-slate-100 border-b-0 border-r-0 mb-[-2px]' : 'bg-white border-r-0'}
+                  ${!isArchive ? 'bg-slate-100 border-b-0 mb-[-2px]' : 'bg-white'}
                   iphone:px-4
                 `}
               >
-                <div className="flex gap-2 items-start">
+                <div className="flex gap-2 items-center">
                   <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 ${isArchive ? 'w-6' : 'w-8 h-8'}`}>
                     <img src={isArchive ? GoogleLogoRed : GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
@@ -206,27 +207,22 @@ function SearchInput({ searchMode }) {
                     <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
                   </div>
                 </div>
+                <QuestionIcon
+                  fill="#ef4444"
+                  className="w-6 h-6"
+                  data-tooltip-id="tooltip"
+                  data-tooltip-html={displayTooltipContent}
+                  data-tooltip-place="right"
+                />
               </div>
               <div
                 onClick={() => navigate('/archive')}
-                className={`
-                  relative z-10
-                  px-8 md:py-2 py-1 cursor-pointer font-body-01 !font-bitmap-song
-                  rounded-t border-t border-l border-r border-solid border-red-600 
-                  ${isArchive ? 'bg-slate-100 border-b-0 mb-[-2px] text-black' : 'bg-white text-red-600'}
-                  iphone:px-4
-                `}
+                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors cursor-pointer text-sm"
               >
-                Archive
+                <img src={ArchiveGrayscale} alt="Archive" className="w-4 h-4" />
+                <span>search archive</span>
               </div>
             </div>
-            <QuestionIcon
-              fill="#ef4444"
-              className="w-6 h-6"
-              data-tooltip-id="tooltip"
-              data-tooltip-html={displayTooltipContent}
-              data-tooltip-place="right"
-            />
             <Tooltip id="tooltip" noArrow={true} />
           </div>
           <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">
