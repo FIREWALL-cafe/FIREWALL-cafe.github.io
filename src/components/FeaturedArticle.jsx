@@ -21,7 +21,7 @@ function FeaturedArticle() {
             <p className="mt-10 leading-9 text-black">
               On the eve of the event, one of the speakers, a visiting Chinese feminist who had done significant work on gender law issues, suddenly started receiving threats.
             </p>
-            <a href="https://www.washingtonpost.com/news/worldviews/wp/2016/03/11/how-a-new-york-art-show-about-chinese-online-censorship-found-itself-censored/" target="_blank" className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-xl text-center text-red-600 bg-white rounded border border-red-600 border-solid min-h-[56px]">
+            <a href="https://www.washingtonpost.com/news/worldviews/wp/2016/03/11/how-a-new-york-art-show-about-chinese-online-censorship-found-itself-censored/" target="_blank" className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-xl text-center text-red-600 bg-white rounded border border-red-600 border-solid min-h-[56px]" rel="noreferrer">
               <span className="self-stretch my-auto">Read article</span>
               <img src={ArrowRight} alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
             </a>

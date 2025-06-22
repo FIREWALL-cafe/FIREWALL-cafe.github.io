@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArrowRight from "../assets/icons/ArrowRight";
+import ArrowRight from "./icons/ArrowRight";
 
 function InfoSection() {
   return (

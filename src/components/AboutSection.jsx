@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArrowRight from "../assets/icons/ArrowRight";
+import ArrowRight from "./icons/ArrowRight";
 import censoreda from "../assets/images/homepage-section_1-image_a-default.jpg";
 import censoredb from "../assets/images/homepage-section_1-image_b-default.jpg";
 import censoredc from "../assets/images/homepage-section_1-image_c-default.jpg";
