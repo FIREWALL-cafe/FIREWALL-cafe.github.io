@@ -18,6 +18,7 @@ import Partners from './components/Partners';
 import Contributors from './components/Contributors';
 import Dashboard from './components/Dashboard';
 import SearchInputDemo from './components/SearchInputDemo';
+import SearchDemo from './components/SearchDemo';
 
 import {
   createBrowserRouter,
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "search-demo",
         element: <SearchInputDemo />,
+      },
+      {
+        path: "search-comparison",
+        element: <SearchDemo />,
       },
     ],
   },
