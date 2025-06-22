@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ArrowLeft from './icons/ArrowLeft';
+import EventDetail from './EventDetail';
+import { eventsData } from '../data/eventsData';
 
-import Megha from './Megha';
+// Legacy components - to be migrated
 import Marymount from './Marymount';
 import OsloTaiwan from './OsloTaiwan';
 import Reactions from './Reactions';
@@ -23,9 +25,8 @@ import OffSeventeen from './OffSeventeen';
 import SerendipityAus from './SerendipityAus';
 import Inaugural from './Inaugural';
 
-    
-const EventUrls = {
-  "firewall-pop-up-with-inside-chinas-surveillance-state-a-lecture-by-megha-rajagopalan": <Megha />,
+// Legacy event mappings - will be removed once all events are migrated
+const LegacyEventUrls = {
   "marymount-manhattan-digital-media-society-class-field-trip": <Marymount />, 
   "oslo-freedom-forum-2022-taiwan-interactive-expo": <OsloTaiwan />,
   "reactions-to-the-great-chinese-firewall": <Reactions />,
@@ -45,12 +46,22 @@ const EventUrls = {
   "off2017": <OffSeventeen />,
   "search-for-serendipity-in-austria": <SerendipityAus />,
   "inaugural-new-york-2016-pop-up": <Inaugural />
-}
+};
+
 function ShowEvent() {
   const { eventId } = useParams();
+  
+  // Check if event exists in new data structure
+  const eventData = eventsData[eventId];
+  
+  // Use new EventDetail component if data exists, otherwise fall back to legacy
+  const eventComponent = eventData 
+    ? <EventDetail event={eventData} />
+    : LegacyEventUrls[eventId];
+
   return (
     <div className="w-full">
-      {EventUrls[eventId] ? (
+      {eventComponent ? (
         <>
           <div className="mx-auto px-14 pt-14 max-md:px-5 text-red-600">
             <Link to="/events" className="flex items-center gap-2">
@@ -59,11 +70,11 @@ function ShowEvent() {
             </Link>
           </div>
           <div className="mx-auto">
-            {EventUrls[eventId]}
+            {eventComponent}
           </div>
         </>
       ) : (
-        <p>No event data available.</p>
+        <p className="p-14 text-center">No event data available.</p>
       )}
     </div>
   );
