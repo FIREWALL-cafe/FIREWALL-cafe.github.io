@@ -1,0 +1,7 @@
+node_modules
+build
+.git
+*.min.js
+*.min.css
+public/static
+coverage
