@@ -21,7 +21,7 @@ const ContactForm = () => {
           },
           body: JSON.stringify({ to: 'info@firewallcafe.com', subject: 'Firewall Cafe NYC 2024', text: text }),
     };
-    console.log('submitting form');
+    // submitting form
     const response = await fetch(`/send-email`, config);
     setAlertMessage(response.text());
     setDisplayAlert(true);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 import { LayoutContext } from './SearchLayout';
 import '../style.css';
 
@@ -40,7 +39,7 @@ const getVoteName = (voteMetaName) => voteMeta[voteMetaName] && voteMeta[voteMet
 const VoteButton = ({ imgSrc, voteId, setVote, isDisabled, setDisabled }) => {
   const { currentSearchId } = useContext(LayoutContext);
 
-  useEffect(() => setDisabled(false), [currentSearchId])
+  useEffect(() => setDisabled(false), [currentSearchId, setDisabled])
 
   const handleVote = async voteId => {
     // Disable vote buttons until another search has completed
@@ -64,23 +63,22 @@ const VoteButton = ({ imgSrc, voteId, setVote, isDisabled, setDisabled }) => {
         body: JSON.stringify({ meta_key: voteId, search_id: currentSearchId }),
       });
 
-      console.log(data);
       // await fetch(`/searches/votes/search_id/`)
     } catch (e) {
-      console.log(e)
+      // Handle error silently
     }
   }
 
   return (
     <button className="vote__button hover:bg-sky-700" disabled={isDisabled} onClick={() => handleVote(voteId)}>
-      <img src={imgSrc}></img>
+      <img src={imgSrc} alt={voteMeta[voteId].name}></img>
     </button>
   );
 }
 
 // TODO: disable panel until search returns
 const VotePanel = () => {
-  const { searchQuery, translation, currentSearchId } = useContext(LayoutContext);
+  const { searchQuery, translation, currentSearchId: _currentSearchId } = useContext(LayoutContext);
   const [currentVote, setVote] = useState(null);
   const [isDisabled, setDisabled] = useState(null);
 

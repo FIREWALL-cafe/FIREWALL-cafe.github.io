@@ -6,7 +6,6 @@ import NewsletterSection from './NewsletterSection';
 import ArrowLeft from './icons/ArrowLeft';
 
 // Import all event components
-import Megha from './Megha';
 import Marymount from './Marymount';
 import OsloTaiwan from './OsloTaiwan';
 import Reactions from './Reactions';
@@ -29,7 +28,6 @@ import Inaugural from './Inaugural';
 
 // Map URLs to component types instead of pre-rendered components
 const EventComponents = {
-  "firewall-pop-up-with-inside-chinas-surveillance-state-a-lecture-by-megha-rajagopalan": Megha,
   "marymount-manhattan-digital-media-society-class-field-trip": Marymount, 
   "oslo-freedom-forum-2022-taiwan-interactive-expo": OsloTaiwan,
   "reactions-to-the-great-chinese-firewall": Reactions,
@@ -58,7 +56,7 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true };
   }
 
