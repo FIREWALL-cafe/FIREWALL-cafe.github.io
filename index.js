@@ -220,6 +220,72 @@ app.post('/searches/votes/counts/:search_id', async (req, res) => {
   }
 });
 
+// Search comparison demo endpoint
+app.post('/api/search-demo', async (req, res) => {
+  console.log('/api/search-demo: request received', req.body);
+  const { query } = req.body;
+  
+  if (!query || query.trim() === '') {
+    return res.status(400).json({ 
+      error: 'Query parameter is required' 
+    });
+  }
+
+  try {
+    const results = await Promise.allSettled([
+      // Force SerpAPI
+      (async () => {
+        const originalProvider = serverConfig.imageSearchProvider;
+        serverConfig.imageSearchProvider = 'serpapi';
+        try {
+          const images = await getGoogleImages(query);
+          return images.slice(0, 5).map(url => ({
+            url,
+            title: 'SerpAPI Result',
+            source: 'via SerpAPI'
+          }));
+        } finally {
+          serverConfig.imageSearchProvider = originalProvider;
+        }
+      })(),
+      
+      // Force Serper
+      (async () => {
+        const originalProvider = serverConfig.imageSearchProvider;
+        serverConfig.imageSearchProvider = 'serper';
+        try {
+          const images = await getGoogleImages(query);
+          return images.slice(0, 5).map(url => ({
+            url,
+            title: 'Serper Result',
+            source: 'via Serper.dev'
+          }));
+        } finally {
+          serverConfig.imageSearchProvider = originalProvider;
+        }
+      })()
+    ]);
+
+    const [serpApiResult, serperResult] = results;
+    
+    res.json({
+      serpapi: serpApiResult.status === 'fulfilled' ? serpApiResult.value : [],
+      serper: serperResult.status === 'fulfilled' ? serperResult.value : [],
+      errors: {
+        serpapi: serpApiResult.status === 'rejected' ? serpApiResult.reason.message : null,
+        serper: serperResult.status === 'rejected' ? serperResult.reason.message : null
+      }
+    });
+    
+  } catch (error) {
+    console.error('Search demo error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch search results',
+      message: error.message 
+    });
+  }
+});
+
 app.post('/send-email', async (req, res) => {
   console.log('/send-email: trying!', req.body);
   const { to, subject, text } = req.body;
