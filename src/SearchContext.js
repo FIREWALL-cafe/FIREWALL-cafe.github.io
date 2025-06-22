@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 const doSearch = (filterOptions) => {
-  console.log('SearchContext: do search', filterOptions);
+  // SearchContext: do search
 }
 const searchResults = [1,2,3,4,5];
 

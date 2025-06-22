@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import { generateImageUrl } from '../utils/imageUrlGenerator';
 
@@ -19,7 +18,6 @@ function ImageCarousel({ images }) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const handleOnError = (e, isBaidu = false) => {
-    console.log("Baidu, images.baiduResults.length", isBaidu, images.baiduResults.length);
     if (isBaidu && images.baiduResults.length === 0) {
       e.target.src = CensoredBrokenImage;
     } else {
@@ -114,6 +112,7 @@ function ImageCarousel({ images }) {
                 src={generateImageUrl(images.googleResults[currentIndex])}
                 className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
                 onError={handleOnError}
+                alt={`Google search result ${currentIndex + 1}`}
               />
             </div>
           </div>
@@ -138,6 +137,7 @@ function ImageCarousel({ images }) {
                 src={baiduImage(images.baiduResults[currentIndex])}
                 className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
                 onError={(e) => handleOnError(e, true)}
+                alt={`Baidu search result ${currentIndex + 1}`}
               />
             </div>
             <div className="absolute right-0 h-full w-[60px] flex justify-center items-center">
@@ -167,6 +167,7 @@ function ImageCarousel({ images }) {
                   src={generateImageUrl(image)}
                   className="w-full h-full object-cover"
                   onError={handleOnError}
+                  alt={`Google thumbnail ${index + 1}`}
                 />
               </div>
               {currentIndex === index && (
@@ -187,6 +188,7 @@ function ImageCarousel({ images }) {
                   src={generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage)}
                   className="w-full h-full object-cover"
                   onError={(e) => handleOnError(e, true)}
+                  alt={`Baidu thumbnail ${index + 1}`}
                 />
               </div>
               {currentIndex === index && (
@@ -214,6 +216,7 @@ function ImageCarousel({ images }) {
                     src={slide.google}
                     className="w-full h-full p-2 object-cover shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
                     onError={handleOnError}
+                    alt="Google search result"
                   />
                 </div>
                 <div className="flex justify-between w-full pl-2 mt-4">
@@ -236,6 +239,7 @@ function ImageCarousel({ images }) {
                     src={slide.baidu}
                     className="w-full h-full p-2 object-cover shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
                     onError={(e) => handleOnError(e, true)}
+                    alt="Baidu search result"
                   />
                 </div>
                 <div className="flex justify-between w-full pl-2 mt-4">

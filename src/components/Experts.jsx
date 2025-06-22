@@ -3,7 +3,6 @@ import FeaturedEditorial from './FeaturedEditorial';
 import NewsletterSection from './NewsletterSection';
 
 import Commentary from '../assets/icons/expert-commentary.png';
-import Newsweek from '../assets/images/subscribe-a-desktop.jpg';
 
 function Experts() {
   const image = 'subscribeA';

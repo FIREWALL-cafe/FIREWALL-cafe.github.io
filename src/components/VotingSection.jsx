@@ -13,7 +13,7 @@ function VotingSection({ query, searchId }) {
   const location = useLocation();
   const notArchive = location.pathname !== '/archive';
   const [isOpen, setIsOpen] = useState(notArchive);
-  const [username, setUsername, deleteUsername] = useCookie("username");
+  const [username] = useCookie("username");
 
   const [voteCounts, setVoteCounts] = useState({ 'votes_censored': 0, 'votes_uncensored': 0, 'votes_lost_in_translation': 0, 'votes_bad_translation': 0, 'votes_good_translation': 0 });
   const handleVote = async(voteCategory) => {
@@ -27,13 +27,12 @@ function VotingSection({ query, searchId }) {
         body: JSON.stringify({ meta_key: voteCategory, search_id: searchId, vote_client_name: username }),
       });
       const voteData = await voteResponse.json();
-      console.log('handleVote:', voteData);
       setVoteCounts(prevCounts => ({
         ...prevCounts,
         [voteCategory]: voteData.vote_count
       }));
     } catch (e) {
-      console.error('Error in handleVote:', e);
+      // Handle error silently
     }
   }
 
@@ -102,7 +101,7 @@ function VotingSection({ query, searchId }) {
       </div>
       {!notArchive && <div onClick={() => setIsOpen(!isOpen)} className="flex flex-wrap justify-between text-red-600 items-center px-8 py-5 bg-gray-50 max-md:px-5 max-md:max-w-full cursor-pointer">
         <div className="font-body-02">{isOpen ? 'Hide voting' : 'Cast your vote'}</div>
-        <div><img src={isOpen ? ExpandUp : ExpandDown} /></div>
+        <div><img src={isOpen ? ExpandUp : ExpandDown} alt={isOpen ? "Collapse" : "Expand"} /></div>
       </div>}
     </div>
   );

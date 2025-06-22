@@ -8,12 +8,11 @@ export default function TermsAndConditions() {
   const [showUsernameInput, setShowUsernameInput] = useState(false);
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
-  const [usernameCookie, setUsernameCookie] = useCookie("username");
+  const [setUsernameCookie] = useCookie("username");
 
   useEffect(() => {
     // Check if user has seen the terms before
     const hasSeenTerms = localStorage.getItem('hasSeenTerms');
-    console.log('hasSeenTerms', hasSeenTerms);
     if (!hasSeenTerms || hasSeenTerms === 'false') {
       setIsOpen(true);
     }

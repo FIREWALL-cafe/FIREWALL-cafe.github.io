@@ -2,12 +2,12 @@ import React, { useCallback, useRef, useContext, useState } from 'react';
 import { LayoutContext } from './SearchLayout';
 
 const SearchBar = () => {
-  const [translation, setTranslation] = useState('');
-  const [imageResults, setImageResults] = useState({});
+  const [_translation, setTranslation] = useState('');
+  const [_imageResults, setImageResults] = useState({});
   const { setSearchId } = useContext(LayoutContext);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [_searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const setResults = useCallback((results) => setImageResults(results), []);
+  const setResults = useCallback((results) => setImageResults(results), [setImageResults]);
   const ref = useRef();
 
   const handleSubmit = async () => {

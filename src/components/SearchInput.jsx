@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useState, useCallback, useContext, useRef } from 'react';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import QueryList from './QueryList';
@@ -29,37 +29,38 @@ function SearchInput({ searchMode }) {
   const setResults = useCallback((results) => setImageResults(results), []);
   const [username] = useCookie("username");
   const [filterOpen, setFilterOpen] = useState(false);
-  const [isArchive, setIsArchive] = useState(searchMode === 'archive');
+  const [isArchive] = useState(searchMode === 'archive');
   const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [] });
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  var ranonce = false;
+  const ranonce = useRef(false);
   useEffect(() => {
     // Update the input field when query params change
     if (searchParams.get('q')) {
       setQuery(searchParams.get('q'));
-      if (!ranonce) {
+      if (!ranonce.current) {
         handleSubmit(); 
-        ranonce = true;
+        ranonce.current = true;
       }
-    } else if (isArchive && location.pathname === '/archive' && !ranonce && archiveResults.data.length === 0) {
-      ranonce = true;
+    } else if (isArchive && location.pathname === '/archive' && !ranonce.current && archiveResults.data.length === 0) {
+      ranonce.current = true;
       loadDefaultResults();
     }
-  }, [searchParams]);
+    // eslint-disable-next-line
+  }, [searchParams, handleSubmit, isArchive, location.pathname, archiveResults.data.length, loadDefaultResults]);
 
-  const loadDefaultResults = async () => {
+  const loadDefaultResults = useCallback(async () => {
     const filterOptions = { page: 1, page_size: 10 }
     const results = await searchArchive({ ...filterOptions });
     setSearchId("archived searches");
     setarchiveResults(results);
     setFilteredResults(results);
-  }
+  }, [searchArchive]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (!query || query.trim() === '') {
       setTranslation('Please enter a search query');
       return;
@@ -118,7 +119,7 @@ function SearchInput({ searchMode }) {
     } finally {
       setLoading(false);
     }
-  }
+  }, [query, location.pathname, navigate, isArchive, searchArchive, username, searchImages, setResults]);
 
   const applyFilters = async (filterOptions, shouldClose = true, isReset = false) => {
     setLoading(true);
