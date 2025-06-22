@@ -17,6 +17,7 @@ import ShowEvent from './components/ShowEvent';
 import Partners from './components/Partners';
 import Contributors from './components/Contributors';
 import Dashboard from './components/Dashboard';
+import SearchInputDemo from './components/SearchInputDemo';
 
 import {
   createBrowserRouter,
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "search-demo",
+        element: <SearchInputDemo />,
       },
     ],
   },
