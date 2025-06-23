@@ -264,6 +264,22 @@ app.get('/api/analytics/votes', async (req, res) => {
   }
 });
 
+// Recent activity endpoint
+app.get('/api/analytics/recent-activity', async (req, res) => {
+  console.log('/api/analytics/recent-activity: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}analytics/recent-activity`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Recent activity analytics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch recent activity',
+      message: error.message 
+    });
+  }
+});
+
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
   console.log('/api/search-demo: request received', req.body);
