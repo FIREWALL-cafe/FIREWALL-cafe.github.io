@@ -1,92 +1,149 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
 import ApiContext from '../contexts/ApiContext';
+import GeographicInsights from './Dashboard/GeographicInsights';
 
 const Dashboard = () => {
-    const [recentSearches, setRecentSearches] = useState([]);
     const [stats, setStats] = useState({
-        totalSearches: 0,
-        totalImages: 0,
-        totalVotes: 0,
-        totalUsers: 0
+        totalSearches: { count: 0 },
+        totalImages: { count: 0 },
+        totalVotes: { count: 0 },
+        totalUsers: { count: 0 }
     });
-    const { searchArchive, getDashboard } = useContext(ApiContext);
+    const [loading, setLoading] = useState(true);
+    const { getDashboard } = useContext(ApiContext);
 
     const fetchDashboardData = useCallback(async () => {
         try {
+            setLoading(true);
             const data = await getDashboard();
             setStats(data);
         } catch (error) {
             console.error('Error fetching dashboard stats:', error);
+        } finally {
+            setLoading(false);
         }
     }, [getDashboard]);
 
-    const fetchRecentSearches = useCallback(async () => {
-        try {
-            const filterOptions = { page: 1, page_size: 10 }
-            const data = await searchArchive({ ...filterOptions });
-            setRecentSearches(data.data || []);
-        } catch (error) {
-            console.error('Error fetching recent searches:', error);
-        }
-    }, [searchArchive]);
-
     useEffect(() => {
         fetchDashboardData();
-        fetchRecentSearches();
-    }, [fetchDashboardData, fetchRecentSearches]);
+    }, [fetchDashboardData]);
 
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-[56px] font-bold mb-8">Dashboard</h1>
-            
-            {/* Stats Section */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-white p-6 rounded-lg shadow">
-                    <h3 className="text-gray-500 text-sm font-medium">Total Searches</h3>
-                    <p className="text-2xl font-bold">{stats.totalSearches.count}</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow">
-                    <h3 className="text-gray-500 text-sm font-medium">Total Images</h3>
-                    <p className="text-2xl font-bold">{stats.totalImages.count}</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow">
-                    <h3 className="text-gray-500 text-sm font-medium">Total Votes</h3>
-                    <p className="text-2xl font-bold">{stats.totalVotes.count}</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow">
-                    <h3 className="text-gray-500 text-sm font-medium">Total Users</h3>
-                    <p className="text-2xl font-bold">{stats.totalUsers.count}</p>
+    if (loading) {
+        return (
+            <div className="container mx-auto px-4 py-8">
+                <div className="animate-pulse">
+                    <div className="h-16 bg-gray-300 rounded mb-8"></div>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                        {[...Array(4)].map((_, i) => (
+                            <div key={i} className="bg-gray-300 h-24 rounded"></div>
+                        ))}
+                    </div>
                 </div>
             </div>
+        );
+    }
 
-            {/* Existing Recent Searches Section */}
-            <h2 className="text-2xl font-bold mb-4">Recent Searches</h2>
-            <div className="bg-white p-6 rounded-lg shadow">
-                <div className="overflow-auto max-h-80">
-                    <table className="min-w-full">
-                        <thead>
-                            <tr>
-                                <th className="text-left">Username</th>
-                                <th className="text-left">Term</th>
-                                <th className="text-left">Translation</th>
-                                <th className="text-left">Created At</th>
-                                <th className="text-left">Location</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {recentSearches.map((search, index) => (
-                                <tr key={index} className="hover:bg-gray-50">
-                                    <td className="py-2">{search.search_client_name}</td>
-                                    <td className="py-2">{search.search_term_initial}</td>
-                                    <td className="py-2">{search.search_term_translation || '-'}</td>
-                                    <td className="py-2">
-                                        {new Date(parseInt(search.search_timestamp)).toLocaleString()}
-                                    </td>
-                                    <td className="py-2">{search.search_location}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <div className="container mx-auto px-4 py-8">
+                {/* Header */}
+                <div className="mb-8">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-2">Analytics Dashboard</h1>
+                    <p className="text-gray-600">Firewall Cafe search and user insights</p>
+                </div>
+
+                {/* Overview Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-sm font-medium text-gray-600">Total Searches</p>
+                                <p className="text-3xl font-bold text-gray-900">{stats.totalSearches.count}</p>
+                            </div>
+                            <div className="p-3 bg-blue-100 rounded-full">
+                                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-sm font-medium text-gray-600">Total Images</p>
+                                <p className="text-3xl font-bold text-gray-900">{stats.totalImages.count}</p>
+                            </div>
+                            <div className="p-3 bg-green-100 rounded-full">
+                                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-sm font-medium text-gray-600">Total Votes</p>
+                                <p className="text-3xl font-bold text-gray-900">{stats.totalVotes.count}</p>
+                            </div>
+                            <div className="p-3 bg-purple-100 rounded-full">
+                                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-sm font-medium text-gray-600">Total Users</p>
+                                <p className="text-3xl font-bold text-gray-900">{stats.totalUsers.count}</p>
+                            </div>
+                            <div className="p-3 bg-orange-100 rounded-full">
+                                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Analytics Sections Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    {/* Search Analytics Placeholder */}
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Search Analytics</h3>
+                        <div className="h-64 flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 rounded">
+                            Search volume charts will go here
+                        </div>
+                    </div>
+
+                    {/* Vote Analytics Placeholder */}
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Vote & Feedback Analytics</h3>
+                        <div className="h-64 flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 rounded">
+                            Vote breakdown charts will go here
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* Geographic Insights */}
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Geographic Insights</h3>
+                        <GeographicInsights />
+                    </div>
+
+                    {/* Recent Activity Placeholder */}
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                        <div className="h-64 flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 rounded">
+                            Recent searches table will go here
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
