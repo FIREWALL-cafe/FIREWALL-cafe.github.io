@@ -232,6 +232,22 @@ app.get('/api/analytics/geographic', async (req, res) => {
   }
 });
 
+// Search analytics endpoint
+app.get('/api/analytics/searches', async (req, res) => {
+  console.log('/api/analytics/searches: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}analytics/searches`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Search analytics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch search analytics',
+      message: error.message 
+    });
+  }
+});
+
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
   console.log('/api/search-demo: request received', req.body);
