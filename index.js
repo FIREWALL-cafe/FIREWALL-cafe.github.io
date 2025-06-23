@@ -248,6 +248,22 @@ app.get('/api/analytics/searches', async (req, res) => {
   }
 });
 
+// Vote analytics endpoint
+app.get('/api/analytics/votes', async (req, res) => {
+  console.log('/api/analytics/votes: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}analytics/votes`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Vote analytics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch vote analytics',
+      message: error.message 
+    });
+  }
+});
+
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
   console.log('/api/search-demo: request received', req.body);
