@@ -210,11 +210,11 @@ function SearchInput({ searchMode }) {
                     <>
                       <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 w-8 h-8`}>
                         <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
-                      </div>
+                        </div>
+                      <span className="font-semibold text-red-600">vs.</span>
                       <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 h-8`}>
                         <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
                       </div>
-                      <span className="font-semibold text-red-600 ml-2">Compare</span>
                     </>
                   )}
                 </div>
@@ -234,14 +234,14 @@ function SearchInput({ searchMode }) {
                   <>
                     <div className="flex gap-0.5 items-center">
                       <img src={GoogleLogoBlue} alt="Google" className="w-4 h-4 grayscale opacity-60" />
+                      <span className="font-semibold text-red-600  grayscale opacity-60">vs.</span>
                       <img src={BaiduLogoRed} alt="Baidu" className="w-4 h-4 grayscale opacity-60" />
                     </div>
-                    <span>Compare</span>
                   </>
                 ) : (
                   <>
                     <img src={ArchiveGrayscale} alt="Archive" className="w-4 h-4" />
-                    <span>search archive</span>
+                    <span>Archive</span>
                   </>
                 )}
               </div>
