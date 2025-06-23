@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, useCallback } from 'react';
 import ApiContext from '../contexts/ApiContext';
 import GeographicInsights from './Dashboard/GeographicInsights';
 import SearchAnalytics from './Dashboard/SearchAnalytics';
+import VoteAnalytics from './Dashboard/VoteAnalytics';
 
 const Dashboard = () => {
     const [stats, setStats] = useState({
@@ -120,12 +121,10 @@ const Dashboard = () => {
                         <SearchAnalytics />
                     </div>
 
-                    {/* Vote Analytics Placeholder */}
+                    {/* Vote Analytics */}
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">Vote & Feedback Analytics</h3>
-                        <div className="h-64 flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 rounded">
-                            Vote breakdown charts will go here
-                        </div>
+                        <VoteAnalytics />
                     </div>
                 </div>
 
