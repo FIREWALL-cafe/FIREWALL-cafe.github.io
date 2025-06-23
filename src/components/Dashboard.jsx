@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
 import ApiContext from '../contexts/ApiContext';
 import GeographicInsights from './Dashboard/GeographicInsights';
+import SearchAnalytics from './Dashboard/SearchAnalytics';
 
 const Dashboard = () => {
     const [stats, setStats] = useState({
@@ -113,12 +114,10 @@ const Dashboard = () => {
 
                 {/* Analytics Sections Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                    {/* Search Analytics Placeholder */}
+                    {/* Search Analytics */}
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">Search Analytics</h3>
-                        <div className="h-64 flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300 rounded">
-                            Search volume charts will go here
-                        </div>
+                        <SearchAnalytics />
                     </div>
 
                     {/* Vote Analytics Placeholder */}
