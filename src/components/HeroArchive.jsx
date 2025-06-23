@@ -11,7 +11,7 @@ const HeroArchive = () => {
           <div className="flex flex-wrap gap-5 items-center self-center text-black max-md:max-w-full max-md:text-4xl">
             <img src={Archive} alt="" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" />
             <div className="self-stretch my-auto border-black max-md:max-w-full max-md:text-4xl">
-              Search Archive
+              Archive Search
             </div>
           </div>
           <div className="text-red-600 border-red-600 max-md:max-w-full max-md:text-4xl">

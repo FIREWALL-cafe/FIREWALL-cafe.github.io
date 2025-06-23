@@ -40,7 +40,12 @@ const searchImages = async (options) => {
 
 const getDashboard = async () => {
   try {
-    const response = await fetch('/dashboardData');
+    const response = await fetch('/dashboardData', {
+      method: 'GET',
+      headers: { 
+        Accept: 'application/json'
+      }
+    });
     const data = await response.json();
     return data;
   } catch (error) {

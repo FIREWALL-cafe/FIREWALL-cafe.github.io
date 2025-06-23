@@ -40,6 +40,14 @@ handlers:
   script: auto
   secure: always
 
+- url: /dashboardData.*
+  script: auto
+  secure: always
+
+- url: /api/analytics/.*
+  script: auto
+  secure: always
+
 # Serve static assets from build directory first
 - url: /static/(.*)
   static_files: build/static/\1
