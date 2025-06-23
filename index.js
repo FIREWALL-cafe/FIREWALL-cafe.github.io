@@ -90,10 +90,6 @@ app.get('/proxy-image', async (req, res) => {
   }
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
-});
-
 app.post("/searches/:search_id/images", async (req, res) => {
   console.log('/searches/:search_id/images:', req.params);
   console.log("trying to get images for search id", req.params.search_id);
@@ -220,6 +216,22 @@ app.post('/searches/votes/counts/:search_id', async (req, res) => {
   }
 });
 
+// Geographic analytics endpoint
+app.get('/api/analytics/geographic', async (req, res) => {
+  console.log('/api/analytics/geographic: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}analytics/geographic`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Geographic analytics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch geographic analytics',
+      message: error.message 
+    });
+  }
+});
+
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
   console.log('/api/search-demo: request received', req.body);
@@ -305,6 +317,11 @@ app.post('/send-email', async (req, res) => {
     console.error('Error sending email:', error);
     res.status(500).json({ error: 'Failed to send email' });
   }
+});
+
+// Catch-all handler: send back React's index.html file for client-side routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
 const PORT = process.env.PORT || 8080;
