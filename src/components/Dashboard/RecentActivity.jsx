@@ -19,6 +19,7 @@ const RecentActivity = () => {
             }
             
             const result = await response.json();
+            console.log('Recent activity data structure:', result[0]); // Debug log to see data structure
             setData(result);
         } catch (err) {
             console.error('Error fetching recent activity:', err);
@@ -151,9 +152,16 @@ const RecentActivity = () => {
                                     {getEngineIcon(search.search_engine_initial)}
                                     {search.search_engine_initial}
                                 </span>
-                                <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address || 'Not available'}`}>
-                                    🌐 {formatIpAddress(search.search_ip_address)}
-                                </span>
+                                {search.search_ip_address && (
+                                    <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address}`}>
+                                        🌐 {formatIpAddress(search.search_ip_address)}
+                                    </span>
+                                )}
+                                {!search.search_ip_address && (
+                                    <span className="flex items-center gap-1 text-gray-400" title="IP address not tracked for this search">
+                                        🌐 No IP data
+                                    </span>
+                                )}
                                 {parseInt(search.vote_count) > 0 && (
                                     <span className="flex items-center gap-1">
                                         <span className="inline-block w-2 h-2 bg-purple-400 rounded-full"></span>

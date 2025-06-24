@@ -121,6 +121,14 @@ const Dashboard = () => {
                     </div>
                 </div>
 
+                {/* Recent Activity - Full Width */}
+                <div className="mb-8">
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                        <RecentActivity />
+                    </div>
+                </div>
+
                 {/* Analytics Sections Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                     {/* Search Analytics */}
@@ -136,7 +144,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* Geographic Insights */}
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">Geographic Insights</h3>
@@ -147,12 +155,6 @@ const Dashboard = () => {
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">IP Distribution</h3>
                         <IPGeographicDistribution />
-                    </div>
-
-                    {/* Recent Activity */}
-                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-                        <RecentActivity />
                     </div>
                 </div>
             </div>
