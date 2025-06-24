@@ -76,6 +76,17 @@ const RecentActivity = () => {
         return '🔍';
     };
 
+    const formatIpAddress = (ip) => {
+        if (!ip) return 'Unknown IP';
+        
+        // Truncate long IPv6 addresses for display
+        if (ip.length > 15) {
+            return ip.substring(0, 12) + '...';
+        }
+        
+        return ip;
+    };
+
     if (loading) {
         return (
             <div className="h-64 flex items-center justify-center">
@@ -139,6 +150,9 @@ const RecentActivity = () => {
                                 <span className="flex items-center gap-1">
                                     {getEngineIcon(search.search_engine_initial)}
                                     {search.search_engine_initial}
+                                </span>
+                                <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address || 'Not available'}`}>
+                                    🌐 {formatIpAddress(search.search_ip_address)}
                                 </span>
                                 {parseInt(search.vote_count) > 0 && (
                                     <span className="flex items-center gap-1">
