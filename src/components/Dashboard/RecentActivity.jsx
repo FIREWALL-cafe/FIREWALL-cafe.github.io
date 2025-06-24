@@ -125,8 +125,15 @@ const RecentActivity = () => {
         );
     }
 
+    const hasAnyIPData = data.some(search => search.search_ip_address && search.search_ip_address !== 'null');
+    
     return (
         <div className="h-64 overflow-y-auto">
+            {!hasAnyIPData && data.length > 0 && (
+                <div className="mb-3 p-2 bg-amber-50 border border-amber-200 rounded text-xs text-amber-700">
+                    ⚠️ IP tracking not available for displayed searches. Check backend API configuration.
+                </div>
+            )}
             <div className="space-y-2">
                 {data.map((search, index) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
@@ -157,14 +164,14 @@ const RecentActivity = () => {
                                     {getEngineIcon(search.search_engine_initial)}
                                     {search.search_engine_initial}
                                 </span>
-                                {(search.search_ip_address || search.ip_address) && (
-                                    <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address || search.ip_address}`}>
-                                        🌐 {formatIpAddress(search.search_ip_address || search.ip_address)}
+                                {(search.search_ip_address && search.search_ip_address !== 'null') && (
+                                    <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address}`}>
+                                        🌐 {formatIpAddress(search.search_ip_address)}
                                     </span>
                                 )}
-                                {!(search.search_ip_address || search.ip_address) && (
-                                    <span className="flex items-center gap-1 text-gray-400" title="IP address not tracked for this search">
-                                        🌐 No IP data
+                                {(!search.search_ip_address || search.search_ip_address === 'null') && (
+                                    <span className="flex items-center gap-1 text-gray-400" title="IP tracking not available for this search">
+                                        🌐 No IP tracked
                                     </span>
                                 )}
                                 {parseInt(search.vote_count) > 0 && (

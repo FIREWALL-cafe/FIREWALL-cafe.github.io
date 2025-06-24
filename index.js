@@ -132,9 +132,16 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    console.log('about to save images');
-    console.log('IP being saved:', req.clientIp);
+    console.log('============ SEARCH IP TRACKING DEBUG ============');
+    console.log('About to save images with IP tracking');
+    console.log('Extracted IP address:', req.clientIp);
     console.log('IP middleware working:', !!req.clientIp);
+    console.log('Request headers:', {
+      'x-forwarded-for': req.headers['x-forwarded-for'],
+      'x-appengine-user-ip': req.headers['x-appengine-user-ip'],
+      'user-agent': req.headers['user-agent']?.substring(0, 50) + '...'
+    });
+    console.log('===============================================');
     const { searchId } = await saveImages({ 
       query, 
       google: results[0].slice(0, 9), 
