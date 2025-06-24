@@ -76,7 +76,7 @@ const IPGeographicDistribution = () => {
         const typeCounts = {};
         
         rawData.forEach(item => {
-            const ip = item.search_ip_address || item.vote_ip_address;
+            const ip = item.ip_address;
             if (ip) {
                 // Count unique IPs
                 ipCounts[ip] = (ipCounts[ip] || 0) + 1;
