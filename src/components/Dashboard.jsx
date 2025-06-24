@@ -5,6 +5,7 @@ import SearchAnalytics from './Dashboard/SearchAnalytics';
 import VoteAnalytics from './Dashboard/VoteAnalytics';
 import RecentActivity from './Dashboard/RecentActivity';
 import CurrentUserIP from './Dashboard/CurrentUserIP';
+import IPGeographicDistribution from './Dashboard/IPGeographicDistribution';
 
 const Dashboard = () => {
     const [stats, setStats] = useState({
@@ -135,11 +136,17 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Geographic Insights */}
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">Geographic Insights</h3>
                         <GeographicInsights />
+                    </div>
+
+                    {/* IP Geographic Distribution */}
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">IP Distribution</h3>
+                        <IPGeographicDistribution />
                     </div>
 
                     {/* Recent Activity */}
