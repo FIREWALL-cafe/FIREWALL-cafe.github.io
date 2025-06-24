@@ -295,6 +295,33 @@ app.get('/api/analytics/recent-activity', async (req, res) => {
   }
 });
 
+// Current user IP endpoint
+app.get('/api/my-ip', (req, res) => {
+  console.log('/api/my-ip: request received');
+  
+  try {
+    const userIP = req.clientIp;
+    
+    console.log('User IP detected:', userIP);
+    
+    res.json({
+      ip: userIP,
+      timestamp: new Date().toISOString(),
+      headers: {
+        'x-forwarded-for': req.headers['x-forwarded-for'],
+        'x-appengine-user-ip': req.headers['x-appengine-user-ip'],
+        'user-agent': req.headers['user-agent']
+      }
+    });
+  } catch (error) {
+    console.error('Error getting user IP:', error);
+    res.status(500).json({ 
+      error: 'Failed to detect IP address',
+      message: error.message 
+    });
+  }
+});
+
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
   console.log('/api/search-demo: request received', req.body);

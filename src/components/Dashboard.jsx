@@ -4,6 +4,7 @@ import GeographicInsights from './Dashboard/GeographicInsights';
 import SearchAnalytics from './Dashboard/SearchAnalytics';
 import VoteAnalytics from './Dashboard/VoteAnalytics';
 import RecentActivity from './Dashboard/RecentActivity';
+import CurrentUserIP from './Dashboard/CurrentUserIP';
 
 const Dashboard = () => {
     const [stats, setStats] = useState({
@@ -53,6 +54,11 @@ const Dashboard = () => {
                 <div className="mb-8">
                     <h1 className="text-4xl font-bold text-gray-900 mb-2">Analytics Dashboard</h1>
                     <p className="text-gray-600">Firewall Cafe search and user insights</p>
+                </div>
+
+                {/* Current User IP Widget */}
+                <div className="mb-6">
+                    <CurrentUserIP />
                 </div>
 
                 {/* Overview Cards */}
