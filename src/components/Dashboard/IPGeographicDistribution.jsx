@@ -12,7 +12,8 @@ const IPGeographicDistribution = () => {
     const fetchIPDistribution = async () => {
         try {
             setLoading(true);
-            const response = await fetch('/api/analytics/ip-distribution');
+            // Use recent activity data since it includes IP addresses
+            const response = await fetch('/api/analytics/recent-activity');
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -76,7 +77,7 @@ const IPGeographicDistribution = () => {
         const typeCounts = {};
         
         rawData.forEach(item => {
-            const ip = item.ip_address;
+            const ip = item.search_ip_address;
             if (ip) {
                 // Count unique IPs
                 ipCounts[ip] = (ipCounts[ip] || 0) + 1;
