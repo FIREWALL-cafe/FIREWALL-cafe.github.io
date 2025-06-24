@@ -288,16 +288,18 @@ const getSearchesFilter = async (filterOptions) => {
   return data;
 }
 
-const saveImages = async ({ query, google, baidu, langTo, langFrom, search_client_name, translation }) => {
+const saveImages = async ({ query, google, baidu, langTo, langFrom, search_client_name, search_ip_address, translation }) => {
   console.log('saving images for', query);
   console.log('- google images', google);
   console.log('- baidu images', baidu);
+  console.log('- client IP', search_ip_address);
   
   const url = `${serverConfig.apiUrl}saveSearchAndImages`;
   const imageData = {
     timestamp: Date.now(),
     location: serverConfig.location,
     search_client_name: search_client_name,
+    search_ip_address: search_ip_address,
     secret: serverConfig.apiSecret,
     search_engine: 'google',
     search: query,
