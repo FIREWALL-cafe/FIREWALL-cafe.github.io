@@ -322,6 +322,22 @@ app.get('/api/my-ip', (req, res) => {
   }
 });
 
+// IP distribution analytics endpoint
+app.get('/api/analytics/ip-distribution', async (req, res) => {
+  console.log('/api/analytics/ip-distribution: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}analytics/ip-distribution`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('IP distribution analytics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch IP distribution analytics',
+      message: error.message 
+    });
+  }
+});
+
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
   console.log('/api/search-demo: request received', req.body);
