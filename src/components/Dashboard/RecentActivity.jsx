@@ -20,6 +20,11 @@ const RecentActivity = () => {
             
             const result = await response.json();
             console.log('Recent activity data structure:', result[0]); // Debug log to see data structure
+            console.log('IP fields in data:', result.slice(0, 3).map(item => ({ 
+                search_id: item.search_id, 
+                search_ip_address: item.search_ip_address, 
+                ip_address: item.ip_address 
+            })));
             setData(result);
         } catch (err) {
             console.error('Error fetching recent activity:', err);
@@ -152,12 +157,12 @@ const RecentActivity = () => {
                                     {getEngineIcon(search.search_engine_initial)}
                                     {search.search_engine_initial}
                                 </span>
-                                {search.search_ip_address && (
-                                    <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address}`}>
-                                        🌐 {formatIpAddress(search.search_ip_address)}
+                                {(search.search_ip_address || search.ip_address) && (
+                                    <span className="flex items-center gap-1" title={`IP Address: ${search.search_ip_address || search.ip_address}`}>
+                                        🌐 {formatIpAddress(search.search_ip_address || search.ip_address)}
                                     </span>
                                 )}
-                                {!search.search_ip_address && (
+                                {!(search.search_ip_address || search.ip_address) && (
                                     <span className="flex items-center gap-1 text-gray-400" title="IP address not tracked for this search">
                                         🌐 No IP data
                                     </span>

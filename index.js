@@ -133,6 +133,8 @@ app.post('/images', async (req, res) => {
     ]);
 
     console.log('about to save images');
+    console.log('IP being saved:', req.clientIp);
+    console.log('IP middleware working:', !!req.clientIp);
     const { searchId } = await saveImages({ 
       query, 
       google: results[0].slice(0, 9), 
