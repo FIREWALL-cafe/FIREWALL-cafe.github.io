@@ -3,12 +3,19 @@ const express = require('express');
 const axios = require('axios');
 const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages, getSearchVoteCounts } = require('./server/fetch');
 const postmark = require('postmark');
+const { ipMiddleware, getClientIp } = require('./server/ip-utils');
 
 const serverConfig = require('./server/config');
 
 const app = express();
 
+// Configure Express to trust proxy headers (required for Google App Engine)
+app.set('trust proxy', true);
+
 app.use(express.json());
+
+// Add IP extraction middleware - makes req.clientIp available in all routes
+app.use(ipMiddleware);
 
 app.use((err, req, res, next) => {
   console.error(err.stack)
@@ -133,8 +140,11 @@ app.post('/images', async (req, res) => {
       langTo, 
       langFrom, 
       search_client_name, 
+      search_ip_address: req.clientIp,  // Add IP tracking
       translation: translatedQuery 
     });
+    
+    console.log('Search saved with IP:', req.clientIp);
 
     data.searchId = searchId;
     data.googleResults = results[0];
@@ -195,11 +205,16 @@ app.post('/vote', async (req, res) => {
   console.log('/vote:', req.body);
   
   try {
-    req.body.vote_ip_address = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    // Use the IP extracted by middleware
+    req.body.vote_ip_address = req.clientIp;
+    
+    console.log('Vote IP extracted:', req.body.vote_ip_address);
+    
     const data = await postVote({ ...req.body });
     res.json(data);
   } catch (e) {
     console.error(e);
+    res.status(500).json({ error: 'Failed to submit vote' });
   }
 });
 
