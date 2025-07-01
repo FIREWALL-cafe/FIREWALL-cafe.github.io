@@ -10,6 +10,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import GeographicHeatmap from './GeographicHeatmap';
+import USStatesHeatmap from './USStatesHeatmap';
 
 ChartJS.register(
     CategoryScale,
@@ -25,6 +26,7 @@ const GeographicInsightsWithMap = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [viewMode, setViewMode] = useState('chart'); // 'chart' or 'map'
+    const [mapViewMode, setMapViewMode] = useState('world'); // 'world' or 'us-states'
 
     useEffect(() => {
         fetchGeographicData();
@@ -150,11 +152,23 @@ const GeographicInsightsWithMap = () => {
         },
     };
 
+    const handleUSClick = () => {
+        setMapViewMode('us-states');
+    };
+
+    const handleBackToWorld = () => {
+        setMapViewMode('world');
+    };
+
     return (
         <div className="space-y-4">
             {/* View Mode Toggle */}
             <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold">Geographic Distribution</h3>
+                <h3 className="text-lg font-semibold">
+                    {viewMode === 'map' && mapViewMode === 'us-states' 
+                        ? 'US States Distribution' 
+                        : 'Geographic Distribution'}
+                </h3>
                 <div className="flex bg-gray-100 rounded-lg p-1">
                     <button
                         onClick={() => setViewMode('chart')}
@@ -183,8 +197,10 @@ const GeographicInsightsWithMap = () => {
             <div className={viewMode === 'chart' ? 'h-64' : 'h-96'}>
                 {viewMode === 'chart' ? (
                     <Bar data={chartData} options={chartOptions} />
+                ) : mapViewMode === 'us-states' ? (
+                    <USStatesHeatmap onBackClick={handleBackToWorld} />
                 ) : (
-                    <GeographicHeatmap />
+                    <GeographicHeatmap onUSClick={handleUSClick} />
                 )}
             </div>
         </div>

@@ -245,6 +245,22 @@ app.get('/api/analytics/geographic', async (req, res) => {
   }
 });
 
+// US States analytics endpoint
+app.get('/api/analytics/geographic/us-states', async (req, res) => {
+  console.log('/api/analytics/geographic/us-states: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}analytics/geographic/us-states`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('US states analytics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch US states analytics',
+      message: error.message 
+    });
+  }
+});
+
 // Search analytics endpoint
 app.get('/api/analytics/searches', async (req, res) => {
   console.log('/api/analytics/searches: request received');

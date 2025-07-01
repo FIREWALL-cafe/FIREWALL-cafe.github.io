@@ -102,7 +102,7 @@ const countryNameToISO = {
     'Cyprus': 'CY'
 };
 
-const GeographicHeatmap = () => {
+const GeographicHeatmap = ({ onUSClick }) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -223,8 +223,11 @@ const GeographicHeatmap = () => {
                                         }}
                                         onMouseEnter={() => {
                                             if (hasData) {
+                                                const tooltipText = `${countryName}: ${countryData.search_count} searches (${countryData.percentage}%)`;
                                                 setTooltipContent(
-                                                    `${countryName}: ${countryData.search_count} searches (${countryData.percentage}%)`
+                                                    code2 === 'US' && onUSClick 
+                                                        ? `${tooltipText} (Click to view states)`
+                                                        : tooltipText
                                                 );
                                             } else {
                                                 setTooltipContent(`${countryName}: No data`);
@@ -232,6 +235,11 @@ const GeographicHeatmap = () => {
                                         }}
                                         onMouseLeave={() => {
                                             setTooltipContent("");
+                                        }}
+                                        onClick={() => {
+                                            if (code2 === 'US' && onUSClick) {
+                                                onUSClick();
+                                            }
                                         }}
                                         data-tooltip-id="map-tooltip"
                                         data-tooltip-content={tooltipContent}
