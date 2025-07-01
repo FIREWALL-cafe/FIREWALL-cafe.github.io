@@ -7,6 +7,7 @@ import {
 } from 'react-simple-maps';
 import { scaleLinear } from 'd3-scale';
 import { Tooltip } from 'react-tooltip';
+import './GeographicHeatmap.css';
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -179,7 +180,16 @@ const USStatesHeatmap = ({ onBackClick }) => {
                 </div>
             </div>
 
-            <Tooltip id="states-tooltip" />
+            <Tooltip 
+                id="states-tooltip" 
+                className="map-tooltip"
+                border="2px solid #FF6B6B"
+                style={{
+                    backgroundColor: 'white',
+                    color: '#333',
+                    borderRadius: '6px'
+                }}
+            />
         </div>
     );
 };

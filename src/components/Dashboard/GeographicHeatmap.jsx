@@ -9,6 +9,7 @@ import {
 } from 'react-simple-maps';
 import { scaleLinear } from 'd3-scale';
 import { Tooltip } from 'react-tooltip';
+import './GeographicHeatmap.css';
 
 // Using a GeoJSON with proper ISO codes
 const geoUrl = "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson";
@@ -199,6 +200,8 @@ const GeographicHeatmap = ({ onUSClick }) => {
                                 const hasData = !!countryData;
                                 const searchCount = hasData ? parseInt(countryData.search_count) : 0;
                                 
+                                // Use the location name from data if available, otherwise fallback to geography name
+                                const displayName = hasData && countryData.location ? countryData.location : countryName;
                                 
                                 return (
                                     <Geography
@@ -223,14 +226,14 @@ const GeographicHeatmap = ({ onUSClick }) => {
                                         }}
                                         onMouseEnter={() => {
                                             if (hasData) {
-                                                const tooltipText = `${countryName}: ${countryData.search_count} searches (${countryData.percentage}%)`;
+                                                const tooltipText = `${displayName}: ${countryData.search_count} searches (${countryData.percentage}%)`;
                                                 setTooltipContent(
                                                     code2 === 'US' && onUSClick 
                                                         ? `${tooltipText} (Click to view states)`
                                                         : tooltipText
                                                 );
                                             } else {
-                                                setTooltipContent(`${countryName}: No data`);
+                                                setTooltipContent(`${displayName}: No data`);
                                             }
                                         }}
                                         onMouseLeave={() => {
@@ -261,7 +264,16 @@ const GeographicHeatmap = ({ onUSClick }) => {
                 </div>
             </div>
 
-            <Tooltip id="map-tooltip" />
+            <Tooltip 
+                id="map-tooltip" 
+                className="map-tooltip"
+                border="2px solid #FF6B6B"
+                style={{
+                    backgroundColor: 'white',
+                    color: '#333',
+                    borderRadius: '6px'
+                }}
+            />
         </div>
     );
 };
