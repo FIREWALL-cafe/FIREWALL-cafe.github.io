@@ -8,7 +8,6 @@ import ApiContext from '../contexts/ApiContext';
 import QuestionIcon from './icons/QuestionIcon';
 
 import GoogleLogoBlue from '../assets/icons/google-logo_blue.svg';
-import GoogleLogoRed from '../assets/icons/google-logo_red.svg';
 import BaiduLogoRed from '../assets/icons/baidu_logo_red.svg';
 import SearchIcon from '../assets/icons/image_search.svg';
 import ArchiveIcon from '../assets/icons/folder_open_search.svg';
@@ -54,13 +53,13 @@ function SearchInput({ searchMode }) {
       return;
     }
     setError('');
-    
-    setLoading(true);
+
     if (location.pathname === '/') {
       navigate('/search?q=' + query);
       return;
     }
 
+    setLoading(true);
     try {
       if (isArchive) {
         setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });

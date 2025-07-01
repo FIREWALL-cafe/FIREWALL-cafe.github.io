@@ -9,14 +9,12 @@ function SearchInputDemo() {
   const [showFilters, setShowFilters] = useState(false);
 
   const handleCompareSearch = (query) => {
-    console.log('Compare search:', query);
     setCompareQuery(query);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000); // Simulate search
   };
 
   const handleArchiveSearch = (query) => {
-    console.log('Archive search:', query);
     setArchiveQuery(query);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000); // Simulate search
@@ -24,7 +22,6 @@ function SearchInputDemo() {
 
   const handleFiltersClick = () => {
     setShowFilters(!showFilters);
-    console.log('Filters clicked');
   };
 
   // Mock API context for demo

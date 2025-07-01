@@ -38,7 +38,7 @@ const SearchDemo = () => {
     }
   };
 
-  const ImageResult = ({ image, index, provider }) => (
+  const ImageResult = ({ image, index }) => (
     <div className="border border-gray-200 rounded-lg p-3 bg-white shadow-sm">
       <div className="text-xs text-gray-500 mb-2">#{index + 1}</div>
       <div className="aspect-video bg-gray-100 rounded mb-2 overflow-hidden">

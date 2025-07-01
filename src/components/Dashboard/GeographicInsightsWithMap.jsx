@@ -9,6 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import GeographicHeatmap from './GeographicHeatmap';
 
 ChartJS.register(
     CategoryScale,
@@ -19,10 +20,11 @@ ChartJS.register(
     Legend
 );
 
-const GeographicInsights = () => {
+const GeographicInsightsWithMap = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [viewMode, setViewMode] = useState('chart'); // 'chart' or 'map'
 
     useEffect(() => {
         fetchGeographicData();
@@ -59,7 +61,7 @@ const GeographicInsights = () => {
 
     if (loading) {
         return (
-            <div className="h-64 flex items-center justify-center">
+            <div className="h-96 flex items-center justify-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
             </div>
         );
@@ -67,7 +69,7 @@ const GeographicInsights = () => {
 
     if (error) {
         return (
-            <div className="h-64 flex items-center justify-center text-red-500">
+            <div className="h-96 flex items-center justify-center text-red-500">
                 <div className="text-center">
                     <p>Error loading geographic data</p>
                     <button 
@@ -83,7 +85,7 @@ const GeographicInsights = () => {
 
     if (!data || data.length === 0) {
         return (
-            <div className="h-64 flex items-center justify-center text-gray-500">
+            <div className="h-96 flex items-center justify-center text-gray-500">
                 No geographic data available
             </div>
         );
@@ -107,7 +109,7 @@ const GeographicInsights = () => {
         ],
     };
 
-    const options = {
+    const chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -149,10 +151,44 @@ const GeographicInsights = () => {
     };
 
     return (
-        <div className="h-64">
-            <Bar data={chartData} options={options} />
+        <div className="space-y-4">
+            {/* View Mode Toggle */}
+            <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold">Geographic Distribution</h3>
+                <div className="flex bg-gray-100 rounded-lg p-1">
+                    <button
+                        onClick={() => setViewMode('chart')}
+                        className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                            viewMode === 'chart'
+                                ? 'bg-white text-blue-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        Chart
+                    </button>
+                    <button
+                        onClick={() => setViewMode('map')}
+                        className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                            viewMode === 'map'
+                                ? 'bg-white text-blue-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                    >
+                        Map
+                    </button>
+                </div>
+            </div>
+
+            {/* Content */}
+            <div className={viewMode === 'chart' ? 'h-64' : 'h-96'}>
+                {viewMode === 'chart' ? (
+                    <Bar data={chartData} options={chartOptions} />
+                ) : (
+                    <GeographicHeatmap />
+                )}
+            </div>
         </div>
     );
 };
 
-export default GeographicInsights;
+export default GeographicInsightsWithMap;

@@ -19,12 +19,6 @@ const RecentActivity = () => {
             }
             
             const result = await response.json();
-            console.log('Recent activity data structure:', result[0]); // Debug log to see data structure
-            console.log('IP fields in data:', result.slice(0, 3).map(item => ({ 
-                search_id: item.search_id, 
-                search_ip_address: item.search_ip_address, 
-                ip_address: item.ip_address 
-            })));
             setData(result);
         } catch (err) {
             console.error('Error fetching recent activity:', err);

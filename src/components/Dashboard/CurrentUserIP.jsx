@@ -32,7 +32,6 @@ const CurrentUserIP = () => {
         if (userIP) {
             navigator.clipboard.writeText(userIP).then(() => {
                 // Could add a toast notification here
-                console.log('IP copied to clipboard');
             }).catch(err => {
                 console.error('Failed to copy IP:', err);
             });

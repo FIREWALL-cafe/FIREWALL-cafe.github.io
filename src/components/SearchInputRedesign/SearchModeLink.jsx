@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SearchModeLink({ currentMode, query }) {
-  const [searchParams] = useSearchParams();
-  
   if (currentMode === 'compare') {
     // Link to archive mode, preserve query
     const archiveUrl = query 

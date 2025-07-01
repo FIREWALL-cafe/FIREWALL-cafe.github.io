@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import SearchModeIndicator from './SearchModeIndicator';
 import SearchModeLink from './SearchModeLink';
 import SearchIcon from '../../assets/icons/image_search.svg';
@@ -17,7 +17,6 @@ function SearchInputRedesign({
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [searchParams] = useSearchParams();
-  const location = useLocation();
   const inputRef = useRef(null);
 
   // Update query when URL params change
@@ -26,14 +25,14 @@ function SearchInputRedesign({
     if (urlQuery !== query) {
       setQuery(urlQuery);
     }
-  }, [searchParams]);
+  }, [searchParams, query]);
 
   // Update query when initialQuery prop changes
   useEffect(() => {
     if (initialQuery !== query) {
       setQuery(initialQuery);
     }
-  }, [initialQuery]);
+  }, [initialQuery, query]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

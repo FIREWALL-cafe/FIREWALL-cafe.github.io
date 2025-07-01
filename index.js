@@ -132,16 +132,6 @@ app.post('/images', async (req, res) => {
       getBaiduImages(cnQuery),
     ]);
 
-    console.log('============ SEARCH IP TRACKING DEBUG ============');
-    console.log('About to save images with IP tracking');
-    console.log('Extracted IP address:', req.clientIp);
-    console.log('IP middleware working:', !!req.clientIp);
-    console.log('Request headers:', {
-      'x-forwarded-for': req.headers['x-forwarded-for'],
-      'x-appengine-user-ip': req.headers['x-appengine-user-ip'],
-      'user-agent': req.headers['user-agent']?.substring(0, 50) + '...'
-    });
-    console.log('===============================================');
     const { searchId } = await saveImages({ 
       query, 
       google: results[0].slice(0, 9), 
@@ -214,7 +204,6 @@ app.post('/vote', async (req, res) => {
   console.log('/vote:', req.body);
   
   try {
-    // Use the IP extracted by middleware
     req.body.vote_ip_address = req.clientIp;
     
     console.log('Vote IP extracted:', req.body.vote_ip_address);
@@ -424,7 +413,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV}`);
