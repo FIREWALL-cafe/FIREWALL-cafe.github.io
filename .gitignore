@@ -107,5 +107,6 @@ dist
 
 service-key.json
 config.js
+server/config-secure.js
 build/
 design-tokens/
