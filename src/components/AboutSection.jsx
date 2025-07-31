@@ -11,7 +11,7 @@ import hoverc from "../assets/images/homepage-section_1-image_c-hover.jpg";
 
 function AboutSection() {
   return (
-    <section className="w-full flex flex-col py-16">
+    <section className="w-full flex flex-col py-8 md:py-16">
       <div className="flex flex-col md:flex-row gap-10 justify-between">
         <div className="w-full md:w-[55%] order-2 md:order-1">
           <div className="font-bitmap-song">

@@ -36,7 +36,7 @@ const features = [
 function Search() {
   return (
     <main className="min-h-screen">
-      <section className="flex flex-col justify-center w-full px-4 py-8 md:py-16 bg-white">
+      <section className="flex flex-col justify-center w-full py-8 md:py-16 bg-white">
         <div className="flex flex-col justify-center w-full max-w-screen-xl mx-auto text-center">
           <div className="chinese flex flex-col gap-2 items-center text-4xl md:text-7xl font-medium leading-tight tracking-[2.16px]">
             <div className="flex items-center gap-4">

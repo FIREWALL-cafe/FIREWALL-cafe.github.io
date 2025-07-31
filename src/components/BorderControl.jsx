@@ -54,7 +54,7 @@ function BorderControl() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-32 max-md:px-5 pb-16 w-full  max-md:pb-24 max-md:max-w-full">
+    <section className="flex overflow-hidden justify-center items-start pb-16 w-full max-md:pb-24 max-md:max-w-full">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">

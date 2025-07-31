@@ -9,7 +9,7 @@ function Experts() {
 
   return (
     <main className="flex overflow-hidden flex-col bg-white min-h-[200px]">
-      <section className="flex flex-col justify-center items-center px-32 py-16 w-full max-md:px-5 max-md:py-24 max-md:max-w-full">
+      <section className="flex flex-col justify-center items-center py-16 w-full max-md:py-24 max-md:max-w-full">
         <div className="flex flex-col items-center max-w-full">
             <div className="font-bitmap-song items-center gap-2">
               <h1 className="flex flex-row items-center gap-2 my-auto font-display-04">

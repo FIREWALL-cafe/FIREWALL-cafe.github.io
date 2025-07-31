@@ -38,7 +38,7 @@ function About() {
       <section id="firewall-incident-width" className="bg-red-600 is-full-width-content">
         <div className="max-w-[1080px] mx-auto py-12">
           <div className="flex flex-col md:flex-row iphone:items-center gap-12">
-            <div className="font-display-03 font-bitmap-song text-center md:text-left px-4 md:w-1/2">
+            <div className="font-display-03 font-bitmap-song text-center md:text-left md:w-1/2">
               <h2 className="leading-tight text-white mt-12">
                 FIREWALL came face to face with that abuse in 2016.
               </h2>
@@ -47,7 +47,7 @@ function About() {
               </div>
             </div>
             <div className="flex overflow-hidden flex-col justify-center md:w-1/2 w-full">
-              <div className="flex flex-col mx-auto px-4 py-12 w-full font-body-01 text-white">
+              <div className="flex flex-col mx-auto py-12 w-full font-body-01 text-white">
                 A pivotal moment occurred during our inaugural show in New York City in 2016 around our "Networked Feminism" roundtable.
                 We faced interference from Chinese state authorities and this incident was covered by The Washington Post.
                 The repercussions propelled the art project on an international exhibition tour, setting new stages for dialogue and understanding across borders.

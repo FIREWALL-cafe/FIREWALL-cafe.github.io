@@ -1,5 +1,20 @@
 @import url('./entry-content.css');
 
+:root {
+  /* Site gutter and content width variables */
+  --width--site-gutter: 1rem; /* 16px default, reduced for mobile */
+  --width--content: 1080px;
+  --width--content--medium: 800px;
+  --width--content--large: 1280px;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  :root {
+    --width--site-gutter: 0.5rem; /* 8px on mobile */
+  }
+}
+
 html {
   box-sizing: border-box;
 }
