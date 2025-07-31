@@ -60,13 +60,23 @@ const QueryItem = ({
   search_timestamp, 
   filterOptions 
 }) => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 744);
+  const [screenSize, setScreenSize] = useState(() => {
+    const width = window.innerWidth;
+    if (width < 640) return 'mobile';
+    if (width < 1024) return 'tablet';
+    return 'desktop';
+  });
   const [dropdown, setDropdown] = useState(false);
-  const formatDate = useDateFormat(isDesktop);
+  const formatDate = useDateFormat(screenSize !== 'mobile');
   const { imageResults, loadGallery } = useImageGallery(search_id);
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth > 744);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) setScreenSize('mobile');
+      else if (width < 1024) setScreenSize('tablet');
+      else setScreenSize('desktop');
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -90,43 +100,105 @@ const QueryItem = ({
   const chineseLang = isEnglish ? search_term_translation : search_term_initial;
 
   return (
-    <div id={`search-item-${search_id}`} className="hover:bg-gray-100 w-full">
+    <div id={`search-item-${search_id}`} className="hover:bg-gray-100 w-full border-b border-gray-200">
       <div 
-        className="grid grid-cols-[80px_1fr_1fr_1fr_160px_40px] gap-1 py-3 w-full text-[20px] h-12 cursor-pointer items-center" 
+        className={`grid ${
+          screenSize === 'desktop' 
+            ? 'grid-cols-[80px_1fr_1fr_1fr_160px_40px]' 
+            : screenSize === 'tablet'
+            ? 'grid-cols-[60px_1fr_1fr_120px_40px]'
+            : 'grid-cols-[1fr_auto_auto]'
+        } gap-2 py-4 px-4 w-full cursor-pointer items-center`}
         onClick={toggleDropdown}
       >
-        <div className="flex items-center whitespace-nowrap">
-          <img src={VoteIcon} alt="Votes" className="w-6 h-6 mr-1" />
-          <span>{total_votes}</span>
-        </div>
-        
-        <div className={`truncate whitespace-nowrap ${isEnglish ? '' : 'text-zinc-400'}`}>
-          {englishLang}
-        </div>
-        
-        <div className={`hidden ipad-landscape:block font-sc-sans whitespace-nowrap ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
-          {chineseLang}
-        </div>
-        
-        <div className="hidden ipad-landscape:block truncate whitespace-nowrap">
-          {locationLabel}
-        </div>
-        
-        <div className="text-right whitespace-nowrap">
-          {isDesktop ? (
-            <span>
+        {/* Mobile Layout */}
+        {screenSize === 'mobile' ? (
+          <>
+            {/* Left: Search Terms */}
+            <div className="flex flex-col space-y-1">
+              <div className={`${isEnglish ? 'text-gray-900' : 'text-gray-500'} text-base`}>
+                {englishLang}
+              </div>
+              <div className={`font-sc-sans ${isEnglish ? 'text-gray-500' : 'text-gray-900'} text-base`}>
+                {chineseLang}
+              </div>
+            </div>
+            
+            {/* Right: Vote Count and Date stacked */}
+            <div className="flex flex-col items-end space-y-1">
+              <div className="flex items-center space-x-1 text-base">
+                <img src={VoteIcon} alt="Votes" className="w-5 h-5" />
+                <span className="font-medium">{total_votes.toString().padStart(2, '0')}</span>
+              </div>
+              <div className="text-base text-gray-900">
+                {formatDate(search_timestamp)}
+              </div>
+            </div>
+            
+            {/* Expand Icon */}
+            <div className="flex items-center">
+              <ExpandIcon isExpanded={dropdown} />
+            </div>
+          </>
+        ) : screenSize === 'tablet' ? (
+          /* Tablet Layout */
+          <>
+            <div className="flex items-center whitespace-nowrap">
+              <img src={VoteIcon} alt="Votes" className="w-5 h-5 mr-1" />
+              <span className="text-base">{total_votes}</span>
+            </div>
+            
+            <div className={`truncate ${isEnglish ? 'text-gray-900' : 'text-gray-500'} text-base`}>
+              {englishLang}
+            </div>
+            
+            <div className={`font-sc-sans truncate ${isEnglish ? 'text-gray-500' : 'text-gray-900'} text-base`}>
+              {chineseLang}
+            </div>
+            
+            <div className="text-right whitespace-nowrap text-base">
               {formatDate(search_timestamp).date}
-              <span className="mx-4"></span>
+              <span className="mx-2"></span>
               {formatDate(search_timestamp).time}
-            </span>
-          ) : (
-            formatDate(search_timestamp)
-          )}
-        </div>
-        
-        <div className="flex justify-center">
-          <ExpandIcon isExpanded={dropdown} />
-        </div>
+            </div>
+            
+            <div className="flex justify-center">
+              <ExpandIcon isExpanded={dropdown} />
+            </div>
+          </>
+        ) : (
+          /* Desktop Layout - Keep existing */
+          <>
+            <div className="flex items-center whitespace-nowrap">
+              <img src={VoteIcon} alt="Votes" className="w-6 h-6 mr-1" />
+              <span>{total_votes}</span>
+            </div>
+            
+            <div className={`truncate whitespace-nowrap ${isEnglish ? '' : 'text-zinc-400'}`}>
+              {englishLang}
+            </div>
+            
+            <div className={`font-sc-sans whitespace-nowrap ${isEnglish ? 'text-zinc-400' : ''} truncate`}>
+              {chineseLang}
+            </div>
+            
+            <div className="truncate whitespace-nowrap">
+              {locationLabel}
+            </div>
+            
+            <div className="text-right whitespace-nowrap">
+              <span>
+                {formatDate(search_timestamp).date}
+                <span className="mx-4"></span>
+                {formatDate(search_timestamp).time}
+              </span>
+            </div>
+            
+            <div className="flex justify-center">
+              <ExpandIcon isExpanded={dropdown} />
+            </div>
+          </>
+        )}
       </div>
 
       <div className={dropdown ? 'w-full' : 'hidden'}>
