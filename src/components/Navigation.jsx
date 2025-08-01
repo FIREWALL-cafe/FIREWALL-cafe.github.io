@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import MenuLink from './MenuLink';
+import SubscribeForm from './SubscribeForm';
 import Drawer from 'react-modern-drawer';
 import { useMediaQuery } from 'react-responsive';
 import 'react-modern-drawer/dist/index.css';
@@ -87,14 +88,16 @@ function Navigation() {
             <nav className="flex flex-col h-full w-full bg-white">
               <div className="flex justify-between items-center p-6">
                 <div className="flex items-center gap-3">
-                  <img src={logoMobile} alt="Firewall Cafe" className="h-10 w-10" />
-                  <div>
-                    <div className="text-xl font-bold text-black">FIREWALL</div>
-                    <div className="text-xl font-bold text-black">Cafe <span className="text-red-600">防火墙</span></div>
-                  </div>
+                  <Link to="/">
+                    {isVerySmallScreen ? (
+                      <img src={logoMobile} alt="Logo" />
+                    ) : (
+                      <img src={logo} alt="Logo" />
+                    )}
+                  </Link>
                 </div>
                 <button
-                  className="w-10 h-10 flex items-center justify-center border border-gray-400 rounded"
+                  className="w-10 h-10 flex items-center justify-center"
                   aria-label="Close"
                   onClick={toggleDrawer}
                 >
@@ -141,16 +144,10 @@ function Navigation() {
                   <div className="text-lg font-medium text-black">Subscribe to our newsletter</div>
                   <div className="text-lg font-medium text-red-600">保持联系</div>
                 </div>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="Email 电子邮件"
-                    className="flex-1 px-4 py-3 border border-gray-300 rounded bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-red-600"
-                  />
-                  <button className="px-6 py-3 bg-white border border-red-600 text-red-600 rounded hover:bg-red-50 transition-colors">
-                    Submit
-                  </button>
-                </div>
+                <SubscribeForm
+                  inputClassName="flex-1 px-4 py-3 border border-gray-300 rounded-l bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-red-600"
+                  buttonClassName="px-6 py-3 bg-white border border-l-0 border-red-600 text-red-600 rounded-r hover:bg-red-50 transition-colors"
+                />
               </div>
             </nav>
           </Drawer>
