@@ -48,40 +48,23 @@ const QueryListHeader = () => {
   );
 };
 
-// Separate the pagination component
-const Pagination = ({ page, totalPages, total, onPageChange, isLoading }) => {
-  if (totalPages <= 1) return null;
+// Load More component
+const LoadMore = ({ page, totalPages, total, onLoadMore, isLoading }) => {
+  // Don't show if we're on the last page or there's only one page
+  if (totalPages <= 1 || page >= totalPages) return null;
 
   return (
-    <div className="mt-4 flex flex-col items-center gap-4">
-      <div className="flex gap-2 items-center">
-        <button
-          onClick={() => onPageChange(page - 1)}
-          disabled={isLoading || page === 1}
-          className={`px-3 py-1 rounded border ${
-            isLoading || page === 1
-              ? 'bg-gray-100 text-gray-400 border-gray-300'
-              : 'bg-white text-black border-black hover:bg-gray-50'
-          }`}
-        >
-          {isLoading ? 'Loading...' : 'Previous'}
-        </button>
-        <span className="text-sm">
-          Page {page} of {totalPages}
-        </span>
-        <button
-          onClick={() => onPageChange(Number(page) + 1)}
-          disabled={isLoading || page === totalPages}
-          className={`px-3 py-1 rounded border ${
-            isLoading || page === totalPages
-              ? 'bg-gray-100 text-gray-400 border-gray-300'
-              : 'bg-white text-black border-black hover:bg-gray-50'
-          }`}
-        >
-          {isLoading ? 'Loading...' : 'Next'}
-        </button>
-        <span className="text-sm">Total: {total}</span>
-      </div>
+    <div className="mt-8 flex flex-col items-center gap-2">
+      <button
+        onClick={onLoadMore}
+        disabled={isLoading}
+        className="flex flex-col items-center gap-2 text-black hover:text-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <span className="text-lg font-normal">load more</span>
+        <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
     </div>
   );
 };
@@ -100,7 +83,7 @@ const EmptyState = () => (
   </section>
 );
 
-const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
+const QueryList = ({ results, onLoadMore, isLoading, filterOptions }) => {
   const { total, page, page_size, data } = results;
   const totalPages = Math.ceil(total / page_size);
 
@@ -136,11 +119,11 @@ const QueryList = ({ results, onPageChange, isLoading, filterOptions }) => {
           </div>
         </div>
 
-        <Pagination 
+        <LoadMore 
           page={page}
           totalPages={totalPages}
           total={total}
-          onPageChange={onPageChange}
+          onLoadMore={onLoadMore}
           isLoading={isLoading}
         />
       </div>

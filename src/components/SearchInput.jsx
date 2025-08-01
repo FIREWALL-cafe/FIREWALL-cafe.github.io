@@ -147,10 +147,10 @@ function SearchInput({ searchMode }) {
         return;
       }
 
-      // Fetch new results with filters applied
+      // Fetch new results with filters applied (always start from page 1 when filtering)
       const searchParams = {
         ...(query ? { query: query.trim() } : {}),
-        page: filterOptions.page || 1,
+        page: 1,
         page_size: filterOptions.page_size || archiveResults.page_size,
         years: filterOptions.years,
         cities: filterOptions.cities,
@@ -167,14 +167,37 @@ function SearchInput({ searchMode }) {
     }
   };
 
-  const handlePageChange = async (newPage) => {
-    // Include current filters when changing pages
-    await applyFilters({
-      ...currentFilters,
-      page: newPage,
-      page_size: archiveResults.page_size,
-      ...(query ? { query: query.trim() } : {})
-    }, false);
+  const handleLoadMore = async () => {
+    setLoading(true);
+    try {
+      const nextPage = archiveResults.page + 1;
+      
+      // Fetch next page data
+      const searchParams = {
+        ...(query ? { query: query.trim() } : {}),
+        page: nextPage,
+        page_size: archiveResults.page_size,
+        years: currentFilters.years,
+        cities: currentFilters.cities,
+        vote_ids: currentFilters.vote_ids
+      };
+
+      const results = await searchArchive(searchParams);
+      
+      // Append new data to existing results
+      const updatedResults = {
+        ...results,
+        page: nextPage,
+        data: [...archiveResults.data, ...results.data]
+      };
+      
+      setarchiveResults(updatedResults);
+      setFilteredResults(updatedResults);
+    } catch (error) {
+      console.error('Error loading more results:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -346,7 +369,7 @@ function SearchInput({ searchMode }) {
       {currentSearchId && isArchive && (
         <QueryList 
           results={filteredResults} 
-          onPageChange={handlePageChange}
+          onLoadMore={handleLoadMore}
           isLoading={isLoading}
           filterOptions={currentFilters}
         />
