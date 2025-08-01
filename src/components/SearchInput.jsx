@@ -47,25 +47,31 @@ function SearchInput({ searchMode }) {
     setFilteredResults(results);
   }, [searchArchive]);
 
-  const handleSubmit = useCallback(async () => {
+
+  const handleSubmit = useCallback(() => {
     if (!query || query.trim() === '') {
       setTranslation('Please enter a search query');
       return;
     }
     setError('');
 
+    // Always update the URL query parameter - this will trigger the useEffect to perform the search
     if (location.pathname === '/') {
-      navigate('/search?q=' + query);
-      return;
+      navigate('/search?q=' + encodeURIComponent(query.trim()));
+    } else {
+      // Update URL on current page (search or archive)
+      navigate(`${location.pathname}?q=${encodeURIComponent(query.trim())}`, { replace: true });
     }
+  }, [query, location.pathname, navigate]);
 
+  const performSearch = useCallback(async (searchQuery) => {
     setLoading(true);
     try {
       if (isArchive) {
         setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
         setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
 
-        const results = await searchArchive({ query: query.trim() });
+        const results = await searchArchive({ query: searchQuery.trim() });
         
         if (results.error) {
           throw new Error(results.error);
@@ -77,7 +83,7 @@ function SearchInput({ searchMode }) {
       } else {
         const response = await searchImages({ 
           body: JSON.stringify({ 
-            query: query.trim(), 
+            query: searchQuery.trim(), 
             search_client_name: username 
           })
         });
@@ -106,21 +112,19 @@ function SearchInput({ searchMode }) {
     } finally {
       setLoading(false);
     }
-  }, [query, location.pathname, navigate, isArchive, searchArchive, username, searchImages, setResults]);
+  }, [isArchive, searchArchive, username, searchImages, setResults]);
 
   useEffect(() => {
-    // Update the input field when query params change
-    if (searchParams.get('q')) {
-      setQuery(searchParams.get('q'));
-      if (!ranonce.current) {
-        handleSubmit(); 
-        ranonce.current = true;
-      }
-    } else if (isArchive && location.pathname === '/archive' && !ranonce.current && archiveResults.data.length === 0) {
-      ranonce.current = true;
+    // Update the input field when query params change and perform search
+    const urlQuery = searchParams.get('q');
+    if (urlQuery) {
+      setQuery(urlQuery);
+      // Always perform search when URL query changes
+      performSearch(urlQuery);
+    } else if (isArchive && location.pathname === '/archive' && archiveResults.data.length === 0) {
       loadDefaultResults();
     }
-  }, [searchParams, handleSubmit, isArchive, location.pathname, archiveResults.data.length, loadDefaultResults]);
+  }, [searchParams, performSearch, isArchive, location.pathname, archiveResults.data.length, loadDefaultResults]);
 
   const applyFilters = async (filterOptions, shouldClose = true, isReset = false) => {
     setLoading(true);
