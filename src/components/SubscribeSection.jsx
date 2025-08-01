@@ -7,7 +7,7 @@ function SubscribeSection() {
   const isContactPage = location.pathname === '/contact';
   
   return (
-    <div className={`flex flex-col w-full ${isContactPage ? 'md:w-1/2' : ''} h-full ${isContactPage ? 'bg-white' : 'bg-newsletter'}`}>
+    <div className={`flex flex-col w-full pb-4 md:pb-0 ${isContactPage ? 'md:w-1/2' : ''} h-full ${isContactPage ? 'bg-white' : 'bg-newsletter'}`}>
       <div className={`flex flex-col items-center ${isContactPage ? 'justify-center' : ''} w-full h-full px-2 md:px-8 lg:px-12`}>
         <div className={`flex flex-col w-full ${isContactPage ? 'max-w-[500px]' : 'max-w-2xl'}`}>
           <div className={`flex flex-col mt-3 md:mt-24 w-full md:text-xl ${isContactPage ? 'text-black' : 'text-white'}`}>

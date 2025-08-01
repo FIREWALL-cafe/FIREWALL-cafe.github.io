@@ -9,10 +9,11 @@ const ContactForm = () => {
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
     const subscribe = document.getElementById('subscribe').checked;
 
-    const text = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\nSubscribe: ${subscribe}`;
+    const text = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}\nSubscribe: ${subscribe}`;
     const config = {
           method: 'post',
           headers: { 
@@ -28,45 +29,87 @@ const ContactForm = () => {
   }
 
   return (
-    <form className="grow flex flex-col p-8 mt-2 bg-white rounded-lg border border-red-600 border-solid max-md:px-5">
+    <form className="flex flex-col p-6 md:p-8 mt-2 bg-white rounded-lg border border-red-600 border-solid w-full">
       <div id="alert" className={`text-center bg-blue ${displayAlert ? '' : 'hidden'}`}>{alertMessage}</div>
-      <div className="flex flex-col w-full max-md:max-w-full">
-        <div className="flex flex-col w-full whitespace-nowrap max-md:max-w-full">
-          <div className="flex overflow-hidden gap-1 items-start py-1.5 w-full max-md:max-w-full">
-            <label htmlFor="name" className="text-lg">Name</label>
-            <span className="text-sm">*</span>
+      <div className="flex flex-col w-full space-y-6">
+        {/* Name Field */}
+        <div className="flex flex-col w-full">
+          <div className="flex gap-1 items-center mb-2">
+            <label htmlFor="name" className="text-lg text-red-500">Name</label>
+            <span className="text-lg text-red-500">*</span>
           </div>
-          <div className="flex flex-col w-full max-md:max-w-full">
-            <input type="text" id="name" required className="w-full border-b border-solid border-b-zinc-200 py-1.5" />
-          </div>
+          <input 
+            type="text" 
+            id="name" 
+            required 
+            className="w-full border-b border-solid border-b-red-300 py-2 bg-transparent focus:border-b-red-600 focus:outline-none transition-colors" 
+          />
         </div>
         
-        <div className="flex flex-col mt-6 w-full max-md:max-w-full">
-          <div className="flex overflow-hidden gap-1 py-1.5 w-full max-md:max-w-full">
-            <label htmlFor="email" className="text-lg">Email address</label>
-            <span className="self-start text-sm">*</span>
+        {/* Email Field */}
+        <div className="flex flex-col w-full">
+          <div className="flex gap-1 items-center mb-2">
+            <label htmlFor="email" className="text-lg text-red-500">Email address</label>
+            <span className="text-lg text-red-500">*</span>
           </div>
+          <input 
+            type="email" 
+            id="email" 
+            required 
+            className="w-full border-b border-solid border-b-red-300 py-2 bg-transparent focus:border-b-red-600 focus:outline-none transition-colors" 
+          />
         </div>
-        <input type="email" id="email" required className="w-full border-b border-solid border-b-zinc-200 py-1.5" />
         
-        <div className="flex flex-col mt-6 w-full text-lg whitespace-nowrap max-md:max-w-full">
-          <label htmlFor="message">Message*</label>
-          <textarea id="message" required className="flex mt-1 w-full bg-gray-50 border border-solid border-zinc-200 min-h-[100px] max-md:max-w-full" />
+        {/* Subject Field */}
+        <div className="flex flex-col w-full">
+          <div className="flex gap-1 items-center mb-2">
+            <label htmlFor="subject" className="text-lg text-red-500">Subject</label>
+            <span className="text-lg text-red-500">*</span>
+          </div>
+          <input 
+            type="text" 
+            id="subject" 
+            required 
+            className="w-full border-b border-solid border-b-red-300 py-2 bg-transparent focus:border-b-red-600 focus:outline-none transition-colors" 
+          />
+        </div>
+        
+        {/* Message Field */}
+        <div className="flex flex-col w-full">
+          <div className="flex gap-1 items-center mb-2">
+            <label htmlFor="message" className="text-lg text-red-500">Message</label>
+            <span className="text-lg text-red-500">*</span>
+          </div>
+          <textarea 
+            id="message" 
+            required 
+            className="w-full bg-gray-50 border border-solid border-red-300 rounded p-3 min-h-[100px] focus:border-red-600 focus:outline-none transition-colors resize-vertical" 
+            placeholder=""
+          />
         </div>
       </div>
-      <div className="flex gap-2 items-center mt-6 text-lg">
-        <input type="checkbox" id="subscribe" className="w-6 h-6 border border-solid border-zinc-400" />
-        <label htmlFor="subscribe" className="self-stretch my-auto">
+      {/* Newsletter Subscription */}
+      <div className="flex gap-3 items-center mt-6 text-lg">
+        <input 
+          type="checkbox" 
+          id="subscribe" 
+          className="w-5 h-5 border border-solid border-red-400 rounded focus:ring-2 focus:ring-red-600" 
+        />
+        <label htmlFor="subscribe" className="text-red-500 cursor-pointer">
           Subscribe to newsletter?
         </label>
       </div>
+      
+      {/* Submit Button */}
       <button
         type="submit"
-        className="flex gap-1 justify-center items-center px-4 mt-6 text-xl text-center whitespace-nowrap bg-white rounded border border-red-600 border-solid min-h-[40px]"
+        className="self-start flex gap-2 items-center px-6 py-2 mt-6 text-lg font-medium text-red-600 bg-white rounded border border-red-600 border-solid hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-600"
         onClick={handleSubmit}
       >
         Send
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2055f429093a317ad35a67b28f0188c70621ab00f72c34082650913a27f58443?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
       </button>
     </form>
   );

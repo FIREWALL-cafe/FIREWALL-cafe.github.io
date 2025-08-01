@@ -38,7 +38,7 @@ function Footer() {
                 <Link to="/contact">Contact</Link>
               </div>
               
-              <div className="flex gap-2 md:gap-4 mt-8">
+              <div className="flex gap-2 md:gap-4 mt-2">
                 <Link to="https://www.facebook.com/firewallcafe" aria-label="Facebook">
                   <img src={Facebook} alt="Facebook logo" className="w-6" />
                 </Link>
