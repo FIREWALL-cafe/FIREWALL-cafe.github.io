@@ -4,7 +4,7 @@ import SubscribeForm from './SubscribeForm';
 function SubscribeSection() {
   return (
     <div className="flex flex-col w-full h-full bg-newsletter">
-      <div className="flex flex-col items-center w-full h-full px-4 md:px-8 lg:px-12">
+      <div className="flex flex-col items-center w-full h-full px-2 md:px-8 lg:px-12">
         <div className="flex flex-col w-full max-w-2xl">
           <div className="flex flex-col mt-3 md:mt-24 w-full md:text-xl text-white">
             <div>

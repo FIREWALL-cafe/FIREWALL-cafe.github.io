@@ -4,7 +4,7 @@ import SupportHero from '../assets/images/support-hero.png';
 function HeroSupport() {
   return (
     <section className="flex flex-col items-center w-full py-8 md:py-16">
-      <div className="font-bitmap-song font-display-01 ipad-portrait:font-display-03 flex flex-col items-center w-full px-4">
+      <div className="ipad-landscape:font-display-01 font-bitmap-song font-display-03 flex flex-col items-center text-center">
         <h1 className="leading-tight text-center">
           Support the frontline of internet freedom advocates
         </h1>
@@ -12,7 +12,7 @@ function HeroSupport() {
           支持互联网自由战士的前线。
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-12 md:mt-24 w-full font-body-01 px-4">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-12 md:mt-24 w-full font-body-01">
         <div className="flex flex-col leading-relaxed md:leading-9 text-black">
           <p className="w-full">
             FIREWALL Cafe is sustained through individual donations, corporate sponsorships, and foundation grants. Your contributions help maintain our dual-image browser and enable us to continue our growth internationally.

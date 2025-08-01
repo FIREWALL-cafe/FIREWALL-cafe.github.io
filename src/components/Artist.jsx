@@ -5,7 +5,7 @@ import ArtistHeadshot from '../assets/images/joyce-BW-450x450.jpg';
 function Artist() {
   return (
     <section className="flex overflow-hidden flex-col w-full bg-white py-16">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-2 md:px-4">
         <div className="font-display-01 font-bitmap-song ipad-portrait:font-display-03 flex flex-col">
           <h2 className="leading-tight">
             About Joyce

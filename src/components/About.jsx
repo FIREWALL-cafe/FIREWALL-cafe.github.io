@@ -8,7 +8,7 @@ function About() {
   return (
     <>
       <section className="flex overflow-hidden flex-col justify-center w-full bg-white">
-        <div className="flex flex-col items-end container mx-auto py-12">
+        <div className="flex flex-col items-end container mx-auto px-2 md:px-4 py-12">
           <div className="flex flex-col w-full">
             <div className="flex flex-col items-center">
               <div className="ipad-landscape:font-display-01 font-bitmap-song font-display-03 flex flex-col items-center text-center">
@@ -36,7 +36,7 @@ function About() {
         </div>
       </section>
       <section id="firewall-incident-width" className="bg-red-600 is-full-width-content">
-        <div className="max-w-[1080px] mx-auto py-12">
+        <div className="max-w-[1080px] mx-auto px-2 md:px-4 py-12">
           <div className="flex flex-col md:flex-row iphone:items-center gap-12">
             <div className="font-display-03 font-bitmap-song text-center md:text-left md:w-1/2">
               <h2 className="leading-tight text-white mt-12">

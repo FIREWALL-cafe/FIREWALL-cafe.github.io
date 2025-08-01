@@ -72,7 +72,7 @@ const LoadMore = ({ page, totalPages, total, onLoadMore, isLoading }) => {
 // Separate the empty state component
 const EmptyState = () => (
   <section className="flex overflow-hidden flex-col pb-8 w-full bg-white max-md:pb-12">
-    <div className="flex flex-col items-center px-4 w-full">
+    <div className="flex flex-col items-center px-2 md:px-4 w-full">
       <div className="flex flex-col w-full max-w-screen-xl">
         <QueryListHeader />
         <div className="flex justify-center items-center py-8 text-gray-500">
@@ -93,7 +93,7 @@ const QueryList = ({ results, onLoadMore, isLoading, filterOptions }) => {
 
   return (
     <section id="query-list" className="mt-[120px] min-h-[70px] flex overflow-hidden flex-col pb-8 w-full bg-white max-md:pb-12">
-      <div className="flex flex-col items-center px-4 md:px-4 w-full">
+      <div className="flex flex-col items-center px-2 md:px-4 w-full">
         <div className="flex flex-col w-full max-w-screen-xl">
           <QueryListHeader />
 

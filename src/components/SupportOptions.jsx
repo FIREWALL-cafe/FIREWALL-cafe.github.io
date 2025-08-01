@@ -57,7 +57,7 @@ function SupportOptions() {
   ];
 
   return (
-    <section className="w-full px-4 md:px-6 pb-8 md:pb-16">
+    <section className="w-full pb-8 md:pb-16">
       <FeatureCards features={supportFeatures} />
     </section>
   );

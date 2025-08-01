@@ -31,7 +31,7 @@ function OsloTaiwan() {
   ];
 
   return (
-    <section className="flex overflow-hidden justify-center items-start px-4 md:px-8 pb-16 w-full bg-white max-md:pb-24">
+    <section className="flex overflow-hidden justify-center items-start px-2 md:px-8 pb-16 w-full bg-white max-md:pb-24">
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full max-w-[1080px]">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px]">
           <div className="flex flex-col w-full">
