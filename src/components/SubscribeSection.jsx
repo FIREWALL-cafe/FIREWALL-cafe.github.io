@@ -4,8 +4,8 @@ import SubscribeForm from './SubscribeForm';
 function SubscribeSection() {
   return (
     <div className="flex flex-col w-full h-full bg-newsletter">
-      <div className="flex flex-col items-center w-full h-full px-2 md:px-8 lg:px-12">
-        <div className="flex flex-col w-full max-w-2xl">
+      <div className="flex flex-col items-center justify-center w-full h-full px-2 md:px-8 lg:px-12">
+        <div className="flex flex-col w-full max-w-[500px]">
           <div className="flex flex-col mt-3 md:mt-24 w-full md:text-xl text-white">
             <div>
               <div id="mc_embed_shell">
@@ -13,15 +13,15 @@ function SubscribeSection() {
                   <div className="py-8 md:py-12">
                     <div className="relative">
                       <h2 className="font-display-04 font-bitmap-song">Stay connected</h2>
-                      <div className="font-display-04 text-red-600 font-bitmap-song">保持联系</div>
+                      <div className="font-display-04 text-red-500 font-bitmap-song">保持联系</div>
                       <div className="mc-field-group space-y-2">
-                        <span className="block mt-6 font-body-02">
+                        <span className="block mt-6 mb-8 font-body-02">
                           Get updates about upcoming events, press releases, and expert commentary with the FIREWALL Cafe newsletter.
                         </span>
                         <SubscribeForm
                           className="w-full"
-                          inputClassName="flex-1 text-black p-2 min-h-[56px] border-r border-red-600"
-                          buttonClassName="whitespace-nowrap justify-center min-h-[56px] text-red-600 p-2"
+                          inputClassName="flex-1 text-black px-4 py-2 min-h-[56px] border-r border-red-600"
+                          buttonClassName="whitespace-nowrap justify-center min-h-[56px] text-red-600 px-6 py-2"
                         />
                       </div>
                       <div className="hidden optionalParent mt-4">

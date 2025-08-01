@@ -140,13 +140,13 @@ function Navigation() {
 
               {/* Subscribe Form */}
               <div className="px-6 pb-8">
-                <div className="mb-4">
+                <div className="mb-6">
                   <div className="text-lg font-medium text-black">Subscribe to our newsletter</div>
-                  <div className="text-lg font-medium text-red-600">保持联系</div>
+                  <div className="text-lg font-medium text-red-500">保持联系</div>
                 </div>
                 <SubscribeForm
                   inputClassName="flex-1 px-4 py-3 border border-gray-300 rounded-l bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:border-red-600"
-                  buttonClassName="px-6 py-3 bg-white border border-l-0 border-red-600 text-red-600 rounded-r hover:bg-red-50 transition-colors"
+                  buttonClassName="px-8 py-3 bg-white border border-l-0 border-red-600 text-red-600 rounded-r hover:bg-red-50 transition-colors"
                 />
               </div>
             </nav>
