@@ -38,6 +38,7 @@ function SearchInput({ searchMode }) {
   const location = useLocation();
 
   const ranonce = useRef(false);
+  const searchInProgress = useRef(false);
 
   const loadDefaultResults = useCallback(async () => {
     const filterOptions = { page: 1, page_size: 10 }
@@ -64,67 +65,73 @@ function SearchInput({ searchMode }) {
     }
   }, [query, location.pathname, navigate]);
 
-  const performSearch = useCallback(async (searchQuery) => {
-    setLoading(true);
-    try {
-      if (isArchive) {
-        setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
-        setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
-
-        const results = await searchArchive({ query: searchQuery.trim() });
-        
-        if (results.error) {
-          throw new Error(results.error);
-        }
-
-        setSearchId("archived searches");
-        setarchiveResults(results);
-        setFilteredResults(results);
-      } else {
-        const response = await searchImages({ 
-          body: JSON.stringify({ 
-            query: searchQuery.trim(), 
-            search_client_name: username 
-          })
-        });
-
-        if (response.error) {
-          throw new Error(response.error);
-        }
-
-        const { googleResults, baiduResults, translation, searchId } = response;
-        setSearchId(searchId);
-        setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
-        setTranslation(translation || '');
-      }
-    } catch (e) {
-      console.error('Search error:', e);
-      if (!isArchive) {
-        setResults({ googleResults: [], baiduResults: [] });
-        setError(e.message || String(e));
-        setTranslation('');
-      } else {
-        setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
-        setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
-        setError(e.message || 'Failed to search archives');
-        setTranslation('');
-      }
-    } finally {
-      setLoading(false);
-    }
-  }, [isArchive, searchArchive, username, searchImages, setResults]);
-
   useEffect(() => {
     // Update the input field when query params change and perform search
     const urlQuery = searchParams.get('q');
     if (urlQuery) {
       setQuery(urlQuery);
-      // Always perform search when URL query changes
-      performSearch(urlQuery);
-    } else if (isArchive && location.pathname === '/archive' && archiveResults.data.length === 0) {
+      // Always perform search when URL query changes - inline to avoid dependency issues
+      if (!searchInProgress.current) {
+        searchInProgress.current = true;
+        setLoading(true);
+        
+        const doSearch = async () => {
+          try {
+            if (isArchive) {
+              setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
+              setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
+
+              const results = await searchArchive({ query: urlQuery.trim() });
+              
+              if (results.error) {
+                throw new Error(results.error);
+              }
+
+              setSearchId("archived searches");
+              setarchiveResults(results);
+              setFilteredResults(results);
+            } else {
+              const response = await searchImages({ 
+                body: JSON.stringify({ 
+                  query: urlQuery.trim(), 
+                  search_client_name: username 
+                })
+              });
+
+              if (response.error) {
+                throw new Error(response.error);
+              }
+
+              const { googleResults, baiduResults, translation, searchId } = response;
+              setSearchId(searchId);
+              setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
+              setTranslation(translation || '');
+            }
+          } catch (e) {
+            console.error('Search error:', e);
+            if (!isArchive) {
+              setResults({ googleResults: [], baiduResults: [] });
+              setError(e.message || String(e));
+              setTranslation('');
+            } else {
+              setarchiveResults({ total: 0, page: 1, page_size: 10, data: [] });
+              setFilteredResults({ total: 0, page: 1, page_size: 10, data: [] });
+              setError(e.message || 'Failed to search archives');
+              setTranslation('');
+            }
+          } finally {
+            setLoading(false);
+            searchInProgress.current = false;
+          }
+        };
+        
+        doSearch();
+      }
+    } else if (isArchive && location.pathname === '/archive' && !ranonce.current) {
+      ranonce.current = true;
       loadDefaultResults();
     }
-  }, [searchParams, performSearch, isArchive, location.pathname, archiveResults.data.length, loadDefaultResults]);
+  }, [searchParams, isArchive, location.pathname, searchArchive, searchImages, username, setResults, loadDefaultResults]);
 
   const applyFilters = async (filterOptions, shouldClose = true, isReset = false) => {
     setLoading(true);

@@ -70,7 +70,7 @@ const ipMiddleware = (req, res, next) => {
   req.clientIp = getClientIp(req);
   
   // Log in development or when debugging
-  if (process.env.NODE_ENV === 'development' || process.env.DEBUG_IP) {
+  if (process.env.DEBUG_IP) {
     logIpExtraction(req, req.clientIp, 'middleware');
   }
   
