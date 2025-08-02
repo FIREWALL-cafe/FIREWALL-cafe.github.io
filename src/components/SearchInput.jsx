@@ -241,12 +241,12 @@ function SearchInput({ searchMode }) {
                     </>
                   ) : (
                     <>
-                      <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 w-8 h-8`}>
-                        <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain self-stretch my-auto w-8 aspect-square" />
-                        </div>
+                      <div className="flex gap-2.5 justify-center items-center w-8 h-8 iphone:w-6 iphone:h-6">
+                        <img src={GoogleLogoBlue} alt="Google logo blue" className="object-contain w-full h-full" />
+                      </div>
                       <span className="font-semibold text-red-600">vs.</span>
-                      <div className={`flex gap-2.5 justify-center items-center w-8 min-h-[24px] iphone:w-6 h-8`}>
-                        <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain self-stretch my-auto w-8 aspect-square" />
+                      <div className="flex gap-2.5 justify-center items-center w-8 h-8 iphone:w-6 iphone:h-6">
+                        <img src={BaiduLogoRed} alt="Baidu logo red" className="object-contain w-full h-full" />
                       </div>
                     </>
                   )}
@@ -281,8 +281,8 @@ function SearchInput({ searchMode }) {
             </div>
             <Tooltip id="tooltip" noArrow={true} />
           </div>
-          <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded-none border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">
-            <div className="flex w-full bg-white rounded border border-solid border-gray-400 h-[56px] iphone:flex-1 overflow-hidden">
+          <div className="flex justify-center p-1.5 md:p-5 gap-4 w-full rounded border-r border-b border-l border-solid bg-slate-100 border-red-600 iphone:max-w-full">
+            <div className="flex w-full bg-white rounded border border-solid border-neutral-500 h-[56px] iphone:flex-1 overflow-hidden">
               <input
                 placeholder={isArchive ? 'Search the query archive' : 'Search Google & Baidu'}
                 value={query}
@@ -290,7 +290,7 @@ function SearchInput({ searchMode }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={!!isLoading}
-                className="flex-1 px-4 font-body-02 border-none h-[56px] focus:ring-0 focus:outline-none iphone:text-lg" 
+                className="flex-1 px-4 font-body-02 border-none h-[56px] text-neutral-600 focus:text-black placeholder:text-neutral-600 focus:ring-0 focus:outline-none iphone:text-lg" 
                 aria-label="Search query" 
               />
               <div className="flex items-center bg-white">
@@ -314,7 +314,7 @@ function SearchInput({ searchMode }) {
               >
                 <div className="font-body-02">filters</div>
                 <FilterIcon
-                  className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''} iphone:w-4 iphone:h-4`}
+                  className={`ml-2 w-6 h-6 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''}`}
                 />
               </button>
             )}
@@ -335,7 +335,7 @@ function SearchInput({ searchMode }) {
               >
                 <div className="font-body-02">filters</div>
                 <FilterIcon
-                  className={`ml-2 w-5 h-5 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''} iphone:w-4 iphone:h-4`}
+                  className={`ml-2 w-6 h-6 transition-transform duration-200 [filter:invert(19%)_sepia(92%)_saturate(2352%)_hue-rotate(343deg)_brightness(94%)_contrast(97%)] ${filterOpen ? 'rotate-180' : ''}`}
                 />
               </button>
             )}
