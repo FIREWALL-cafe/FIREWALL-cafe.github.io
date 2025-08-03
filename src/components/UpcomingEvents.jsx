@@ -17,7 +17,7 @@ function UpcomingEvents() {
             即将举行的活动
           </div>
         </div>
-        <p className="mt-5 text-xl max-md:max-w-full">
+        <p className="mt-5 text-xl text-center max-md:max-w-full">
           Explore our events, including exhibitions, screenings, and talks. These gatherings engage a global audience and further the mission of FIREWALL Cafe.
         </p>
       </div>

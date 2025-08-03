@@ -278,7 +278,7 @@ function ArticleGrid() {
             中文
           </button>
         </div>
-        <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10">
+        <div className="flex flex-wrap gap-5 justify-start items-start mt-16 w-full max-md:mt-10">
           {filteredArticles.map((article, index) => (
             <ArticleCard key={index} {...article} />
           ))}
