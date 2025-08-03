@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ArticleCard from './ArticleCard';
 import PressHKFP from '../assets/images/press/press-hkfp-default.jpg';
 import PressHKFPHover from '../assets/images/press/press-hkfp-hover.jpg';
@@ -234,15 +234,52 @@ const articles = [
 ];
 
 function ArticleGrid() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredArticles = articles.filter(article => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'english') return !article.language || article.language === 'English';
+    if (activeFilter === 'chinese') return article.language === 'Chinese';
+    return true;
+  });
+
   return (
     <section className="flex flex-col items-center px-14 pt-16 pb-16 w-full bg-gray-50 border-t border-solid border-t-neutral-300 max-md:px-5 max-md:pb-24 is-full-width-content">
       <div className="flex flex-col w-full max-w-[1080px]">
-        <div className="flex gap-8 mb-12">
-          <a href="#English" className="text-lg font-medium text-gray-700 hover:text-black">English</a>
-          <a href="#Chinese" className="text-lg font-medium text-gray-700 hover:text-black">中文</a>
+        <div className="flex justify-center gap-4 mb-12">
+          <button
+            onClick={() => setActiveFilter('all')}
+            className={`px-6 py-2 border border-solid transition-all duration-300 ${
+              activeFilter === 'all'
+                ? 'bg-red-600 text-white border-red-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-red-600'
+            }`}
+          >
+            All articles
+          </button>
+          <button
+            onClick={() => setActiveFilter('english')}
+            className={`px-6 py-2 border border-solid transition-all duration-300 ${
+              activeFilter === 'english'
+                ? 'bg-red-600 text-white border-red-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-red-600'
+            }`}
+          >
+            English
+          </button>
+          <button
+            onClick={() => setActiveFilter('chinese')}
+            className={`px-6 py-2 border border-solid transition-all duration-300 ${
+              activeFilter === 'chinese'
+                ? 'bg-red-600 text-white border-red-600'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-red-600'
+            }`}
+          >
+            中文
+          </button>
         </div>
         <div className="flex flex-wrap gap-5 justify-center items-center mt-16 w-full max-md:mt-10">
-          {articles.map((article, index) => (
+          {filteredArticles.map((article, index) => (
             <ArticleCard key={index} {...article} />
           ))}
         </div>

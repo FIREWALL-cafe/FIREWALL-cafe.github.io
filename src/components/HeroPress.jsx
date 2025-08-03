@@ -6,7 +6,7 @@ function HeroPress() {
   return (
     <section className="flex flex-col justify-center items-center pb-16 py-32 w-full is-medium-width-content">
       <div className="flex flex-col items-center w-full">
-        <div className="flex flex-col w-full font-display-03 md:font-display-04 font-bitmap-song leading-tight tracking-[2.16px]">
+        <div className="flex flex-col w-full font-display-04 md:font-display-05 font-bitmap-song leading-tight tracking-[2.16px]">
           <h2 className="flex flex-wrap gap-5 items-center text-black">
             <img src={Press} alt="" className="object-contain shrink-0 self-stretch my-auto aspect-square w-[52px]" />
             <div className="self-stretch my-auto">In the press</div>

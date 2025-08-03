@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PressPost from '../assets/images/press-washington_post.jpg';
-import ArrowRight from "../assets/icons/arrow_right_alt.svg";
 
 function FeaturedArticle() {
   return (
@@ -23,7 +22,9 @@ function FeaturedArticle() {
             </p>
             <a href="https://www.washingtonpost.com/news/worldviews/wp/2016/03/11/how-a-new-york-art-show-about-chinese-online-censorship-found-itself-censored/" target="_blank" className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-xl text-center text-red-600 bg-white rounded border border-red-600 border-solid min-h-[56px]" rel="noreferrer">
               <span className="self-stretch my-auto">Read article</span>
-              <img src={ArrowRight} alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+              <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
           </div>
         </div>
