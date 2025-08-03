@@ -58,7 +58,9 @@ const QueryItem = ({
   search_term_translation, 
   search_location, 
   search_timestamp, 
-  filterOptions 
+  filterOptions,
+  isExpanded = false,
+  onToggle
 }) => {
   const [screenSize, setScreenSize] = useState(() => {
     const width = window.innerWidth;
@@ -66,7 +68,6 @@ const QueryItem = ({
     if (width < 1024) return 'tablet';
     return 'desktop';
   });
-  const [dropdown, setDropdown] = useState(false);
   const formatDate = useDateFormat(screenSize !== 'mobile');
   const { imageResults, loadGallery } = useImageGallery(search_id);
 
@@ -81,9 +82,18 @@ const QueryItem = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const toggleDropdown = () => {
-    setDropdown(!dropdown);
-    if (!dropdown && !imageResults.googleResults) {
+  // Load gallery when expanded
+  useEffect(() => {
+    if (isExpanded && !imageResults.googleResults) {
+      loadGallery();
+    }
+  }, [isExpanded]);
+
+  const handleClick = () => {
+    if (onToggle) {
+      onToggle();
+    }
+    if (!isExpanded && !imageResults.googleResults) {
       loadGallery();
     }
   };
@@ -109,7 +119,7 @@ const QueryItem = ({
             ? 'grid-cols-[60px_1fr_1fr_120px_40px]'
             : 'grid-cols-[1fr_auto_auto]'
         } gap-2 py-4 px-4 w-full cursor-pointer items-center`}
-        onClick={toggleDropdown}
+        onClick={handleClick}
       >
         {/* Mobile Layout */}
         {screenSize === 'mobile' ? (
@@ -137,7 +147,7 @@ const QueryItem = ({
             
             {/* Expand Icon */}
             <div className="flex items-center">
-              <ExpandIcon isExpanded={dropdown} />
+              <ExpandIcon isExpanded={isExpanded} />
             </div>
           </>
         ) : screenSize === 'tablet' ? (
@@ -163,7 +173,7 @@ const QueryItem = ({
             </div>
             
             <div className="flex justify-center">
-              <ExpandIcon isExpanded={dropdown} />
+              <ExpandIcon isExpanded={isExpanded} />
             </div>
           </>
         ) : (
@@ -195,13 +205,13 @@ const QueryItem = ({
             </div>
             
             <div className="flex justify-center">
-              <ExpandIcon isExpanded={dropdown} />
+              <ExpandIcon isExpanded={isExpanded} />
             </div>
           </>
         )}
       </div>
 
-      <div className={dropdown ? 'w-full' : 'hidden'}>
+      <div className={isExpanded ? 'w-full' : 'hidden'}>
         {imageResults?.googleResults && (
           <SearchCompare 
             images={imageResults} 
