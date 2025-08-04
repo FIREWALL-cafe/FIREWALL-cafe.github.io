@@ -51,7 +51,7 @@ function VotingSection({ query, searchId }) {
                   data-tooltip-content='Vote on if you think these results are censored or not, or if the search was mistranslated.'
                   data-tooltip-place="top"
                 />
-                <Tooltip id="tooltip-think" noArrow={true} />
+                <Tooltip id="tooltip-think" border={"1px solid #e60011"} />
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4 items-center md:items-stretch w-full rounded-md max-md:max-w-full">
@@ -72,7 +72,7 @@ function VotingSection({ query, searchId }) {
                     data-tooltip-content='Bilingual users are invited to vote on the quality of the translation.'
                     data-tooltip-place="top"
                   />
-                  <Tooltip id="tooltip-how" noArrow={true} />
+                  <Tooltip id="tooltip-how" border={"1px solid #e60011"} />
                 </div>
               </div>
               <div className="flex flex-col md:flex-row gap-4 items-center md:items-stretch w-full rounded-md">

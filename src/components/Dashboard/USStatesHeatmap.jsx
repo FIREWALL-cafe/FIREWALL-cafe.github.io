@@ -183,7 +183,7 @@ const USStatesHeatmap = ({ onBackClick }) => {
             <Tooltip 
                 id="states-tooltip" 
                 className="map-tooltip"
-                border="2px solid #FF6B6B"
+                border="1px solid #e60011"
                 style={{
                     backgroundColor: 'white',
                     color: '#333',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const QuestionIcon = ({ 
   fill = 'black', 
@@ -11,6 +11,18 @@ const QuestionIcon = ({
   'data-tooltip-place': tooltipPlace,
   ...props 
 }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsActive(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsActive(false);
+  };
+
+  const activeClass = isActive ? 'opacity-70' : 'opacity-100';
+
   return (
     <svg 
       width={width} 
@@ -18,11 +30,13 @@ const QuestionIcon = ({
       viewBox="0 0 24 24" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={`${className} ${activeClass} transition-opacity duration-200 cursor-help`}
       data-tooltip-id={tooltipId}
       data-tooltip-content={tooltipContent}
       data-tooltip-html={tooltipHtml}
       data-tooltip-place={tooltipPlace}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       {...props}
     >
       <mask id="mask0_2699_197780" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">

@@ -74,7 +74,7 @@ function ImageCarousel({ images }) {
                 data-tooltip-content='Results from US based Google images.'
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-google" noArrow={true} />
+              <Tooltip id="tooltip-google" border={"1px solid #e60011"} />
             </div>
             <div id="baidu-header" className="flex items-center px-8 pb-4 w-1/2">
               <img src={baiduLogo} alt="Baidu" className="w-16 pt-4" />
@@ -85,7 +85,7 @@ function ImageCarousel({ images }) {
                 data-tooltip-content='Results from China based Baidu images.'
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-baidu" noArrow={true} />
+              <Tooltip id="tooltip-baidu" border={"1px solid #e60011"} />
             </div>
           </div>
 
@@ -100,7 +100,7 @@ function ImageCarousel({ images }) {
                 data-tooltip-content='Results from US based Google images.'
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-google" noArrow={true} />
+              <Tooltip id="tooltip-google" border={"1px solid #e60011"} />
             </div>
             <div id="google-carousel" className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex">
               <div className="absolute left-0 h-full w-[60px] flex justify-center items-center">
@@ -134,7 +134,7 @@ function ImageCarousel({ images }) {
                 data-tooltip-content='Results from China based Baidu images.'
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-baidu" noArrow={true} />
+              <Tooltip id="tooltip-baidu" border={"1px solid #e60011"} />
             </div>
             <div id="baidu-carousel" className="relative justify-center items-center pl-8 h-[320px] hidden ipad-portrait:flex">
               <div className="flex-1 h-full flex justify-center items-center pr-[60px]">
@@ -234,7 +234,7 @@ function ImageCarousel({ images }) {
                     data-tooltip-content='Results from US based Google images.'
                     data-tooltip-place="top"
                   />
-                  <Tooltip id="tooltip-google" noArrow={true} />
+                  <Tooltip id="tooltip-google" border={"1px solid #e60011"} />
                 </div>
               </div>
 
@@ -257,7 +257,7 @@ function ImageCarousel({ images }) {
                     data-tooltip-content='Results from China based Baidu images.'
                     data-tooltip-place="left"
                   />
-                  <Tooltip id="tooltip-baidu" noArrow={true} />
+                  <Tooltip id="tooltip-baidu" border={"1px solid #e60011"} />
                 </div>
               </div>
             </div>
