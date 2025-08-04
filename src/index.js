@@ -49,12 +49,10 @@ const router = createBrowserRouter([
       {
         path: "editorial",
         element: <Experts />,
-        children: [
-          {
-            path: "lan-yu",
-            element: <LanYu />,
-          },
-        ],
+      },
+      {
+        path: "editorial/lan-yu",
+        element: <LanYu />,
       },
       {
         path: "events/:eventId",

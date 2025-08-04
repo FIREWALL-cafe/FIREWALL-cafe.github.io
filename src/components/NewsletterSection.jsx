@@ -21,11 +21,11 @@ const images = {
   usHeadlines: { desktop: SubscribeD, mobile: SubscribeDMobile }
 }
 
-function NewsletterSection({image}) {
+function NewsletterSection({image, title}) {
   return (
     <section className="flex flex-col md:flex-row w-full overflow-hidden is-full-width-content">
       <div className="flex w-full md:w-1/2 order-2 md:order-1 bg-newsletter">
-        <SubscribeSection />
+        <SubscribeSection title={title} />
       </div>
       <div className="flex w-full md:w-1/2 h-[300px] md:h-auto order-1 md:order-2">
         <picture className="w-full h-full">

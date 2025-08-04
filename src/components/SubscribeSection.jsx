@@ -2,9 +2,10 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import SubscribeForm from './SubscribeForm';
 
-function SubscribeSection() {
+function SubscribeSection({title}) {
   const location = useLocation();
   const isContactPage = location.pathname === '/contact';
+  const subscriptionTitle = title || 'Stay connected';
   
   return (
     <div className={`flex flex-col w-full pb-4 md:pb-0 ${isContactPage ? 'md:w-1/2' : ''} h-full ${isContactPage ? 'bg-white' : 'bg-newsletter'}`}>
@@ -16,7 +17,7 @@ function SubscribeSection() {
                 <div id="mc_embed_signup">
                   <div className={isContactPage ? "" : "py-8 md:py-12"}>
                     <div className="relative">
-                      <h2 className={`font-display-04 font-bitmap-song ${isContactPage ? 'text-black' : 'text-white'}`}>Stay connected</h2>
+                      <h2 className={`font-display-04 font-bitmap-song ${isContactPage ? 'text-black' : 'text-white'}`}>{subscriptionTitle}</h2>
                       <div className={`font-display-04 font-bitmap-song ${isContactPage ? 'text-red-500' : 'text-red-600'}`}>保持联系</div>
                       <div className="mc-field-group space-y-2">
                         <span className="block mt-6 mb-8 font-body-02">
