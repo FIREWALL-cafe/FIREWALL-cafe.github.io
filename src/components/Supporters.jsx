@@ -6,19 +6,19 @@ import Jerome from '../assets/images/JEROME_LOGO_4c-300x76.jpg';
 
 function Supporters() {
   return (
-    <section className="flex overflow-hidden flex-col w-full bg-white pb-16">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="font-bitmap-song font-display-01 ipad-portrait:font-display-03 lg:col-span-1">
-            <h2 className="leading-tight">
+    <section className="flex overflow-hidden flex-col items-center w-full bg-white pb-16 px-4">
+      <div className="container mx-auto max-w-4xl">
+        <div className="flex flex-col items-center text-center">
+          <div className="font-bitmap-song font-display-01 ipad-portrait:font-display-03">
+            <h2 className="leading-tight text-center">
               Thanks to our supporters.
             </h2>
-            <div className="mt-2 leading-tight text-red-600 tracking-[2.16px]">
+            <div className="mt-2 leading-tight text-red-600 tracking-[2.16px] text-center">
               感谢我们的支持者。
             </div>
           </div>
-          <div className="lg:col-span-2">
-            <p className="font-body-01">
+          <div className="mt-8">
+            <p className="font-body-01 text-center leading-relaxed">
               FIREWALL was made possible by the Asian Women Giving Circle; by the Franklin Furnace Fund supported by Jerome Foundation, the Lambent Foundation, The SHS Foundation; and in part with public funds from Creative Engagement, supported by the New York City Department of Cultural Affairs in partnership with the City Council and administered by Lower Manhattan Cultural Council.
             </p>
           </div>

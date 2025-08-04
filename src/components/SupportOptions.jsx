@@ -18,10 +18,10 @@ function SupportOptions() {
       description: "Support us directly with a credit card donation.",
       iconSrc: DonationGray,
       iconSrcHover: Donation,
-      bgColor: "bg-sky-400",
-      hoverBgColor: "hover:bg-sky-500",
+      bgColor: "bg-blue-500",
+      hoverBgColor: "hover:bg-blue-600",
       textColor: "text-white",
-      borderColor: "border-solid",
+      borderColor: "border-solid border-blue-500",
       url: "https://www.nyfa.org/#button=45138"
     },
     {
@@ -30,17 +30,17 @@ function SupportOptions() {
         text: "成为赞助商",
         color: "text-red-600"
       },
-      description: "Get in touch and learn how you can support our long term vision.",
+      description: "Get in touch to learn about recurring donations, and how you can support our long term vision.",
       iconSrc: SponsorGray,
       iconSrcHover: Sponsor,
-      bgColor: "bg-cyan-100",
-      hoverBgColor: "hover:bg-cyan-200",
+      bgColor: "bg-blue-200",
+      hoverBgColor: "hover:bg-blue-300",
       textColor: "text-black",
-      borderColor: "border-solid border-sky-400",
+      borderColor: "border-solid border-blue-500",
       url: "https://www.nyfa.org/#button=45138"
     },
     {
-      title: "Contact us",
+      title: "Other ways to support",
       chineseTitle: {
         text: "以其他方式支持",
         color: "text-red-600"
@@ -49,9 +49,9 @@ function SupportOptions() {
       iconSrc: SupportGray,
       iconSrcHover: Support,
       bgColor: "bg-white",
-      hoverBgColor: "hover:bg-cyan-50",
+      hoverBgColor: "hover:bg-blue-50",
       textColor: "text-black",
-      borderColor: "border-solid border-sky-400",
+      borderColor: "border-solid border-blue-500",
       url: "/contact"
     }
   ];
