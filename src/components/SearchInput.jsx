@@ -31,7 +31,7 @@ function SearchInput({ searchMode }) {
   const [username] = useCookie("username");
   const [filterOpen, setFilterOpen] = useState(false);
   const [isArchive] = useState(searchMode === 'archive');
-  const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [] });
+  const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [], us_states: [], countries: [] });
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
@@ -161,6 +161,8 @@ function SearchInput({ searchMode }) {
         page_size: filterOptions.page_size || archiveResults.page_size,
         years: filterOptions.years,
         cities: filterOptions.cities,
+        us_states: filterOptions.us_states,
+        countries: filterOptions.countries,
         vote_ids: filterOptions.vote_ids
       };
 

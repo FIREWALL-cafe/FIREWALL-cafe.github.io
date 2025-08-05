@@ -168,6 +168,16 @@ app.post('/searches', async (req, res) => {
   if (req.query.cities) {
     otherFilters.search_locations = req.query.cities;
   }
+  
+  // Pass through us_states parameter for geographic filtering
+  if (req.query.us_states) {
+    otherFilters.us_states = req.query.us_states;
+  }
+  
+  // Pass through countries parameter for geographic filtering
+  if (req.query.countries) {
+    otherFilters.countries = req.query.countries;
+  }
 
   // Ensure pagination parameters are numbers
   const paginationParams = {

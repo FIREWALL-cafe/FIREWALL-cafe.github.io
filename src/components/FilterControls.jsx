@@ -1,21 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import VoteButton from './VoteButton';
 import { locationMapping } from '../constants/locations';
 
 function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
+  const [usStatesData, setUsStatesData] = useState([]);
+  const [loadingStates, setLoadingStates] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [activeFilters, setActiveFilters] = useState({
+    country: null,
+    usState: null,
+    source: null
+  });
 
-  const regions = {
-    'United States': ['ann_arbor', 'st_polten', 'poughkeepsie', 'new_york_city', 'asheville', 'miami_beach', 'new_jersey'],
-    'Europe': ['vienna', 'oslo'],
-    'Asia': ['hong_kong', 'taiwan']
-  };
+  // Country list for region filter
+  const countries = [
+    { code: 'US', name: 'United States' },
+    { code: 'AT', name: 'Austria' },
+    { code: 'NO', name: 'Norway' },
+    { code: 'HK', name: 'Hong Kong' },
+    { code: 'TW', name: 'Taiwan' }
+  ];
   
   // Get unique city keys and sort them by their display names
   const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
     .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
+
+  // Fetch US states data when component mounts
+  useEffect(() => {
+    const fetchUSStatesData = async () => {
+      try {
+        setLoadingStates(true);
+        const response = await fetch('/api/analytics/geographic/us-states');
+        if (response.ok) {
+          const data = await response.json();
+          setUsStatesData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching US states data:', error);
+      } finally {
+        setLoadingStates(false);
+      }
+    };
+
+    if (isOpen) {
+      fetchUSStatesData();
+      
+      // Check current form values when opening
+      const form = document.getElementById('filter-options-form');
+      if (form) {
+        const countriesSelect = form.querySelector('select[name="countries"]');
+        const citiesSelect = form.querySelector('select[name="cities"]');
+        const usStatesSelect = form.querySelector('select[name="us_states"]');
+        
+        const newActiveFilters = { country: null, usState: null, source: null };
+        
+        if (countriesSelect && countriesSelect.value) {
+          const country = countries.find(c => c.code === countriesSelect.value);
+          newActiveFilters.country = country ? country.name : null;
+          setSelectedCountry(countriesSelect.value);
+        }
+        
+        if (citiesSelect && citiesSelect.value) {
+          newActiveFilters.source = locationMapping[citiesSelect.value];
+        }
+        
+        if (usStatesSelect && usStatesSelect.value) {
+          newActiveFilters.usState = usStatesSelect.value;
+        }
+        
+        setActiveFilters(newActiveFilters);
+      }
+    }
+  }, [isOpen]);
 
   const metaKeyToId = {
     votes_censored: 1,
@@ -35,31 +94,95 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
 
   const handleFilterChange = (event) => {
     const form = document.getElementById('filter-options-form');
+    if (!form) return;
+    
     const formData = new FormData(form);
     const filterOptions = { 
       vote_ids: [], 
       years: [], 
       cities: [],
+      us_states: [],
+      countries: [],
       page: 1,
       page_size: 10
     };
     
-    // Reset other dropdown based on which one changed
-    const regionsSelect = form.querySelector('select[name="regions"]');
+    // Reset other dropdowns based on which one changed
+    const countriesSelect = form.querySelector('select[name="countries"]');
     const citiesSelect = form.querySelector('select[name="cities"]');
+    const usStatesSelect = form.querySelector('select[name="us_states"]');
     
-    if (event.target.name === 'regions') {
+    if (event && event.target && event.target.name === 'countries') {
       citiesSelect.value = ''; // Reset Source dropdown
-      if (regionsSelect.value) {
-        filterOptions.cities = regions[regionsSelect.value];
+      if (usStatesSelect) {
+        usStatesSelect.value = ''; // Reset US States dropdown only if it exists
       }
-    } else if (event.target.name === 'cities') {
-      regionsSelect.value = ''; // Reset Region dropdown
+      
+      if (countriesSelect.value) {
+        filterOptions.countries = [countriesSelect.value];
+        setSelectedCountry(countriesSelect.value);
+        const country = countries.find(c => c.code === countriesSelect.value);
+        setActiveFilters(prev => ({ ...prev, country: country ? country.name : null, usState: null, source: null }));
+        
+        // If not US, clear states data
+        if (countriesSelect.value !== 'US') {
+          filterOptions.us_states = [];
+        }
+      } else {
+        setSelectedCountry('');
+        setActiveFilters(prev => ({ ...prev, country: null, usState: null }));
+      }
+    } else if (event && event.target && event.target.name === 'cities') {
+      countriesSelect.value = ''; // Reset Country dropdown
+      if (usStatesSelect) {
+        usStatesSelect.value = ''; // Reset US States dropdown only if it exists
+      }
+      setSelectedCountry('');
       if (citiesSelect.value) {
         filterOptions.cities = [citiesSelect.value];
+        setActiveFilters(prev => ({ ...prev, source: locationMapping[citiesSelect.value], country: null, usState: null }));
+      } else {
+        setActiveFilters(prev => ({ ...prev, source: null }));
+      }
+    } else if (event && event.target && event.target.name === 'us_states') {
+      citiesSelect.value = ''; // Reset Source dropdown
+      // Don't reset country since US states depend on US being selected
+      if (usStatesSelect && usStatesSelect.value) {
+        filterOptions.us_states = [usStatesSelect.value];
+        filterOptions.countries = ['US']; // Ensure US is selected
+        setActiveFilters(prev => ({ ...prev, usState: usStatesSelect.value, source: null }));
+      } else {
+        setActiveFilters(prev => ({ ...prev, usState: null }));
       }
     }
 
+    // Get current values from all form fields if no specific event triggered this
+    if (!event || !event.target) {
+      if (countriesSelect && countriesSelect.value) {
+        filterOptions.countries = [countriesSelect.value];
+      }
+      if (citiesSelect && citiesSelect.value) {
+        filterOptions.cities = [citiesSelect.value];
+      }
+      if (usStatesSelect && usStatesSelect.value) {
+        filterOptions.us_states = [usStatesSelect.value];
+      }
+      
+      // Update active filters based on current form state
+      const newActiveFilters = { country: null, usState: null, source: null };
+      if (countriesSelect && countriesSelect.value) {
+        const country = countries.find(c => c.code === countriesSelect.value);
+        newActiveFilters.country = country ? country.name : null;
+      }
+      if (citiesSelect && citiesSelect.value) {
+        newActiveFilters.source = locationMapping[citiesSelect.value];
+      }
+      if (usStatesSelect && usStatesSelect.value) {
+        newActiveFilters.usState = usStatesSelect.value;
+      }
+      setActiveFilters(newActiveFilters);
+    }
+    
     // Get vote values
     for (let [key, value] of formData.entries()) {
       if (key.startsWith('votes') && value) {
@@ -76,6 +199,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     form.reset();
 
     setShouldResetVotes(true);
+    setSelectedCountry(''); // Reset selected country
+    setActiveFilters({ country: null, usState: null, source: null }); // Reset active filters
     setTimeout(() => {
       setShouldResetVotes(false);
       // Pass false as second argument to prevent closing
@@ -83,6 +208,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         vote_ids: [], 
         years: [], 
         cities: [],
+        us_states: [],
+        countries: [],
         page: 1,
         page_size: 10
       }, false, true);
@@ -95,23 +222,114 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       ${isOpen ? 'max-h-[800px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 border-0'}
     `}>
       <div className="p-4">
+        {/* Active Filters Section */}
+        {(activeFilters.country || activeFilters.source || activeFilters.usState) && (
+          <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+            <div className="text-sm font-semibold mb-2">Active Filters:</div>
+            <div className="flex flex-wrap gap-2">
+              {activeFilters.country && (
+                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
+                  Country: {activeFilters.country}
+                  <button 
+                    onClick={() => {
+                      const countriesSelect = document.querySelector('select[name="countries"]');
+                      if (countriesSelect) {
+                        countriesSelect.value = '';
+                        handleFilterChange({ target: { name: 'countries', value: '' } });
+                      }
+                    }}
+                    className="text-blue-600 hover:text-blue-800 font-bold"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {activeFilters.usState && (
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
+                  State: {activeFilters.usState}
+                  <button 
+                    onClick={() => {
+                      const usStatesSelect = document.querySelector('select[name="us_states"]');
+                      if (usStatesSelect) {
+                        usStatesSelect.value = '';
+                        handleFilterChange({ target: { name: 'us_states', value: '' } });
+                      }
+                    }}
+                    className="text-green-600 hover:text-green-800 font-bold"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {activeFilters.source && (
+                <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
+                  Source: {activeFilters.source}
+                  <button 
+                    onClick={() => {
+                      const citiesSelect = document.querySelector('select[name="cities"]');
+                      if (citiesSelect) {
+                        citiesSelect.value = '';
+                        handleFilterChange({ target: { name: 'cities', value: '' } });
+                      }
+                    }}
+                    className="text-purple-600 hover:text-purple-800 font-bold"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+        
         <form id="filter-options-form" className="grow flex flex-col text-black">
-          <div className="grid grid-cols-2 gap-6 mb-4">
-            {/* Regions Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            {/* Country and US States Section */}
             <div className="flex flex-col">
-              <label htmlFor="regions" className="text-lg font-black mb-2">Region</label>
+              <label htmlFor="countries" className="text-lg font-black mb-2 flex items-center gap-2">
+                Country
+                <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-normal">Primary</span>
+              </label>
               <select 
-                name="regions"
+                name="countries"
                 className="w-full border border-zinc-400 rounded p-2"
                 onChange={(e) => handleFilterChange(e)}
               >
-                <option value="">All Regions</option>
-                {Object.keys(regions).map((region) => (
-                  <option key={region} value={region}>
-                    {region}
+                <option value="">All Countries</option>
+                {countries.map((country) => (
+                  <option key={country.code} value={country.code}>
+                    {country.name}
                   </option>
                 ))}
               </select>
+              
+              {/* US States Section - Slides down when US is selected */}
+              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                selectedCountry === 'US' ? 'max-h-40 mt-3' : 'max-h-0'
+              }`}>
+                <div className="bg-blue-50/30 p-3 rounded border-l-4 border-blue-200">
+                  <label htmlFor="us_states" className="text-lg font-black mb-2 flex items-center gap-2">
+                    <span className="text-blue-600">↳</span> US State
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-normal">Secondary</span>
+                  </label>
+                  <select
+                    name="us_states"
+                    className="w-full border border-zinc-400 rounded p-2"
+                    onChange={(e) => handleFilterChange(e)}
+                    disabled={isLoading || loadingStates}
+                  >
+                    <option value="">All States</option>
+                    {usStatesData.map((stateData) => (
+                      <option key={stateData.state} value={stateData.state}>
+                        {stateData.state} ({stateData.search_count})
+                      </option>
+                    ))}
+                  </select>
+                  {loadingStates && (
+                    <div className="text-xs text-gray-500 mt-1">Loading states...</div>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* Sources Section */}
@@ -151,19 +369,25 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
           </div>
 
           {/* Close/Clear buttons */}
-          <div className="flex justify-end gap-4 pt-3 border-t border-gray-200">
-            <button 
-              type="button"
-              onClick={handleReset}
-              className="px-3 py-1.5 text-sm text-black bg-white border border-black hover:bg-gray-50">
-              Clear all
-            </button>
-            <button
-              type="button"
-              onClick={() => onUpdate({ vote_ids: [], years: [], cities: [] }, true, true)}
-              className="px-3 py-1.5 text-sm text-white bg-black hover:bg-gray-800">
-              Close
-            </button>
+          <div className="flex items-center justify-between pt-3 border-t border-gray-200">
+            <div className="flex items-center gap-2">
+              {(activeFilters.country || activeFilters.source || activeFilters.usState) && (
+                <span className="text-sm text-gray-600">
+                  {Object.values(activeFilters).filter(Boolean).length} filter{Object.values(activeFilters).filter(Boolean).length !== 1 ? 's' : ''} active
+                </span>
+              )}
+            </div>
+            <div className="flex gap-3">
+              <button 
+                type="button"
+                onClick={handleReset}
+                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 transition-colors flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Clear All
+              </button>
+            </div>
           </div>
         </form>
       </div>
