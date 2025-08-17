@@ -145,15 +145,15 @@ function TimelineAlternate() {
     <div className="bg-white flex flex-col items-center justify-center px-8 py-[120px] w-full">
       <div className="max-w-[928px] w-full relative">
         {/* Vertical line - continuous timeline connecting both arrows */}
-        <div className="absolute left-[104px] top-[108px] h-[396px] w-[1px] bg-gray-300" />
+        <div className="absolute left-[104px] top-[192px] h-[420px] w-[1px] bg-gray-300" />
         
         {/* Fixed red dot in the middle of the vertical timeline */}
-        <div className="absolute left-[96px] top-[306px] w-4 h-4 rounded-full bg-red-600 border-2 border-white z-20" />
+        <div className="absolute left-[96px] top-[390px] w-4 h-4 rounded-full bg-red-600 border-2 border-white z-20" />
         
         {/* Navigation arrows */}
         <button 
           onClick={goToPrevious}
-          className="absolute left-[92px] top-[96px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center transform rotate-180 z-10 border border-gray-300 hover:border-red-600 transition-colors"
+          className="absolute left-[92px] top-[180px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center transform rotate-180 z-30 border border-gray-300 hover:border-red-600 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:stroke-white"/>
@@ -162,7 +162,7 @@ function TimelineAlternate() {
         
         <button 
           onClick={goToNext}
-          className="absolute left-[92px] top-[504px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center z-10 border border-gray-300 hover:border-red-600 transition-colors"
+          className="absolute left-[92px] top-[600px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center z-30 border border-gray-300 hover:border-red-600 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:stroke-white"/>
@@ -172,12 +172,11 @@ function TimelineAlternate() {
         {/* Main content area */}
         <div className="flex relative">
           {/* Years sidebar with fixed height */}
-          <div className="w-[105px] flex flex-col relative overflow-hidden h-[380px] top-[120px]">
-            
+          <div className="w-[105px] flex flex-col relative overflow-hidden h-[380px] top-[200px]">       
             <div 
               className="flex flex-col transition-transform duration-300 ease-in-out"
               style={{
-                transform: `translateY(${150 - (currentIndex * 63)}px)`
+                transform: `translateY(${168 - (currentIndex * 64)}px)`
               }}
             >
               {getAllYears().map((item) => (
@@ -195,9 +194,9 @@ function TimelineAlternate() {
                   >
                     {item.year}
                   </button>
-                  {/* Small gray dots for timeline markers */}
+                  {/* Hash marks for non-selected years */}
                   {item.index !== currentIndex && (
-                    <div className="absolute right-[-3px] top-1/2 -translate-y-1/2 w-[2px] h-[2px] rounded-full bg-gray-400" />
+                    <div className="absolute right-[-8px] top-1/2 -translate-y-1/2 w-4 h-[1px] bg-gray-400" />
                   )}
                 </div>
               ))}
