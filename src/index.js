@@ -19,6 +19,7 @@ import Contributors from './components/Contributors';
 import Dashboard from './components/Dashboard';
 import SearchInputDemo from './components/SearchInputDemo';
 import SearchDemo from './components/SearchDemo';
+import TimelineComparison from './components/TimelineComparison';
 
 import {
   createBrowserRouter,
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: "search-comparison",
         element: <SearchDemo />,
+      },
+      {
+        path: "timeline-comparison",
+        element: <TimelineComparison />,
       },
     ],
   },
