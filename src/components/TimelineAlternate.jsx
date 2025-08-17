@@ -147,54 +147,51 @@ function TimelineAlternate() {
         {/* Vertical line - continuous timeline connecting both arrows */}
         <div className="absolute left-[104px] top-[108px] h-[396px] w-[1px] bg-gray-300" />
         
+        {/* Fixed red dot in the middle of the vertical timeline */}
+        <div className="absolute left-[96px] top-[306px] w-4 h-4 rounded-full bg-red-600 border-2 border-white z-20" />
+        
         {/* Navigation arrows */}
         <button 
           onClick={goToPrevious}
-          className="absolute left-[92px] top-[96px] w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transform rotate-180 z-10"
+          className="absolute left-[92px] top-[96px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center transform rotate-180 z-10 border border-gray-300 hover:border-red-600 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:stroke-white"/>
           </svg>
         </button>
         
         <button 
           onClick={goToNext}
-          className="absolute left-[92px] top-[504px] w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center z-10"
+          className="absolute left-[92px] top-[504px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center z-10 border border-gray-300 hover:border-red-600 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:stroke-white"/>
           </svg>
         </button>
 
         {/* Main content area */}
         <div className="flex relative">
           {/* Years sidebar with fixed height */}
-          <div className="w-[105px] flex flex-col relative overflow-hidden h-[480px] top-[120px]">
-            {/* Fixed red dot in the middle of the timeline - positioned at vertical center between arrows */}
-            <div className="absolute right-[-9px] top-[186px] w-4 h-4 rounded-full bg-red-600 border-2 border-white z-20" />
+          <div className="w-[105px] flex flex-col relative overflow-hidden h-[380px] top-[120px]">
             
             <div 
               className="flex flex-col transition-transform duration-300 ease-in-out"
               style={{
-                transform: `translateY(${150 - (currentIndex * 71)}px)`
+                transform: `translateY(${150 - (currentIndex * 63)}px)`
               }}
             >
               {getAllYears().map((item) => (
                 <div
                   key={item.index}
-                  className="flex items-center justify-end relative h-[72px]"
+                  className="flex items-center justify-end relative h-[64px]"
                 >
                   <button
                     onClick={() => setCurrentIndex(item.index)}
-                    className={`pr-2 transition-all flex items-center justify-end font-bitmap-song ${
+                    className={`pr-4 transition-all flex items-center justify-end font-bitmap-song ${
                       item.index === currentIndex 
                         ? 'text-[44px] font-bold text-black leading-none' 
                         : 'text-[24px] text-gray-500 leading-none'
                     }`}
-                    style={{
-                      lineHeight: '72px',
-                      height: '72px'
-                    }}
                   >
                     {item.year}
                   </button>
@@ -205,6 +202,10 @@ function TimelineAlternate() {
                 </div>
               ))}
             </div>
+            
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
           </div>
 
           {/* Event content */}
