@@ -144,8 +144,8 @@ function TimelineAlternate() {
   return (
     <div className="bg-white flex flex-col items-center justify-center px-8 py-[120px] w-full">
       <div className="max-w-[928px] w-full relative">
-        {/* Vertical line - fixed height timeline */}
-        <div className="absolute left-[104px] top-[120px] h-[360px] w-[1px] bg-gray-300" />
+        {/* Vertical line - continuous timeline connecting both arrows */}
+        <div className="absolute left-[104px] top-[108px] h-[420px] w-[1px] bg-gray-300" />
         
         {/* Navigation arrows */}
         <button 
@@ -203,7 +203,7 @@ function TimelineAlternate() {
           </div>
 
           {/* Event content */}
-          <div className="flex-1 pl-[42px] pt-[200px]">
+          <div className="flex-1 pl-[42px] pt-[120px]">
             <div className="w-[600px]">
               {/* Event card */}
               <div className="bg-gray-50 border border-red-600 rounded-lg p-12">
@@ -265,8 +265,8 @@ function TimelineAlternate() {
           </div>
         </div>
 
-        {/* Gradient overlay at bottom of years list */}
-        <div className="absolute left-0 bottom-[200px] w-[120px] h-[68px] bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        {/* Gradient overlay at bottom of years list - positioned to not affect timeline */}
+        <div className="absolute left-0 bottom-[200px] w-[100px] h-[68px] bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </div>
     </div>
   );
