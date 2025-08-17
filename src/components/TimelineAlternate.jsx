@@ -145,7 +145,7 @@ function TimelineAlternate() {
     <div className="bg-white flex flex-col items-center justify-center px-8 py-[120px] w-full">
       <div className="max-w-[928px] w-full relative">
         {/* Vertical line - continuous timeline connecting both arrows */}
-        <div className="absolute left-[104px] top-[108px] h-[420px] w-[1px] bg-gray-300" />
+        <div className="absolute left-[104px] top-[108px] h-[396px] w-[1px] bg-gray-300" />
         
         {/* Navigation arrows */}
         <button 
@@ -170,10 +170,13 @@ function TimelineAlternate() {
         <div className="flex relative">
           {/* Years sidebar with fixed height */}
           <div className="w-[105px] flex flex-col relative overflow-hidden h-[480px] top-[120px]">
+            {/* Fixed red dot in the middle of the timeline - positioned at vertical center between arrows */}
+            <div className="absolute right-[-9px] top-[186px] w-4 h-4 rounded-full bg-red-600 border-2 border-white z-20" />
+            
             <div 
               className="flex flex-col transition-transform duration-300 ease-in-out"
               style={{
-                transform: `translateY(${180 - (currentIndex * 72)}px)`
+                transform: `translateY(${150 - (currentIndex * 71)}px)`
               }}
             >
               {getAllYears().map((item) => (
@@ -183,18 +186,20 @@ function TimelineAlternate() {
                 >
                   <button
                     onClick={() => setCurrentIndex(item.index)}
-                    className={`pr-2 transition-all flex items-center justify-end h-full ${
+                    className={`pr-2 transition-all flex items-center justify-end font-bitmap-song ${
                       item.index === currentIndex 
                         ? 'text-[44px] font-bold text-black leading-none' 
                         : 'text-[24px] text-gray-500 leading-none'
                     }`}
+                    style={{
+                      lineHeight: '72px',
+                      height: '72px'
+                    }}
                   >
                     {item.year}
                   </button>
-                  {/* Red dot for selected year, gray dot for non-selected */}
-                  {item.index === currentIndex ? (
-                    <div className="absolute right-[-9px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-red-600 border-2 border-white z-20" />
-                  ) : (
+                  {/* Small gray dots for timeline markers */}
+                  {item.index !== currentIndex && (
                     <div className="absolute right-[-3px] top-1/2 -translate-y-1/2 w-[2px] h-[2px] rounded-full bg-gray-400" />
                   )}
                 </div>
