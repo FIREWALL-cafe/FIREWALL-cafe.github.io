@@ -17,7 +17,7 @@ import EventsIcon from "../assets/icons/events.png";
 import PressIcon from "../assets/icons/press.png";
 import AboutIcon from "../assets/icons/logo_only.svg";
 import SupportIcon from "../assets/icons/support.png";
-import ContactIcon from "../assets/icons/question.svg";
+import ContactIcon from "../assets/icons/envelope.svg";
   
 const menuLinks = [
   { to: "/archive", title: "Query Archive", icon: ArchiveIcon },
