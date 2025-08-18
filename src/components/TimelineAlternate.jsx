@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Timeline() {
+function TimelineAlternate() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const timelineEvents = [
@@ -142,7 +142,8 @@ function Timeline() {
   };
 
   return (
-    <div className="w-full relative min-h-[600px]">
+    <div className="bg-white flex flex-col items-center justify-center px-8 py-[120px] w-full">
+      <div className="max-w-[928px] w-full relative">
         {/* Vertical line - continuous timeline connecting both arrows */}
         <div className="absolute left-[104px] top-[192px] h-[420px] w-[1px] bg-gray-300" />
         
@@ -152,26 +153,26 @@ function Timeline() {
         {/* Navigation arrows */}
         <button 
           onClick={goToPrevious}
-          className="absolute left-[92px] top-[180px] w-6 h-6 rounded-full bg-white group flex items-center justify-center transform rotate-180 z-30 border border-gray-300 hover:border-red-600 transition-colors"
+          className="absolute left-[92px] top-[180px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center transform rotate-180 z-30 border border-gray-300 hover:border-red-600 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="stroke-gray-600 group-hover:stroke-red-600"/>
+            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:stroke-white"/>
           </svg>
         </button>
         
         <button 
           onClick={goToNext}
-          className="absolute left-[92px] top-[600px] w-6 h-6 rounded-full bg-white group flex items-center justify-center z-30 border border-gray-300 hover:border-red-600 transition-colors"
+          className="absolute left-[92px] top-[600px] w-6 h-6 rounded-full bg-white hover:bg-red-600 group flex items-center justify-center z-30 border border-gray-300 hover:border-red-600 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="stroke-gray-600 group-hover:stroke-red-600"/>
+            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:stroke-white"/>
           </svg>
         </button>
 
         {/* Main content area */}
         <div className="flex relative">
           {/* Years sidebar with fixed height */}
-          <div className="w-[105px] flex flex-col relative overflow-hidden h-[380px] top-[200px] pl-[60px]">       
+          <div className="w-[105px] flex flex-col relative overflow-hidden h-[380px] top-[200px]">       
             <div 
               className="flex flex-col transition-transform duration-300 ease-in-out"
               style={{
@@ -185,7 +186,7 @@ function Timeline() {
                 >
                   <button
                     onClick={() => setCurrentIndex(item.index)}
-                    className={`pr-2 transition-all flex items-center justify-end font-bitmap-song ${
+                    className={`pr-4 transition-all flex items-center justify-end font-bitmap-song ${
                       item.index === currentIndex 
                         ? 'text-[44px] font-bold text-black leading-none' 
                         : 'text-[24px] text-gray-500 leading-none'
@@ -195,7 +196,7 @@ function Timeline() {
                   </button>
                   {/* Hash marks for non-selected years */}
                   {item.index !== currentIndex && (
-                    <div className="absolute right-[-50px] top-1/2 -translate-y-1/2 w-4 h-[1px] bg-gray-400" />
+                    <div className="absolute right-[-8px] top-1/2 -translate-y-1/2 w-4 h-[1px] bg-gray-400" />
                   )}
                 </div>
               ))}
@@ -271,8 +272,9 @@ function Timeline() {
 
         {/* Gradient overlay at bottom of years list - positioned to not affect timeline */}
         <div className="absolute left-0 bottom-[200px] w-[100px] h-[68px] bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      </div>
     </div>
   );
 }
 
-export default Timeline;
+export default TimelineAlternate;

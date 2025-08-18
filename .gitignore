@@ -110,3 +110,5 @@ config.js
 server/config-secure.js
 build/
 design-tokens/
+.playwright/
+.playwright*

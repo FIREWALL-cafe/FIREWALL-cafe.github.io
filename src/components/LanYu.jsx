@@ -5,19 +5,16 @@ function LanYu() {
   return (
     <article className="flex overflow-hidden justify-center items-start pb-24 w-full bg-white max-md:pb-16">
       <div className="flex flex-col w-full max-w-[720px] px-8 max-md:px-4">
-        {/* Article Header */}
         <header className="flex flex-col w-full mb-12">
-          {/* Title Block */}
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-normal leading-tight mb-2 text-black">
-              Title — Lorem ipsum
+            <h1 className="text-4xl md:font-display-03 font-bitmap-song font-display-03 font-normal leading-tight mb-2 text-black">
+              How internet censorship shapes cultural phenomena
             </h1>
             <div className="text-2xl md:text-3xl font-normal leading-tight text-red-600">
               标题填充文本
             </div>
           </div>
 
-          {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 mb-6">
             <div className="flex items-center gap-2 text-neutral-700">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -33,7 +30,6 @@ function LanYu() {
             </div>
           </div>
 
-          {/* Topic Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
             <span className="px-3 py-1 text-sm border border-neutral-400 rounded text-neutral-700">
               censorship
@@ -46,11 +42,9 @@ function LanYu() {
             </span>
           </div>
 
-          {/* Dividing Line */}
           <hr className="border-neutral-300 mb-8" />
         </header>
 
-        {/* Article Content */}
         <div className="prose prose-lg max-w-none text-neutral-900">
           <p className="text-xl font-medium leading-relaxed mb-8">
             <strong>Is internet censorship solely a China problem? Recent legal challenges against Google in the U.S. highlight a broader issue: while state-driven censorship is prevalent, corporate censorship also poses real threats.</strong>
@@ -147,7 +141,6 @@ function LanYu() {
             In China, VPNs enable netizens to bypass the Great Firewall, accessing restricted platforms like Google, Facebook, and Twitter, while hiding their digital footprint by redirecting traffic through a remote server. However, China started to crack down on VPN use in 2017. That year, the Ministry of Industry and Information Technology launched a 14-month "cleanup" of internet access services, making it illegal to operate VPN services without government approval. Violators face harsh penalties, including prison sentences and heavy fines. One individual was sentenced to nine months in prison for selling VPNs, while another received a 5 1/2-year sentence for profiting from illegal VPN sales. In the same year, Apple also removed 674 VPN apps from its App Store in China.
           </p>
 
-          {/* Image placeholder */}
           <div className="my-8">
             <div className="w-full h-64 bg-neutral-200 border border-neutral-300 flex items-center justify-center mb-2">
               <svg className="w-12 h-12 text-neutral-400" fill="currentColor" viewBox="0 0 20 20">
@@ -193,7 +186,6 @@ function LanYu() {
             Today, tensions between governments and tech companies over anonymity, free speech, and national security are growing. The U.S. considers banning TikTok, and France recently arrested the Telegram CEO for refusing to provide user information tied to suspected cyber crime. In this shifting landscape, artistic initiatives like FIREWALL Cafe are increasingly important, offering a creative space for citizens to reflect on the balance between collective security and individual freedoms in the digital age, as well as explore and question our relationship with information and the concept of freedom.
           </p>
 
-          {/* Author Section */}
           <div className="mt-16 pt-8 border-t border-neutral-300">
             <div className="flex flex-col md:flex-row gap-6">
               <div className="flex-shrink-0">
