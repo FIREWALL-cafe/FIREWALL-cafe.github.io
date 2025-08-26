@@ -62,7 +62,7 @@ function GroupRvcc() {
                 <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                 <div>
                   <a 
-                    href="https://www.google.com/maps/place/Murray+Student+Center/@41.7206041,-73.9355196,18.25z/data=!4m5!3m4!1s0x89dd3e077b997377:0xf1e3a80dd614c1f0!8m2!3d41.721027!4d-73.9355703"
+                    href="https://oslofreedomforum.com/event/off-taiwan-2022/"
                     className="text-red-600 hover:text-red-800"
                     target="_blank"
                     rel="noopener noreferrer"
