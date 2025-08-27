@@ -133,7 +133,7 @@ export const eventsData = {
     links: [
       {
         text: "Learn more about the event",
-        url: "https://oslofreedomforum.com/offtw22/",
+        url: "https://oslofreedomforum.com/event/off-taiwan-2022/",
         publication: "Oslo Freedom Forum"
       }
     ],
