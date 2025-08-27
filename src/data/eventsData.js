@@ -19,10 +19,58 @@ export const eventsData = {
         publication: "Marist Circle"
       }
     ],
-    images: Array.from({length: 10}, (_, i) => ({
-      src: `https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_${i + 1}.jpg`,
-      alt: `Megha Image ${i + 1}`
-    }))
+    images: [
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_1.jpg",
+        alt: "Students search for \"Beyonce\" in the FIREWALL plugin.",
+        caption: "Students search for \"Beyonce\" in the FIREWALL plugin."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_2.jpg", 
+        alt: "A search term censored by Baidu displays limited image results.",
+        caption: "A search term censored by Baidu displays limited image results."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_3.jpg",
+        alt: "Students interact with the FIREWALL Pop-up at Marist College, Poughkeepsie, NY.", 
+        caption: "Students interact with the FIREWALL Pop-up at Marist College, Poughkeepsie, NY."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_4.jpg",
+        alt: "Buzzfeed correspondent, Megha Rajagopalan delivering her lecture on China and the Rise of AI and Mass Surveillance Technology.",
+        caption: "Buzzfeed correspondent, Megha Rajagopalan delivering her lecture on China and the Rise of AI and Mass Surveillance Technology."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_5.jpg",
+        alt: "Attendees at \"China and the Rise of AI and Mass Surveillance Technology\", a lecture by Megha Rajagopalan at Fusco Hall, Marist College, Poughkeepsie, NY.",
+        caption: "Attendees at \"China and the Rise of AI and Mass Surveillance Technology\", a lecture by Megha Rajagopalan at Fusco Hall, Marist College, Poughkeepsie, NY."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_6.jpg",
+        alt: "A student poses a question to Megha Rajagopalan after the lecture.",
+        caption: "A student poses a question to Megha Rajagopalan after the lecture."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_7.jpg",
+        alt: "A student poses a question to Megha Rajagopalan after the lecture.",
+        caption: "A student poses a question to Megha Rajagopalan after the lecture."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_8.jpg",
+        alt: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Megha Rajagopalan, Buzzfeed Correspondent, Peter Behr, Web Developer for FIREWALL.",
+        caption: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Megha Rajagopalan, Buzzfeed Correspondent, Peter Behr, Web Developer for FIREWALL."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_9.jpg",
+        alt: "FIREWALL badges, stickers, and postcards.",
+        caption: "FIREWALL badges, stickers, and postcards."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FWC_POU_10.jpg",
+        alt: "FIREWALL Pop-up stations at Marist College, Poughkeepsie, NY.",
+        caption: "FIREWALL Pop-up stations at Marist College, Poughkeepsie, NY."
+      }
+    ]
   },
 
   "marymount-manhattan-digital-media-society-class-field-trip": {
@@ -45,23 +93,28 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-4_edit.jpg",
-        alt: "Marymount Image 1"
+        alt: "Students trying out FIREWALL",
+        caption: "Students trying out FIREWALL"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-7.jpg",
-        alt: "Marymount Image 2"
+        alt: "Students ask questions about how censorship works in China", 
+        caption: "Students ask questions about how censorship works in China"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-9.jpg",
-        alt: "Marymount Image 3"
+        alt: "Student discussion about censorship in China",
+        caption: "Student discussion about censorship in China"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-12.jpg",
-        alt: "Marymount Image 4"
+        alt: "FIREWALL founder Joyce Yu-Jean Lee with students",
+        caption: "FIREWALL founder Joyce Yu-Jean Lee with students"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLMarymount2.29-2_edit.jpg",
-        alt: "Marymount Image 5"
+        alt: "Students engage in FIREWALL search sessions",
+        caption: "Students engage in FIREWALL search sessions"
       }
     ]
   },
@@ -87,27 +140,33 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-02.png",
-        alt: "Oslo Taiwan Image 1"
+        alt: "Taiwanese visitors keying search terms into FIREWALL dual-search browser.",
+        caption: "Taiwanese visitors keying search terms into FIREWALL dual-search browser."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-04.png",
-        alt: "Oslo Taiwan Image 2"
+        alt: "People searching for the China-Taiwan specific topics on the FIREWALL system.",
+        caption: "People searching for the China-Taiwan specific topics on the FIREWALL system."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-07.png",
-        alt: "Oslo Taiwan Image 3"
+        alt: "FIREWALL Pop-up at OFF TW.",
+        caption: "FIREWALL Pop-up at OFF TW."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-08.png",
-        alt: "Oslo Taiwan Image 4"
+        alt: "A group of high school students understanding the influence of censorship from China.", 
+        caption: "A group of high school students understanding the influence of censorship from China."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-05.png",
-        alt: "Oslo Taiwan Image 5"
+        alt: "A picture of Joyce Yu-Jean Lee with Lingwei Li, who is known as \"Queer Lawyer\", advocating for LGBTQ+ and equality Justice in Taiwan.",
+        caption: "A picture of Joyce Yu-Jean Lee with Lingwei Li, who is known as \"Queer Lawyer\", advocating for LGBTQ+ and equality Justice in Taiwan."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_OFF_TW-06.jpg",
-        alt: "Oslo Taiwan Image 6"
+        alt: "A picture of Joyce Yu-Jean Lee with Wu'erkaixi, one of the leaders of the Tiananmen protests.",
+        caption: "A picture of Joyce Yu-Jean Lee with Wu'erkaixi, one of the leaders of the Tiananmen protests."
       }
     ]
   },
@@ -132,15 +191,18 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_Panel-2-of-4.jpg",
-        alt: "Reactions Image 1"
+        alt: "From left to right: Julia Hartmann, Ye Hui, Ingrid Fischer-Schreiber, Joyce Yu-Jean Lee, at the panel discussion Re(actions) to the Great Chinese Firewall. Photo by Claudia Romero.",
+        caption: "From left to right: Julia Hartmann, Ye Hui, Ingrid Fischer-Schreiber, Joyce Yu-Jean Lee, at the panel discussion Re(actions) to the Great Chinese Firewall. Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_Panel-4-of-4.jpg",
-        alt: "Reactions Image 2"
+        alt: "From left to right: Joyce Yu-Jean Lee, Ye Hui, Julia Hartmann, Ingrid Fischer-Schreiber. In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero.",
+        caption: "From left to right: Joyce Yu-Jean Lee, Ye Hui, Julia Hartmann, Ingrid Fischer-Schreiber. In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/A6_Flyer_SearchforFeminism_FINAL-back.jpg",
-        alt: "Reactions Image 3"
+        alt: "Event flyer",
+        caption: "Event flyer"
       }
     ]
   },
@@ -186,23 +248,28 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-49.jpg",
-        alt: "Apex Youth Image 1"
+        alt: "Middle schoolers from PS 184 trying out the FIREWALL plugin",
+        caption: "Middle schoolers from PS 184 trying out the FIREWALL plugin"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-47.jpg",
-        alt: "Apex Youth Image 2"
+        alt: "Students interacting with FIREWALL",
+        caption: "Students interacting with FIREWALL"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-41.jpg",
-        alt: "Apex Youth Image 3"
+        alt: "Roundtable conversation with students from PS 184",
+        caption: "Roundtable conversation with students from PS 184"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-25.jpg",
-        alt: "Apex Youth Image 4"
+        alt: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship",
+        caption: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLApex-22.jpg",
-        alt: "Apex Youth Image 5"
+        alt: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship",
+        caption: "Artist Joyce Yu-Jean Lee talking to youths about internet censorship"
       }
     ]
   },
@@ -227,19 +294,23 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-8.jpg",
-        alt: "Creative Hack Image 1"
+        alt: "Panelists Joyce Yu-Jean Lee, Jason Q. Ng, Sisi Wei, Dan Phiffer, and Josh B",
+        caption: "Panelists Joyce Yu-Jean Lee, Jason Q. Ng, Sisi Wei, Dan Phiffer, and Josh B"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-5.jpg",
-        alt: "Creative Hack Image 2"
+        alt: "Jason speaks about words blocked on Weibo",
+        caption: "Jason speaks about words blocked on Weibo"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-4.jpg",
-        alt: "Creative Hack Image 3"
+        alt: "Dan discusses coding and designing FIREWALL",
+        caption: "Dan discusses coding and designing FIREWALL"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLCreativeHactivism2.19-2.jpg",
-        alt: "Creative Hack Image 4"
+        alt: "Panelists engage the FIREWALL Installation",
+        caption: "Panelists engage the FIREWALL Installation"
       }
     ]
   },
@@ -264,15 +335,18 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLuProxy2.18-1.jpg",
-        alt: "Proxy Pals Image 1"
+        alt: "uProxy team leader explains how proxy technology works",
+        caption: "uProxy team leader explains how proxy technology works"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLuProxy2.18-2.jpg",
-        alt: "Proxy Pals Image 2"
+        alt: "Participants test out uProxy",
+        caption: "Participants test out uProxy"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FIREWALLuProxy2.18-3-1.jpg",
-        alt: "Proxy Pals Image 3"
+        alt: "Participants test out uProxy",
+        caption: "Participants test out uProxy"
       }
     ]
   },
@@ -328,27 +402,33 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-05.png",
-        alt: "RVCC Image 1"
+        alt: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Lydia Grey, curator of 'The Future is'.",
+        caption: "From left to right: Joyce Yu-Jean Lee, artist and founder of FIREWALL, Lydia Grey, curator of 'The Future is'."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-04.png",
-        alt: "RVCC Image 2"
+        alt: "FIREWALL Pop-up at RVCC Art Gallery.",
+        caption: "FIREWALL Pop-up at RVCC Art Gallery."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-07.png",
-        alt: "RVCC Image 3"
+        alt: "A group of students engaging in FIREWALL searching and discussing the results.",
+        caption: "A group of students engaging in FIREWALL searching and discussing the results."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-08.png",
-        alt: "RVCC Image 4"
+        alt: "A group of students engaging in FIREWALL searching and discussing the results.",
+        caption: "A group of students engaging in FIREWALL searching and discussing the results."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-06.png",
-        alt: "RVCC Image 5"
+        alt: "A visitor being surprised by the censored results on Baidu.",
+        caption: "A visitor being surprised by the censored results on Baidu."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2022_FIREWALL_RVC-01.png",
-        alt: "RVCC Image 6"
+        alt: "An artist sharing by Joyce Yu-Jean Lee about FIREWALL and internet censorship to a full room at Raritan Valley Community College.",
+        caption: "An artist sharing by Joyce Yu-Jean Lee about FIREWALL and internet censorship to a full room at Raritan Valley Community College."
       }
     ]
   },
@@ -365,19 +445,23 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-31-copy.jpg",
-        alt: "Oslo Miami Image 1"
+        alt: "People engage with the FIREWALL search engine comparison.",
+        caption: "People engage with the FIREWALL search engine comparison."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-31-copy-4.jpg",
-        alt: "Oslo Miami Image 2"
+        alt: "FIREWALL Pop-up at OFF MIA.",
+        caption: "FIREWALL Pop-up at OFF MIA."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-25-copy.jpg",
-        alt: "Oslo Miami Image 3"
+        alt: "FIREWALL installation view",
+        caption: "FIREWALL installation view"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2021_FIREWALL_OFF_MIA-31-copy-1.jpg",
-        alt: "Oslo Miami Image 4"
+        alt: "Gulchehra Hoja, a media personality, journalist and outspoken activist who speaks about China's violation, specifically the Uyghur culture genocide.",
+        caption: "Gulchehra Hoja, a media personality, journalist and outspoken activist who speaks about China's violation, specifically the Uyghur culture genocide."
       }
     ]
   },
@@ -494,23 +578,28 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/1_FWC_NMC_-7626.jpg",
-        alt: "Border Control Image 1"
+        alt: "FIREWALL popup at New Media Caucus \"Border Control\" Symposium.",
+        caption: "FIREWALL popup at New Media Caucus \"Border Control\" Symposium."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/2_NMC_CoCreatingBorder-7512.jpg",
-        alt: "Border Control Image 2"
+        alt: "From left to right: Nadav Assor, Patricia Villalobos Echeverría, Joyce Yu-Jean Lee, Maria del Carmen Montoya",
+        caption: "From left to right: Nadav Assor, Patricia Villalobos Echeverría, Joyce Yu-Jean Lee, Maria del Carmen Montoya"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/3_FWC_NMC_-7601.jpg",
-        alt: "Border Control Image 3"
+        alt: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan.",
+        caption: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/4_FWC_NMC_-7632.jpg",
-        alt: "Border Control Image 4"
+        alt: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan.",
+        caption: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/5_FWC_NMC_-7615.jpg",
-        alt: "Border Control Image 5"
+        alt: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan.",
+        caption: "Participants engage with FIREWALL at Penny W. Stamps School Of Art & Design, University of Michigan."
       }
     ]
   },

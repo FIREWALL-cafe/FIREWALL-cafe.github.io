@@ -85,7 +85,7 @@ function EventDetail({ event }) {
             </div>
 
             {event.images && event.images.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 font-body-02">
                 {event.images.map((image, index) => (
                   <div key={index} className="flex flex-col">
                     <img 
@@ -94,7 +94,7 @@ function EventDetail({ event }) {
                       className="w-full h-auto rounded-lg"
                     />
                     {image.caption && (
-                      <p className="mt-2 text-sm text-gray-600 font-body-01">{image.caption}</p>
+                      <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">{image.caption}</p>
                     )}
                   </div>
                 ))}
