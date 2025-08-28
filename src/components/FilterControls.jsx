@@ -13,14 +13,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     source: null
   });
 
-  // Country list for region filter
-  const countries = [
-    { code: 'US', name: 'United States' },
-    { code: 'AT', name: 'Austria' },
-    { code: 'NO', name: 'Norway' },
-    { code: 'HK', name: 'Hong Kong' },
-    { code: 'TW', name: 'Taiwan' }
-  ];
+  // Dynamic country list from database
+  const [countries, setCountries] = useState([]);
   
   // Get unique city keys and sort them by their display names
   const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
@@ -28,8 +22,29 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
 
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
-  // Fetch US states data when component mounts
+  // Fetch countries data when component mounts  
   useEffect(() => {
+    const fetchCountriesData = async () => {
+      try {
+        const response = await fetch('/api/countries');
+        if (response.ok) {
+          const data = await response.json();
+          // Filter out entries without country codes and format for dropdown
+          const formattedCountries = data
+            .filter(country => country.code && country.name)
+            .map(country => ({
+              code: country.code,
+              name: country.name,
+              search_count: country.search_count
+            }))
+            .sort((a, b) => b.search_count - a.search_count); // Sort by search count descending
+          setCountries(formattedCountries);
+        }
+      } catch (error) {
+        console.error('Error fetching countries data:', error);
+      }
+    };
+
     const fetchUSStatesData = async () => {
       try {
         setLoadingStates(true);
@@ -44,6 +59,11 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         setLoadingStates(false);
       }
     };
+
+    // Fetch countries once when component mounts
+    if (countries.length === 0) {
+      fetchCountriesData();
+    }
 
     if (isOpen) {
       fetchUSStatesData();
@@ -294,11 +314,12 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                 name="countries"
                 className="w-full border border-zinc-400 rounded p-2"
                 onChange={(e) => handleFilterChange(e)}
+                disabled={isLoading}
               >
                 <option value="">All Countries</option>
                 {countries.map((country) => (
                   <option key={country.code} value={country.code}>
-                    {country.name}
+                    {country.name} ({country.search_count})
                   </option>
                 ))}
               </select>

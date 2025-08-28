@@ -271,6 +271,22 @@ app.get('/api/analytics/geographic/us-states', async (req, res) => {
   }
 });
 
+// Countries list endpoint
+app.get('/api/countries', async (req, res) => {
+  console.log('/api/countries: request received');
+  
+  try {
+    const response = await axios.get(`${serverConfig.apiUrl}countries`);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Countries list error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch countries list',
+      message: error.message 
+    });
+  }
+});
+
 // Search analytics endpoint
 app.get('/api/analytics/searches', async (req, res) => {
   console.log('/api/analytics/searches: request received');
