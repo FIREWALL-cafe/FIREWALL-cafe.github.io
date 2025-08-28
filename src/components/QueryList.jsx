@@ -40,7 +40,7 @@ const QueryListHeader = () => {
       <div className="whitespace-nowrap">Votes</div>
       <div className="truncate whitespace-nowrap">Query EN</div>
       <div className="font-sc-sans truncate whitespace-nowrap">搜索结果 中文</div>
-      <div className="truncate whitespace-nowrap">Search Source</div>
+      <div className="truncate whitespace-nowrap">Search Location</div>
       <div className="text-right whitespace-nowrap">Date</div>
       <div></div>
     </div>

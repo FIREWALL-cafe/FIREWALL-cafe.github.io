@@ -56,7 +56,10 @@ const QueryItem = ({
   search_term_initial, 
   search_term_initial_language_code, 
   search_term_translation, 
-  search_location, 
+  search_location,
+  search_city,
+  search_country,
+  search_region,
   search_timestamp, 
   filterOptions,
   isExpanded = false,
@@ -98,9 +101,7 @@ const QueryItem = ({
     }
   };
 
-  const locationLabel = locationMapping[search_location] || 
-                       (filterOptions?.cities?.length === 1 && locationMapping[filterOptions.cities[0]]) || 
-                       search_location;
+  const locationLabel = search_city || (search_region || search_country) || search_location;
 
   var isEnglish = true;
   if (search_term_initial_language_code === 'zh-CN') {
