@@ -372,19 +372,43 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_panel_edit.jpg",
-        alt: "Networked Feminism Image 1"
+        alt: "Lu Pin, Program manager of Media Monitor for Women Network and chief editor of Feminist Voices, speaks in front of audience",
+        caption: "Lu Pin, Program manager of Media Monitor for Women Network and chief editor of Feminist Voices, speaks in front of audience"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_audience_edit.jpg",
-        alt: "Networked Feminism Image 2"
+        alt: "Audience at the panel discussion 'Networked Feminism in China', Chinatown Soup, NYC.",
+        caption: "Audience at the panel discussion 'Networked Feminism in China', Chinatown Soup, NYC."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Susan_edit.jpg",
-        alt: "Networked Feminism Image 3"
+        alt: "Susan E. McGregor, panel moderator, Assistant Director of the Tow Center for Digital Journalism & Assistant Professor at Columbia Journalism School",
+        caption: "Susan E. McGregor, panel moderator, Assistant Director of the Tow Center for Digital Journalism & Assistant Professor at Columbia Journalism School"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Mingming_edit.jpg",
-        alt: "Networked Feminism Image 4"
+        alt: "Shitou, queer filmmaker and activist from Beijing, China.",
+        caption: "Shitou, queer filmmaker and activist from Beijing, China."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Xintong_edit.jpg",
+        alt: "Xintong Liu, designer, social innovator, and feminist organizer.",
+        caption: "Xintong Liu, designer, social innovator, and feminist organizer."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Joyce_edit.jpg",
+        alt: "Joyce Yu-Jean Lee, Founder of FIREWALL",
+        caption: "Joyce Yu-Jean Lee, Founder of FIREWALL"
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Siodhbhra_edit.jpg",
+        alt: "Siodhbhra Parkin, Translator/Fellow of the Paul Tsai China Center at Yale Law School.",
+        caption: "Siodhbhra Parkin, Translator/Fellow of the Paul Tsai China Center at Yale Law School."
+      },
+      {
+        src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Feminism_Barbara_edit.jpg",
+        alt: "Barbara Pollack, art critic, curator, and journalist",
+        caption: "Barbara Pollack, art critic, curator, and journalist"
       }
     ]
   },
@@ -488,27 +512,33 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_1.jpg",
-        alt: "Ramp Gallery Image 1"
+        alt: "in conversation with a FIREWALL participant",
+        caption: "in conversation with a FIREWALL participant"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_2.jpg",
-        alt: "Ramp Gallery Image 2"
+        alt: "FIREWALL Pop-up at Ramp Gallery in Asheville, NC",
+        caption: "FIREWALL Pop-up at Ramp Gallery in Asheville, NC"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_3.jpg",
-        alt: "Ramp Gallery Image 3"
+        alt: "Artist talks moderated by Lei Han with (left to right) Janna Dyk, Joyce, Victoria Bradbury and Ben Duvall",
+        caption: "Artist talks moderated by Lei Han with (left to right) Janna Dyk, Joyce, Victoria Bradbury and Ben Duvall"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_4.jpg",
-        alt: "Ramp Gallery Image 4"
+        alt: "Artist talks moderated by Lei Han, Director of New Media program at University of North Carolina, Asheville",
+        caption: "Artist talks moderated by Lei Han, Director of New Media program at University of North Carolina, Asheville"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_5.jpg",
-        alt: "Ramp Gallery Image 5"
+        alt: "Exhibiting artists (left to right): Ben Duvall, Janna Dyk, Joyce Yu-Jean Lee, Suzanne Dittenber (curator) and Victoria Bradbury",
+        caption: "Exhibiting artists (left to right): Ben Duvall, Janna Dyk, Joyce Yu-Jean Lee, Suzanne Dittenber (curator) and Victoria Bradbury"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/REDIRECT_6.jpg",
-        alt: "Ramp Gallery Image 6"
+        alt: "FIREWALL Pop-up at Ramp Gallery",
+        caption: "FIREWALL Pop-up at Ramp Gallery"
       }
     ]
   },
@@ -536,31 +566,38 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_1.jpg",
-        alt: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
+        alt: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero.",
+        caption: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_2.jpg",
-        alt: "FIREWALL founder Joyce Yu-Jean Lee in conversation with a participant. Photo by Claudia Romero."
+        alt: "FIREWALL founder Joyce Yu-Jean Lee in conversation with a participant. Photo by Claudia Romero.",
+        caption: "FIREWALL founder Joyce Yu-Jean Lee in conversation with a participant. Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_3.jpg",
-        alt: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
+        alt: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero.",
+        caption: "FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). In the background: LOOK AT HER, Digital Prints, by Hui Ye, Artist. Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_4.jpg",
-        alt: "Joyce Yu Jean-Lee in conversation with participants about FIREWALL. Photo by Claudia Romero."
+        alt: "Joyce Yu Jean-Lee in conversation with participants about FIREWALL. Photo by Claudia Romero.",
+        caption: "Joyce Yu Jean-Lee in conversation with participants about FIREWALL. Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_5.jpg",
-        alt: "Search Session Instructions from the FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
+        alt: "Search Session Instructions from the FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero.",
+        caption: "Search Session Instructions from the FIREWALL Pop-up at Austrian Association of Women Artists (VBKÖ). Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_6.jpg",
-        alt: "Stickers inspired by \"sensitive-term\" Search Votes alongside the Search for Feminism exhibition catalogue. Photo by Claudia Romero."
+        alt: "Stickers inspired by \"sensitive-term\" Search Votes alongside the Search for Feminism exhibition catalogue. Photo by Claudia Romero.",
+        caption: "Stickers inspired by \"sensitive-term\" Search Votes alongside the Search for Feminism exhibition catalogue. Photo by Claudia Romero."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/VBKO_7.jpg",
-        alt: "Exhibition installation view"
+        alt: "Exhibition installation view",
+        caption: "Exhibition installation view"
       }
     ]
   },
@@ -617,15 +654,18 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Firewall_HK_1920.jpg",
-        alt: "Hong Kong Image 1"
+        alt: "Participants keying search terms into FIREWALL dual-search browser",
+        caption: "Participants keying search terms into FIREWALL dual-search browser"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Firewall_HK5_1920-1.jpg",
-        alt: "Hong Kong Image 2"
+        alt: "Artist Joyce Yu-Jean Lee explains the concept of FIREWALL to participants",
+        caption: "Artist Joyce Yu-Jean Lee explains the concept of FIREWALL to participants"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/Firewall_HK6_1920-950x629-1.jpg",
-        alt: "Hong Kong Image 3"
+        alt: "Discussion group after \"Not Found\", a performance by artist Ying Ting",
+        caption: "Discussion group after \"Not Found\", a performance by artist Ying Ting"
       }
     ]
   },
@@ -651,27 +691,33 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo1.jpg",
-        alt: "OFF18 Image 1"
+        alt: "Artist Joyce Yu-Jean Lee giving participants a tour of FIREWALL",
+        caption: "Artist Joyce Yu-Jean Lee giving participants a tour of FIREWALL"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo2.jpg",
-        alt: "OFF18 Image 2"
+        alt: "An audience member studies how the FIREWALL dual-search engine works.",
+        caption: "An audience member studies how the FIREWALL dual-search engine works."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo3.jpg",
-        alt: "OFF18 Image 3"
+        alt: "Co-founders of FIREWALL: Dan Phiffer, coder and Joyce Yu-Jean Lee, artist.",
+        caption: "Co-founders of FIREWALL: Dan Phiffer, coder and Joyce Yu-Jean Lee, artist."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo4.jpg",
-        alt: "OFF18 Image 4"
+        alt: "Participants wrote their most interesting searches on a brick. Lucky winners would walk away with a raffle prize!",
+        caption: "Participants wrote their most interesting searches on a brick. Lucky winners would walk away with a raffle prize!"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo5.jpg",
-        alt: "OFF18 Image 5"
+        alt: "FIREWALL installation with raffle and bricks",
+        caption: "FIREWALL installation with raffle and bricks"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF18_expo6.jpg",
-        alt: "OFF18 Image 6"
+        alt: "A happy raffle winner with his prize – a book about Censorship!",
+        caption: "A happy raffle winner with his prize – a book about Censorship!"
       }
     ]
   },
@@ -689,19 +735,23 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_1-1.jpg",
-        alt: "OFF17 Image 1"
+        alt: "From left to right: Teng Biao, human rights activist and lawyer, Joyce Yu-Jean Lee, founder of FIREWALL, Lu Miaoqing, human rights laywer",
+        caption: "From left to right: Teng Biao, human rights activist and lawyer, Joyce Yu-Jean Lee, founder of FIREWALL, Lu Miaoqing, human rights laywer"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_2-1.jpg",
-        alt: "OFF17 Image 2"
+        alt: "A search session for \"Xi Jinping Winnie the Pooh\"",
+        caption: "A search session for \"Xi Jinping Winnie the Pooh\""
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_3-1.jpg",
-        alt: "OFF17 Image 3"
+        alt: "Professor Joyce Yu-Jean Lee with students from New Jersey City University",
+        caption: "Professor Joyce Yu-Jean Lee with students from New Jersey City University"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/OFF17_4-1.jpg",
-        alt: "OFF17 Image 4"
+        alt: "A search station at Alice Tully Hall, Lincoln Center",
+        caption: "A search station at Alice Tully Hall, Lincoln Center"
       }
     ]
   },
@@ -726,27 +776,33 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo6_1920.jpg",
-        alt: "Firewall OFF Oslo 6"
+        alt: "LED lights released in the Spikersuppa Square foundtain outside FIREWALL",
+        caption: "LED lights released in the Spikersuppa Square foundtain outside FIREWALL"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo3_1920.jpg",
-        alt: "Firewall OFF Oslo 3"
+        alt: "Free wi-fi and Starbucks inside tent",
+        caption: "Free wi-fi and Starbucks inside tent"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo5_1920.jpg",
-        alt: "Firewall OFF Oslo 5"
+        alt: "Dan Phiffer & activist Maria Toorpakai Wazir search Pakistani conspiracy theory, \"Is Donald Trump Pakistani?\"",
+        caption: "Dan Phiffer & activist Maria Toorpakai Wazir search Pakistani conspiracy theory, \"Is Donald Trump Pakistani?\""
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo1_1920.jpg",
-        alt: "Firewall OFF Oslo 1"
+        alt: "Searching Chinese political dissidents with Oslo Freedom Forum founder, Thor Halvorssen",
+        caption: "Searching Chinese political dissidents with Oslo Freedom Forum founder, Thor Halvorssen"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo_1920.jpg",
-        alt: "Firewall OFF Oslo"
+        alt: "Inside pop-up at Spikersuppa Square, Oslo, Norway",
+        caption: "Inside pop-up at Spikersuppa Square, Oslo, Norway"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/FirewallOFFoslo5_1920-1.jpg",
-        alt: "Firewall OFF Oslo 5"
+        alt: "FIREWALL pop-up in Spikersuppa Square, Oslo, Norway during Oslo Freedom Forum 2017",
+        caption: "FIREWALL pop-up in Spikersuppa Square, Oslo, Norway during Oslo Freedom Forum 2017"
       }
     ]
   },
@@ -772,19 +828,23 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten3.jpg",
-        alt: "Serendipity Image 1"
+        alt: "Serendipity Image 1",
+        caption: "Exhibition view from 'Search for... Serendipity' in Austria. Photo by Magdalena Stöger."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten1.jpg",
-        alt: "Serendipity Image 2"
+        alt: "Serendipity Image 2",
+        caption: "Visitors engaging with artworks at REDpoint gallery. Photo by Magdalena Stöger."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten2.jpg",
-        alt: "Serendipity Image 3"
+        alt: "Serendipity Image 3",
+        caption: "Gallery installation view featuring digital art works. Photo by Magdalena Stöger."
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/StPolten5.jpg",
-        alt: "Serendipity Image 4"
+        alt: "Serendipity Image 4",
+        caption: "Detail view of interactive digital installation. Photo by Magdalena Stöger."
       }
     ]
   },
@@ -803,39 +863,48 @@ export const eventsData = {
     images: [
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3948.jpg",
-        alt: "Inaugural Image 1"
+        alt: "View from main Search Station inside gallery",
+        caption: "View from main Search Station inside gallery"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3814.jpg",
-        alt: "Inaugural Image 2"
+        alt: "Title Wall at Entrance of Exhibition",
+        caption: "Title Wall at Entrance of Exhibition"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3774-1.jpg",
-        alt: "Inaugural Image 3"
+        alt: "Exterior View of Internet Cafe",
+        caption: "Exterior View of Internet Cafe"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3864-2.jpg",
-        alt: "Inaugural Image 4"
+        alt: "Search Stations",
+        caption: "Search Stations"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3960crop-1.jpeg",
-        alt: "Inaugural Image 5"
+        alt: "FIREWALL Cafe paraphernalia",
+        caption: "FIREWALL Cafe paraphernalia"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_4230crop.jpeg",
-        alt: "Inaugural Image 6"
+        alt: "FIREWALL Cafe Special Events",
+        caption: "FIREWALL Cafe Special Events"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_4212crop.jpeg",
-        alt: "Inaugural Image 7"
+        alt: "Exhibition view",
+        caption: "Exhibition view"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_4248.jpg",
-        alt: "Inaugural Image 8"
+        alt: "FIREWALL Cafe Tea Menu",
+        caption: "FIREWALL Cafe Tea Menu"
       },
       {
         src: "https://firewall-cafe-space.nyc3.digitaloceanspaces.com/images/IMG_3973.jpg",
-        alt: "Inaugural Image 9"
+        alt: "TenRen Tea served at FIREWALL Cafe",
+        caption: "TenRen Tea served at FIREWALL Cafe"
       }
     ]
   }
