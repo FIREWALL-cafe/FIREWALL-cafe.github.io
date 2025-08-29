@@ -16,13 +16,16 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
   // Dynamic country list from database
   const [countries, setCountries] = useState([]);
   
-  // Get unique city keys and sort them by their display names
+  // Dynamic search locations from database
+  const [searchLocations, setSearchLocations] = useState([]);
+  
+  // Get unique city keys and sort them by their display names (keeping for backward compatibility)
   const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
     .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
-  // Fetch countries data when component mounts  
+  // Fetch countries and search locations data when component mounts  
   useEffect(() => {
     const fetchCountriesData = async () => {
       try {
@@ -45,6 +48,39 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       }
     };
 
+    const fetchSearchLocationsData = async () => {
+      try {
+        const response = await fetch('/api/search-locations');
+        if (response.ok) {
+          const data = await response.json();
+          // Filter out automated scrapers and format for dropdown
+          const formattedLocations = data
+            .filter(location => location.search_location && 
+                    location.search_location !== 'automated_scraper' && 
+                    location.search_location !== 'nyc3')
+            .map(location => ({
+              value: location.search_location,
+              label: location.search_location,
+              search_count: location.search_count
+            }))
+            .sort((a, b) => b.search_count - a.search_count); // Sort by search count descending
+          setSearchLocations(formattedLocations);
+        }
+      } catch (error) {
+        console.error('Error fetching search locations data:', error);
+        // Fallback to location mapping if API fails
+        const fallbackLocations = Object.entries(locationMapping)
+          .filter(([key]) => key !== 'automated_scraper')
+          .map(([key, value]) => ({
+            value: value,
+            label: value,
+            search_count: 0
+          }))
+          .sort((a, b) => a.label.localeCompare(b.label));
+        setSearchLocations(fallbackLocations);
+      }
+    };
+
     const fetchUSStatesData = async () => {
       try {
         setLoadingStates(true);
@@ -60,9 +96,12 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       }
     };
 
-    // Fetch countries once when component mounts
+    // Fetch countries and search locations once when component mounts
     if (countries.length === 0) {
       fetchCountriesData();
+    }
+    if (searchLocations.length === 0) {
+      fetchSearchLocationsData();
     }
 
     if (isOpen) {
@@ -84,7 +123,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         }
         
         if (citiesSelect && citiesSelect.value) {
-          newActiveFilters.source = locationMapping[citiesSelect.value];
+          // Check if it's an old locationMapping key or a direct search_location value
+          newActiveFilters.source = locationMapping[citiesSelect.value] || citiesSelect.value;
         }
         
         if (usStatesSelect && usStatesSelect.value) {
@@ -160,7 +200,9 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       setSelectedCountry('');
       if (citiesSelect.value) {
         filterOptions.cities = [citiesSelect.value];
-        setActiveFilters(prev => ({ ...prev, source: locationMapping[citiesSelect.value], country: null, usState: null }));
+        // Handle both old location mapping keys and direct search_location values
+        const sourceLabel = locationMapping[citiesSelect.value] || citiesSelect.value;
+        setActiveFilters(prev => ({ ...prev, source: sourceLabel, country: null, usState: null }));
       } else {
         setActiveFilters(prev => ({ ...prev, source: null }));
       }
@@ -195,7 +237,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         newActiveFilters.country = country ? country.name : null;
       }
       if (citiesSelect && citiesSelect.value) {
-        newActiveFilters.source = locationMapping[citiesSelect.value];
+        // Handle both old location mapping keys and direct search_location values
+        newActiveFilters.source = locationMapping[citiesSelect.value] || citiesSelect.value;
       }
       if (usStatesSelect && usStatesSelect.value) {
         newActiveFilters.usState = usStatesSelect.value;
@@ -363,7 +406,13 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                 disabled={isLoading}
               >
                 <option value="">All Sources</option>
-                {uniqueCityKeys.map((cityKey) => (
+                {searchLocations.map((location) => (
+                  <option key={location.value} value={location.value}>
+                    {location.label} ({location.search_count})
+                  </option>
+                ))}
+                {/* Fallback to old location mapping if new data isn't loaded */}
+                {searchLocations.length === 0 && uniqueCityKeys.map((cityKey) => (
                   <option key={cityKey} value={cityKey}>
                     {locationMapping[cityKey]}
                   </option>
