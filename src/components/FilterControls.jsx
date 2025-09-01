@@ -7,10 +7,14 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [usStatesData, setUsStatesData] = useState([]);
   const [loadingStates, setLoadingStates] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [activeFilters, setActiveFilters] = useState({
     country: null,
     usState: null,
-    source: null
+    source: null,
+    startDate: null,
+    endDate: null
   });
 
   // Dynamic country list from database
@@ -50,7 +54,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
 
     const fetchSearchLocationsData = async () => {
       try {
-        const response = await fetch('/api/search-locations');
+        const response = await fetch('/searches/search-locations');
         if (response.ok) {
           const data = await response.json();
           // Filter out automated scrapers and format for dropdown
@@ -60,7 +64,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                     location.search_location !== 'nyc3')
             .map(location => ({
               value: location.search_location,
-              label: location.search_location,
+              label: formatLocationName(location.search_location),
               search_count: location.search_count
             }))
             .sort((a, b) => b.search_count - a.search_count); // Sort by search count descending
@@ -68,16 +72,6 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         }
       } catch (error) {
         console.error('Error fetching search locations data:', error);
-        // Fallback to location mapping if API fails
-        const fallbackLocations = Object.entries(locationMapping)
-          .filter(([key]) => key !== 'automated_scraper')
-          .map(([key, value]) => ({
-            value: value,
-            label: value,
-            search_count: 0
-          }))
-          .sort((a, b) => a.label.localeCompare(b.label));
-        setSearchLocations(fallbackLocations);
       }
     };
 
@@ -114,7 +108,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         const citiesSelect = form.querySelector('select[name="cities"]');
         const usStatesSelect = form.querySelector('select[name="us_states"]');
         
-        const newActiveFilters = { country: null, usState: null, source: null };
+        const newActiveFilters = { country: null, usState: null, source: null, startDate: startDate || null, endDate: endDate || null };
         
         if (countriesSelect && countriesSelect.value) {
           const country = countries.find(c => c.code === countriesSelect.value);
@@ -124,7 +118,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         
         if (citiesSelect && citiesSelect.value) {
           // Check if it's an old locationMapping key or a direct search_location value
-          newActiveFilters.source = locationMapping[citiesSelect.value] || citiesSelect.value;
+          const matchedLocation = searchLocations.find(loc => loc.value === citiesSelect.value);
+          newActiveFilters.source = matchedLocation ? matchedLocation.label : (locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value));
         }
         
         if (usStatesSelect && usStatesSelect.value) {
@@ -152,6 +147,37 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     handleFilterChange();
   }
 
+  const handleDateChange = (event) => {
+    const { name, value } = event.target;
+    
+    if (name === 'start_date') {
+      // Validate that start date is not after end date
+      if (endDate && value && new Date(value) > new Date(endDate)) {
+        // Clear end date if start date is after it
+        setEndDate('');
+        setActiveFilters(prev => ({ ...prev, startDate: value || null, endDate: null }));
+      } else {
+        setActiveFilters(prev => ({ ...prev, startDate: value || null }));
+      }
+      setStartDate(value);
+    } else if (name === 'end_date') {
+      // Validate that end date is not before start date
+      if (startDate && value && new Date(value) < new Date(startDate)) {
+        // Clear start date if end date is before it
+        setStartDate('');
+        setActiveFilters(prev => ({ ...prev, endDate: value || null, startDate: null }));
+      } else {
+        setActiveFilters(prev => ({ ...prev, endDate: value || null }));
+      }
+      setEndDate(value);
+    }
+  };
+
+  const handleDateBlur = () => {
+    // Trigger filter update when user finishes entering date
+    setTimeout(() => handleFilterChange(), 0);
+  };
+
   const handleFilterChange = (event) => {
     const form = document.getElementById('filter-options-form');
     if (!form) return;
@@ -163,6 +189,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       cities: [],
       us_states: [],
       countries: [],
+      start_date: '',
+      end_date: '',
       page: 1,
       page_size: 10
     };
@@ -201,7 +229,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       if (citiesSelect.value) {
         filterOptions.cities = [citiesSelect.value];
         // Handle both old location mapping keys and direct search_location values
-        const sourceLabel = locationMapping[citiesSelect.value] || citiesSelect.value;
+        const matchedLocation = searchLocations.find(loc => loc.value === citiesSelect.value);
+        const sourceLabel = matchedLocation ? matchedLocation.label : (locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value));
         setActiveFilters(prev => ({ ...prev, source: sourceLabel, country: null, usState: null }));
       } else {
         setActiveFilters(prev => ({ ...prev, source: null }));
@@ -230,20 +259,41 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         filterOptions.us_states = [usStatesSelect.value];
       }
       
+      // Include current date values in filter options
+      if (startDate) {
+        filterOptions.start_date = startDate;
+      }
+      if (endDate) {
+        filterOptions.end_date = endDate;
+      }
+      
       // Update active filters based on current form state
-      const newActiveFilters = { country: null, usState: null, source: null };
+      const newActiveFilters = { country: null, usState: null, source: null, startDate: null, endDate: null };
       if (countriesSelect && countriesSelect.value) {
         const country = countries.find(c => c.code === countriesSelect.value);
         newActiveFilters.country = country ? country.name : null;
       }
       if (citiesSelect && citiesSelect.value) {
         // Handle both old location mapping keys and direct search_location values
-        newActiveFilters.source = locationMapping[citiesSelect.value] || citiesSelect.value;
+        const matchedLocation = searchLocations.find(loc => loc.value === citiesSelect.value);
+        newActiveFilters.source = matchedLocation ? matchedLocation.label : (locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value));
       }
       if (usStatesSelect && usStatesSelect.value) {
         newActiveFilters.usState = usStatesSelect.value;
       }
+      // Include current date values in active filters
+      newActiveFilters.startDate = startDate || null;
+      newActiveFilters.endDate = endDate || null;
       setActiveFilters(newActiveFilters);
+    }
+    
+    // Get date values from state
+    if (startDate) {
+      filterOptions.start_date = startDate;
+    }
+    
+    if (endDate) {
+      filterOptions.end_date = endDate;
     }
     
     // Get vote values
@@ -263,7 +313,9 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
 
     setShouldResetVotes(true);
     setSelectedCountry(''); // Reset selected country
-    setActiveFilters({ country: null, usState: null, source: null }); // Reset active filters
+    setStartDate(''); // Reset start date
+    setEndDate(''); // Reset end date
+    setActiveFilters({ country: null, usState: null, source: null, startDate: null, endDate: null }); // Reset active filters
     setTimeout(() => {
       setShouldResetVotes(false);
       // Pass false as second argument to prevent closing
@@ -273,6 +325,8 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         cities: [],
         us_states: [],
         countries: [],
+        start_date: '',
+        end_date: '',
         page: 1,
         page_size: 10
       }, false, true);
@@ -286,7 +340,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     `}>
       <div className="p-4">
         {/* Active Filters Section */}
-        {(activeFilters.country || activeFilters.source || activeFilters.usState) && (
+        {(activeFilters.country || activeFilters.source || activeFilters.usState || activeFilters.startDate || activeFilters.endDate) && (
           <div className="mb-4 p-3 bg-gray-50 rounded-lg">
             <div className="text-sm font-semibold mb-2">Active Filters:</div>
             <div className="flex flex-wrap gap-2">
@@ -336,6 +390,36 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                       }
                     }}
                     className="text-purple-600 hover:text-purple-800 font-bold"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {activeFilters.startDate && (
+                <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
+                  Start: {activeFilters.startDate}
+                  <button 
+                    onClick={() => {
+                      setStartDate('');
+                      setActiveFilters(prev => ({ ...prev, startDate: null }));
+                      setTimeout(() => handleFilterChange(), 0);
+                    }}
+                    className="text-orange-600 hover:text-orange-800 font-bold"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {activeFilters.endDate && (
+                <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
+                  End: {activeFilters.endDate}
+                  <button 
+                    onClick={() => {
+                      setEndDate('');
+                      setActiveFilters(prev => ({ ...prev, endDate: null }));
+                      setTimeout(() => handleFilterChange(), 0);
+                    }}
+                    className="text-orange-600 hover:text-orange-800 font-bold"
                   >
                     ×
                   </button>
@@ -411,13 +495,34 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                     {location.label} ({location.search_count})
                   </option>
                 ))}
-                {/* Fallback to old location mapping if new data isn't loaded */}
-                {searchLocations.length === 0 && uniqueCityKeys.map((cityKey) => (
-                  <option key={cityKey} value={cityKey}>
-                    {locationMapping[cityKey]}
-                  </option>
-                ))}
               </select>
+            </div>
+            
+            {/* Date Range Section */}
+            <div className="flex flex-col">
+              <label htmlFor="start_date" className="text-lg font-black mb-2">Start Date</label>
+              <input
+                type="date"
+                name="start_date"
+                className="w-full border border-zinc-400 rounded p-2"
+                onChange={handleDateChange}
+                onBlur={handleDateBlur}
+                value={startDate}
+                disabled={isLoading}
+              />
+            </div>
+            
+            <div className="flex flex-col">
+              <label htmlFor="end_date" className="text-lg font-black mb-2">End Date</label>
+              <input
+                type="date"
+                name="end_date"
+                className="w-full border border-zinc-400 rounded p-2"
+                onChange={handleDateChange}
+                onBlur={handleDateBlur}
+                value={endDate}
+                disabled={isLoading}
+              />
             </div>
             
             {/* Vote Results Section */}
@@ -441,7 +546,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
           {/* Close/Clear buttons */}
           <div className="flex items-center justify-between pt-3 border-t border-gray-200">
             <div className="flex items-center gap-2">
-              {(activeFilters.country || activeFilters.source || activeFilters.usState) && (
+              {(activeFilters.country || activeFilters.source || activeFilters.usState || activeFilters.startDate || activeFilters.endDate) && (
                 <span className="text-sm text-gray-600">
                   {Object.values(activeFilters).filter(Boolean).length} filter{Object.values(activeFilters).filter(Boolean).length !== 1 ? 's' : ''} active
                 </span>
