@@ -343,6 +343,13 @@ const getUSStatesAnalytics = async () => {
   return data;
 }
 
+const getSearchLocations = async () => {
+  console.log('fetching search locations data');
+  const url = `${serverConfig.apiUrl}search-locations`;
+  const { data } = await axios.get(url);
+  return data;
+}
+
 module.exports = {
   getDashboardData,
   getGoogleImages,
@@ -356,4 +363,5 @@ module.exports = {
   saveImages,
   getSearchVoteCounts,
   getUSStatesAnalytics,
+  getSearchLocations,
 };

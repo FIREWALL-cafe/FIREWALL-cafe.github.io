@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const axios = require('axios');
-const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages, getSearchVoteCounts } = require('./server/fetch');
+const { getDashboardData, getGoogleImages, getBaiduImages, getDetectedLanguage, getSearchImages, getSearchesByTerm, getSearchesFilter, getTranslation, postVote, saveImages, getSearchVoteCounts, getSearchLocations } = require('./server/fetch');
 const postmark = require('postmark');
 const { ipMiddleware, getClientIp } = require('./server/ip-utils');
 
@@ -178,6 +178,15 @@ app.post('/searches', async (req, res) => {
   if (req.query.countries) {
     otherFilters.countries = req.query.countries;
   }
+  
+  // Pass through date parameters for filtering
+  if (req.query.start_date) {
+    otherFilters.start_date = req.query.start_date;
+  }
+  
+  if (req.query.end_date) {
+    otherFilters.end_date = req.query.end_date;
+  }
 
   // Ensure pagination parameters are numbers
   const paginationParams = {
@@ -282,6 +291,22 @@ app.get('/api/countries', async (req, res) => {
     console.error('Countries list error:', error);
     res.status(500).json({ 
       error: 'Failed to fetch countries list',
+      message: error.message 
+    });
+  }
+});
+
+// Search locations list endpoint
+app.get('/searches/search-locations', async (req, res) => {
+  console.log('/searches/search-locations: request received');
+  
+  try {
+    const data = await getSearchLocations();
+    res.json(data);
+  } catch (error) {
+    console.error('Search locations list error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch search locations list',
       message: error.message 
     });
   }

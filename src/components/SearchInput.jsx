@@ -31,7 +31,7 @@ function SearchInput({ searchMode }) {
   const [username] = useCookie("username");
   const [filterOpen, setFilterOpen] = useState(false);
   const [isArchive] = useState(searchMode === 'archive');
-  const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [], us_states: [], countries: [] });
+  const [currentFilters, setCurrentFilters] = useState({ vote_ids: [], years: [], cities: [], us_states: [], countries: [], start_date: '', end_date: '' });
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
@@ -163,7 +163,9 @@ function SearchInput({ searchMode }) {
         cities: filterOptions.cities,
         us_states: filterOptions.us_states,
         countries: filterOptions.countries,
-        vote_ids: filterOptions.vote_ids
+        vote_ids: filterOptions.vote_ids,
+        start_date: filterOptions.start_date,
+        end_date: filterOptions.end_date
       };
 
       const results = await searchArchive(searchParams);
@@ -181,14 +183,18 @@ function SearchInput({ searchMode }) {
     try {
       const nextPage = archiveResults.page + 1;
       
-      // Fetch next page data
+      // Fetch next page data with all current filters
       const searchParams = {
         ...(query ? { query: query.trim() } : {}),
         page: nextPage,
         page_size: archiveResults.page_size,
         years: currentFilters.years,
         cities: currentFilters.cities,
-        vote_ids: currentFilters.vote_ids
+        us_states: currentFilters.us_states,
+        countries: currentFilters.countries,
+        vote_ids: currentFilters.vote_ids,
+        start_date: currentFilters.start_date,
+        end_date: currentFilters.end_date
       };
 
       const results = await searchArchive(searchParams);
@@ -350,28 +356,6 @@ function SearchInput({ searchMode }) {
         />}
         {(currentSearchId && !isArchive && imageResults?.googleResults.length > 0) && (
           <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
-        )}
-        {(currentSearchId && isArchive && (currentFilters.years.length > 0 || currentFilters.cities.length > 0 || currentFilters.vote_ids.length > 0)) && (
-          <>
-            <h2 className="text-xl font-bold mb-2">Current Filters</h2>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {currentFilters.years.length > 0 && (
-                <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                  Years: {currentFilters.years.join(', ')}
-                </span>
-              )}
-              {currentFilters.cities.length > 0 && (
-                <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                  Cities: {currentFilters.cities.join(', ')}
-                </span>
-              )}
-              {currentFilters.vote_ids.length > 0 && (
-                <span className="px-2 py-1 bg-gray-100 rounded text-sm">
-                  Votes: {currentFilters.vote_ids.length} selected
-                </span>
-              )}
-            </div>
-          </>
         )}
       </div>
       {/* Default most recent archive results */}
