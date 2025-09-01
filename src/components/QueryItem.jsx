@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
-import { locationMapping } from '../constants/locations';
 import ExpandIcon from './icons/ExpandIcon';
+
+// Helper function to convert snake_case to human readable format
+const formatLocationName = (locationKey) => {
+  if (!locationKey) return locationKey;
+  return locationKey
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 
 // Separate the date formatting logic into a custom hook
 const useDateFormat = (isDesktop) => {
@@ -61,7 +69,6 @@ const QueryItem = ({
   search_country,
   search_region,
   search_timestamp, 
-  filterOptions,
   isExpanded = false,
   onToggle
 }) => {
@@ -101,7 +108,7 @@ const QueryItem = ({
     }
   };
 
-  const locationLabel = search_city || (search_region || search_country) || search_location;
+  const locationLabel = search_city || (search_region || search_country) || formatLocationName(search_location);
 
   var isEnglish = true;
   if (search_term_initial_language_code === 'zh-CN') {

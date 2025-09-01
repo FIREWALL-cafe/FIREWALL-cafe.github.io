@@ -27,6 +27,14 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
   const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
     .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
+  // Helper function to convert snake_case to human readable format
+  const formatLocationName = (locationKey) => {
+    return locationKey
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
 
   // Fetch countries and search locations data when component mounts  
