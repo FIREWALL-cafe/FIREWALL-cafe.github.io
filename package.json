@@ -8,8 +8,9 @@
     "node": "20.x.x"
   },
   "scripts": {
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "yarn run format && yarn run lint && yarn run build",
+    "deploy": "node scripts/deploy.js",
+    "rollback": "node scripts/rollback.js",
     "build": "react-scripts build",
     "start:server": "NODE_ENV=development nodemon index.js --watch index.js --watch server/",
     "start:client": "BROWSER=none react-scripts start",
