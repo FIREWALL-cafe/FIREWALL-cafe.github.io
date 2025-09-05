@@ -16,20 +16,20 @@ function EventCard({ image, imageHover, link, title, date, location }) {
         </Link>
       </div>
       <div className="flex flex-col justify-between px-5 py-6 w-full bg-white min-h-[220px]">
-        <h3 className="flex-1 text-lg leading-8 text-black text-ellipsis">
-          {title}
-        </h3>
+        <h3 className="flex-1 text-lg leading-8 text-black text-ellipsis">{title}</h3>
         <div className="flex flex-col w-full text-zinc-400">
           <div className="flex gap-1 items-start self-start">
             <time>{date}</time>
           </div>
 
           {location && (
-          <div className="flex gap-2 items-center mt-2 w-full">
-            <img src={Location} alt="" className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-            <div className="flex-1 shrink self-stretch my-auto basis-0">
-              {location}
-            </div>
+            <div className="flex gap-2 items-center mt-2 w-full">
+              <img
+                src={Location}
+                alt=""
+                className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square"
+              />
+              <div className="flex-1 shrink self-stretch my-auto basis-0">{location}</div>
             </div>
           )}
         </div>

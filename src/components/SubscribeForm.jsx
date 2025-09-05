@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-function SubscribeForm({ className = "", inputClassName = "", buttonClassName = "" }) {
+function SubscribeForm({ className = '', inputClassName = '', buttonClassName = '' }) {
   return (
-    <form 
-      action="https://joyceyujeanlee.us12.list-manage.com/subscribe/post?u=9a0599467edb506239b6ed989&id=a007452c99&f_id=0037bce2f0" 
-      method="post" 
+    <form
+      action="https://joyceyujeanlee.us12.list-manage.com/subscribe/post?u=9a0599467edb506239b6ed989&id=a007452c99&f_id=0037bce2f0"
+      method="post"
       id="mc-embedded-subscribe-form"
       name="mc-embedded-subscribe-form"
       className={`validate ${className}`}

@@ -14,10 +14,7 @@ function MenuSection({ title, items, iconSrc }) {
         )}
       </div>
       {items.map((item, index) => (
-        <div
-          key={index}
-          className={`mt-4 ${item === 'Stats + data' ? 'line-through' : ''}`}
-        >
+        <div key={index} className={`mt-4 ${item === 'Stats + data' ? 'line-through' : ''}`}>
           {item}
         </div>
       ))}

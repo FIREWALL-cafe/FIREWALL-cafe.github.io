@@ -5,26 +5,26 @@ function MenuLink({ link, toggleDrawer }) {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.preventDefault();
     toggleDrawer();
     navigate(link.to);
-  }
-  
+  };
+
   return (
     <div className="py-2">
-      <Link 
-        to={link.to} 
-        onClick={handleClick} 
+      <Link
+        to={link.to}
+        onClick={handleClick}
         className="flex items-center gap-4 text-gray-700 hover:text-red-600 transition-colors group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="w-8 h-8 flex items-center justify-center">
           {link.icon && (
-            <img 
-              src={link.icon} 
-              alt={link.title} 
+            <img
+              src={link.icon}
+              alt={link.title}
               className={`w-6 h-6 object-contain transition-all duration-200 ${
                 isHovered ? 'filter-none' : 'grayscale'
               }`}

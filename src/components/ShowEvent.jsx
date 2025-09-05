@@ -6,7 +6,7 @@ import { eventsData } from '../data/eventsData';
 
 function ShowEvent() {
   const { eventId } = useParams();
-  
+
   // Get event data from the eventsData structure
   const eventData = eventsData[eventId];
 
@@ -16,7 +16,10 @@ function ShowEvent() {
         <>
           <div className="mx-auto px-14 pt-14 max-md:px-5 text-red-600">
             <Link to="/events" className="flex items-center gap-2">
-              <ArrowLeft color="currentColor" className="object-contain shrink-0 w-6 aspect-square" /> 
+              <ArrowLeft
+                color="currentColor"
+                className="object-contain shrink-0 w-6 aspect-square"
+              />
               Back to Events
             </Link>
           </div>

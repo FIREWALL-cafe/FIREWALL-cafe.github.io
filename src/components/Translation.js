@@ -6,7 +6,13 @@ const Translation = () => {
   const { translation } = useContext(LayoutContext);
 
   return (
-    <div className="translation__container">{translation && (<>Translation: <strong>{translation}</strong></>)}</div>
+    <div className="translation__container">
+      {translation && (
+        <>
+          Translation: <strong>{translation}</strong>
+        </>
+      )}
+    </div>
   );
 };
 

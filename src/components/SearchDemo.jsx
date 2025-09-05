@@ -7,10 +7,10 @@ const SearchDemo = () => {
     serpapi: [],
     serper: [],
     loading: false,
-    error: null
+    error: null,
   });
 
-  const handleSearch = async (e) => {
+  const handleSearch = async e => {
     e.preventDefault();
     if (!query.trim()) return;
 
@@ -19,21 +19,21 @@ const SearchDemo = () => {
     try {
       // Call our demo endpoint that will fetch from both providers
       const response = await axios.post('/api/search-demo', {
-        query: query.trim()
+        query: query.trim(),
       });
 
       setResults({
         serpapi: response.data.serpapi || [],
         serper: response.data.serper || [],
         loading: false,
-        error: null
+        error: null,
       });
     } catch (error) {
       console.error('Search demo error:', error);
       setResults(prev => ({
         ...prev,
         loading: false,
-        error: error.response?.data?.message || 'Failed to fetch search results'
+        error: error.response?.data?.message || 'Failed to fetch search results',
       }));
     }
   };
@@ -42,29 +42,28 @@ const SearchDemo = () => {
     <div className="border border-gray-200 rounded-lg p-3 bg-white shadow-sm">
       <div className="text-xs text-gray-500 mb-2">#{index + 1}</div>
       <div className="aspect-video bg-gray-100 rounded mb-2 overflow-hidden">
-        <img 
-          src={image.url} 
+        <img
+          src={image.url}
           alt={image.title || `Result ${index + 1}`}
           className="w-full h-full object-cover"
-          onError={(e) => {
+          onError={e => {
             e.target.style.display = 'none';
             e.target.nextSibling.style.display = 'flex';
           }}
         />
-        <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500 text-sm" style={{display: 'none'}}>
+        <div
+          className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500 text-sm"
+          style={{ display: 'none' }}
+        >
           Image failed to load
         </div>
       </div>
       <div className="text-sm">
-        <div className="font-medium text-gray-900 truncate mb-1">
-          {image.title || 'No title'}
-        </div>
+        <div className="font-medium text-gray-900 truncate mb-1">{image.title || 'No title'}</div>
         <div className="text-gray-500 text-xs truncate mb-1">
           {image.source || 'Unknown source'}
         </div>
-        <div className="text-gray-400 text-xs break-all">
-          {image.url}
-        </div>
+        <div className="text-gray-400 text-xs break-all">{image.url}</div>
       </div>
     </div>
   );
@@ -79,18 +78,11 @@ const SearchDemo = () => {
       </div>
       <div className="border border-t-0 border-gray-200 rounded-b-lg p-4 bg-gray-50">
         {results.length === 0 ? (
-          <div className="text-center text-gray-500 py-8">
-            No results to display
-          </div>
+          <div className="text-center text-gray-500 py-8">No results to display</div>
         ) : (
           <div className="grid grid-cols-1 gap-4">
             {results.slice(0, 5).map((image, index) => (
-              <ImageResult 
-                key={index} 
-                image={image} 
-                index={index} 
-                provider={provider}
-              />
+              <ImageResult key={index} image={image} index={index} provider={provider} />
             ))}
           </div>
         )}
@@ -102,20 +94,18 @@ const SearchDemo = () => {
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Search Provider Comparison
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Search Provider Comparison</h1>
           <p className="text-gray-600 mb-4">
             Compare image search results between SerpAPI ($150/month) and Serper.dev ($3/month)
           </p>
-          
+
           {/* Search Form */}
           <form onSubmit={handleSearch} className="max-w-md mx-auto">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={e => setQuery(e.target.value)}
                 placeholder="Enter search query (e.g., 'cats', 'sunset', 'cars')"
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none"
                 disabled={results.loading}
@@ -154,7 +144,7 @@ const SearchDemo = () => {
               bgColor="bg-blue-600"
               textColor="text-white"
             />
-            
+
             <ProviderSection
               title="Serper.dev Results"
               results={results.serper}
@@ -208,7 +198,7 @@ const SearchDemo = () => {
             </ol>
             <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
               <p className="text-yellow-800">
-                <strong>Note:</strong> This demo fetches live results from both APIs to demonstrate 
+                <strong>Note:</strong> This demo fetches live results from both APIs to demonstrate
                 the quality and performance differences in real-time.
               </p>
             </div>

@@ -10,23 +10,40 @@ function Supporters() {
       <div className="container mx-auto max-w-4xl">
         <div className="flex flex-col items-center text-center">
           <div className="font-bitmap-song font-display-01 ipad-portrait:font-display-03">
-            <h2 className="leading-tight text-center">
-              Thanks to our supporters.
-            </h2>
+            <h2 className="leading-tight text-center">Thanks to our supporters.</h2>
             <div className="mt-2 leading-tight text-red-600 tracking-[2.16px] text-center">
               感谢我们的支持者。
             </div>
           </div>
           <div className="mt-8">
             <p className="font-body-01 text-center leading-relaxed">
-              FIREWALL was made possible by the Asian Women Giving Circle; by the Franklin Furnace Fund supported by Jerome Foundation, the Lambent Foundation, The SHS Foundation; and in part with public funds from Creative Engagement, supported by the New York City Department of Cultural Affairs in partnership with the City Council and administered by Lower Manhattan Cultural Council.
+              FIREWALL was made possible by the Asian Women Giving Circle; by the Franklin Furnace
+              Fund supported by Jerome Foundation, the Lambent Foundation, The SHS Foundation; and
+              in part with public funds from Creative Engagement, supported by the New York City
+              Department of Cultural Affairs in partnership with the City Council and administered
+              by Lower Manhattan Cultural Council.
             </p>
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-10 mt-10">
-          <img loading="lazy" src={Jerome} alt="Supporter logo 1" className="h-auto max-w-[250px] object-contain" />
-          <img loading="lazy" src={NYC} alt="Supporter logo 2" className="h-auto max-w-[250px] object-contain" />
-          <img loading="lazy" src={Lambent} alt="Supporter logo 3" className="h-auto max-w-[250px] object-contain" />
+          <img
+            loading="lazy"
+            src={Jerome}
+            alt="Supporter logo 1"
+            className="h-auto max-w-[250px] object-contain"
+          />
+          <img
+            loading="lazy"
+            src={NYC}
+            alt="Supporter logo 2"
+            className="h-auto max-w-[250px] object-contain"
+          />
+          <img
+            loading="lazy"
+            src={Lambent}
+            alt="Supporter logo 3"
+            className="h-auto max-w-[250px] object-contain"
+          />
         </div>
       </div>
     </section>

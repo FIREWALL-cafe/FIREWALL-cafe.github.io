@@ -12,10 +12,8 @@ function EventDetail({ event }) {
       <div className="flex flex-wrap flex-1 shrink gap-10 justify-center w-full basis-0 min-w-[240px] max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink my-auto text-2xl basis-0 min-w-[240px] max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
-            <h1 className="mt-10 font-display-03 font-bitmap-song">
-              {event.title}
-            </h1>
-            
+            <h1 className="mt-10 font-display-03 font-bitmap-song">{event.title}</h1>
+
             <div className="mt-8 space-y-6 font-body-02">
               <div className="space-y-2">
                 {event.exhibition && (
@@ -42,7 +40,7 @@ function EventDetail({ event }) {
                   <LocationIcon className="w-5 h-5 mt-1 text-gray-600 flex-shrink-0" />
                   <div>
                     {event.location.mapLink ? (
-                      <a 
+                      <a
                         href={event.location.mapLink}
                         className="text-red-600 hover:text-red-800"
                         target="_blank"
@@ -53,48 +51,55 @@ function EventDetail({ event }) {
                     ) : (
                       <span>{event.location.name}</span>
                     )}
-                    {event.location.address && event.location.address.map((line, index) => (
-                      <React.Fragment key={index}>
-                        <br />
-                        {line}
-                      </React.Fragment>
-                    ))}
+                    {event.location.address &&
+                      event.location.address.map((line, index) => (
+                        <React.Fragment key={index}>
+                          <br />
+                          {line}
+                        </React.Fragment>
+                      ))}
                   </div>
                 </div>
               )}
 
               <hr className="my-6 border-gray-200" />
 
-              {event.description && event.description.map((paragraph, index) => (
-                <p key={index} className="mb-4 font-body-02">
-                  {paragraph}
-                </p>
-              ))}
+              {event.description &&
+                event.description.map((paragraph, index) => (
+                  <p key={index} className="mb-4 font-body-02">
+                    {paragraph}
+                  </p>
+                ))}
 
-              {event.links && event.links.map((link, index) => (
-                <p key={index} className="mb-8 font-body-02">
-                  {link.publication && <><em>{link.publication}</em> article: </>}
-                  <a href={link.url} 
-                     target="_blank" 
-                     rel="noopener noreferrer"
-                     className="text-red-600 hover:text-red-800">
-                    <em>{link.text}</em>
-                  </a>
-                </p>
-              ))}
+              {event.links &&
+                event.links.map((link, index) => (
+                  <p key={index} className="mb-8 font-body-02">
+                    {link.publication && (
+                      <>
+                        <em>{link.publication}</em> article:{' '}
+                      </>
+                    )}
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <em>{link.text}</em>
+                    </a>
+                  </p>
+                ))}
             </div>
 
             {event.images && event.images.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 font-body-02">
                 {event.images.map((image, index) => (
                   <div key={index} className="flex flex-col">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt}
-                      className="w-full h-auto rounded-lg"
-                    />
+                    <img src={image.src} alt={image.alt} className="w-full h-auto rounded-lg" />
                     {image.caption && (
-                      <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">{image.caption}</p>
+                      <p className="mt-2 text-sm text-gray-600 italic pl-4 border-l-2 border-red-600">
+                        {image.caption}
+                      </p>
                     )}
                   </div>
                 ))}

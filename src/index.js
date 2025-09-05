@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'react-tooltip/dist/react-tooltip.css';
 
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Experts from "./components/Experts";
-import Events from "./components/Events";
-import Press from "./components/Press";
-import Search from "./components/Search";
-import Support from "./components/Support";
-import SearchArchive from "./components/SearchArchive";
-import LanYu from "./components/LanYu";
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Experts from './components/Experts';
+import Events from './components/Events';
+import Press from './components/Press';
+import Search from './components/Search';
+import Support from './components/Support';
+import SearchArchive from './components/SearchArchive';
+import LanYu from './components/LanYu';
 import ShowEvent from './components/ShowEvent';
 import Partners from './components/Partners';
 import Contributors from './components/Contributors';
@@ -21,17 +21,14 @@ import SearchInputDemo from './components/SearchInputDemo';
 import SearchDemo from './components/SearchDemo';
 import WhyDidThisHappen from './components/WhyDidThisHappen';
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Layout from "./routes/layout";
-import ErrorPage from "./error-page";
-  
+import Layout from './routes/layout';
+import ErrorPage from './error-page';
+
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
@@ -40,67 +37,67 @@ const router = createBrowserRouter([
         index: true,
       },
       {
-        path: "about",
+        path: 'about',
         element: <About />,
       },
       {
-        path: "contact",
+        path: 'contact',
         element: <Contact />,
       },
       {
-        path: "editorial",
+        path: 'editorial',
         element: <Experts />,
       },
       {
-        path: "editorial/lan-yu",
+        path: 'editorial/lan-yu',
         element: <LanYu />,
       },
       {
-        path: "events/:eventId",
+        path: 'events/:eventId',
         element: <ShowEvent />,
       },
       {
-        path: "events",
+        path: 'events',
         element: <Events />,
       },
       {
-        path: "timeline",
+        path: 'timeline',
         element: <WhyDidThisHappen />,
       },
       {
-        path: "press",
+        path: 'press',
         element: <Press />,
       },
       {
-        path: "search",
+        path: 'search',
         element: <Search />,
       },
       {
-        path: "archive",
+        path: 'archive',
         element: <SearchArchive />,
       },
       {
-        path: "support",
+        path: 'support',
         element: <Support />,
       },
       {
-        path: "partners",
+        path: 'partners',
         element: <Partners />,
       },
       {
-        path: "contributors",
+        path: 'contributors',
         element: <Contributors />,
       },
       {
-        path: "dashboard",
+        path: 'dashboard',
         element: <Dashboard />,
       },
       {
-        path: "search-demo",
+        path: 'search-demo',
         element: <SearchInputDemo />,
       },
       {
-        path: "search-comparison",
+        path: 'search-comparison',
         element: <SearchDemo />,
       },
     ],

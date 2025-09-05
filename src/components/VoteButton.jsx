@@ -17,7 +17,6 @@ post_id: 310504
 security: 83376c1e81
 */
 
-
 function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVotes }) {
   const [isSelected, setSelected] = useState(false);
   const [isDisabled, setDisabled] = useState(disabled);
@@ -41,53 +40,53 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVot
     votes_lost_in_translation: 5,
     votes_bad_result: 6,
     votes_nsfw: 7,
-  }
-  
+  };
+
   const voteMeta = {
     votes_censored: {
       id: metaKeyToId['votes_censored'],
       name: 'Censored',
-      img: VisibilityOff
+      img: VisibilityOff,
     },
     votes_uncensored: {
       id: metaKeyToId['votes_uncensored'],
       name: 'Uncensored',
-      img: Visibility
+      img: Visibility,
     },
     votes_bad_translation: {
       id: metaKeyToId['votes_bad_translation'],
       name: 'Bad Translation',
-      img: ThumbDown
+      img: ThumbDown,
     },
     votes_good_translation: {
       id: metaKeyToId['votes_good_translation'],
       name: 'Good Translation',
-      img: ThumbUp
+      img: ThumbUp,
     },
     votes_lost_in_translation: {
       id: metaKeyToId['votes_lost_in_translation'],
       name: 'Lost in Translation',
-      img: LostInTranslation
+      img: LostInTranslation,
     },
     votes_nsfw: {
       id: metaKeyToId['votes_nsfw'],
       name: 'NSFW',
-      img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg'
+      img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-nsfw.svg',
     },
     votes_bad_result: {
       id: metaKeyToId['votes_bad_result'],
       name: 'WTF',
-      img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg'
+      img: 'https://firewallcafe.com/wp-content/themes/fwc/img/vote-buttons-bad-result.svg',
     },
-  }
+  };
 
   const imgSrc = voteMeta[voteCategory].img;
-  const vote = (e) => {
+  const vote = e => {
     e.preventDefault();
     setSelected(true);
     setDisabled(true);
     voteHandler(voteCategory);
-  }
+  };
 
   return (
     <button
@@ -103,7 +102,10 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVot
       onClick={vote}
       disabled={isDisabled}
     >
-      <div id={`${voteMeta[voteCategory].name}-vote-icon`} className="w-full flex justify-between items-start">
+      <div
+        id={`${voteMeta[voteCategory].name}-vote-icon`}
+        className="w-full flex justify-between items-start"
+      >
         <img src={imgSrc} className="w-9 h-9" alt={voteMeta[voteCategory].name} />
         {totalVotes > 0 && (
           <div className="flex items-center gap-1">
@@ -113,9 +115,7 @@ function VoteButton({ voteCategory, voteHandler, disabled, shouldReset, totalVot
         )}
       </div>
       <input type="hidden" id={voteCategory} name={voteCategory} />
-      <div className="font-body-02-bold-sm mt-6">
-        {voteMeta[voteCategory].name}
-      </div>
+      <div className="font-body-02-bold-sm mt-6">{voteMeta[voteCategory].name}</div>
     </button>
   );
 }

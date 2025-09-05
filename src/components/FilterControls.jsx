@@ -14,30 +14,32 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     usState: null,
     source: null,
     startDate: null,
-    endDate: null
+    endDate: null,
   });
 
   // Dynamic country list from database
   const [countries, setCountries] = useState([]);
-  
+
   // Dynamic search locations from database
   const [searchLocations, setSearchLocations] = useState([]);
-  
-  // Get unique city keys and sort them by their display names (keeping for backward compatibility)
-  const uniqueCityKeys = [...new Set(Object.keys(locationMapping))]
-    .sort((a, b) => locationMapping[a].localeCompare(locationMapping[b]));
 
   // Helper function to convert snake_case to human readable format
-  const formatLocationName = (locationKey) => {
+  const formatLocationName = locationKey => {
     return locationKey
       .split('_')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   };
 
-  const vote_categories = ['votes_censored', 'votes_uncensored', 'votes_bad_translation', 'votes_good_translation', 'votes_lost_in_translation'];
+  const vote_categories = [
+    'votes_censored',
+    'votes_uncensored',
+    'votes_bad_translation',
+    'votes_good_translation',
+    'votes_lost_in_translation',
+  ];
 
-  // Fetch countries and search locations data when component mounts  
+  // Fetch countries and search locations data when component mounts
   useEffect(() => {
     const fetchCountriesData = async () => {
       try {
@@ -50,7 +52,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
             .map(country => ({
               code: country.code,
               name: country.name,
-              search_count: country.search_count
+              search_count: country.search_count,
             }))
             .sort((a, b) => b.search_count - a.search_count); // Sort by search count descending
           setCountries(formattedCountries);
@@ -67,13 +69,16 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
           const data = await response.json();
           // Filter out automated scrapers and format for dropdown
           const formattedLocations = data
-            .filter(location => location.search_location && 
-                    location.search_location !== 'automated_scraper' && 
-                    location.search_location !== 'nyc3')
+            .filter(
+              location =>
+                location.search_location &&
+                location.search_location !== 'automated_scraper' &&
+                location.search_location !== 'nyc3'
+            )
             .map(location => ({
               value: location.search_location,
               label: formatLocationName(location.search_location),
-              search_count: location.search_count
+              search_count: location.search_count,
             }))
             .sort((a, b) => b.search_count - a.search_count); // Sort by search count descending
           setSearchLocations(formattedLocations);
@@ -108,32 +113,40 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
 
     if (isOpen) {
       fetchUSStatesData();
-      
+
       // Check current form values when opening
       const form = document.getElementById('filter-options-form');
       if (form) {
         const countriesSelect = form.querySelector('select[name="countries"]');
         const citiesSelect = form.querySelector('select[name="cities"]');
         const usStatesSelect = form.querySelector('select[name="us_states"]');
-        
-        const newActiveFilters = { country: null, usState: null, source: null, startDate: startDate || null, endDate: endDate || null };
-        
+
+        const newActiveFilters = {
+          country: null,
+          usState: null,
+          source: null,
+          startDate: startDate || null,
+          endDate: endDate || null,
+        };
+
         if (countriesSelect && countriesSelect.value) {
           const country = countries.find(c => c.code === countriesSelect.value);
           newActiveFilters.country = country ? country.name : null;
           setSelectedCountry(countriesSelect.value);
         }
-        
+
         if (citiesSelect && citiesSelect.value) {
           // Check if it's an old locationMapping key or a direct search_location value
           const matchedLocation = searchLocations.find(loc => loc.value === citiesSelect.value);
-          newActiveFilters.source = matchedLocation ? matchedLocation.label : (locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value));
+          newActiveFilters.source = matchedLocation
+            ? matchedLocation.label
+            : locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value);
         }
-        
+
         if (usStatesSelect && usStatesSelect.value) {
           newActiveFilters.usState = usStatesSelect.value;
         }
-        
+
         setActiveFilters(newActiveFilters);
       }
     }
@@ -147,17 +160,17 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     votes_lost_in_translation: 5,
     votes_bad_result: 6,
     votes_nsfw: 7,
-  }
+  };
 
-  const voteHandler = (voteCategory) => {
+  const voteHandler = voteCategory => {
     let votebtn = document.getElementById(voteCategory);
     votebtn.value = votebtn.value === metaKeyToId[voteCategory] ? '' : metaKeyToId[voteCategory];
     handleFilterChange();
-  }
+  };
 
-  const handleDateChange = (event) => {
+  const handleDateChange = event => {
     const { name, value } = event.target;
-    
+
     if (name === 'start_date') {
       // Validate that start date is not after end date
       if (endDate && value && new Date(value) > new Date(endDate)) {
@@ -186,40 +199,45 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     setTimeout(() => handleFilterChange(), 0);
   };
 
-  const handleFilterChange = (event) => {
+  const handleFilterChange = event => {
     const form = document.getElementById('filter-options-form');
     if (!form) return;
-    
+
     const formData = new FormData(form);
-    const filterOptions = { 
-      vote_ids: [], 
-      years: [], 
+    const filterOptions = {
+      vote_ids: [],
+      years: [],
       cities: [],
       us_states: [],
       countries: [],
       start_date: '',
       end_date: '',
       page: 1,
-      page_size: 10
+      page_size: 10,
     };
-    
+
     // Reset other dropdowns based on which one changed
     const countriesSelect = form.querySelector('select[name="countries"]');
     const citiesSelect = form.querySelector('select[name="cities"]');
     const usStatesSelect = form.querySelector('select[name="us_states"]');
-    
+
     if (event && event.target && event.target.name === 'countries') {
       citiesSelect.value = ''; // Reset Source dropdown
       if (usStatesSelect) {
         usStatesSelect.value = ''; // Reset US States dropdown only if it exists
       }
-      
+
       if (countriesSelect.value) {
         filterOptions.countries = [countriesSelect.value];
         setSelectedCountry(countriesSelect.value);
         const country = countries.find(c => c.code === countriesSelect.value);
-        setActiveFilters(prev => ({ ...prev, country: country ? country.name : null, usState: null, source: null }));
-        
+        setActiveFilters(prev => ({
+          ...prev,
+          country: country ? country.name : null,
+          usState: null,
+          source: null,
+        }));
+
         // If not US, clear states data
         if (countriesSelect.value !== 'US') {
           filterOptions.us_states = [];
@@ -238,7 +256,9 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
         filterOptions.cities = [citiesSelect.value];
         // Handle both old location mapping keys and direct search_location values
         const matchedLocation = searchLocations.find(loc => loc.value === citiesSelect.value);
-        const sourceLabel = matchedLocation ? matchedLocation.label : (locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value));
+        const sourceLabel = matchedLocation
+          ? matchedLocation.label
+          : locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value);
         setActiveFilters(prev => ({ ...prev, source: sourceLabel, country: null, usState: null }));
       } else {
         setActiveFilters(prev => ({ ...prev, source: null }));
@@ -266,7 +286,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       if (usStatesSelect && usStatesSelect.value) {
         filterOptions.us_states = [usStatesSelect.value];
       }
-      
+
       // Include current date values in filter options
       if (startDate) {
         filterOptions.start_date = startDate;
@@ -274,9 +294,15 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       if (endDate) {
         filterOptions.end_date = endDate;
       }
-      
+
       // Update active filters based on current form state
-      const newActiveFilters = { country: null, usState: null, source: null, startDate: null, endDate: null };
+      const newActiveFilters = {
+        country: null,
+        usState: null,
+        source: null,
+        startDate: null,
+        endDate: null,
+      };
       if (countriesSelect && countriesSelect.value) {
         const country = countries.find(c => c.code === countriesSelect.value);
         newActiveFilters.country = country ? country.name : null;
@@ -284,7 +310,9 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       if (citiesSelect && citiesSelect.value) {
         // Handle both old location mapping keys and direct search_location values
         const matchedLocation = searchLocations.find(loc => loc.value === citiesSelect.value);
-        newActiveFilters.source = matchedLocation ? matchedLocation.label : (locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value));
+        newActiveFilters.source = matchedLocation
+          ? matchedLocation.label
+          : locationMapping[citiesSelect.value] || formatLocationName(citiesSelect.value);
       }
       if (usStatesSelect && usStatesSelect.value) {
         newActiveFilters.usState = usStatesSelect.value;
@@ -294,23 +322,23 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
       newActiveFilters.endDate = endDate || null;
       setActiveFilters(newActiveFilters);
     }
-    
+
     // Get date values from state
     if (startDate) {
       filterOptions.start_date = startDate;
     }
-    
+
     if (endDate) {
       filterOptions.end_date = endDate;
     }
-    
+
     // Get vote values
     for (let [key, value] of formData.entries()) {
       if (key.startsWith('votes') && value) {
         filterOptions.vote_ids.push(value);
       }
     }
-    
+
     // Pass false as second argument to prevent closing
     onUpdate(filterOptions, false);
   };
@@ -323,39 +351,55 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
     setSelectedCountry(''); // Reset selected country
     setStartDate(''); // Reset start date
     setEndDate(''); // Reset end date
-    setActiveFilters({ country: null, usState: null, source: null, startDate: null, endDate: null }); // Reset active filters
+    setActiveFilters({
+      country: null,
+      usState: null,
+      source: null,
+      startDate: null,
+      endDate: null,
+    }); // Reset active filters
     setTimeout(() => {
       setShouldResetVotes(false);
       // Pass false as second argument to prevent closing
-      onUpdate({ 
-        vote_ids: [], 
-        years: [], 
-        cities: [],
-        us_states: [],
-        countries: [],
-        start_date: '',
-        end_date: '',
-        page: 1,
-        page_size: 10
-      }, false, true);
+      onUpdate(
+        {
+          vote_ids: [],
+          years: [],
+          cities: [],
+          us_states: [],
+          countries: [],
+          start_date: '',
+          end_date: '',
+          page: 1,
+          page_size: 10,
+        },
+        false,
+        true
+      );
     }, 100);
   };
-  
+
   return (
-    <div className={`
+    <div
+      className={`
       mx-auto w-full max-w-[720px] bg-white border border-red-600 rounded-md overflow-hidden transition-all duration-300 ease-in-out
       ${isOpen ? 'max-h-[800px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 border-0'}
-    `}>
+    `}
+    >
       <div className="p-4">
         {/* Active Filters Section */}
-        {(activeFilters.country || activeFilters.source || activeFilters.usState || activeFilters.startDate || activeFilters.endDate) && (
+        {(activeFilters.country ||
+          activeFilters.source ||
+          activeFilters.usState ||
+          activeFilters.startDate ||
+          activeFilters.endDate) && (
           <div className="mb-4 p-3 bg-gray-50 rounded-lg">
             <div className="text-sm font-semibold mb-2">Active Filters:</div>
             <div className="flex flex-wrap gap-2">
               {activeFilters.country && (
                 <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
                   Country: {activeFilters.country}
-                  <button 
+                  <button
                     onClick={() => {
                       const countriesSelect = document.querySelector('select[name="countries"]');
                       if (countriesSelect) {
@@ -372,7 +416,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
               {activeFilters.usState && (
                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
                   State: {activeFilters.usState}
-                  <button 
+                  <button
                     onClick={() => {
                       const usStatesSelect = document.querySelector('select[name="us_states"]');
                       if (usStatesSelect) {
@@ -389,7 +433,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
               {activeFilters.source && (
                 <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
                   Source: {activeFilters.source}
-                  <button 
+                  <button
                     onClick={() => {
                       const citiesSelect = document.querySelector('select[name="cities"]');
                       if (citiesSelect) {
@@ -406,7 +450,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
               {activeFilters.startDate && (
                 <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
                   Start: {activeFilters.startDate}
-                  <button 
+                  <button
                     onClick={() => {
                       setStartDate('');
                       setActiveFilters(prev => ({ ...prev, startDate: null }));
@@ -421,7 +465,7 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
               {activeFilters.endDate && (
                 <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs flex items-center gap-2">
                   End: {activeFilters.endDate}
-                  <button 
+                  <button
                     onClick={() => {
                       setEndDate('');
                       setActiveFilters(prev => ({ ...prev, endDate: null }));
@@ -436,46 +480,58 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
             </div>
           </div>
         )}
-        
+
         <form id="filter-options-form" className="grow flex flex-col text-black">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {/* Country and US States Section */}
             <div className="flex flex-col">
-              <label htmlFor="countries" className="text-lg font-black mb-2 flex items-center gap-2">
+              <label
+                htmlFor="countries"
+                className="text-lg font-black mb-2 flex items-center gap-2"
+              >
                 Country
-                <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-normal">Primary</span>
+                <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-normal">
+                  Primary
+                </span>
               </label>
-              <select 
+              <select
                 name="countries"
                 className="w-full border border-zinc-400 rounded p-2"
-                onChange={(e) => handleFilterChange(e)}
+                onChange={e => handleFilterChange(e)}
                 disabled={isLoading}
               >
                 <option value="">All Countries</option>
-                {countries.map((country) => (
+                {countries.map(country => (
                   <option key={country.code} value={country.code}>
                     {country.name} ({country.search_count})
                   </option>
                 ))}
               </select>
-              
+
               {/* US States Section - Slides down when US is selected */}
-              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                selectedCountry === 'US' ? 'max-h-40 mt-3' : 'max-h-0'
-              }`}>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  selectedCountry === 'US' ? 'max-h-40 mt-3' : 'max-h-0'
+                }`}
+              >
                 <div className="bg-blue-50/30 p-3 rounded border-l-4 border-blue-200">
-                  <label htmlFor="us_states" className="text-lg font-black mb-2 flex items-center gap-2">
+                  <label
+                    htmlFor="us_states"
+                    className="text-lg font-black mb-2 flex items-center gap-2"
+                  >
                     <span className="text-blue-600">↳</span> US State
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-normal">Secondary</span>
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-normal">
+                      Secondary
+                    </span>
                   </label>
                   <select
                     name="us_states"
                     className="w-full border border-zinc-400 rounded p-2"
-                    onChange={(e) => handleFilterChange(e)}
+                    onChange={e => handleFilterChange(e)}
                     disabled={isLoading || loadingStates}
                   >
                     <option value="">All States</option>
-                    {usStatesData.map((stateData) => (
+                    {usStatesData.map(stateData => (
                       <option key={stateData.state} value={stateData.state}>
                         {stateData.state} ({stateData.search_count})
                       </option>
@@ -490,25 +546,29 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
 
             {/* Sources Section */}
             <div className="flex flex-col">
-              <label htmlFor="cities" className="text-lg font-black mb-2">Search Source</label>
+              <label htmlFor="cities" className="text-lg font-black mb-2">
+                Search Source
+              </label>
               <select
                 name="cities"
                 className="w-full border border-zinc-400 rounded p-2"
-                onChange={(e) => handleFilterChange(e)}
+                onChange={e => handleFilterChange(e)}
                 disabled={isLoading}
               >
                 <option value="">All Sources</option>
-                {searchLocations.map((location) => (
+                {searchLocations.map(location => (
                   <option key={location.value} value={location.value}>
                     {location.label} ({location.search_count})
                   </option>
                 ))}
               </select>
             </div>
-            
+
             {/* Date Range Section */}
             <div className="flex flex-col">
-              <label htmlFor="start_date" className="text-lg font-black mb-2">Start Date</label>
+              <label htmlFor="start_date" className="text-lg font-black mb-2">
+                Start Date
+              </label>
               <input
                 type="date"
                 name="start_date"
@@ -519,9 +579,11 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                 disabled={isLoading}
               />
             </div>
-            
+
             <div className="flex flex-col">
-              <label htmlFor="end_date" className="text-lg font-black mb-2">End Date</label>
+              <label htmlFor="end_date" className="text-lg font-black mb-2">
+                End Date
+              </label>
               <input
                 type="date"
                 name="end_date"
@@ -532,18 +594,20 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
                 disabled={isLoading}
               />
             </div>
-            
+
             {/* Vote Results Section */}
             <div className="border-t border-gray-200 pt-3 hidden">
-              <label htmlFor="vote" className="text-lg font-black block mb-3">Vote Result</label>
+              <label htmlFor="vote" className="text-lg font-black block mb-3">
+                Vote Result
+              </label>
               <div className="flex gap-2 flex-wrap mb-4">
                 {vote_categories.map((category, index) => (
-                  <VoteButton 
-                    key={index} 
-                    voteCategory={category} 
-                    voteHandler={voteHandler} 
-                    isDisabled={false} 
-                    setDisabled={() => {}} 
+                  <VoteButton
+                    key={index}
+                    voteCategory={category}
+                    voteHandler={voteHandler}
+                    isDisabled={false}
+                    setDisabled={() => {}}
                     shouldReset={shouldResetVotes}
                   />
                 ))}
@@ -554,19 +618,30 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
           {/* Close/Clear buttons */}
           <div className="flex items-center justify-between pt-3 border-t border-gray-200">
             <div className="flex items-center gap-2">
-              {(activeFilters.country || activeFilters.source || activeFilters.usState || activeFilters.startDate || activeFilters.endDate) && (
+              {(activeFilters.country ||
+                activeFilters.source ||
+                activeFilters.usState ||
+                activeFilters.startDate ||
+                activeFilters.endDate) && (
                 <span className="text-sm text-gray-600">
-                  {Object.values(activeFilters).filter(Boolean).length} filter{Object.values(activeFilters).filter(Boolean).length !== 1 ? 's' : ''} active
+                  {Object.values(activeFilters).filter(Boolean).length} filter
+                  {Object.values(activeFilters).filter(Boolean).length !== 1 ? 's' : ''} active
                 </span>
               )}
             </div>
             <div className="flex gap-3">
-              <button 
+              <button
                 type="button"
                 onClick={handleReset}
-                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 transition-colors flex items-center gap-2">
+                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 transition-colors flex items-center gap-2"
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
                 Clear All
               </button>
@@ -578,4 +653,4 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
   );
 }
 
-export default FilterControls; 
+export default FilterControls;

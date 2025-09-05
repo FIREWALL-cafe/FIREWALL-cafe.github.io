@@ -36,7 +36,8 @@
 
 .vote__button:disabled {
   filter: grayscale(1);
-  cursor: not-allowed;}
+  cursor: not-allowed;
+}
 
 /* .vote__button:not(:last-child) {
   margin-right: 10px;

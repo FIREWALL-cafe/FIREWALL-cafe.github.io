@@ -1,9 +1,9 @@
-import React from "react";
-import TimeDisplay from "./TimeDisplay";
+import React from 'react';
+import TimeDisplay from './TimeDisplay';
 import useCookie from '../useCookie';
 
 function Header() {
-  const [username] = useCookie("username");
+  const [username] = useCookie('username');
 
   return (
     <header className="bg-red-600 min-h-[56px] is-full-width-content">

@@ -1,7 +1,7 @@
 import React from 'react';
-import Facebook from "../assets/icons/Facebook_Logo.png";
-import Youtube from "../assets/icons/youtube_social_circle_red.png";
-import Instagram from "../assets/icons/Instagram_Logo.png";
+import Facebook from '../assets/icons/Facebook_Logo.png';
+import Youtube from '../assets/icons/youtube_social_circle_red.png';
+import Instagram from '../assets/icons/Instagram_Logo.png';
 
 const SocialFollow = () => {
   return (
@@ -15,13 +15,28 @@ const SocialFollow = () => {
       <div className="flex justify-center md:justify-end mt-8 md:mt-4">
         <div className="flex flex-row md:flex-col gap-4 md:gap-6 items-center md:items-end">
           <a href="http://instagram.com/firewallcafe" aria-label="Follow us on Instagram">
-            <img src={Instagram} className="object-contain aspect-square w-[48px] hover:opacity-80 transition-opacity" alt="" />
+            <img
+              src={Instagram}
+              className="object-contain aspect-square w-[48px] hover:opacity-80 transition-opacity"
+              alt=""
+            />
           </a>
           <a href="https://www.facebook.com/firewallcafe" aria-label="Follow us on Facebook">
-            <img src={Facebook} className="object-contain aspect-square w-[48px] hover:opacity-80 transition-opacity" alt="" />
+            <img
+              src={Facebook}
+              className="object-contain aspect-square w-[48px] hover:opacity-80 transition-opacity"
+              alt=""
+            />
           </a>
-          <a href="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA" aria-label="Follow us on Youtube">
-            <img src={Youtube} className="object-contain aspect-square w-[48px] hover:opacity-80 transition-opacity" alt="" />
+          <a
+            href="https://www.youtube.com/channel/UCMTAKSSmI9iKD7a3GB1JIrA"
+            aria-label="Follow us on Youtube"
+          >
+            <img
+              src={Youtube}
+              className="object-contain aspect-square w-[48px] hover:opacity-80 transition-opacity"
+              alt=""
+            />
           </a>
         </div>
       </div>

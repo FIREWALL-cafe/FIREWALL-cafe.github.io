@@ -1,5 +1,5 @@
 import React from 'react';
-import ArrowRight from "../assets/icons/arrow_right_alt.svg";
+import ArrowRight from '../assets/icons/arrow_right_alt.svg';
 
 function ContactSection() {
   return (
@@ -16,11 +16,20 @@ function ContactSection() {
           </div>
           <button className="flex gap-1 justify-center items-center self-start px-4 mt-10 text-xl text-center text-white whitespace-nowrap rounded border border-white border-solid min-h-[56px]">
             <span className="self-stretch my-auto">Contact</span>
-            <img src={ArrowRight} alt="" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+            <img
+              src={ArrowRight}
+              alt=""
+              className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+            />
           </button>
         </div>
       </div>
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3db3618e2dbf3b5be8788c60f656b657c357afe3169bef5566bbce0576051467?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99" alt="Contact section background" className="object-contain flex-1 shrink w-full aspect-[1.31] basis-40 min-w-[240px] max-md:max-w-full" />
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/3db3618e2dbf3b5be8788c60f656b657c357afe3169bef5566bbce0576051467?placeholderIfAbsent=true&apiKey=d56f8d62d9074d509de3faeb2651bd99"
+        alt="Contact section background"
+        className="object-contain flex-1 shrink w-full aspect-[1.31] basis-40 min-w-[240px] max-md:max-w-full"
+      />
     </section>
   );
 }

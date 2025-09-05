@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Tooltip } from 'react-tooltip';
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import { generateImageUrl } from '../utils/imageUrlGenerator';
 
 import googleLogo from '../assets/icons/Google-logo_long.svg';
 import baiduLogo from '../assets/icons/baidu_logo_long.svg';
-import CarouselLeft from "../assets/icons/carousel-left.svg";
-import CarouselRight from "../assets/icons/carousel-right.svg";
+import CarouselLeft from '../assets/icons/carousel-left.svg';
+import CarouselRight from '../assets/icons/carousel-right.svg';
 import QuestionIcon from './icons/QuestionIcon';
 import BrokenImagePadding from '../assets/icons/broken-image-placeholder_padding.svg';
 import CensoredBrokenImage from '../assets/icons/censored-image-placeholder_padding.svg';
@@ -25,25 +25,22 @@ function ImageCarousel({ images }) {
     }
   };
 
-  const baiduImage = (image) => generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage);
+  const baiduImage = image =>
+    generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage);
 
   const goToNext = () => {
     if (currentIndex !== null) {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === 8 ? 0 : prevIndex + 1
-      );
+      setCurrentIndex(prevIndex => (prevIndex === 8 ? 0 : prevIndex + 1));
     }
   };
 
   const goToPrevious = () => {
     if (currentIndex !== null) {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === 0 ? 8 : prevIndex - 1
-      );
+      setCurrentIndex(prevIndex => (prevIndex === 0 ? 8 : prevIndex - 1));
     }
   };
 
-  const handleThumbnailClick = (index) => {
+  const handleThumbnailClick = index => {
     setCurrentIndex(index);
     // Only open lightbox on iPhone screens
     const isIphoneScreen = window.innerWidth <= 420;
@@ -56,7 +53,7 @@ function ImageCarousel({ images }) {
   const slides = images.googleResults.map((googleImage, index) => ({
     google: generateImageUrl(googleImage),
     baidu: baiduImage(images.baiduResults[index]),
-    alt: `Image Pair ${index + 1}`
+    alt: `Image Pair ${index + 1}`,
   }));
 
   return (
@@ -71,10 +68,10 @@ function ImageCarousel({ images }) {
                 fill="#77B5F0"
                 className="w-8 h-8 pt-4"
                 data-tooltip-id="tooltip-google"
-                data-tooltip-content='Results from US based Google images.'
+                data-tooltip-content="Results from US based Google images."
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-google" border={"1px solid #e60011"} />
+              <Tooltip id="tooltip-google" border={'1px solid #e60011'} />
             </div>
             <div id="baidu-header" className="flex items-center px-8 pb-4 w-1/2">
               <img src={baiduLogo} alt="Baidu" className="w-16 pt-4" />
@@ -82,27 +79,33 @@ function ImageCarousel({ images }) {
                 fill="#ef4444"
                 className="w-8 h-8 pt-4"
                 data-tooltip-id="tooltip-baidu"
-                data-tooltip-content='Results from China based Baidu images.'
+                data-tooltip-content="Results from China based Baidu images."
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-baidu" border={"1px solid #e60011"} />
+              <Tooltip id="tooltip-baidu" border={'1px solid #e60011'} />
             </div>
           </div>
 
           {/* Google Section */}
           <div className="w-full md:w-1/2 ipad-portrait:pb-5 md:border-r border-red-300">
-            <div id="google-header-md" className="hidden md:flex justify-between items-center px-8 pb-8 pt-4">
+            <div
+              id="google-header-md"
+              className="hidden md:flex justify-between items-center px-8 pb-8 pt-4"
+            >
               <img src={googleLogo} alt="Google" className="w-28" />
               <QuestionIcon
                 fill="#77B5F0"
                 className="w-6 h-6"
                 data-tooltip-id="tooltip-google"
-                data-tooltip-content='Results from US based Google images.'
+                data-tooltip-content="Results from US based Google images."
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-google" border={"1px solid #e60011"} />
+              <Tooltip id="tooltip-google" border={'1px solid #e60011'} />
             </div>
-            <div id="google-carousel" className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex">
+            <div
+              id="google-carousel"
+              className="relative justify-center items-center h-[320px] hidden ipad-portrait:flex"
+            >
               <div className="absolute left-0 h-full w-[60px] flex justify-center items-center">
                 <button
                   onClick={goToPrevious}
@@ -125,23 +128,29 @@ function ImageCarousel({ images }) {
 
           {/* Baidu Section */}
           <div className="w-full md:w-1/2 ipad-portrait:pb-5 bg-neutral-100">
-            <div id="baidu-header-md" className="hidden md:flex justify-between items-center px-8 pb-8 pt-4">
+            <div
+              id="baidu-header-md"
+              className="hidden md:flex justify-between items-center px-8 pb-8 pt-4"
+            >
               <img src={baiduLogo} alt="Baidu" className="w-28" />
               <QuestionIcon
                 fill="#ef4444"
                 className="w-6 h-6"
                 data-tooltip-id="tooltip-baidu"
-                data-tooltip-content='Results from China based Baidu images.'
+                data-tooltip-content="Results from China based Baidu images."
                 data-tooltip-place="top"
               />
-              <Tooltip id="tooltip-baidu" border={"1px solid #e60011"} />
+              <Tooltip id="tooltip-baidu" border={'1px solid #e60011'} />
             </div>
-            <div id="baidu-carousel" className="relative justify-center items-center pl-8 h-[320px] hidden ipad-portrait:flex">
+            <div
+              id="baidu-carousel"
+              className="relative justify-center items-center pl-8 h-[320px] hidden ipad-portrait:flex"
+            >
               <div className="flex-1 h-full flex justify-center items-center pr-[60px]">
                 <img
                   src={baiduImage(images.baiduResults[currentIndex])}
                   className="object-contain max-h-full max-w-full shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
-                  onError={(e) => handleOnError(e, true)}
+                  onError={e => handleOnError(e, true)}
                   alt={`Baidu search result ${currentIndex + 1}`}
                 />
               </div>
@@ -163,8 +172,8 @@ function ImageCarousel({ images }) {
       <div className="flex flex-row">
         <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 border-r border-red-300">
           {images.googleResults.map((image, index) => (
-            <button 
-              key={index} 
+            <button
+              key={index}
               onClick={() => handleThumbnailClick(index)}
               className={`relative aspect-square overflow-visible ${currentIndex !== null && currentIndex === index ? 'opacity-60 bg-[#0084CC]' : 'opacity-100'}`}
             >
@@ -184,16 +193,21 @@ function ImageCarousel({ images }) {
         </div>
         <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 bg-neutral-100">
           {images.baiduResults.map((image, index) => (
-            <button 
-              key={index} 
+            <button
+              key={index}
               onClick={() => handleThumbnailClick(index)}
               className={`relative aspect-square overflow-visible ${currentIndex !== null && currentIndex === index ? 'opacity-60 bg-red-900' : 'opacity-100'}`}
             >
               <div className="w-full h-full overflow-hidden">
                 <img
-                  src={generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage)}
+                  src={generateImageUrl(
+                    image,
+                    true,
+                    images.baiduResults.length > 0,
+                    CensoredBrokenImage
+                  )}
                   className="w-full h-full object-cover"
-                  onError={(e) => handleOnError(e, true)}
+                  onError={e => handleOnError(e, true)}
                   alt={`Baidu thumbnail ${index + 1}`}
                 />
               </div>
@@ -210,7 +224,7 @@ function ImageCarousel({ images }) {
         close={() => setIsLightboxOpen(false)}
         index={currentIndex || 0}
         slides={slides}
-        carousel={{ imageFit: "cover" }}
+        carousel={{ imageFit: 'cover' }}
         className="iphone:block hidden"
         render={{
           slide: ({ slide }) => (
@@ -231,10 +245,10 @@ function ImageCarousel({ images }) {
                     fill="#77B5F0"
                     className="w-4 h-4 mr-2"
                     data-tooltip-id="tooltip-google"
-                    data-tooltip-content='Results from US based Google images.'
+                    data-tooltip-content="Results from US based Google images."
                     data-tooltip-place="top"
                   />
-                  <Tooltip id="tooltip-google" border={"1px solid #e60011"} />
+                  <Tooltip id="tooltip-google" border={'1px solid #e60011'} />
                 </div>
               </div>
 
@@ -244,7 +258,7 @@ function ImageCarousel({ images }) {
                   <img
                     src={slide.baidu}
                     className="w-full h-full p-2 object-cover shadow-[2px_2px_3px_rgba(0,0,0,0.3)]"
-                    onError={(e) => handleOnError(e, true)}
+                    onError={e => handleOnError(e, true)}
                     alt="Baidu search result"
                   />
                 </div>
@@ -254,29 +268,29 @@ function ImageCarousel({ images }) {
                     fill="#ef4444"
                     className="w-4 h-4 mr-4"
                     data-tooltip-id="tooltip-baidu"
-                    data-tooltip-content='Results from China based Baidu images.'
+                    data-tooltip-content="Results from China based Baidu images."
                     data-tooltip-place="left"
                   />
-                  <Tooltip id="tooltip-baidu" border={"1px solid #e60011"} />
+                  <Tooltip id="tooltip-baidu" border={'1px solid #e60011'} />
                 </div>
               </div>
             </div>
-          )
+          ),
         }}
         styles={{
-          container: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
-          root: { 
-            "--yarl__color_backdrop": "rgba(0, 0, 0, 0.9)",
-            "--yarl__slide_width": "100%",
-            "--yarl__slide_height": "100%",
-            "--yarl__slide_padding": "0"
+          container: { backgroundColor: 'rgba(0, 0, 0, 0.9)' },
+          root: {
+            '--yarl__color_backdrop': 'rgba(0, 0, 0, 0.9)',
+            '--yarl__slide_width': '100%',
+            '--yarl__slide_height': '100%',
+            '--yarl__slide_padding': '0',
           },
-          thumbnails: { "--yarl__thumbnails_thumbnail_border_radius": "0.5rem" },
-          thumbnail: { "--yarl__thumbnail_border_radius": "0.5rem" },
-          slide: { padding: "0", width: "100%", height: "100%" },
-          slide_container: { padding: "0", width: "100%", height: "100%" },
-          slide_image: { padding: "0", width: "100%", height: "100%" },
-          slide_image_container: { padding: "0", width: "100%", height: "100%" }
+          thumbnails: { '--yarl__thumbnails_thumbnail_border_radius': '0.5rem' },
+          thumbnail: { '--yarl__thumbnail_border_radius': '0.5rem' },
+          slide: { padding: '0', width: '100%', height: '100%' },
+          slide_container: { padding: '0', width: '100%', height: '100%' },
+          slide_image: { padding: '0', width: '100%', height: '100%' },
+          slide_image_container: { padding: '0', width: '100%', height: '100%' },
         }}
       />
     </div>

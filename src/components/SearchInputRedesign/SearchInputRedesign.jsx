@@ -13,7 +13,7 @@ function SearchInputRedesign({
   isLoading = false,
   error = '',
   showFilters = false,
-  onFiltersClick
+  onFiltersClick,
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [searchParams] = useSearchParams();
@@ -34,7 +34,7 @@ function SearchInputRedesign({
     }
   }, [initialQuery, query]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (!query.trim()) {
       return;
@@ -42,7 +42,7 @@ function SearchInputRedesign({
     onSearch?.(query.trim());
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setQuery(e.target.value);
   };
 
@@ -71,11 +71,7 @@ function SearchInputRedesign({
               className="search-input"
               disabled={isLoading}
             />
-            <button
-              type="submit"
-              className="search-submit"
-              disabled={isLoading || !query.trim()}
-            >
+            <button type="submit" className="search-submit" disabled={isLoading || !query.trim()}>
               <img src={SearchIcon} alt="Search" className="search-icon" />
             </button>
           </div>
@@ -83,11 +79,7 @@ function SearchInputRedesign({
 
         {/* Filters button for archive mode */}
         {mode === 'archive' && showFilters && (
-          <button
-            onClick={onFiltersClick}
-            className="filters-button"
-            type="button"
-          >
+          <button onClick={onFiltersClick} className="filters-button" type="button">
             filters ⚙
           </button>
         )}
@@ -102,11 +94,7 @@ function SearchInputRedesign({
       )}
 
       {/* Error display */}
-      {error && (
-        <div className="error-display">
-          {error}
-        </div>
-      )}
+      {error && <div className="error-display">{error}</div>}
     </div>
   );
 }

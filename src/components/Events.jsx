@@ -7,7 +7,6 @@ import ArrowLeft from './icons/ArrowLeft';
 import EventDetail from './EventDetail';
 import { eventsData } from '../data/eventsData';
 
-
 function Events() {
   const { eventId } = useParams();
   const image = 'subscribeE';
@@ -15,14 +14,17 @@ function Events() {
   if (eventId) {
     // Get event data from the eventsData structure
     const eventData = eventsData[eventId];
-    
+
     return (
       <div className="w-full">
         {eventData ? (
           <>
             <div className="mx-auto px-2 md:px-14 pt-14 text-red-600">
               <Link to="/events" className="flex items-center gap-2">
-                <ArrowLeft color="currentColor" className="object-contain shrink-0 w-6 aspect-square" /> 
+                <ArrowLeft
+                  color="currentColor"
+                  className="object-contain shrink-0 w-6 aspect-square"
+                />
                 Back to Events
               </Link>
             </div>

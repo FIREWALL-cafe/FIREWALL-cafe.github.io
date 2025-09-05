@@ -99,7 +99,7 @@ const QueryList = ({ results, onLoadMore, isLoading, filterOptions }) => {
 
   const currentResultCount = data ? data.length : 0;
 
-  const handleToggle = (searchId) => {
+  const handleToggle = searchId => {
     setExpandedItems(prev => {
       const newSet = new Set(prev);
       if (newSet.has(searchId)) {
@@ -112,13 +112,14 @@ const QueryList = ({ results, onLoadMore, isLoading, filterOptions }) => {
   };
 
   return (
-    <section id="query-list" className="mt-[120px] min-h-[70px] flex overflow-hidden flex-col pb-8 w-full bg-white max-md:pb-12">
+    <section
+      id="query-list"
+      className="mt-[120px] min-h-[70px] flex overflow-hidden flex-col pb-8 w-full bg-white max-md:pb-12"
+    >
       <div className="flex flex-col items-center px-2 md:px-4 w-full">
         <div className="flex flex-col w-full max-w-[1280px]">
           {currentResultCount > 0 && (
-            <div className="text-lg mb-4">
-              {currentResultCount} related queries
-            </div>
+            <div className="text-lg mb-4">{currentResultCount} related queries</div>
           )}
           <QueryListHeader />
 
@@ -129,10 +130,10 @@ const QueryList = ({ results, onLoadMore, isLoading, filterOptions }) => {
                   <div className="text-gray-600">Loading...</div>
                 </div>
               )}
-              {data?.map((item) => (
-                <QueryItem 
-                  key={item.search_id} 
-                  {...item} 
+              {data?.map(item => (
+                <QueryItem
+                  key={item.search_id}
+                  {...item}
                   filterOptions={filterOptions}
                   isExpanded={expandedItems.has(item.search_id)}
                   onToggle={() => handleToggle(item.search_id)}
@@ -146,7 +147,7 @@ const QueryList = ({ results, onLoadMore, isLoading, filterOptions }) => {
           </div>
         </div>
 
-        <LoadMore 
+        <LoadMore
           page={page}
           totalPages={totalPages}
           onLoadMore={onLoadMore}

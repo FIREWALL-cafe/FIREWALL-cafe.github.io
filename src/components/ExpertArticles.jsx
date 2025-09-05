@@ -3,10 +3,11 @@ import ArticleCard from './ArticleCard';
 
 const articles = [
   {
-    title: "Lan Yu - How internet censorship shapes cultural phenomena",
-    date: "December 2024",
-    url: "/editorial/lan-yu",
-    description: "A shadow journalist with years of on-the-ground reporting experience in China explores internet censorship beyond China's borders."
+    title: 'Lan Yu - How internet censorship shapes cultural phenomena',
+    date: 'December 2024',
+    url: '/editorial/lan-yu',
+    description:
+      "A shadow journalist with years of on-the-ground reporting experience in China explores internet censorship beyond China's borders.",
   },
   // Add more expert articles here as they become available
 ];
@@ -20,8 +21,8 @@ function ExpertArticles() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 w-full max-md:mt-10 justify-items-center">
           {articles.map((article, index) => (
-            <ArticleCard 
-              key={index} 
+            <ArticleCard
+              key={index}
               title={article.title}
               date={article.date}
               url={article.url}

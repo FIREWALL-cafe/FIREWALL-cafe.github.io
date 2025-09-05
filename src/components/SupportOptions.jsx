@@ -10,50 +10,51 @@ import FeatureCards from './FeatureCards';
 function SupportOptions() {
   const supportFeatures = [
     {
-      title: "Make a donation",
+      title: 'Make a donation',
       chineseTitle: {
-        text: "进行信用卡捐赠",
-        color: "text-black"
+        text: '进行信用卡捐赠',
+        color: 'text-black',
       },
-      description: "Support us directly with a credit card donation.",
+      description: 'Support us directly with a credit card donation.',
       iconSrc: DonationGray,
       iconSrcHover: Donation,
-      bgColor: "bg-blue-500",
-      hoverBgColor: "hover:bg-blue-600",
-      textColor: "text-white",
-      borderColor: "border-solid border-blue-500",
-      url: "https://www.nyfa.org/#button=45138"
+      bgColor: 'bg-blue-500',
+      hoverBgColor: 'hover:bg-blue-600',
+      textColor: 'text-white',
+      borderColor: 'border-solid border-blue-500',
+      url: 'https://www.nyfa.org/#button=45138',
     },
     {
-      title: "Become a sponsor",
+      title: 'Become a sponsor',
       chineseTitle: {
-        text: "成为赞助商",
-        color: "text-red-600"
+        text: '成为赞助商',
+        color: 'text-red-600',
       },
-      description: "Get in touch to learn about recurring donations, and how you can support our long term vision.",
+      description:
+        'Get in touch to learn about recurring donations, and how you can support our long term vision.',
       iconSrc: SponsorGray,
       iconSrcHover: Sponsor,
-      bgColor: "bg-blue-200",
-      hoverBgColor: "hover:bg-blue-300",
-      textColor: "text-black",
-      borderColor: "border-solid border-blue-500",
-      url: "https://www.nyfa.org/#button=45138"
+      bgColor: 'bg-blue-200',
+      hoverBgColor: 'hover:bg-blue-300',
+      textColor: 'text-black',
+      borderColor: 'border-solid border-blue-500',
+      url: 'https://www.nyfa.org/#button=45138',
     },
     {
-      title: "Other ways to support",
+      title: 'Other ways to support',
       chineseTitle: {
-        text: "以其他方式支持",
-        color: "text-red-600"
+        text: '以其他方式支持',
+        color: 'text-red-600',
       },
       description: "Have an idea? We'd love to hear about it.",
       iconSrc: SupportGray,
       iconSrcHover: Support,
-      bgColor: "bg-white",
-      hoverBgColor: "hover:bg-blue-50",
-      textColor: "text-black",
-      borderColor: "border-solid border-blue-500",
-      url: "/contact"
-    }
+      bgColor: 'bg-white',
+      hoverBgColor: 'hover:bg-blue-50',
+      textColor: 'text-black',
+      borderColor: 'border-solid border-blue-500',
+      url: '/contact',
+    },
   ];
 
   return (
