@@ -1,9 +1,6 @@
 import React from 'react';
 import ImageCarousel from './ImageCarousel';
 import VotingSection from './VotingSection';
-import serverConfig from '../config';
-
-const displayVoting = serverConfig.displayVoting;
 
 function SearchCompare({ images, query, searchId }) {
   return (
@@ -13,7 +10,7 @@ function SearchCompare({ images, query, searchId }) {
     >
       <div className="flex overflow-hidden flex-col self-stretch my-auto max-w-[1280px] rounded-lg border border-red-600 border-solid min-w-[240px] w-full max-md:max-w-full">
         <ImageCarousel images={images} searchId={searchId} />
-        {displayVoting && <VotingSection query={query} searchId={searchId} />}
+        {<VotingSection query={query} searchId={searchId} />}
       </div>
     </section>
   );
