@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react';
 import SearchCompare from './SearchCompare';
 import VoteIcon from '../assets/icons/how_to_vote.svg';
 import ExpandIcon from './icons/ExpandIcon';
+import { formatLocationName } from '../utils/stringUtils';
 
-// Helper function to convert snake_case to human readable format
-const formatLocationName = locationKey => {
-  if (!locationKey) return locationKey;
-  return locationKey
-    .split('_')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-};
 
 // Separate the date formatting logic into a custom hook
 const useDateFormat = isDesktop => {

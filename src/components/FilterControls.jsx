@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VoteButton from './VoteButton';
 import { locationMapping } from '../constants/locations';
+import { formatLocationName } from '../utils/stringUtils';
 
 function FilterControls({ onUpdate, isOpen, isLoading }) {
   const [shouldResetVotes, setShouldResetVotes] = useState(false);
@@ -23,13 +24,6 @@ function FilterControls({ onUpdate, isOpen, isLoading }) {
   // Dynamic search locations from database
   const [searchLocations, setSearchLocations] = useState([]);
 
-  // Helper function to convert snake_case to human readable format
-  const formatLocationName = locationKey => {
-    return locationKey
-      .split('_')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
 
   const vote_categories = [
     'votes_censored',
