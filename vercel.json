@@ -1,0 +1,41 @@
+{
+  "framework": "create-react-app",
+  "buildCommand": "yarn build",
+  "outputDirectory": "build",
+  "devCommand": "yarn start:client",
+  "installCommand": "yarn install",
+  "root": ".",
+  "regions": [
+    "iad1"
+  ],
+  "functions": {
+    "api/proxy.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/proxy-image",
+      "destination": "/api/proxy-image"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "@api-url",
+    "REACT_APP_BACKEND_API_URL": "@backend-api-url"
+  }
+}
