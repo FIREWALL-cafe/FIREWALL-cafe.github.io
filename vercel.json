@@ -4,7 +4,6 @@
   "outputDirectory": "build",
   "devCommand": "yarn start:client",
   "installCommand": "yarn install",
-  "root": ".",
   "regions": [
     "iad1"
   ],
