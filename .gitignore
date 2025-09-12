@@ -112,3 +112,4 @@ build/
 design-tokens/
 .playwright/
 .playwright*
+.vercel
