@@ -112,7 +112,7 @@ function SearchInput({ searchMode }) {
                 body: JSON.stringify({
                   query: urlQuery.trim(),
                   search_client_name: username,
-                }),
+                })
               });
 
               if (response.error) {

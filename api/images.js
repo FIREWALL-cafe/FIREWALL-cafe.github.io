@@ -23,12 +23,15 @@ async function getGoogleImagesSerper(query) {
 
   // Extract image URLs from Serper response
   const images = data.images || [];
-  return images.map(img => ({
-    imageUrl: img.imageUrl,
-    title: img.title,
-    link: img.link,
-    source: img.source
-  }));
+  return images
+    .filter(img => img && img.imageUrl) // Filter out invalid images
+    .slice(0, 9) // Limit to 9 images
+    .map(img => ({
+      imageUrl: img.imageUrl,
+      title: img.title,
+      link: img.link,
+      source: img.source
+    }));
 }
 
 async function getBaiduImages(query) {
@@ -61,12 +64,15 @@ async function getBaiduImages(query) {
     const data = JSON.parse(text);
     const images = data.data || [];
 
-    const results = images.map(img => ({
-      imageUrl: img.thumbURL,
-      title: img.fromPageTitleEnc,
-      link: img.objURL,
-      source: img.fromURLHost
-    }));
+    const results = images
+      .filter(img => img && img.thumbURL) // Filter out invalid images
+      .slice(0, 9) // Limit to 9 images
+      .map(img => ({
+        imageUrl: img.thumbURL,
+        title: img.fromPageTitleEnc,
+        link: img.objURL,
+        source: img.fromURLHost
+      }));
 
     console.log(`Successfully fetched ${results.length} Baidu images`);
     return results;
