@@ -3,7 +3,7 @@
 
 export default async function handler(req, res) {
   // Get backend API URL from environment variable or use default
-  const backendUrl = process.env.BACKEND_API_URL || 'https://api.firewallcafe.com/';
+  const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:11458/';
 
   // Extract search_id from the URL path
   // The URL pattern is /searches/[search_id]/images
