@@ -5,7 +5,8 @@ export default async function handler(req, res) {
   // Get backend API URL from environment variable or use default
   const backendUrl = process.env.BACKEND_API_URL || 'https://api.firewallcafe.com/';
 
-  if (req.method === 'GET') {
+  // Handle both GET and POST (app uses POST, backend expects GET)
+  if (req.method === 'GET' || req.method === 'POST') {
     try {
       // Extract query parameters
       const { query, page, page_size, cities, ...otherFilters } = req.query;
@@ -43,7 +44,7 @@ export default async function handler(req, res) {
       });
     }
   } else {
-    res.setHeader('Allow', ['GET']);
+    res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 }
