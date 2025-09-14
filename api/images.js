@@ -36,25 +36,48 @@ async function getBaiduImages(query) {
 
   const url = `https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&fp=result&word=${encodeURI(query)}&pn=0&rn=30`;
 
-  const response = await fetch(url, {
-    headers: {
-      "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
-      'Content-Type': 'application/json',
-      'User-Agent': 'Mozilla/5.0 (Linux; Android 10; HD1913) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36 EdgA/46.1.2.5140',
-      'Cookie': 'BAIDUID=DA3AF7E580B9999700832FE88F5B01DA:FG=1; BAIDUID_BFESS=DA3AF7E580B9999700832FE88F5B01DA:FG=1; H_WISE_SIDS=62325_62842_62967_62999;'
+  try {
+    // Create an AbortController for timeout handling
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; HD1913) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36 EdgA/46.1.2.5140',
+        'Cookie': 'BAIDUID=DA3AF7E580B9999700832FE88F5B01DA:FG=1; BAIDUID_BFESS=DA3AF7E580B9999700832FE88F5B01DA:FG=1; H_WISE_SIDS=62325_62842_62967_62999;'
+      }
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Baidu API returned ${response.status}: ${response.statusText}`);
     }
-  });
 
-  const text = await response.text();
-  const data = JSON.parse(text);
-  const images = data.data || [];
+    const text = await response.text();
+    const data = JSON.parse(text);
+    const images = data.data || [];
 
-  return images.map(img => ({
-    imageUrl: img.thumbURL,
-    title: img.fromPageTitleEnc,
-    link: img.objURL,
-    source: img.fromURLHost
-  }));
+    const results = images.map(img => ({
+      imageUrl: img.thumbURL,
+      title: img.fromPageTitleEnc,
+      link: img.objURL,
+      source: img.fromURLHost
+    }));
+
+    console.log(`Successfully fetched ${results.length} Baidu images`);
+    return results;
+
+  } catch (error) {
+    console.warn('Baidu image search failed:', error.message);
+
+    // Return empty array as fallback instead of throwing
+    // This allows Google results to still be processed and saved
+    return [];
+  }
 }
 
 async function detectLanguage(query) {
@@ -144,13 +167,23 @@ export default async function handler(req, res) {
 
     console.log('Mock language detection:', langFrom, '-> translating to:', langTo);
 
-    // 3. Search both engines in parallel
-    const [googleResults, baiduResults] = await Promise.all([
+    // 3. Search both engines in parallel with fallback handling
+    const [googleResults, baiduResults] = await Promise.allSettled([
       getGoogleImagesSerper(enQuery),
       getBaiduImages(cnQuery),
     ]);
 
-    console.log('Search results - Google:', googleResults.length, 'Baidu:', baiduResults.length);
+    const finalGoogleResults = googleResults.status === 'fulfilled' ? googleResults.value : [];
+    const finalBaiduResults = baiduResults.status === 'fulfilled' ? baiduResults.value : [];
+
+    if (googleResults.status === 'rejected') {
+      console.error('Google search failed:', googleResults.reason);
+    }
+    if (baiduResults.status === 'rejected') {
+      console.error('Baidu search failed:', baiduResults.reason);
+    }
+
+    console.log('Search results - Google:', finalGoogleResults.length, 'Baidu:', finalBaiduResults.length);
 
     // 4. Extract client IP (Vercel provides this in headers)
     const clientIp = req.headers['x-forwarded-for'] ||
@@ -161,8 +194,8 @@ export default async function handler(req, res) {
     // 5. Save results to database
     const { searchId } = await saveSearchResults({
       query,
-      google: googleResults,
-      baidu: baiduResults,
+      google: finalGoogleResults,
+      baidu: finalBaiduResults,
       langTo,
       langFrom,
       search_client_name,
@@ -175,8 +208,8 @@ export default async function handler(req, res) {
     // 6. Return results
     const response = {
       searchId,
-      googleResults,
-      baiduResults,
+      googleResults: finalGoogleResults,
+      baiduResults: finalBaiduResults,
       translation: translatedQuery
     };
 
