@@ -191,21 +191,28 @@ export default async function handler(req, res) {
                      req.connection?.remoteAddress ||
                      '127.0.0.1';
 
-    // 5. Save results to database
-    const { searchId } = await saveSearchResults({
-      query,
-      google: finalGoogleResults,
-      baidu: finalBaiduResults,
-      langTo,
-      langFrom,
-      search_client_name,
-      search_ip_address: clientIp,
-      translation: translatedQuery
-    });
+    // 5. Save results to database (with fallback)
+    let searchId = null;
+    try {
+      const saveResult = await saveSearchResults({
+        query,
+        google: finalGoogleResults,
+        baidu: finalBaiduResults,
+        langTo,
+        langFrom,
+        search_client_name,
+        search_ip_address: clientIp,
+        translation: translatedQuery
+      });
+      searchId = saveResult.searchId;
+      console.log('Search saved with ID:', searchId, 'and IP:', clientIp);
+    } catch (saveError) {
+      console.warn('Failed to save search results:', saveError.message);
+      console.log('Continuing with search results despite save failure');
+      // Continue without searchId - still return results to user
+    }
 
-    console.log('Search saved with ID:', searchId, 'and IP:', clientIp);
-
-    // 6. Return results
+    // 6. Return results (always return results, even if save failed)
     const response = {
       searchId,
       googleResults: finalGoogleResults,
@@ -213,7 +220,8 @@ export default async function handler(req, res) {
       translation: translatedQuery
     };
 
-    console.log('Search completed successfully, searchId:', searchId);
+    const resultCount = finalGoogleResults.length + finalBaiduResults.length;
+    console.log(`Search completed successfully, ${finalGoogleResults.length} Google + ${finalBaiduResults.length} Baidu = ${resultCount} total results`);
     res.status(200).json(response);
 
   } catch (error) {
