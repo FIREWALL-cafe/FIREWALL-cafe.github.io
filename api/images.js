@@ -229,6 +229,20 @@ export default async function handler(req, res) {
 
     console.log('Search results - Google:', finalGoogleResults.length, 'Baidu:', finalBaiduResults.length);
 
+    // Insert placeholders for Baidu results if they failed but Google succeeded
+    let processedBaiduResults = finalBaiduResults;
+    if (finalGoogleResults.length > 0 && finalBaiduResults.length === 0) {
+      console.log('Baidu search failed but Google succeeded, inserting placeholders');
+      processedBaiduResults = Array(finalGoogleResults.length).fill(null).map((_, index) => ({
+        imageUrl: null,
+        title: 'Search failed',
+        link: null,
+        source: 'baidu.com',
+        isPlaceholder: true
+      }));
+      console.log('Created', processedBaiduResults.length, 'Baidu placeholders');
+    }
+
     // 4. Extract client IP (Vercel provides this in headers)
     const clientIp = req.headers['x-forwarded-for'] ||
                      req.headers['x-real-ip'] ||
@@ -241,7 +255,7 @@ export default async function handler(req, res) {
       const saveResult = await saveSearchResults({
         query,
         google: finalGoogleResults,
-        baidu: finalBaiduResults,
+        baidu: processedBaiduResults,
         langTo,
         langFrom,
         search_client_name,
@@ -260,12 +274,12 @@ export default async function handler(req, res) {
     const response = {
       searchId,
       googleResults: finalGoogleResults,
-      baiduResults: finalBaiduResults,
+      baiduResults: processedBaiduResults,
       translation: translatedQuery
     };
 
-    const resultCount = finalGoogleResults.length + finalBaiduResults.length;
-    console.log(`Search completed successfully, ${finalGoogleResults.length} Google + ${finalBaiduResults.length} Baidu = ${resultCount} total results`);
+    const resultCount = finalGoogleResults.length + processedBaiduResults.length;
+    console.log(`Search completed successfully, ${finalGoogleResults.length} Google + ${processedBaiduResults.length} Baidu = ${resultCount} total results`);
     res.status(200).json(response);
 
   } catch (error) {

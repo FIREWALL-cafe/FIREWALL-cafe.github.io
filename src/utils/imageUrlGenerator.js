@@ -16,6 +16,11 @@ export const generateImageUrl = (
   // This maintains backward compatibility with existing component code
   const url = typeof imageUrl === 'object' && imageUrl?.imageUrl ? imageUrl.imageUrl : imageUrl;
 
+  // Handle placeholder objects with null imageUrl (when Baidu search failed)
+  if (url === null || url === undefined) {
+    return censoredImage;
+  }
+
   if (isBaidu && !hasBaiduResults) {
     return censoredImage;
   }
