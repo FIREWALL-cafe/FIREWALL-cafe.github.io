@@ -409,7 +409,7 @@ function SearchInput({ searchMode }) {
             currentSearchId: {currentSearchId || 'null'}<br />
             isArchive: {isArchive.toString()}<br />
             googleResults length: {imageResults?.googleResults?.length || 'undefined'}<br />
-            Should render: {(currentSearchId && !isArchive && imageResults?.googleResults?.length > 0).toString()}
+            Should render: {Boolean(currentSearchId && !isArchive && imageResults?.googleResults?.length > 0).toString()}
           </div>
         )}
         {currentSearchId && !isArchive && imageResults?.googleResults.length > 0 && (
