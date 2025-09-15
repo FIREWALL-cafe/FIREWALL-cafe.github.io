@@ -26,7 +26,7 @@ function ImageCarousel({ images }) {
   };
 
   const baiduImage = image =>
-    generateImageUrl(image, true, images.baiduResults.length > 0, CensoredBrokenImage);
+    generateImageUrl(image.imageUrl, true, images.baiduResults.length > 0, CensoredBrokenImage);
 
   const goToNext = () => {
     if (currentIndex !== null) {
@@ -51,7 +51,7 @@ function ImageCarousel({ images }) {
 
   // Create slides array for the lightbox with pairs of images
   const slides = images.googleResults.map((googleImage, index) => ({
-    google: generateImageUrl(googleImage),
+    google: generateImageUrl(googleImage.imageUrl),
     baidu: baiduImage(images.baiduResults[index]),
     alt: `Image Pair ${index + 1}`,
   }));
@@ -179,7 +179,7 @@ function ImageCarousel({ images }) {
             >
               <div className="w-full h-full overflow-hidden">
                 <img
-                  src={generateImageUrl(image)}
+                  src={generateImageUrl(image.imageUrl)}
                   className="w-full h-full object-cover"
                   onError={handleOnError}
                   alt={`Google thumbnail ${index + 1}`}
