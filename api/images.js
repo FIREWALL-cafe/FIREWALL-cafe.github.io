@@ -127,7 +127,7 @@ async function translateText(query, langFrom, langTo) {
 async function saveSearchResults({ query, google, baidu, langTo, langFrom, search_client_name, search_ip_address, translation }) {
   console.log('Saving search results for:', query);
 
-  const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:11458/';
+  const backendUrl = process.env.BACKEND_API_URL;
 
   const imageData = {
     timestamp: Date.now(),
