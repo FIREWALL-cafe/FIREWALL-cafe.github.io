@@ -1,6 +1,3 @@
-// Import config to check if proxy should be used
-const config = require('../config');
-
 /**
  * Generates a URL for an image, using proxy when configured or in production
  * @param {string} imageUrl - The original image URL
@@ -23,9 +20,9 @@ export const generateImageUrl = (
     return censoredImage;
   }
 
-  // Use proxy if configured or in production
+  // Use proxy if configured via environment variable
   // This ensures images work correctly in Vercel dev environment
-  if (config.proxyImages) {
+  if (process.env.REACT_APP_PROXY_IMAGES === 'true') {
     return `/proxy-image?url=${encodeURIComponent(url)}`;
   }
 
