@@ -120,6 +120,12 @@ function SearchInput({ searchMode }) {
               }
 
               const { googleResults, baiduResults, translation, searchId } = response;
+              console.log('Vercel Debug - Search response:', {
+                googleResultsCount: googleResults?.length,
+                baiduResultsCount: baiduResults?.length,
+                searchId,
+                translation
+              });
               setSearchId(searchId);
               setResults({ googleResults: googleResults || [], baiduResults: baiduResults || [] });
               setTranslation(translation || '');
@@ -395,6 +401,16 @@ function SearchInput({ searchMode }) {
         </div>
         {isArchive && (
           <FilterControls onUpdate={applyFilters} isOpen={filterOpen} isLoading={isLoading} />
+        )}
+        {/* Debug info for Vercel environment */}
+        {!isArchive && (
+          <div style={{ background: '#f0f0f0', padding: '10px', margin: '10px', fontSize: '12px' }}>
+            <strong>Debug Info:</strong><br />
+            currentSearchId: {currentSearchId || 'null'}<br />
+            isArchive: {isArchive.toString()}<br />
+            googleResults length: {imageResults?.googleResults?.length || 'undefined'}<br />
+            Should render: {(currentSearchId && !isArchive && imageResults?.googleResults?.length > 0).toString()}
+          </div>
         )}
         {currentSearchId && !isArchive && imageResults?.googleResults.length > 0 && (
           <SearchCompare images={imageResults} query={query} searchId={currentSearchId} />
