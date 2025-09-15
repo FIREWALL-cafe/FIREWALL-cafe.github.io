@@ -113,4 +113,4 @@ design-tokens/
 .playwright/
 .playwright*
 .vercel
-.env.local
+.env*.local

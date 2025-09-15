@@ -373,7 +373,7 @@ function SearchInput({ searchMode }) {
             {/* Debug: Show search results status for Vercel debugging */}
             {!isArchive && (
               <span className="p-1 leading-8 text-medium bg-blue-50 border border-blue-500 rounded text-xs">
-                Results: Google({imageResults?.googleResults?.length || 0}) Baidu({imageResults?.baiduResults?.length || 0}) ID:{currentSearchId || 'null'}
+                Results: Translation({translation}) Google({imageResults?.googleResults?.length || 0}) Baidu({imageResults?.baiduResults?.length || 0}) ID:{currentSearchId || 'null'}
               </span>
             )}
             <span

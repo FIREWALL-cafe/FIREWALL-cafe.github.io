@@ -87,29 +87,40 @@ async function getBaiduImages(query) {
 }
 
 async function detectLanguage(query) {
-  const response = await fetch(`https://babelfish.firewallcafe.com/detect-language?query=${encodeURIComponent(query)}`);
+  console.log('Detecting language for:', query);
+  const url = `https://babelfish.firewallcafe.com/detect-language?query=${encodeURIComponent(query)}`;
+  console.log('Language detection URL:', url);
+
+  const response = await fetch(url);
+  console.log('Language detection response status:', response.status);
+
   const data = await response.json();
-  return data.language;
+  console.log('Language detection response data:', data);
+
+  return data;
 }
 
 async function translateText(query, langFrom, langTo) {
   console.log('Translating from', langFrom, 'to', langTo);
+
+  // Use the same format as the working local implementation
+  const body = `query=${encodeURIComponent(query)}&searchEngine=google&secret=${process.env.SHARED_SECRET}&langFrom=${langFrom}&langTo=${langTo}`;
+  console.log('Translation request body:', body);
+  console.log('SHARED_SECRET exists:', !!process.env.SHARED_SECRET);
 
   const response = await fetch('https://babelfish.firewallcafe.com/translate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: new URLSearchParams({
-      query: query,
-      searchEngine: 'google',
-      secret: process.env.SHARED_SECRET,
-      langFrom: langFrom,
-      langTo: langTo
-    })
+    body: body
   });
 
+  console.log('Translation response status:', response.status);
+
   const data = await response.json();
+  console.log('Translation response data:', data);
+
   return data.translated;
 }
 
@@ -156,6 +167,13 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Debug environment variables
+    console.log('Environment variables check:');
+    console.log('SERPER_API_KEY exists:', !!process.env.SERPER_API_KEY);
+    console.log('SHARED_SECRET exists:', !!process.env.SHARED_SECRET);
+    console.log('API_SECRET exists:', !!process.env.API_SECRET);
+    console.log('BACKEND_API_URL:', process.env.BACKEND_API_URL);
+
     const { query, search_client_name } = req.body;
 
     if (!query || query.trim() === '') {
@@ -164,11 +182,20 @@ export default async function handler(req, res) {
 
     console.log('Processing search for:', query);
 
-    // 1. Detect language
-    const langFrom = /[\u4e00-\u9fff]/.test(query) ? 'zh-CN' : 'en';
-    const langTo = langFrom === 'en' ? 'zh-CN' : 'en';
-
-    console.log('Language detection:', langFrom, '-> translating to:', langTo);
+    // 1. Detect language using the same API as local
+    let langFrom, langTo;
+    try {
+      const detectedLang = await detectLanguage(query);
+      langFrom = detectedLang.language === 'zh-CN' ? 'zh-CN' : 'en';
+      langTo = langFrom === 'en' ? 'zh-CN' : 'en';
+      console.log('Language detection successful:', detectedLang.language, '->', langFrom, 'to', langTo);
+    } catch (error) {
+      console.warn('Language detection failed, using fallback:', error.message);
+      // Fallback to regex detection like before
+      langFrom = /[\u4e00-\u9fff]/.test(query) ? 'zh-CN' : 'en';
+      langTo = langFrom === 'en' ? 'zh-CN' : 'en';
+      console.log('Fallback language detection:', langFrom, 'to', langTo);
+    }
 
     // 2. Translate query
     let translatedQuery;
