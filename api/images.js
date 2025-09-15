@@ -164,14 +164,25 @@ export default async function handler(req, res) {
 
     console.log('Processing search for:', query);
 
-    // For testing, use simple language detection
+    // 1. Detect language
     const langFrom = /[\u4e00-\u9fff]/.test(query) ? 'zh-CN' : 'en';
     const langTo = langFrom === 'en' ? 'zh-CN' : 'en';
-    const translatedQuery = langFrom === 'en' ? '测试' : 'test'; // Mock translation
+
+    console.log('Language detection:', langFrom, '-> translating to:', langTo);
+
+    // 2. Translate query
+    let translatedQuery;
+    try {
+      translatedQuery = await translateText(query, langFrom, langTo);
+      console.log('Translation successful:', query, '->', translatedQuery);
+    } catch (error) {
+      console.warn('Translation failed, using fallback:', error.message);
+      // Fallback to mock translation if translation service fails
+      translatedQuery = langFrom === 'en' ? '测试' : 'test';
+    }
+
     const enQuery = langFrom === 'en' ? query : translatedQuery;
     const cnQuery = langTo === 'zh-CN' ? translatedQuery : query;
-
-    console.log('Mock language detection:', langFrom, '-> translating to:', langTo);
 
     // 3. Search both engines in parallel with fallback handling
     const [googleResults, baiduResults] = await Promise.allSettled([
