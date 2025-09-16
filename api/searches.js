@@ -3,7 +3,7 @@
 
 export default async function handler(req, res) {
   // Get backend API URL from environment variable or use default
-  const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:11458/';
+  const backendUrl = process.env.BACKEND_API_URL;
 
   // Handle both GET and POST (app uses POST, backend expects GET)
   if (req.method === 'GET' || req.method === 'POST') {

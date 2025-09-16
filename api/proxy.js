@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const urlPath = req.url.replace(/^\/api\//, '');
 
   // Get backend API URL from environment variable or use default
-  const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:11458/';
+  const backendUrl = process.env.BACKEND_API_URL;
 
   // Construct full URL for the backend request
   // Handle both with and without trailing slash in backendUrl

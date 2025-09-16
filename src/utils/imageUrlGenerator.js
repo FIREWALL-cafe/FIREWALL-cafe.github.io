@@ -27,9 +27,9 @@ export const generateImageUrl = (
 
   // Use proxy if configured via environment variable
   // This ensures images work correctly in Vercel dev environment
-  if (process.env.REACT_APP_PROXY_IMAGES === 'true') {
-    return `/proxy-image?url=${encodeURIComponent(url)}`;
-  }
+  // if (process.env.REACT_APP_PROXY_IMAGES === 'true') {
+  //   return `/proxy-image?url=${encodeURIComponent(url)}`;
+  // }
 
   // Only use direct URL if explicitly disabled
   return url;

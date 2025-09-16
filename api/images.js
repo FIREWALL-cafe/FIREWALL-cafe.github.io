@@ -143,8 +143,8 @@ async function saveSearchResults({ query, google, baidu, langTo, langFrom, searc
     lang_confidence: '1.0',
     lang_alternate: null,
     lang_name: langFrom === 'en' ? 'English' : langFrom,
-    google_images: google.slice(0, 9),
-    baidu_images: baidu.slice(0, 9)
+    google_images: google.slice(0, 9).map(img => img.imageUrl),
+    baidu_images: baidu.slice(0, 9).map(img => img.imageUrl)
   };
 
   const response = await fetch(`${backendUrl}saveSearchAndImages`, {

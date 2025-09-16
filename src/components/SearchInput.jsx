@@ -370,12 +370,6 @@ function SearchInput({ searchMode }) {
             )}
           </div>
           <div className="flex items-center gap-4 mt-4">
-            {/* Debug: Show search results status for Vercel debugging */}
-            {!isArchive && (
-              <span className="p-1 leading-8 text-medium bg-blue-50 border border-blue-500 rounded text-xs">
-                Results: Translation({translation}) Google({imageResults?.googleResults?.length || 0}) Baidu({imageResults?.baiduResults?.length || 0}) ID:{currentSearchId || 'null'}
-              </span>
-            )}
             <span
               className={`p-1 leading-8 text-medium bg-slate-50 border border-black rounded ${translation ? '' : 'hidden'}`}
             >
