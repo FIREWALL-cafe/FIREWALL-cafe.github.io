@@ -18,6 +18,10 @@
       "destination": "/api/images"
     },
     {
+      "source": "/searches/search-locations",
+      "destination": "/api/search-locations"
+    },
+    {
       "source": "/searches/:id/images",
       "destination": "/api/search-images"
     },

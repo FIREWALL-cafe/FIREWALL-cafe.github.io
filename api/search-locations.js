@@ -5,6 +5,8 @@ export default async function handler(req, res) {
   // Get backend API URL from environment variable or use default
   const backendUrl = process.env.BACKEND_API_URL;
 
+  console.log('Backend URL:', backendUrl);
+
   if (req.method === 'GET') {
     try {
       const url = `${backendUrl}search-locations`;
@@ -17,11 +19,20 @@ export default async function handler(req, res) {
         },
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
+      if (!response.ok) {
+        throw new Error(`Backend responded with status: ${response.status}`);
+      }
+
       const data = await response.json();
+      console.log('Response data:', data);
 
       res.status(response.status).json(data);
     } catch (error) {
       console.error('Search locations error:', error);
+      console.error('Error stack:', error.stack);
       res.status(500).json({
         error: 'Failed to fetch search locations',
         message: error.message
