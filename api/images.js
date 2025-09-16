@@ -115,8 +115,9 @@ async function translateText(query, langFrom, langTo) {
 }
 
 async function saveSearchResults({ query, google, baidu, langTo, langFrom, search_client_name, search_ip_address, translation }) {
-  console.log('Saving search results for:', query);
-  console.log('Save payload:', {
+  console.log('=== SAVE SEARCH RESULTS START ===');
+  console.log('💾 Saving search results for:', query);
+  console.log('💾 Save payload summary:', {
     query,
     google_count: google.length,
     baidu_count: baidu.length,
@@ -128,7 +129,11 @@ async function saveSearchResults({ query, google, baidu, langTo, langFrom, searc
   });
 
   const backendUrl = process.env.BACKEND_API_URL;
-  console.log('Backend URL for save:', backendUrl);
+  console.log('💾 Backend URL for save:', backendUrl);
+  console.log('💾 Environment variables check:');
+  console.log('  - BACKEND_API_URL:', process.env.BACKEND_API_URL);
+  console.log('  - API_SECRET:', process.env.API_SECRET ? `${process.env.API_SECRET.substring(0, 8)}...` : 'undefined');
+  console.log('  - LOCATION:', process.env.LOCATION);
 
   const imageData = {
     timestamp: Date.now(),
@@ -145,26 +150,69 @@ async function saveSearchResults({ query, google, baidu, langTo, langFrom, searc
     lang_alternate: null,
     lang_name: langFrom === 'en' ? 'English' : langFrom,
     google_images: google.slice(0, 9),
-    baidu_images: baidu.slice(0, 9)
+    baidu_images: baidu.slice(0, 9),
+    banned: baidu.length === 0, // Add banned field like in the working version
+    sensitive: false
   };
 
-  console.log('Sending imageData:', JSON.stringify(imageData, null, 2));
+  console.log('💾 Prepared imageData:');
+  console.log('  - timestamp:', imageData.timestamp);
+  console.log('  - location:', imageData.location);
+  console.log('  - search_client_name:', imageData.search_client_name);
+  console.log('  - search_ip_address:', imageData.search_ip_address);
+  console.log('  - secret:', imageData.secret ? `${imageData.secret.substring(0, 8)}...` : 'undefined');
+  console.log('  - search_engine:', imageData.search_engine);
+  console.log('  - search:', imageData.search);
+  console.log('  - translation:', imageData.translation);
+  console.log('  - lang_from:', imageData.lang_from);
+  console.log('  - lang_to:', imageData.lang_to);
+  console.log('  - google_images count:', imageData.google_images.length);
+  console.log('  - baidu_images count:', imageData.baidu_images.length);
+  console.log('  - banned:', imageData.banned);
+  console.log('  - sensitive:', imageData.sensitive);
 
-  const response = await fetch(`${backendUrl}saveSearchAndImages`, {
+  console.log('💾 Full imageData payload:', JSON.stringify(imageData, null, 2));
+
+  const targetUrl = `${backendUrl}saveSearchAndImages`;
+  console.log('💾 Making request to:', targetUrl);
+
+  const requestHeaders = {
+    'Content-Type': 'application/json',
+  };
+
+  console.log('💾 Request headers:', JSON.stringify(requestHeaders, null, 2));
+
+  const response = await fetch(targetUrl, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: requestHeaders,
     body: JSON.stringify(imageData)
   });
 
-  console.log('Save response status:', response.status);
-  console.log('Save response headers:', Object.fromEntries(response.headers.entries()));
+  console.log('📥 Save response status:', response.status);
+  console.log('📥 Save response headers:', JSON.stringify(Object.fromEntries(response.headers.entries()), null, 2));
 
-  const result = await response.json();
-  console.log('Save response data:', result);
-  
-  return { searchId: result.searchId };
+  const responseText = await response.text();
+  console.log('📥 Save response text (raw):', responseText);
+
+  let result;
+  try {
+    result = JSON.parse(responseText);
+    console.log('📥 Save response data (parsed):', JSON.stringify(result, null, 2));
+  } catch (parseError) {
+    console.log('⚠️ Failed to parse save response as JSON:', parseError.message);
+    throw new Error(`Invalid JSON response: ${responseText}`);
+  }
+
+  if (!response.ok) {
+    console.log('❌ Save request failed with status:', response.status);
+    throw new Error(`Save request failed: ${response.status} - ${JSON.stringify(result)}`);
+  }
+
+  const searchId = result.searchId;
+  console.log('✅ Search saved successfully with ID:', searchId);
+  console.log('=== SAVE SEARCH RESULTS END ===');
+
+  return { searchId };
 }
 
 // Main handler function
