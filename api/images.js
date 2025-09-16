@@ -26,12 +26,7 @@ async function getGoogleImagesSerper(query) {
   return images
     .filter(img => img && img.imageUrl) // Filter out invalid images
     .slice(0, 9) // Limit to 9 images
-    .map(img => ({
-      imageUrl: img.imageUrl,
-      title: img.title,
-      link: img.link,
-      source: img.source
-    }));
+    .map(img => img.imageUrl);
 }
 
 async function getBaiduImages(query) {
@@ -67,12 +62,7 @@ async function getBaiduImages(query) {
     const results = images
       .filter(img => img && img.thumbURL) // Filter out invalid images
       .slice(0, 9) // Limit to 9 images
-      .map(img => ({
-        imageUrl: img.thumbURL,
-        title: img.fromPageTitleEnc,
-        link: img.objURL,
-        source: img.fromURLHost
-      }));
+      .map(img => img.thumbURL);
 
     console.log(`Successfully fetched ${results.length} Baidu images`);
     return results;
@@ -143,8 +133,8 @@ async function saveSearchResults({ query, google, baidu, langTo, langFrom, searc
     lang_confidence: '1.0',
     lang_alternate: null,
     lang_name: langFrom === 'en' ? 'English' : langFrom,
-    google_images: google.slice(0, 9).map(img => img.imageUrl),
-    baidu_images: baidu.slice(0, 9).map(img => img.imageUrl)
+    google_images: google.slice(0, 9),
+    baidu_images: baidu.slice(0, 9)
   };
 
   const response = await fetch(`${backendUrl}saveSearchAndImages`, {
@@ -167,13 +157,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Debug environment variables
-    console.log('Environment variables check:');
-    console.log('SERPER_API_KEY exists:', !!process.env.SERPER_API_KEY);
-    console.log('SHARED_SECRET exists:', !!process.env.SHARED_SECRET);
-    console.log('API_SECRET exists:', !!process.env.API_SECRET);
-    console.log('BACKEND_API_URL:', process.env.BACKEND_API_URL);
-
     const { query, search_client_name } = req.body;
 
     if (!query || query.trim() === '') {
