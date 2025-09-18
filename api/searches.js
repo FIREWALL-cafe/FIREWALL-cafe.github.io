@@ -9,11 +9,16 @@ export default async function handler(req, res) {
   if (req.method === 'GET' || req.method === 'POST') {
     try {
       // Extract query parameters
-      const { query, page, page_size, cities, ...otherFilters } = req.query;
+      const { query, page, page_size, cities, search_locations, ...otherFilters } = req.query;
 
       if (cities) {
         otherFilters.search_locations = cities;
         delete otherFilters.cities;
+      }
+
+      // Handle search_locations parameter directly
+      if (search_locations) {
+        otherFilters.search_locations = search_locations;
       }
 
       const params = new URLSearchParams({
@@ -23,8 +28,10 @@ export default async function handler(req, res) {
         ...otherFilters
       });
 
-      const url = `${backendUrl}searches?${params.toString()}`;
-      console.log('Fetching searches from:', url);
+      // Use filter endpoint when filters are present (anything other than basic pagination)
+      const hasFilters = Object.keys(otherFilters).length > 0 || query;
+      const endpoint = hasFilters ? 'searches/filter' : 'searches';
+      const url = `${backendUrl}${endpoint}?${params.toString()}`;
 
       const response = await fetch(url, {
         method: 'GET',
@@ -33,10 +40,7 @@ export default async function handler(req, res) {
         },
       });
 
-      console.log('Searches response status:', response.status);
-
       const data = await response.json();
-      console.log('Searches response data:', data);
 
       res.status(response.status).json(data);
     } catch (error) {

@@ -26,9 +26,7 @@ app.use((err, req, res, next) => {
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get('/dashboardData', async (req, res) => {
-  console.log('Received dashboardData request');
   const data = await getDashboardData();
-  console.log('dashboardData:', data);
   res.json(data);
 });
 
@@ -98,8 +96,6 @@ app.get('/proxy-image', async (req, res) => {
 });
 
 app.post("/searches/:search_id/images", async (req, res) => {
-  console.log('/searches/:search_id/images:', req.params);
-  console.log("trying to get images for search id", req.params.search_id);
   const { search_id } = req.params;
 
   const data = await getSearchImages(search_id);
@@ -111,7 +107,6 @@ app.post('/images', async (req, res) => {
   const data = {};
   let langTo;
   const { query, search_client_name } = req.body; 
-  console.log('query', query)
 
   try {
     if (!query || query.trim() === '') {
@@ -120,13 +115,10 @@ app.post('/images', async (req, res) => {
 
     const { language: langFrom } = await getDetectedLanguage(encodeURIComponent(query));
     langTo = langFrom === 'en' ? 'zh-CN' : 'en';
-    console.log('langFrom', langFrom);
-    console.log('langTo', langTo);
 
     const translatedQuery = await getTranslation(encodeURIComponent(query), langFrom, langTo);
     const enQuery = langFrom === 'en' ? query : translatedQuery;
     const cnQuery = langTo === 'zh-CN' ? translatedQuery : query;
-    console.log('translatedQuery', translatedQuery);
     const results = await Promise.all([
       getGoogleImages(enQuery),
       getBaiduImages(cnQuery),
@@ -143,7 +135,6 @@ app.post('/images', async (req, res) => {
       translation: translatedQuery 
     });
     
-    console.log('Search saved with IP:', req.clientIp);
 
     data.searchId = searchId;
     data.googleResults = results[0];
@@ -161,12 +152,16 @@ app.post('/images', async (req, res) => {
 });
 
 app.post('/searches', async (req, res) => {
-  console.log('/searches query params:', req.query);
 
   const { query, page, page_size, ...otherFilters } = req.query;
 
   if (req.query.cities) {
     otherFilters.search_locations = req.query.cities;
+  }
+
+  // Pass through search_locations parameter directly
+  if (req.query.search_locations) {
+    otherFilters.search_locations = req.query.search_locations;
   }
   
   // Pass through us_states parameter for geographic filtering
@@ -197,15 +192,12 @@ app.post('/searches', async (req, res) => {
   try {
     let data;
     if (query) {
-      console.log('Processing search by term:', query);
       const decodedQuery = decodeURIComponent(query);
       data = await getSearchesByTerm(decodedQuery, paginationParams);
     } else {
-      console.log('Processing filter options:', { ...otherFilters, ...paginationParams });
       data = await getSearchesFilter({ ...otherFilters, ...paginationParams });
     }
 
-    console.log('Search results:', data.data.length);
     
     res.json(data);
   } catch (error) {
@@ -220,12 +212,10 @@ app.post('/searches', async (req, res) => {
 });
 
 app.post('/vote', async (req, res) => {
-  console.log('/vote:', req.body);
   
   try {
     req.body.vote_ip_address = req.clientIp;
     
-    console.log('Vote IP extracted:', req.body.vote_ip_address);
     
     const data = await postVote({ ...req.body });
     res.json(data);
@@ -237,7 +227,6 @@ app.post('/vote', async (req, res) => {
 
 app.post('/searches/votes/counts/:search_id', async (req, res) => {
   try {
-    console.log('Getting vote counts for search:', req.params.search_id);
     const data = await getSearchVoteCounts(req.params.search_id);
     res.json(data);
   } catch (error) {
@@ -250,7 +239,6 @@ app.post('/searches/votes/counts/:search_id', async (req, res) => {
 
 // Geographic analytics endpoint
 app.get('/api/analytics/geographic', async (req, res) => {
-  console.log('/api/analytics/geographic: request received');
   
   try {
     const response = await axios.get(`${serverConfig.apiUrl}analytics/geographic`);
@@ -266,7 +254,6 @@ app.get('/api/analytics/geographic', async (req, res) => {
 
 // US States analytics endpoint
 app.get('/api/analytics/geographic/us-states', async (req, res) => {
-  console.log('/api/analytics/geographic/us-states: request received');
   
   try {
     const response = await axios.get(`${serverConfig.apiUrl}analytics/geographic/us-states`);
@@ -282,7 +269,6 @@ app.get('/api/analytics/geographic/us-states', async (req, res) => {
 
 // Countries list endpoint
 app.get('/api/countries', async (req, res) => {
-  console.log('/api/countries: request received');
   
   try {
     const response = await axios.get(`${serverConfig.apiUrl}countries`);
@@ -298,7 +284,6 @@ app.get('/api/countries', async (req, res) => {
 
 // Search locations list endpoint
 app.get('/searches/search-locations', async (req, res) => {
-  console.log('/searches/search-locations: request received');
   
   try {
     const data = await getSearchLocations();
@@ -314,7 +299,6 @@ app.get('/searches/search-locations', async (req, res) => {
 
 // Search analytics endpoint
 app.get('/api/analytics/searches', async (req, res) => {
-  console.log('/api/analytics/searches: request received');
   
   try {
     const response = await axios.get(`${serverConfig.apiUrl}analytics/searches`);
@@ -330,7 +314,6 @@ app.get('/api/analytics/searches', async (req, res) => {
 
 // Vote analytics endpoint
 app.get('/api/analytics/votes', async (req, res) => {
-  console.log('/api/analytics/votes: request received');
   
   try {
     const response = await axios.get(`${serverConfig.apiUrl}analytics/votes`);
@@ -346,7 +329,6 @@ app.get('/api/analytics/votes', async (req, res) => {
 
 // Recent activity endpoint
 app.get('/api/analytics/recent-activity', async (req, res) => {
-  console.log('/api/analytics/recent-activity: request received');
   
   try {
     const response = await axios.get(`${serverConfig.apiUrl}analytics/recent-activity`);
@@ -362,12 +344,8 @@ app.get('/api/analytics/recent-activity', async (req, res) => {
 
 // Current user IP endpoint
 app.get('/api/my-ip', (req, res) => {
-  console.log('/api/my-ip: request received');
-  
   try {
     const userIP = req.clientIp;
-    
-    console.log('User IP detected:', userIP);
     
     res.json({
       ip: userIP,
@@ -390,7 +368,6 @@ app.get('/api/my-ip', (req, res) => {
 
 // Search comparison demo endpoint
 app.post('/api/search-demo', async (req, res) => {
-  console.log('/api/search-demo: request received', req.body);
   const { query } = req.body;
   
   if (!query || query.trim() === '') {
@@ -455,7 +432,6 @@ app.post('/api/search-demo', async (req, res) => {
 });
 
 app.post('/send-email', async (req, res) => {
-  console.log('/send-email: trying!', req.body);
   const { to, subject, text } = req.body;
   const client = new postmark.ServerClient(serverConfig.postmarkApiKey);
 
@@ -467,7 +443,6 @@ app.post('/send-email', async (req, res) => {
       TextBody: text
     });
 
-    console.log('Email sent successfully:', { to, subject, text });
     res.status(200).json({ message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);

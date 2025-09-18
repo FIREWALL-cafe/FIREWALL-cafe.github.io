@@ -242,17 +242,14 @@ const getSearchesByTerm = async (query, options = {}) => {
     ...options
   };
   
-  console.log('FETCH.js: searches by term: starting: ', queryParams);
   const url = `${serverConfig.apiUrl}searches/terms?${querystring.stringify(queryParams)}`;
   const response = await axios.get(url);
 
-  console.log('FETCH.js: searches by term: data count:', Array.isArray(response.data) ? response.data.length : 'paginated');
 
   return response.data;
 }
 
 const getSearchesFilter = async (filterOptions) => {
-  console.log('FETCH.js: searches by filter: starting: ', filterOptions);
   
   // Ensure pagination parameters are present
   const page = parseInt(filterOptions.page) || 1;
@@ -265,11 +262,9 @@ const getSearchesFilter = async (filterOptions) => {
     page_size
   };
   
-  console.log('FETCH.js: filterOptions:', querystring.stringify(queryParams));
   const url = `${serverConfig.apiUrl}searches/filter?${querystring.stringify(queryParams)}`;
 
   const { data } = await axios.get(url);
-  console.log('FETCH.js: searches by filter: data:', data.length);
 
   // If the API doesn't return paginated data, we'll handle pagination here
   if (!data.total && Array.isArray(data)) {
@@ -289,10 +284,6 @@ const getSearchesFilter = async (filterOptions) => {
 }
 
 const saveImages = async ({ query, google, baidu, langTo, langFrom, search_client_name, search_ip_address, translation }) => {
-  console.log('saving images for', query);
-  console.log('- google images', google);
-  console.log('- baidu images', baidu);
-  console.log('- client IP', search_ip_address);
   
   const url = `${serverConfig.apiUrl}saveSearchAndImages`;
   const imageData = {
@@ -324,27 +315,23 @@ const saveImages = async ({ query, google, baidu, langTo, langFrom, search_clien
       }
   });
 
-  console.log('archive action complete:', data);
   
   return data;
 }
 
 const getSearchVoteCounts = async (search_id) => {
-  console.log('fetching vote counts for search_id:', search_id);
   const url = `${serverConfig.apiUrl}searches/votes/counts/${search_id}`;
   const { data } = await axios.get(url);
   return data;
 }
 
 const getUSStatesAnalytics = async () => {
-  console.log('fetching US states analytics data');
   const url = `${serverConfig.apiUrl}analytics/geographic/us-states`;
   const { data } = await axios.get(url);
   return data;
 }
 
 const getSearchLocations = async () => {
-  console.log('fetching search locations data');
   const url = `${serverConfig.apiUrl}search-locations`;
   const { data } = await axios.get(url);
   return data;
