@@ -7,24 +7,26 @@ export default async function handler(req, res) {
   // Handle both GET and POST (app uses POST, backend expects GET)
   if (req.method === 'GET' || req.method === 'POST') {
     try {
-      // Extract query parameters
       const { query, page, page_size, cities, search_locations, ...otherFilters } = req.query;
 
+      const paginationParams = {
+        page: page || 1,
+        page_size: page_size || 25
+      };
+      const finalFilters = { ...otherFilters, ...paginationParams };
+
       if (cities) {
-        otherFilters.search_locations = cities;
-        delete otherFilters.cities;
+        finalFilters.search_locations = cities;
+        delete finalFilters.cities;
       }
 
-      // Handle search_locations parameter directly
       if (search_locations) {
-        otherFilters.search_locations = search_locations;
+        finalFilters.search_locations = search_locations;
       }
 
       const params = new URLSearchParams({
         ...(query && { term: query }),
-        ...(page && { page }),
-        ...(page_size && { page_size }),
-        ...otherFilters
+        ...finalFilters,
       });
 
       const endpoint = query ? 'searches/terms' : 'searches/filter';
