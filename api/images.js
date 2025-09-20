@@ -132,7 +132,7 @@ async function saveSearchResults({ query, google, baidu, langTo, langFrom, searc
 
   const imageData = {
     timestamp: Date.now(),
-    location: process.env.LOCATION || 'vercel',
+    location: process.env.LOCATION,
     search_client_name: search_client_name,
     search_ip_address: search_ip_address,
     secret: process.env.API_SECRET,

@@ -104,9 +104,6 @@ function SearchInput({ searchMode }) {
                 throw new Error(results.error);
               }
 
-              console.log('Archive search results:', results);
-              console.log('First result:', results.data?.[0]);
-
               setSearchId('archived searches');
               setarchiveResults(results);
               setFilteredResults(results);
