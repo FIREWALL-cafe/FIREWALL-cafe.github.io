@@ -2,7 +2,6 @@
 // Simple proxy to backend API for searches
 
 export default async function handler(req, res) {
-  // Get backend API URL from environment variable or use default
   const backendUrl = process.env.BACKEND_API_URL;
 
   // Handle both GET and POST (app uses POST, backend expects GET)
@@ -22,17 +21,15 @@ export default async function handler(req, res) {
       }
 
       const params = new URLSearchParams({
-        ...(query && { query }),
+        ...(query && { term: query }),
         ...(page && { page }),
         ...(page_size && { page_size }),
         ...otherFilters
       });
 
-      // Use filter endpoint when filters are present (anything other than basic pagination)
-      const hasFilters = Object.keys(otherFilters).length > 0 || query;
-      const endpoint = hasFilters ? 'searches/filter' : 'searches';
+      const endpoint = query ? 'searches/terms' : 'searches/filter';
       const url = `${backendUrl}${endpoint}?${params.toString()}`;
-
+      console.log('Search URL:', url);
       const response = await fetch(url, {
         method: 'GET',
         headers: {
